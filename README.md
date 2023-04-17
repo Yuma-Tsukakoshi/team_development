@@ -3,7 +3,7 @@
 # Note
 
 ソースの取得
-※コマンドを実行したフォルダにサンプルコードがダウンロードされます
+※コマンドを実行したフォルダにコードがダウンロードされます
 
 ```bash
 git clone git@github.com:posse-ap/teamdev-2023-posse1-team3B.git
@@ -12,9 +12,9 @@ git clone git@github.com:posse-ap/teamdev-2023-posse1-team3B.git
 ## コンテナ起動
 
 ```bash
-cd teamdev-2023-posse1-team3B.git
-docker-compose build --no-cache
-docker-compose up -d
+cd teamdev-2023-posse1-team3B.git 
+docker-compose build --no-cache 
+docker-compose up -d 
 ```
 
 ## 各ページ遷移ポート番号
@@ -54,5 +54,5 @@ root
 ### データを初期化してinit.sql起動する場合
 ```bash
 mysql -u root -p < docker-entrypoint-initdb.d/init.sql　
-が実行され初期データが投入されます
 ```
+が実行され初期データが投入されます
