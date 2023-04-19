@@ -5,7 +5,6 @@ module.exports = {
     "./src/**/*.html",
     "./src/**/*.php",
   ], 
-  // dockerにnpm入れる  
   theme: {
     extend: {},
   },
