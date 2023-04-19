@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,php}"],
+  content: [
+    "./src/**/*.js",
+    "./src/**/*.html",
+    "./src/**/*.php",
+  ], 
+  // dockerにnpm入れる  
   theme: {
     extend: {},
   },
