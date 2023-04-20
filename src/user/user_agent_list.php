@@ -10,6 +10,7 @@
 
 <body>
   <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
+
   <main>
 
   </main>
