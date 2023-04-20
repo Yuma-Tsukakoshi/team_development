@@ -1,19 +1,26 @@
 {
-  "name": "tailwindcss",
+  "name": "teamdev-2023-posse1-team3b",
   "version": "1.0.0",
   "description": "# Note",
-  "main": "index.js",
+  "main": "postcss.config.js",
   "scripts": {
-    "build":"npx tailwindcss-cli@latest build -i ./src/vendor/tailwind/import.css -o ./src/vendor/tailwind/tailwind.css"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tailwindcss build src/vendor/tailwind/input.css -o src/vendor/tailwind/tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/posse-ap/teamdev-2023-posse1-team3B.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/posse-ap/teamdev-2023-posse1-team3B/issues"
+  },
+  "homepage": "https://github.com/posse-ap/teamdev-2023-posse1-team3B#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.14",
-    "cross-env": "^7.0.3",
-    "postcss": "^8.4.22",
-    "postcss-cli": "^10.1.0",
+    "postcss": "^8.4.23",
     "tailwindcss": "^3.3.1"
   },
   "dependencies": {
@@ -24,7 +31,9 @@
     "binary-extensions": "^2.2.0",
     "brace-expansion": "^1.1.11",
     "braces": "^3.0.2",
+    "browserslist": "^4.21.5",
     "camelcase-css": "^2.0.1",
+    "caniuse-lite": "^1.0.30001480",
     "chokidar": "^3.5.3",
     "color-name": "^1.1.4",
     "commander": "^4.1.1",
@@ -32,9 +41,12 @@
     "cssesc": "^3.0.0",
     "didyoumean": "^1.2.2",
     "dlv": "^1.1.3",
+    "electron-to-chromium": "^1.4.368",
+    "escalade": "^3.1.1",
     "fast-glob": "^3.2.12",
     "fastq": "^1.15.0",
     "fill-range": "^7.0.1",
+    "fraction.js": "^4.2.0",
     "fs.realpath": "^1.0.0",
     "function-bind": "^1.1.1",
     "glob": "^7.1.6",
@@ -55,7 +67,9 @@
     "minimatch": "^3.1.2",
     "mz": "^2.7.0",
     "nanoid": "^3.3.6",
+    "node-releases": "^2.0.10",
     "normalize-path": "^3.0.0",
+    "normalize-range": "^0.1.2",
     "object-assign": "^4.1.1",
     "object-hash": "^3.0.0",
     "once": "^1.4.0",
@@ -85,16 +99,9 @@
     "thenify-all": "^1.6.0",
     "to-regex-range": "^5.0.1",
     "ts-interface-checker": "^0.1.13",
+    "update-browserslist-db": "^1.0.11",
     "util-deprecate": "^1.0.2",
     "wrappy": "^1.0.2",
     "yaml": "^1.10.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/posse-ap/teamdev-2023-posse1-team3B.git"
-  },
-  "bugs": {
-    "url": "https://github.com/posse-ap/teamdev-2023-posse1-team3B/issues"
-  },
-  "homepage": "https://github.com/posse-ap/teamdev-2023-posse1-team3B#readme"
+  }
 }
