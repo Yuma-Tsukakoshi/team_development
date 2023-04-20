@@ -20,17 +20,18 @@
     </div>
   </section>
 
-  <main>
-    <div>
+  <main class="grid grid-cols-2">
+    <div class="m-8">
       <div class="major">
         <!-- font-awsomeで入れてく--->
         <h2>専攻</h2> 
-        <input type="checkbox" id="major1">
-        <label for="major1">文系</label>
+        <input type="checkbox" id="major1" class="check-label" value="">
+        <label for="major1" class="label-hover">文系</label>
         <input type="checkbox" id="major2">
         <label for="major2">理系</label>
       </div>
       <div class="contact">
+        <h2>面談方法</h2> 
         <input type="checkbox" id="contact1">
         <label for="contact1">メール</label>
         <input type="checkbox" id="contact1">
@@ -39,6 +40,7 @@
         <label for="contact1">オフライン</label>
       </div>
       <div class="area">
+        <h2>エリア</h2> 
         <input type="checkbox" id="area1">
         <label for="area1">東京</label>
         <input type="checkbox" id="area2">
@@ -48,7 +50,7 @@
         <input type="checkbox" id="area4">
         <label for="area4">福岡</label>
       </div>
-      <button class="">検索</button>
+      <button class="btn-big blue">検索</button>
     </div>
     <div>
       <h3><span>1</span>件ヒット</h3>
@@ -72,9 +74,9 @@
               <span>オンライン</span>
               <span>東京</span>
             </div>
-            <div class="buttons">
-              <button>カートに追加する</button>
-              <button>詳細を見る→</button>
+            <div class="block">
+              <button class="btn-big blue">カートに追加する</button>
+              <button class="btn-big blue">詳細を見る→</button>
             </div>
           </div>
         </div>
