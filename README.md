@@ -10,7 +10,7 @@ git clone git@github.com:posse-ap/teamdev-2023-posse1-team3B.git
 ```
 ### tailwindを導入したい場合
 '''bash
-<link rel="stylesheet" href=".~~{任意のパス}~~/vendor/tailwind/tailwind.css">
+link rel="stylesheet" href=".~~{任意のパス}~~/vendor/tailwind/tailwind.css"
 '''
 を読み込んでから使ってね
 
