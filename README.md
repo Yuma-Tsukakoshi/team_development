@@ -61,3 +61,5 @@ root
 mysql -u root -p < docker-entrypoint-initdb.d/init.sql　
 ```
 が実行され初期データが投入されます
+
+developから切る、ここで切ったら死にます
