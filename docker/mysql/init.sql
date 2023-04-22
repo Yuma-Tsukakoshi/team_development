@@ -75,13 +75,14 @@ CREATE TABLE clients(
   agent_name VARCHAR(255) NOT NULL,
   service_name VARCHAR(255) NOT NULL,
   catchphrase VARCHAR(255) NOT NULL,
+  recomend_point VARCHAR(255) NOT NULL,
   started_at date DEFAULT NULL,
   ended_at date DEFAULT NULL,
   area VARCHAR(255) NOT NULL,
   logo_img VARCHAR(255) NOT NULL
 ) CHARSET=utf8;
 
-insert into clients(id, client_id, agent_name, service_name, catchphrase, started_at,ended_at, area, logo_img) values
+insert into clients(id, client_id, agent_name, service_name, catchphrase,recomend_point, started_at ,ended_at, area, logo_img) values
 (1,1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
 (2,2,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
 (3,3,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
