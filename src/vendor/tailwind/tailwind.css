@@ -550,8 +550,16 @@ video {
   cursor: pointer;
 }
 
+.static {
+  position: static;
+}
+
 .m-8 {
   margin: 2rem;
+}
+
+.block {
+  display: block;
 }
 
 .grid {

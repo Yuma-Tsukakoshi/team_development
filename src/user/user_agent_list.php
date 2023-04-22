@@ -1,3 +1,10 @@
+<?php 
+require_once(dirname(__FILE__) . '/../dbconnect.php');
+
+$pdo = Database::get();
+$labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -26,30 +33,25 @@
       <div class="major">
         <!-- font-awsomeで入れてく--->
         <h2>専攻</h2>
-        <input type="checkbox" id="major1" class="check-label" value="">
-        <label for="major1" class="label-hover">文系</label>
-        <input type="checkbox" id="major2">
-        <label for="major2">理系</label>
+        <?php for($i=1;$i<=2;$i++){ ?>
+        <input type="checkbox" id="major<?=$i?>" class="check-label" value="<?=$labels
+        [$i-1]["label_name"] ?>"><label for="major<?=$i?>"
+          class="label-hover"><?=$labels[$i-1]["label_name"] ?></label>
+        <?php }?>
       </div>
-      <div class="contact">
+      <div class=" contact">
         <h2>面談方法</h2>
-        <input type="checkbox" id="contact1">
-        <label for="contact1">メール</label>
-        <input type="checkbox" id="contact1">
-        <label for="contact1">電話</label>
-        <input type="checkbox" id="contact1">
-        <label for="contact1">オフライン</label>
+        <?php for($i=3;$i<=5;$i++){ ?>
+        <input type="checkbox" id="contact<?=$i?>" class="check-label" value="<?=$labels[$i-1]["label_name"] ?>"><label
+          for="contact<?=$i?>" class="label-hover"><?= $labels[$i-1]["label_name"] ?></label>
+        <?php }?>
       </div>
       <div class="area">
         <h2>エリア</h2>
-        <input type="checkbox" id="area1">
-        <label for="area1">東京</label>
-        <input type="checkbox" id="area2">
-        <label for="area2">大阪</label>
-        <input type="checkbox" id="area3">
-        <label for="area3">名古屋</label>
-        <input type="checkbox" id="area4">
-        <label for="area4">福岡</label>
+        <?php for($i=6;$i<=9;$i++){ ?>
+        <input type="checkbox" id="area<?=$i?>" class="check-label" value="<?=$labels[$i-1]["label_name"] ?>"><label
+          for="area<?=$i?>" class="label-hover"><?= $labels[$i-1]["label_name"] ?></label>
+        <?php }?>
       </div>
       <button class="btn-big blue">検索</button>
     </div>
