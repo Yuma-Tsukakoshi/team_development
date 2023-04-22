@@ -58,7 +58,7 @@ root
 ```
 ### データを初期化してinit.sql起動する場合
 ```bash
-mysql -u root -p < docker-entrypoint-initdb.d/init.sql　
+mysql -u root -p < docker-entrypoint-initdb.d/init.sql
 ```
 が実行され初期データが投入されます
 
