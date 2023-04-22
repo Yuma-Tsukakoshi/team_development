@@ -3,6 +3,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
+$agent = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -57,7 +58,6 @@ $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div>
       <h3><span>1</span>件ヒット</h3>
-      <!-- dbからエージェント一覧もってきてリストに追加 -->
       <div class="agent-list">
         <!-- ダミーとしてマイナビ新卒紹介 -->
         <div>
@@ -73,6 +73,7 @@ $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
           </div>
           <div class="buttom">
             <div class="labels">
+              <!-- TODO labelとエージェントテーブル繋げるphpファイル読み込んで反映させる -->
               <span>文系</span>
               <span>オンライン</span>
               <span>東京</span>
