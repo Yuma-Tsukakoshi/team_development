@@ -22,6 +22,11 @@ insert into labels (label_id, label_name) values
 (8,"名古屋"),
 (9,"福岡");
 -- 今後都道府県とか追加するなら都道府県テーブルで別に作っても良いかも：better
+DROP TABLE IF EXISTS labels;
+CREATE TABLE labels (
+  label_id INT AUTO_INCREMENT PRIMARY KEY,
+  label_name VARCHAR(255) NOT NULL
+) CHARSET=utf8;
 
 DROP table IF EXISTS users;
 CREATE TABLE users (
@@ -42,8 +47,11 @@ CREATE TABLE users (
 ) CHARSET=utf8;
 
 insert into users (id, name, hurigana, sex, birthday, college, faculty, department, division, grad_year, prefecture, mail, phone, valid) values 
-(1,"神野豪気","カンノゴウキ","男","20030912","慶應義塾大学","法学部","政治学科","文系","2026","神奈川県","go@gmail.com","010-2929-3150","1");
-
+(1,"神野豪気","カンノゴウキ","男","20030912","慶應義塾大学","法学部","政治学科","文系","2026","神奈川県","go@gmail.com","010-2929-3150","0"),
+(1,"塚越雄真","ツカコシユウマ","男","20020910","慶應義塾大学","理工学部","情報工学科","理系","2025","埼玉県","yuma@gmail.com","012-2348-2389","0"),
+(1,"小野ひなの","オノヒナノ","女","20020910","慶應義塾大学","理工学部","管理工学科","理系","2026","岡山県","hinanu@gmail.com","543-4326-6426","0"),
+(1,"竹内菜月","タケウチナツキ","女","20020910","慶應義塾大学","法学部","政治学科","文系","2026","東京都","natuki@gmail.com","366-5473-7354","0"),
+(1,"平手美羽","ヒラテミユ","女","20020910","慶應義塾大学","法学部","政治学科","文系","2026","東京都","hirate@gmail.com","036-6456-4536","0");
 
 DROP TABLE IF EXISTS label_client_relation;
 CREATE TABLE label_client_relation(
