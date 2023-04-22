@@ -78,17 +78,17 @@ CREATE TABLE clients(
   recomend_point VARCHAR(255) NOT NULL,
   started_at date DEFAULT NULL,
   ended_at date DEFAULT NULL,
-  area VARCHAR(255) NOT NULL,
+  area VARCHAR(255),
   logo_img VARCHAR(255) NOT NULL
 ) CHARSET=utf8;
 
 insert into clients(id, client_id, agent_name, service_name, catchphrase,recomend_point, started_at ,ended_at, area, logo_img) values
 (1,1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(2,2,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(3,3,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(4,4,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(5,5,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(6,6,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(2,2,'株式会社マイナビ', 'マイナビ新卒紹介',"豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(3,3,'NaS株式会社', 'DiG UP CAREER',"豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(4,4,'Jobspirng株式会社', 'JobSpring',"豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(5,5,"Goodfind","Goodfindエージェントサービス","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(6,6,"株式会社アカリク","アカリク就活エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
 
 
 DROP TABLE IF EXISTS managers;
