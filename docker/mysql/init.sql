@@ -83,12 +83,12 @@ CREATE TABLE clients(
 ) CHARSET=utf8;
 
 insert into clients(id, client_id, agent_name, service_name, catchphrase,recomend_point, started_at ,ended_at, area, logo_img) values
-(1,1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(2,2,'株式会社マイナビ', 'マイナビ新卒紹介',"豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(3,3,'NaS株式会社', 'DiG UP CAREER',"豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(4,4,'Jobspirng株式会社', 'JobSpring',"豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(5,5,"Goodfind","Goodfindエージェントサービス","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(6,6,"株式会社アカリク","アカリク就活エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(1,1,"doda株式会社","doda新卒エージェント","豊富な掲載企業",'2023-06-03', '2023-08-12',"東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(2,2,'株式会社マイナビ', 'マイナビ新卒紹介',"豊富な掲載企業",'2023-05-13', '2023-08-19',"","https://shinsotsu.mynavi-agent.jp/common/img/header/shinsotsu_logo.png"),
+(3,3,'NaS株式会社', 'DiG UP CAREER',"豊富な掲載企業",'2023-04-03', '2023-07-01',"東京、大阪、名古屋","https://nas-inc.co.jp/lp/digupcareer/assets/img/logo.svg"),
+(4,4,'Jobspirng株式会社', 'JobSpring',"豊富な掲載企業",'2023-04-23', '2023-06-10',"東京","https://jobspring.jp/assets/img/lp/05/JobSpring_logo_v2-min.png?1653983874"),
+(5,5,"Goodfind","Goodfindエージェントサービス","豊富な掲載企業",'2023-06-02', '2023-07-29',"","https://renn-ai.com/wp-content/uploads/2020/02/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2020-02-17-21.00.17.png"),
+(6,6,"株式会社アカリク","アカリク就活エージェント","豊富な掲載企業",'2023-06-01', '2023-07-28',"東京、大阪、福岡","https://expo.nikkeibp.co.jp/xtech/online/static/assets/images/sponsor/logo_booth_8573.png"),
 
 
 DROP TABLE IF EXISTS managers;
