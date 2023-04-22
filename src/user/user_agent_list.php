@@ -4,8 +4,8 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
 $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
-$agents_label = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labels ON  label_client_relation.label_id = labels.label_id")->fetchAll(PDO::FETCH_ASSOC);
-
+$agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id")->fetchAll(PDO::FETCH_ASSOC);
+print_r($agent_labels);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -76,10 +76,10 @@ $agents_label = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
           </div>
           <div class="bottom">
             <div class="labels">
-              <!-- TODO labelとエージェントテーブル繋げるphpファイル読み込んで反映させる -->
-              <!-- まだ紐付けてないから一旦全部ダミーで -->
-              <?php while($agents_label["client_id"]==$key+1){ ?>
-              <span></span>
+              <?php foreach($agent_labels as $agent_label){ ?>
+              <?php if($agent_label["client_id"]==$key+1){?>
+              <span><?=$agent_label["label_name"]?></span>
+              <?php }?>
               <?php }?>
             </div>
             <div class="block">
