@@ -90,7 +90,7 @@ insert into label_client_relation (id, client_id, label_id) values
 (23, 5, 6),
 (24, 6, 2),
 (25, 6, 5),
-(25, 6, 6),
+(26, 6, 6);
 
 
 DROP TABLE IF EXISTS clients;
