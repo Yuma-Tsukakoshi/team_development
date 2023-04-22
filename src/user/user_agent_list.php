@@ -1,9 +1,10 @@
 <?php 
 require_once(dirname(__FILE__) . '/../dbconnect.php');
+require_once(dirname(__FILE__) . '/user_agent_filter.php');
+
 
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
-$agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
 $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id")->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
