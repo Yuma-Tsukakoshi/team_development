@@ -3,8 +3,6 @@ CREATE DATABASE shukatsu;
 USE shukatsu;
 
 
--- user-tableとか作る
-
 DROP TABLE IF EXISTS labels;
 CREATE TABLE labels (
   label_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -21,12 +19,18 @@ insert into labels (label_id, label_name) values
 (7,"大阪"),
 (8,"名古屋"),
 (9,"福岡");
--- 今後都道府県とか追加するなら都道府県テーブルで別に作っても良いかも：better
-DROP TABLE IF EXISTS labels;
-CREATE TABLE labels (
-  label_id INT AUTO_INCREMENT PRIMARY KEY,
-  label_name VARCHAR(255) NOT NULL
-) CHARSET=utf8;
+
+-- 都道府県テーブル追加する場合に書く(better)
+-- DROP TABLE IF EXISTS prefecture;
+-- CREATE TABLE prefecture (
+--   id INT NOT NULL,
+--   name VARCHAR(255) NOT NULL
+-- ) CHARSET=utf8;
+
+-- INSERT INTO prefecture (id,name) values
+-- (,),
+-- (,),
+
 
 DROP table IF EXISTS users;
 CREATE TABLE users (
@@ -71,18 +75,25 @@ CREATE TABLE clients(
   agent_name VARCHAR(255) NOT NULL,
   service_name VARCHAR(255) NOT NULL,
   catchphrase VARCHAR(255) NOT NULL,
-  post_period VARCHAR(255) NOT NULL,
+  started_at date DEFAULT NULL,
+  ended_at date DEFAULT NULL,
   area VARCHAR(255) NOT NULL,
   logo_img VARCHAR(255) NOT NULL
 ) CHARSET=utf8;
 
-insert into clients(id, client_id, agent_name, service_name, catchphrase, post_period, area, logo_img) values
-(1,1,"doda新卒エージェント","不明","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg");
+insert into clients(id, client_id, agent_name, service_name, catchphrase, started_at,ended_at, area, logo_img) values
+(1,1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(2,2,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(3,3,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(4,4,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(5,5,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+(6,6,"doda株式会社","doda新卒エージェント","豊富な掲載企業","6か月","東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
+
 
 DROP TABLE IF EXISTS managers;
 CREATE TABLE managers(
-  client_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  manager_id INT NOT NULL,
+  manager_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  client_id INT NOT NULL,
   manager VARCHAR(255) NOT NULL,
   depart VARCHAR(255) NOT NULL,
   mail VARCHAR(255) NOT NULL,
@@ -90,7 +101,13 @@ CREATE TABLE managers(
 );
 
 insert into managers(client_id, manager_id, manager, depart, mail, phone) values
-(1,1,"担当者太郎","営業部","tatata@gmail.com","555-5555-5555");
+(1,1,"担当者太郎","営業部","tatata@gmail.com","555-5555-5555"),
+(2,2,"担当者次郎","営業部","jijiji@gmail.com","234-4323-5432"),
+(3,3,"担当者三郎","営業部","sansan@gmail.com","542-7654-7335"),
+(4,4,"担当者四郎","営業部","sisi@gmail.com","765-9206-2775"),
+(5,5,"担当者五郎","営業部","gogo@gmail.com","976-2852-6326"),
+(6,6,"担当者六郎","営業部","rokku@gmail.com","224-5437-5437");
+
 
 DROP TABLE IF EXISTS client_login;
 CREATE TABLE client_login(
