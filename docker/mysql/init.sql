@@ -65,7 +65,32 @@ CREATE TABLE label_client_relation(
 ) CHARSET=utf8;
 
 insert into label_client_relation (id, client_id, label_id) values
-(1, 1, 2);
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4),
+(5, 1, 5),
+(6, 1, 6),
+(7, 1, 7),
+(8, 2, 1),
+(9, 2, 2),
+(10, 2, 3),
+(11, 2, 5),
+(12, 2, 6),
+(13, 2, 7),
+(14, 2, 9),
+(15, 3, 1),
+(16, 3, 3),
+(17, 4, 2),
+(18, 4, 3),
+(19, 4, 5),
+(20, 4, 6),
+(21, 5, 1),
+(22, 5, 5),
+(23, 5, 6),
+(24, 6, 2),
+(25, 6, 5),
+(26, 6, 6);
 
 
 DROP TABLE IF EXISTS clients;
@@ -80,17 +105,16 @@ CREATE TABLE clients(
   recommend_point3 VARCHAR(255) ,
   started_at date DEFAULT NULL,
   ended_at date DEFAULT NULL,
-  area VARCHAR(255),
   logo_img VARCHAR(255) NOT NULL
 ) CHARSET=utf8;
 
-insert into clients(id, client_id, agent_name, service_name, catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at ,ended_at, area, logo_img) values
-(1,1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","パーソルとベネッセの合弁会社","取引企業数は常時5,500社以上と豊富","2022年は14万人の就活生に利用される",'2023-06-03', '2023-08-12',"東京、大阪","https://doda-student.jp/assets/img/header_logo_01.svg"),
-(2,2,'株式会社マイナビ', 'マイナビ新卒紹介',"丁寧なES添削指導","新卒情報サイトNo.1のマイナビ","大手企業の補欠枠から中小企業がメイン","学歴によって紹介企業を切り分けている",'2023-05-13', '2023-08-19',"","https://shinsotsu.mynavi-agent.jp/common/img/header/shinsotsu_logo.png"),
-(3,3,'NaS株式会社', 'DiG UP CAREER',"スピード内定","LINEやビデオ通話などを利用した手軽で密なコミュニケーションが取れる","オンラインで企業とのマッチングイベントが開催されており地方学生でも参加できる","特に自己分析のサポートに力を入れている",'2023-04-03', '2023-07-01',"東京、大阪、名古屋","https://nas-inc.co.jp/lp/digupcareer/assets/img/logo.svg"),
-(4,4,'Jobspirng株式会社', 'JobSpring',"適性検査実施","学生の価値観や適性に合う求人のみを紹介","適性検査を活かしたマッチング","内定承諾率は70%",'2023-04-23', '2023-06-10',"東京","https://jobspring.jp/assets/img/lp/05/JobSpring_logo_v2-min.png?1653983874"),
-(5,5,"Goodfind","Goodfindエージェントサービス","顧客に寄り添う","ややハイスペ学生向け","外資系企業やメガベンチャー企業メイン","優秀な学生には特別選考ルートを案内",'2023-06-02', '2023-07-29',"","https://renn-ai.com/wp-content/uploads/2020/02/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2020-02-17-21.00.17.png"),
-(6,6,"株式会社アカリク","アカリク就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-06-01', '2023-07-28',"東京、大阪、福岡","https://expo.nikkeibp.co.jp/xtech/online/static/assets/images/sponsor/logo_booth_8573.png");
+insert into clients(id, client_id, agent_name, service_name, catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at ,ended_at,logo_img) values
+(1,1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","パーソルとベネッセの合弁会社","取引企業数は常時5,500社以上と豊富","2022年は14万人の就活生に利用される",'2023-06-03', '2023-08-12',"https://doda-student.jp/assets/img/header_logo_01.svg"),
+(2,2,'株式会社マイナビ', 'マイナビ新卒紹介',"丁寧なES添削指導","新卒情報サイトNo.1のマイナビ","大手企業の補欠枠から中小企業がメイン","学歴によって紹介企業を切り分けている",'2023-05-13', '2023-08-19',"https://shinsotsu.mynavi-agent.jp/common/img/header/shinsotsu_logo.png"),
+(3,3,'NaS株式会社', 'DiG UP CAREER',"スピード内定","LINEやビデオ通話などを利用した手軽で密なコミュニケーションが取れる","オンラインで企業とのマッチングイベントが開催されており地方学生でも参加できる","特に自己分析のサポートに力を入れている",'2023-04-03', '2023-07-01',"https://nas-inc.co.jp/lp/digupcareer/assets/img/logo.svg"),
+(4,4,'Jobspirng株式会社', 'JobSpring',"適性検査実施","学生の価値観や適性に合う求人のみを紹介","適性検査を活かしたマッチング","内定承諾率は70%",'2023-04-23', '2023-06-10',"https://jobspring.jp/assets/img/lp/05/JobSpring_logo_v2-min.png?1653983874"),
+(5,5,"Goodfind","Goodfindエージェントサービス","顧客に寄り添う","ややハイスペ学生向け","外資系企業やメガベンチャー企業メイン","優秀な学生には特別選考ルートを案内",'2023-06-02', '2023-07-29',"https://renn-ai.com/wp-content/uploads/2020/02/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2020-02-17-21.00.17.png"),
+(6,6,"株式会社アカリク","アカリク就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-06-01', '2023-07-28',"https://expo.nikkeibp.co.jp/xtech/online/static/assets/images/sponsor/logo_booth_8573.png");
 
 
 DROP TABLE IF EXISTS managers;

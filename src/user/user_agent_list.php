@@ -3,7 +3,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
-$agent = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
+$agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -59,30 +59,34 @@ $agent = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
     <div>
       <h3><span>1</span>件ヒット</h3>
       <div class="agent-list">
-        <!-- ダミーとしてマイナビ新卒紹介 -->
         <div>
+          <?php foreach ($agents as $key => $agent) { ?>
           <div class="top">
-            <img src="" alt="エージェント画像">
+            <img src="<?=$agent["logo_img"]?>" alt="エージェント画像">
             <div>
-              <h2>マイナビ新卒紹介</h2>
+              <h2><?=$agent["agent_name"]?></h2>
               <div>
-                <h3>業界最高峰の求人数</h3>
-                <p>様々な分野に挑戦してみたい、選考対策まで行って欲しい人におすすめです</p>
+                <h3><?=$agent["service_name"]?></h3>
+                <p><?=$agent["recommend_point1"]?></p>
+                <p><?=$agent["recommend_point2"]?></p>
+                <p><?=$agent["recommend_point3"]?></p>
               </div>
             </div>
           </div>
-          <div class="buttom">
+          <div class="bottom">
             <div class="labels">
               <!-- TODO labelとエージェントテーブル繋げるphpファイル読み込んで反映させる -->
+              <!-- まだ紐付けてないから一旦全部ダミーで -->
               <span>文系</span>
               <span>オンライン</span>
               <span>東京</span>
             </div>
             <div class="block">
-              <button class="btn-big blue">カートに追加する</button>
-              <button class="btn-big blue">詳細を見る→</button>
+              <button class="btn-big blue" id="cart<?=$key+1?>">カートに追加する</button>
+              <button class="btn-big blue" id="agent<?=$key+1?>">詳細を見る→</button>
             </div>
           </div>
+          <?php }?>
         </div>
       </div>
     </div>
