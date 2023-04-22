@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
 $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
+$agents_label = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labels ON  label_client_relation.label_id = labels.label_id")->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -57,7 +58,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
       <button class="btn-big blue">検索</button>
     </div>
     <div>
-      <h3><span>1</span>件ヒット</h3>
+      <h3><span>6</span>件ヒット</h3>
       <div class="agent-list">
         <div>
           <?php foreach ($agents as $key => $agent) { ?>
@@ -77,9 +78,9 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
             <div class="labels">
               <!-- TODO labelとエージェントテーブル繋げるphpファイル読み込んで反映させる -->
               <!-- まだ紐付けてないから一旦全部ダミーで -->
-              <span>文系</span>
-              <span>オンライン</span>
-              <span>東京</span>
+              <?php while($agents_label["client_id"]==$key+1){ ?>
+              <span></span>
+              <?php }?>
             </div>
             <div class="block">
               <button class="btn-big blue" id="cart<?=$key+1?>">カートに追加する</button>
