@@ -66,9 +66,9 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
           <div class="top">
             <img src="<?=$agent["logo_img"]?>" alt="エージェント画像">
             <div>
-              <h2><?=$agent["agent_name"]?></h2>
+              <h2><?=$agent["service_name"]?></h2>
               <div>
-                <h3><?=$agent["service_name"]?></h3>
+                <h3><?=$agent["catchphrase"]?></h3>
                 <p><?=$agent["recommend_point1"]?></p>
                 <p><?=$agent["recommend_point2"]?></p>
                 <p><?=$agent["recommend_point3"]?></p>
