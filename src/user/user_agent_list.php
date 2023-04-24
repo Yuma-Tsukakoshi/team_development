@@ -59,7 +59,8 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       <button class="btn-big blue">検索</button>
     </form>
     <div>
-      <h3><span>6</span>件ヒット</h3>
+      <!-- fileterｓのカウントを入れる -->
+      <!-- <h3><span><?=$filters?></span>件ヒット</h3> -->
       <div class="agent-list">
         <div>
           <?php foreach ($agents as $key => $agent) { ?>
@@ -78,7 +79,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
           <div class="bottom">
             <div class="labels">
               <?php foreach($agent_labels as $agent_label){ ?>
-              <?php if($agent_label["client_id"]==$key+1){?>
+              <?php if($agent_label["client_id"]==$agent["client_id"]){?>
               <span>
                 <?=$agent_label["label_name"]?>
               </span>
