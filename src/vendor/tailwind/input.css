@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-big {
+    @apply rounded-full  px-6 py-2 text-base font-bold text-white drop-shadow-lg hover:scale-95 hover:opacity-70 hover:transition-all;
+  }
+  .btn-big-disable {
+    @apply rounded-full bg-gradient-to-tr from-gray-300 to-gray-200 px-6 py-2 text-base font-bold text-white;
+  }
+  .label-hover{
+    @apply inline-block pl-[0.15rem] hover:cursor-pointer;
+  }
+
+}
+
+@layer utilities {
+    .blue {
+      @apply bg-gradient-to-tr from-green-300 to-blue-600;
+    }
+}
