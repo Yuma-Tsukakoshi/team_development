@@ -2,6 +2,8 @@
 
 // session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
+$pdo = Database::get();
+$agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
 
 // if (!isset($_SESSION['id'])) {
 //     header('Location: http://localhost:8080/admin/boozer_auth/signup.php');
@@ -71,15 +73,14 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
                       <th class="px-4 py-3">操作</th>
                     </tr>
                   </thead>
-                  <tbody
-                    class="bg-white divide-y"
-                  >
+                  <tbody class="bg-white divide-y">
+                  <?php foreach($agents as $key => $agent){?>
                     <tr class="text-gray-700">
                       <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm">企業名</p>
+                        <p class="font-semibold items-center text-sm"><?=$agent["service_name"]?></p>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                        掲載期間:started~:ended
+                        <?=$agent["started_at"]?>  ~  <?=$agent["ended_at"]?>
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span
@@ -94,6 +95,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
                           <button
                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray"
                             aria-label="Edit"
+                            data = <?=$agent["client_id"]?>
                           >
                             詳細
                             <!-- 詳細押した後に編集できるように -->
@@ -101,6 +103,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
                         </div>
                       </td>
                     </tr>
+                  <?php } ?>  
                   </tbody>
                 </table>
               </div>
