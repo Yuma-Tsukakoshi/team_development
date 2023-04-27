@@ -59,8 +59,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       <button class="btn-big blue">検索</button>
     </form>
     <div>
-      <!-- fileterｓのカウントを入れる -->
-      <!-- <h3><span><?=$filters?></span>件ヒット</h3> -->
+      <h3><span><?=count($agents)?></span>件ヒット</h3>
       <div class="agent-list">
         <div>
           <?php foreach ($agents as $key => $agent) { ?>
