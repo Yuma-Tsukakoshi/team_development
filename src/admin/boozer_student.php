@@ -1,16 +1,9 @@
 <?php
 
-// session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 $pdo = Database::get();
-$agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
+$students = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
 
-// if (!isset($_SESSION['id'])) {
-//     header('Location: http://localhost:8080/admin/boozer_auth/signup.php');
-//     exit();
-// }else{
-//     $is_empty = count($questions) === 0;
-// }
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +14,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
     />
     <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
-    <title>boozer企業一覧</title>
+    <title>boozer学生一覧</title>
   </head>
   <body>
     <div
@@ -39,7 +32,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_index.php">
                 <span class="ml-4">企業一覧</span>
               </a>
             </li>
@@ -49,7 +42,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
               </a>
             </li>
             <li class="relative px-6 py-3">
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_student.php">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
                 <span class="ml-4">学生一覧</span>
               </a>
             </li>
@@ -66,7 +59,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
       <div class="flex flex-col flex-1 w-full">
         <main class="h-full pb-16 overflow-y-auto">
           <div class="container grid px-6 mx-auto">
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
