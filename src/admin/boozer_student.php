@@ -119,7 +119,7 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
               </div>
               <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t sm:grid-cols-9">
                 <span class="flex items-center col-span-3">
-                  Showing 21-30 of 100
+                  Showing 1-10 of 50
                 </span>
                 <span class="col-span-2"></span>
                 <!-- Pagination -->
