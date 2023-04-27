@@ -3,6 +3,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/user_agent_filter.php');
 
 $pdo = Database::get();
+
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
 $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id")->fetchAll(PDO::FETCH_ASSOC);
 
@@ -17,6 +18,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <title>エージェント検索一覧</title>
 </head>
 
@@ -64,6 +66,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       <div class="agent-list">
         <div>
           <?php foreach ($agents as $key => $agent) { ?>
+          <input type="hidden" value="<?=$agent['client_id']?> " class="client_id">
           <div class="top">
             <img src="<?=$agent["logo_img"]?>" alt="エージェント画像">
             <div>
@@ -87,7 +90,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
               <?php }?>
             </div>
             <div class="block">
-              <button class="btn-big blue" id="cart<?=$key+1?>">カートに追加する</button>
+              <button class="btn-big blue"  value="<?=$key?>" id="cart<?=$key+1?>">カートに追加する</button>
               <button class="btn-big blue" id="agent<?=$key+1?>">詳細を見る→</button>
             </div>
           </div>
@@ -96,6 +99,29 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       </div>
     </div>
   </main>
+  <script>
+  $(function(){
+            $('.btn-big').on('click', function(event){
+              $index=this.value
+              alert($('.client_id').eq($index).val());
+                $.ajax({
+                    type: "POST",
+                    url: "./user_cartlook.php",
+                    data: {
+                      client_id:$('.client_id').eq($index).val(),
+                      
+                    },
+                    dataType : "json",
+                    scriptCharset: 'utf-8'
+                }).done(function(data){
+                  alert(data);
+                
+                }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+                    alert(errorThrown);
+                });
+            })
+          })
+  </script>
 </body>
 
 </html>
