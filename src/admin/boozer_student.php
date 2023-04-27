@@ -70,8 +70,8 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
                       <th class="px-4 py-3">学部</th>
                       <th class="px-4 py-3">学科</th>
                       <th class="px-4 py-3">卒業年</th>
-                      <th class="px-4 py-3">操作</th>
                       <th class="px-4 py-3">無効申請</th>
+                      <th class="px-4 py-3">操作</th>
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y">
