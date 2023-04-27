@@ -91,7 +91,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
                         <span
                           class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full"
                         >
-                        <!-- 色の設定はクラスの付加でjqueryで行う -->
+                        <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
                           登録完了
                         </span>
                       </td>
@@ -112,9 +112,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
                   </tbody>
                 </table>
               </div>
-              <div
-                class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t sm:grid-cols-9"
-              >
+              <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t sm:grid-cols-9">
                 <span class="flex items-center col-span-3">
                   Showing 21-30 of 100
                 </span>
