@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['filter'])){
     $query = "SELECT * FROM clients AS main INNER JOIN (SELECT DISTINCT sub.client_id FROM clients AS sub INNER JOIN label_client_relation ON sub.client_id=label_client_relation.client_id WHERE";
     foreach($filters as $index => $filter) {
         if($index > 0) {
-            $query .= " OR";
+            $query .= " AND";
         }
         $query .= " label_id = $filter";
     }
