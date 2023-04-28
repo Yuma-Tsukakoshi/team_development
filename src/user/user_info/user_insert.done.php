@@ -30,7 +30,6 @@ try {
 
 }catch(\Exception $e){
   $pdo->rollBack();
-  //dd($e->getMessage());
   exit($e->getMessage());
 }
 

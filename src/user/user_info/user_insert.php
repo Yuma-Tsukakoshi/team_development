@@ -24,7 +24,7 @@ $agents=$pdo->query("SELECT * FROM clients where client_id = $agent_id")->fetchA
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
     rel="stylesheet">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="./../assets/js/jquery.zip2addr.js"></script>
+  <!--<script type="text/javascript" src="./../assets/js/jquery.zip2addr.js"></script>-->
 </head>
 
 <body>
