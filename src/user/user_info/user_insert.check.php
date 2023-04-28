@@ -68,10 +68,12 @@
       <div class="form-controll">
         <!--自動入力-->
         <fieldset class="form-control" disabled>
-          <label for="address" class="form-label">郵便番号:</label>
+          <!-- <label for="address" class="form-label">郵便番号:</label>
           <input type="text" id="address" name="address" onKeyUp="$('#address').zip2addr('#address_detail');" value="<?=$_POST['address']?>" ><br/>
           <label for="address_detail" class="form-label">住所:</label>
-          <input type="text" name="address_detail" id="address_detail" value="<?=$_POST['address_detail']?>" >
+          <input type="text" name="address_detail" id="address_detail" value="<?=$_POST['address_detail']?>" > -->
+          <label for="prefecture" class="form-label">住まいの都道府県:</label>
+          <input type="text" name="prefecture" id="prefecture" value="<?=$_POST['prefecture']?>">
         </fieldset>
         <button class="edit-button" data-value="7">編集</button>
       </div>
@@ -105,7 +107,7 @@
         <button class="edit-button" data-value="11">編集</button>
 
       </div>
-       
+      
       <div class="form-control">
         <h2>申し込み企業一覧</h2>
         
@@ -147,8 +149,7 @@
                       department:$('#department').val(),
                       division:$('input[name="division"]').val(),
                       grad_year:$('#grad_year').val(),
-                      prefecture:$('#address_detail').val(),
-                      
+                      prefecture:$('#prefecture').val(),
                     },
                     dataType : "json",
                     scriptCharset: 'utf-8'

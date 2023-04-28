@@ -33,7 +33,7 @@ $agents=$pdo->query("SELECT * FROM clients where client_id = $agent_id")->fetchA
   </header>
   <main>
     <h1>申し込みフォーム</h1>
-    <form>
+    <form method="post" action="http://localhost:8080/user/user_info/user_insert.check.php">
       <div class="form-controll">
         <label for="name" class="form-label">名前:</label>
         <input type="text" name="name" id="name" class="form-control" required/>
@@ -98,7 +98,7 @@ $agents=$pdo->query("SELECT * FROM clients where client_id = $agent_id")->fetchA
     
       
   </main>
-  <script>
+  <!-- <script>
   $count=0;
    /*$(function(){
       $('.edit-button').click(function(){
@@ -175,6 +175,6 @@ $agents=$pdo->query("SELECT * FROM clients where client_id = $agent_id")->fetchA
   })
 
 
-  </script>
+  </script> -->
 </body>
 </html>
