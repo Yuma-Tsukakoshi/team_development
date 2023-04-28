@@ -1,16 +1,9 @@
 <?php
 
-// session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 $pdo = Database::get();
-$agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
 
-// if (!isset($_SESSION['id'])) {
-//     header('Location: http://localhost:8080/admin/boozer_auth/signup.php');
-//     exit();
-// }else{
-//     $is_empty = count($questions) === 0;
-// }
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +14,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
     />
     <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
-    <title>boozer企業一覧</title>
+    <title>boozer学生一覧</title>
   </head>
   <body>
     <div
@@ -39,7 +32,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_index.php">
                 <span class="ml-4">企業一覧</span>
               </a>
             </li>
@@ -49,7 +42,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
               </a>
             </li>
             <li class="relative px-6 py-3">
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_student.php">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
                 <span class="ml-4">学生一覧</span>
               </a>
             </li>
@@ -66,33 +59,45 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
       <div class="flex flex-col flex-1 w-full">
         <main class="h-full pb-16 overflow-y-auto">
           <div class="container grid px-6 mx-auto">
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
                   <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
-                      <th class="px-4 py-3">企業名</th>
-                      <th class="px-4 py-3">掲載期間</th>
-                      <th class="px-4 py-3">登録状態</th>
+                      <th class="px-4 py-3">氏名</th>
+                      <th class="px-4 py-3">大学</th>
+                      <th class="px-4 py-3">学部</th>
+                      <th class="px-4 py-3">学科</th>
+                      <th class="px-4 py-3">卒業年</th>
+                      <th class="px-4 py-3">無効申請</th>
                       <th class="px-4 py-3">操作</th>
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y">
-                  <?php foreach($agents as $key => $agent){?>
+                  <?php foreach($users as $key => $user){?>
                     <tr class="text-gray-700">
                       <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?=$agent["service_name"]?></p>
+                        <p class="font-semibold items-center text-sm"><?=$user["name"]?></p>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                        <?=$agent["started_at"]?>  ~  <?=$agent["ended_at"]?>
+                        <?=$user["college"]?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?=$user["faculty"]?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?=$user["department"]?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?=$user["grad_year"]?>
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span
                           class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full"
                         >
-                        <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
-                          登録完了
+                        <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
+                          承認済
                         </span>
                       </td>
                       <td class="px-4 py-3">
@@ -100,7 +105,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
                           <button
                             class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray"
                             aria-label="Edit"
-                            data = <?=$agent["client_id"]?>
+                            data = <?=$user["id"]?>
                           >
                             詳細
                             <!-- 詳細押した後に編集できるように -->
