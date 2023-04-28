@@ -5,7 +5,7 @@ session_start();
 $pdo=Database::get();
 $agent_id=$_SESSION['products']['agent'];
 $agents=$pdo->query("SELECT * FROM clients where client_id = $agent_id")->fetchAll(PDO::FETCH_ASSOC);
-print_r($agents[0]);
+//print_r($agents[0]);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -33,7 +33,7 @@ print_r($agents[0]);
   </header>
   <main>
     <h1>申し込みフォーム</h1>
-    <!--<form action="./user_insert.check.php" method="post">-->
+    <form>
       <div class="form-controll">
         <label for="name" class="form-label">名前:</label>
         <input type="text" name="name" id="name" class="form-control" required/>
@@ -44,7 +44,7 @@ print_r($agents[0]);
       </div>
       <div class="form-controll">
         <label for="email" class="form-label">メールアドレス:</label>
-        <input type="email" name="email" id="email" class="form-control" required/>
+        <input type="email" name="email" id="email" class="form-control"  pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$"  title="メールアドレスを正しく入力してください" required/>
       </div>
       <div class="form-controll">
         <label for="phone" class="form-label">電話番号:</label>
@@ -61,11 +61,13 @@ print_r($agents[0]);
         <input type="date" name="birthday" id="birthday" class="form-control" required/>
       </div>
       <div class="form-controll">
-        <!--自動入力-->
+        <!--都道府県に変更
         <label for="address" class="form-label">郵便番号:</label>
         <input type="text" id="address" class='form-control'name="address" onKeyUp="$('#address').zip2addr('#address_detail');"  required><br/>
         <label for="address_detail" class="form-label" required>住所:</label>
-        <input type="text"class='form-control'name="address_detail" id="address_detail" >
+        <input type="text"class='form-control'name="address_detail" id="address_detail" >-->
+        <label for="prefecture" class="form-label">住まいの都道府県:</label>
+        <input type="text" name="prefecture" id="prefecture" class="form-control" required/>
       </div>
       <div class="form-controll">
         <label for="college" class="form-label">大学名:</label>
@@ -90,10 +92,11 @@ print_r($agents[0]);
         <input type="text" name="company" id="company" class="form-control"  value="<?=$agent["agent_name"]?>" >
         <?php }?>
       </div>
-
-      <input type="submit" id="submit-button"value="送信">
-    <!--</form>-->
-
+      <input type="submit" id="submit-button"value="送信" >
+    
+    </form>
+    
+      
   </main>
   <script>
   $count=0;
@@ -107,10 +110,30 @@ print_r($agents[0]);
     })
    })*/
   $(function(){
+    //全て入力されたら送信ボタンを押せる これだどinput内容の判定してない
+    /*$('#grad_year').on('keyup',function(event){
+      if($('#name').val()==null || $('#hurigana').val()==null || $('#email').val()==null || $('#phone').val()==null || $('input[name="sex"]:checked').val()==null || $('#birthday').val()==null || $('#college').val()==null || $('#faculty').val()==null|| $('#department').val()==null || $('input[name="division"]:checked').val()==null || $('#grad_year').val()==null || $('#prefecture').val()==null){
+        $('#submit-button').prop('disabled',true)
+                    
+      }
+      else{
+        $('#submit-button').prop('disabled',false)
+      }
+
+    })*/
+   
     $("#submit-button").on('click', function(event){
                 //event.preventDefault();
-
-                $.ajax({
+                var btn  = $(this);
+                var form = $(this).closest('form');
+            
+                //required対策
+                if($(form).find(':invalid').length === 0)
+                {
+                    $(btn).prop('disabled', true);
+            
+                    
+                  $.ajax({
                     type: "POST",
                     url: "./user_insert.done.php",
                     data: {
@@ -125,19 +148,28 @@ print_r($agents[0]);
                       department:$('#department').val(),
                       division:$('input[name="division"]').val(),
                       grad_year:$('#grad_year').val(),
-                      prefecture:$('#address_detail').val(),
+                      prefecture:$('#prefecture').val(),
                       
                     },
                     dataType : "json",
                     scriptCharset: 'utf-8'
-                }).done(function(data){
-                  //console.log(data);
-                
-                  window.location.href='./user_thanks.php'
+                  }).done(function(data){
+                    //console.log(data);
                   
-                }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-                    console.log(errorThrown);
-                });
+                    window.location.href='./user_thanks.php'
+                    
+                  }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+                      console.log(errorThrown);
+                  });
+                }
+                else
+                {
+                    //ツールチップを表示
+                    $(form).find(':invalid').show();
+                }
+               
+                  
+               
             });
 
   })
