@@ -28,20 +28,16 @@ $stmt->execute();
 $member = $stmt->fetch();
 // パスワードの比較時にnullが渡されないように、$passがnullの場合は認証エラーとする
 if (!$member || !$pass || !password_verify($pass, $member['password'])) {
-  $msg = 'メールアドレスもしくはパスワードが間違っています。';
-  $link = '<a href="boozer_login.php">戻る</a>';
-  } else {
+    $msg = 'メールアドレスもしくはパスワードが間違っています。';
+    $link = '<a href="http://localhost:8080/admin/boozer_auth/boozer_login.php">戻る</a>';
+    } else {
   // 認証に成功した場合は、セッションにユーザー情報を保存する
-  $_SESSION['id'] = $member['id'];
-  $_SESSION['name'] = $member['name'];
-  $msg = 'ログインしました。';
-  $link = '<a href="boozer_index.php">ホーム</a>';
-  }
-  ?>
-  
-  <h1><?php echo $msg; ?></h1>
-  <?php echo $link; ?>
-  
-  
-  
-  
+    $_SESSION['id'] = $member['id'];
+    $_SESSION['name'] = $member['name'];
+    $msg = 'ログインしました。';
+    $link = '<a href="http://localhost:8080/admin/boozer_index.php">ホーム</a>';
+    }
+?>
+
+<h1><?php echo $msg; ?></h1>
+<?php echo $link; ?>

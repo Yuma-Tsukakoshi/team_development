@@ -1,5 +1,6 @@
 <h1>新規会員登録</h1>
-<form action="boozer_register.php" method="post">//処理を行う宛先を指定
+<form action="boozer_register.php" method="post">
+<!-- //処理を行う宛先を指定 -->
 <div>
     <label>
         名前：
