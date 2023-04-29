@@ -234,9 +234,10 @@ body{
 }
 
 .agent-img{
-    width: 200px;
-    height: 150px;
+    width: 260px;
+    height: 185px;
     position: relative;
+    padding: 8px;
     top: 30px;
     left:50px ;
     border-width: 5px ;
@@ -251,9 +252,9 @@ body{
 }
 
 .top-title-border{
-    border-width: 2px;
     width: 330px;
-    color: #ffe600;
+    height: 4px;
+    background-color: #ffe600;
     position: relative;
     top:-115px ;
     left: 320px;

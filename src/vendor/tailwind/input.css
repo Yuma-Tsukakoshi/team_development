@@ -17,6 +17,9 @@
 
 @layer utilities {
     .blue {
-      @apply bg-gradient-to-tr from-green-300 to-blue-600;
+      @apply bg-gradient-to-br from-cyan-300 to-blue-700 ;
+    }
+    .cyan {
+      @apply bg-gradient-to-br from-blue-500 to-cyan-500 ;
     }
 }

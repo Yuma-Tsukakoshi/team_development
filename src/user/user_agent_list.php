@@ -69,8 +69,8 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       </div>
       <button class="btn-big blue">検索</button>
     </form>
-    <div class="results">
-      <div>
+    <div >
+      <div class="results">
           <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
           <span class="results-txt"><?=count($agents)?>件ヒット</span>
       </div>
@@ -102,7 +102,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
               <?php }?>
             </div>
             <div class="block">
-              <button class="btn-big blue add-cart" id="cart<?=$key+1?>">カートに追加する</button>
+              <button class="btn-big cyan add-cart" id="cart<?=$key+1?>">カートに追加する</button>
               <button class="btn-big blue see-details" id="agent<?=$key+1?>">詳細を見る→</button>
             </div>
           </div>
