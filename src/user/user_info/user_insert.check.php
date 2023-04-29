@@ -17,7 +17,7 @@
 
 <body>
   <main>
-  <form action="http://localhost:8080/user/user_info/user_insert.done.php" method="post">
+  <form action="http://localhost:8080/user/user_info/user_thanks.php" method="post">
     <h1>お申し込み確認フォーム</h1>
         <div>
           <label for="name" class="form-label">名前:</label>
