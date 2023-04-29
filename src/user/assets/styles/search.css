@@ -24,12 +24,11 @@ body{
 }
 
 .search-title-border{
-    border-width: 1px;
     width: 180px;
+    height:3px;
     position: relative;
     left: 110px;
-    /* 黄色にならない！なんで！ */
-    color: yellow;
+    background-color: #ffe600;
 
 }
 
@@ -241,8 +240,7 @@ body{
     top: 30px;
     left:50px ;
     border-width: 5px ;
-/* ごめんなさい、マイナビの写真のボーダーの色も何故か変わらないです */
-box-shadow: 7px 7px #ffe600;
+    box-shadow: 7px 7px #ffe600;
 }
 
 .top-title{
@@ -269,7 +267,7 @@ box-shadow: 7px 7px #ffe600;
     border-radius: 30px;
     position: relative;
     top:-100px ;
-    left: 340px;    
+    left: 340px;
 }
 
 .top-description-title{
