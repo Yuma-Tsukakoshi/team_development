@@ -15,6 +15,8 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
+    />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/search.css">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
@@ -72,7 +74,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
     <div >
       <div class="results">
           <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
-          <span class="results-txt"><?=count($agents)?>件ヒット</span>
+          <p class="results-txt"><span class="results-number"><?=count($agents)?></span>件ヒット</p>
       </div>
       <div>
         <div class="my-16 ">
