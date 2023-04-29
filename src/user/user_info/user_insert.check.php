@@ -1,5 +1,4 @@
 <?php
-  //session_start();
   
 ?>
 <!DOCTYPE html>
@@ -10,9 +9,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>申し込みフォーム</title>
-  <!-- スタイルシート読み込み -->
-  <!--<link rel="stylesheet" href="./user/assets/styles/common.css">-->
-  <!-- Google Fonts読み込み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -23,20 +19,14 @@
 </head>
 
 <body>
-  <header>
-
-  </header>
   <main>
     <h1>お申し込み確認フォーム</h1>
-    <!--<form action="./user_insert.done.php" method="post">-->
-  
-      <div class="form-controll" >
+      <div>
         <label for="name" class="form-label">名前:</label>
         <input type="text" name="name" id="name" class="form-control" value="<?=$_POST['name']?>" disabled/>
-        <button class="edit-button" data-value="1">編集</button>
+        <button class="edit-button" data-value="2">編集</button>
       </div>
-      <div class="form-controll">
-        <label for="hurigana" class="form-label">ふりがな:</label>
+      <label for="hurigana" class="form-label">ふりがな:</label>
         <input type="text" name="hurigana" id="hurigana" class="form-control" value="<?=$_POST['hurigana']?>" disabled/>
         <button class="edit-button" data-value="2">編集</button>
       </div>
@@ -107,65 +97,8 @@
         <button class="edit-button" data-value="11">編集</button>
 
       </div>
-      
-      <div class="form-control">
-        <h2>申し込み企業一覧</h2>
-        
-        <input type="text" name="company" id="company" class="form-control" value="<?=$_POST['company']?>" disabled>
-      </div>
-
-
       <input type="submit" id="submit-button" value="送信">
-   
-   
+      
   </main>
-  <script>
-  $count=0;
-   $(function(){
-      $('.edit-button').click(function(){
-      $number=$(this).data('value')
-      $('.form-control').eq($number-1).prop('disabled',false)
-      $('.form-control').eq($number-1).val('')
-      $count++;
-   
-    })
-   })
-  $(function(){
-    $("#submit-button").on('click', function(event){
-                //event.preventDefault();
-
-                $.ajax({
-                    type: "POST",
-                    url: "./user_insert.done.php",
-                    data: {
-                      name:$('#name').val(),
-                      hurigana: $('#hurigana').val(),
-                      email:$('#email').val(),
-                      phone:$('#phone').val(),
-                      sex:$('input[name="sex"]').val(),
-                      birthday:$('#birthday').val(),
-                      college:$('#college').val(),
-                      faculty:$('#faculty').val(),
-                      department:$('#department').val(),
-                      division:$('input[name="division"]').val(),
-                      grad_year:$('#grad_year').val(),
-                      prefecture:$('#prefecture').val(),
-                    },
-                    dataType : "json",
-                    scriptCharset: 'utf-8'
-                }).done(function(data){
-                  //console.log(data);
-                
-                  window.location.href='./user_thanks.php'
-                  
-                }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-                    console.log(errorThrown);
-                });
-            });
-
-  })
-
-
-  </script>
 </body>
 </html>
