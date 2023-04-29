@@ -70,13 +70,15 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       <button class="btn-big blue">検索</button>
     </form>
     <div class="results">
-      <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
-      <h3 class="results-txt"><span class="results-txt"><?=count($agents)?></span>件ヒット</h3>
-      <div class="agent-list">
-        <div>
+      <div>
+          <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
+          <span class="results-txt"><?=count($agents)?>件ヒット</span>
+      </div>
+      <div>
+        <div class="my-16 ">
           <?php foreach ($agents as $key => $agent) { ?>
-          <div class="top">
-            <img class="agent-img" src="<?=$agent["logo_img"]?>" alt="エージェント画像">
+          <div class="top agent-list">
+              <img class="agent-img" src="<?=$agent["logo_img"]?>" alt="エージェント画像">
             <div>
               <h2 class="top-title"><?=$agent["service_name"]?></h2>
               <div class="top-title-border"></div>
