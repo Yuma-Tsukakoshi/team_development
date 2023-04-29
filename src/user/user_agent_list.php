@@ -35,8 +35,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
         <!-- font-awsomeで入れてく--->
         <h2>専攻</h2>
         <?php for($i=1;$i<=2;$i++){ ?>
-        <input type="checkbox" id="major<?=$i?>" class="check-label" value="<?=$labels
-        [$i-1]["label_name"] ?>"><label for="major<?=$i?>"
+        <input type="checkbox" id="major<?=$i?>" class="check-label" value="<?=$labels[$i-1]["label_name"] ?>"><label for="major<?=$i?>"
           class="label-hover"><?=$labels[$i-1]["label_name"] ?></label>
         <?php }?>
       </div>
