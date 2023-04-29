@@ -19,4 +19,7 @@
     .blue {
       @apply bg-gradient-to-br from-cyan-300 to-blue-700 ;
     }
+    .cyan {
+      @apply bg-gradient-to-br from-blue-500 to-cyan-500 ;
+    }
 }

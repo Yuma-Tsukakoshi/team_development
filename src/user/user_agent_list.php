@@ -102,7 +102,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
               <?php }?>
             </div>
             <div class="block">
-              <button class="btn-big blue add-cart" id="cart<?=$key+1?>">カートに追加する</button>
+              <button class="btn-big cyan add-cart" id="cart<?=$key+1?>">カートに追加する</button>
               <button class="btn-big blue see-details" id="agent<?=$key+1?>">詳細を見る→</button>
             </div>
           </div>
