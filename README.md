@@ -8,6 +8,11 @@
 ```bash
 git clone git@github.com:posse-ap/teamdev-2023-posse1-team3B.git
 ```
+### tailwindを導入したい場合
+```bash
+<link rel="stylesheet" href=".~~{任意のパス}~~/vendor/tailwind/tailwind.css">
+```
+を読み込んでから使ってね
 
 ## コンテナ起動
 
@@ -53,6 +58,8 @@ root
 ```
 ### データを初期化してinit.sql起動する場合
 ```bash
-mysql -u root -p < docker-entrypoint-initdb.d/init.sql　
+mysql -u root -p < docker-entrypoint-initdb.d/init.sql
 ```
 が実行され初期データが投入されます
+
+developから切る、ここで切ったら死にます
