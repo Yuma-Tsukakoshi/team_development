@@ -108,16 +108,7 @@
 
       </div>
       
-      <div class="form-control">
-        <h2>申し込み企業一覧</h2>
-        
-        <input type="text" name="company" id="company" class="form-control" value="<?=$_POST['company']?>" disabled>
-      </div>
-
-
       <input type="submit" id="submit-button" value="送信">
-   
-   
   </main>
   <script>
   $count=0;
