@@ -1,15 +1,13 @@
 <?php
 
-// session_start();
+session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 $pdo = Database::get();
 $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
 
 // if (!isset($_SESSION['id'])) {
-//     header('Location: http://localhost:8080/admin/boozer_auth/signup.php');
+//     header('Location: http://localhost:8080/admin/boozer_auth/boozer_signup.php');
 //     exit();
-// }else{
-//     $is_empty = count($questions) === 0;
 // }
 ?>
 

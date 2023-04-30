@@ -1,0 +1,334 @@
+body{
+    overflow-x: hidden;
+}
+
+.search{
+    width:100% ;
+    height:150px ;
+    background-color: white;
+}
+
+.search-title{
+    color: #0071bc;
+    font-weight: bold;
+    font-size: 60px;
+    position: relative;
+    top: 10px;
+    left: 70px;
+    letter-spacing: 10px;
+}
+
+.search-title-jpn{
+    position: relative;
+    left: 130px;
+}
+
+.search-title-border{
+    width: 180px;
+    height:3px;
+    position: relative;
+    left: 110px;
+    background-color: #ffe600;
+
+}
+
+.search-title-cart{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top:-80px;
+    left:1200px;
+}
+
+/* カートの周りの丸い枠 */
+.search-title-cart-border{
+    
+}
+
+
+/* 以下絞り込み機能 */
+.grid-cols-2{
+    background-color: aliceblue;
+}
+
+.m-8{
+    width:200px;
+    height:500px ;
+    border-radius: 20px;
+    background-color: white;
+    position: relative;
+    top: 10px;
+    left: 70px;
+    box-shadow: 5px 5px  rgb(180, 179, 179);
+}
+
+.major-pencil-img{
+    width:50px ;
+    height: 50px;
+    position: relative;
+    top:-30px ;
+    left:5px ;
+}
+
+.major-txt{
+    font-size: 20px;
+    position: relative;
+    top: 10px;
+    left: 50px;
+}
+
+.checkbox{
+    text-align: center;
+    position: relative;
+    top: -15px;
+}
+
+.label-hover1{
+    font-size: 15px;
+}
+
+.checkbox-2{
+    margin-left: 20px;
+}
+
+.label-hover2{
+    font-size: 15px;
+}
+
+.major-border{
+    border-width: 1px;
+    position: relative;
+    top: 10px;
+    left: 25px;
+    color: gray;
+    width: 150px;
+}
+
+
+/* 以下「面談方法」 */
+.contact-mail-img{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    left:5px ;
+}
+
+.contact-txt{
+    font-size: 20px;
+    position: relative;
+    top: 40px;
+    left:50px ;
+}
+
+.contact-border{
+    border-width: 1px;
+    color: gray;
+    position: relative;
+    top: 50px;
+    left: 25px;
+    width: 150px;
+}
+
+/* 以下、「エリア」 */
+
+.area-point-img{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 30px;;
+    left:5px ;
+}
+
+.area-txt{
+    font-size: 20px;
+    position: relative;
+    top: 70px;
+    left: 50px;
+}
+
+.area-tokyo-checkbox{
+    position: relative;
+    top:20px ;
+    left:;
+}
+
+.area-tokyo-txt{
+    position: relative;
+    top: 20px;
+    left: ;
+}
+
+.area-osaka-checkbox{
+    position: relative;
+    top:30px ;
+    left: ;
+}
+
+.area-osaka-txt{
+    position: relative;
+    top: 30px;
+    left:;
+}
+
+.area-nagoya-checkbox{
+    position: relative;
+    top: 40px;
+    left: ;
+}
+
+.area-nagoya-txt{
+    position: relative;
+    top:40px ;
+    left: ;
+}
+
+.area-fukuoka-checkbox{
+    position: relative;
+    top: 50px;
+    left: ;
+}
+
+.area-fukuoka-txt{
+    position: relative;
+    top:50px ;
+    left: ;
+}
+.btn-big,.blue{
+    position: relative;
+    top: 80px;
+    left: 55px;
+}
+
+/*以下検索結果 */
+.results{
+    display: flex;
+}
+
+.results-img{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 7px;
+}
+
+.results-txt{
+    font-size: 20px;
+}
+
+.results-number{
+    font-size: 40px;
+    color: #0071bc;
+}
+
+/* 以下エージェント掲載ボックス */
+
+.agent-list{
+    position: relative;
+    top: 10px;
+    right: 70px;
+    width: 700px;
+    height:400px ;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 10px 10px rgb(160, 160, 160);
+}
+
+.agent-img{
+    width: 260px;
+    height: 185px;
+    position: relative;
+    padding: 8px;
+    top: 30px;
+    left:50px ;
+    border-width: 5px ;
+    box-shadow: 7px 7px #ffe600;
+}
+
+.top-title{
+    font-size: 40px;
+    position: relative;
+    top:-120px ;
+    left:330px ;
+}
+
+.top-title-border{
+    width: 330px;
+    height: 4px;
+    background-color: #ffe600;
+    position: relative;
+    top:-115px ;
+    left: 320px;
+}
+
+.top-description{
+    width: 300px;
+    height: 150px;
+    background-color: rgba(240, 235, 235,0.6);
+    border-radius: 30px;
+    position: relative;
+    top:-100px ;
+    left: 340px;
+}
+
+.top-description-title{
+    font-size: 20px;
+    color: #1291e6;
+    position: relative;
+    top:15px ;
+    left:15px;
+    font-weight: bold;
+}
+
+.top-description-txt{
+    font-size: 16px;
+    width:200px ;
+    height:100px ;  
+    margin: 0 auto;
+    position: relative;
+    top: 20px;
+}
+
+.top-description-border{
+    border-width: 1.5px;
+    width: 650px;
+    color: #ffe600;
+    position: relative;
+    top:-80px ;
+    left:30px ;
+}
+
+/* ここ３つwidth,heightが効かないです、、、 */
+
+.label-major{
+    width: 240px;
+    height: 180px;
+    background-color: rgba(201, 201, 201, 0.6);
+    position: relative;
+
+}
+
+.label-contact{
+    width: 400px;
+    height: 80px;
+    background-color: rgb(201, 201, 201, 0.6);
+}
+
+.label-area{
+    width: 400px;
+    height: 80px;
+    background-color: rgb(201, 201, 201, 0.6);
+    position: relative;
+    left: px;
+}
+
+.add-cart{
+    position: relative;
+    top: -90px;
+    left:400px ;
+}
+
+.see-details{
+    position: relative;
+    top: -40px;
+    left:240px ;
+}

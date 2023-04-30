@@ -6,17 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="./assets/styles/search.css">
   <title>エージェント検索一覧</title>
 </head>
 
 <body>
-  <section class="">
+  <section class="search">
     <div>
-      <h1>SEARCH</h1>
-      <span>-エージェント検索-</span>
+      <h1 class="search-title">SEARCH</h1>
+      <span class="search-title-jpn">-エージェント検索-</span>
+      <div class="search-title-border"></div>
     </div>
     <div>
-      <img src="" alt="shopping_cart">
+      <img class="search-title-cart" src="./assets/img/728.png" alt="shopping_cart">
+      <div class="search-title-cart-border"></div>
     </div>
   </section>
 
@@ -24,59 +27,72 @@
     <div class="m-8">
       <div class="major">
         <!-- font-awsomeで入れてく--->
-        <h2>専攻</h2> 
-        <input type="checkbox" id="major1" class="check-label" value="">
-        <label for="major1" class="label-hover">文系</label>
-        <input type="checkbox" id="major2">
-        <label for="major2">理系</label>
+        <h2 class="major-txt">専攻</h2>
+        <img class="major-pencil-img" src="./assets/img/1263.png" alt="鉛筆の画像">
+        <div class="checkbox">
+          <input type="checkbox" id="major1" class="check-label" value="">
+          <label for="major1" class="label-hover1">文系</label>
+          <input class="checkbox-2" type="checkbox" id="major2">
+          <label for="major2" class="label-hover2">理系</label>
+      </div>
+      <div class="major-border"></div>
       </div>
       <div class="contact">
-        <h2>面談方法</h2> 
-        <input type="checkbox" id="contact1">
-        <label for="contact1">メール</label>
-        <input type="checkbox" id="contact1">
-        <label for="contact1">電話</label>
-        <input type="checkbox" id="contact1">
-        <label for="contact1">オフライン</label>
+        <h2 class="contact-txt">面談方法</h2>
+        <img class="contact-mail-img" src="./assets/img/550.png" alt="メールの画像">
+        <div class="contact-checkbox">
+          <label for="contact1" class="contact-mail">メール</label>
+          <input class="contact-checkbox" type="checkbox" id="contact1">
+          <label for="contact1" class="contact-pn">電話</label>
+          <input class="contact-checkbox" type="checkbox" id="contact1">
+          <label for="contact1" class="contact-offline">オフライン</label>
+          <input class="contact-checkbox" type="checkbox" id="contact1">
+        </div>
+        <div class="contact-border"></div>
       </div>
       <div class="area">
-        <h2>エリア</h2> 
-        <input type="checkbox" id="area1">
-        <label for="area1">東京</label>
-        <input type="checkbox" id="area2">
-        <label for="area2">大阪</label>
-        <input type="checkbox" id="area3">
-        <label for="area3">名古屋</label>
-        <input type="checkbox" id="area4">
-        <label for="area4">福岡</label>
+        <h2 class="area-txt">エリア</h2>
+        <img class="area-point-img" src="./assets/img/686.png" alt="ピンの写真">
+        <input class="area-tokyo-checkbox" type="checkbox" id="area1">
+        <label class="area-tokyo-txt" for="area1" class="area-tokyo">東京</label>
+        <input class="area-osaka-checkbox" type="checkbox" id="area2">
+        <label class="area-osaka-txt" for="area2" class="area-osaka">大阪</label>
+        <input class="area-nagoya-checkbox" type="checkbox" id="area3">
+        <label class="area-nagoya-txt" for="area3" class="area-tokyo">名古屋</label>
+        <input class="area-fukuoka-checkbox" type="checkbox" id="area4">
+        <label class="area-fukuoka-txt" for="area4" class="area-fukuoka">福岡</label>
       </div>
       <button class="btn-big blue">検索</button>
     </div>
     <div>
-      <h3><span>1</span>件ヒット</h3>
+      <div class="results">
+        <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
+        <h3 class="results-txt"><span class="results-txt">1</span>件ヒット</h3>
+      </div>
       <!-- dbからエージェント一覧もってきてリストに追加 -->
       <div class="agent-list">
-        <!-- ダミーとしてマイナビ新卒紹介 -->
+        <img class="agent-img" src="./assets/img/mynabi.png" alt="エージェント画像">
         <div>
           <div class="top">
-            <img src="" alt="エージェント画像">
             <div>
-              <h2>マイナビ新卒紹介</h2>
-              <div>
-                <h3>業界最高峰の求人数</h3>
-                <p>様々な分野に挑戦してみたい、選考対策まで行って欲しい人におすすめです</p>
+              <h2 class="top-title">マイナビ新卒紹介</h2>
+              <div class="top-title-border"></div>
+              <div class="top-description">
+                <h3 class="top-description-title">業界最高峰の求人数</h3>
+                <p class="top-description-txt">様々な分野に挑戦してみたい、選考対策まで行って欲しい人におすすめです</p>
               </div>
+              <div class="top-description-border"></div>
             </div>
           </div>
           <div class="buttom">
             <div class="labels">
-              <span>文系</span>
-              <span>オンライン</span>
-              <span>東京</span>
+                <span class="label-major">文系</span>
+                <span class="label-contact">オンライン</span>
+                <span class="label-area">東京</span>
             </div>
             <div class="block">
-              <button class="btn-big blue">カートに追加する</button>
-              <button class="btn-big blue">詳細を見る→</button>
+              <button class="btn-big blue add-cart">カートに追加する</button>
+              <button class="btn-big blue see-details">詳細を見る→</button>
             </div>
           </div>
         </div>
