@@ -11,20 +11,6 @@
 
 
 <?php
-// POSTデータを取得
-$name = $_POST['name'];
-$hurigana = $_POST['hurigana'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-$sex = $_POST['sex'];
-$birthday = $_POST['birthday'];
-$prefecture = $_POST['prefecture'];
-$college = $_POST['college'];
-$faculty = $_POST['faculty'];
-$department = $_POST['department'];
-$division = $_POST['division'];
-$grad_year = $_POST['grad_year'];
-
 // 宛先のメールアドレス
 $to = "user@mail.com";
 
@@ -40,20 +26,6 @@ $message .= "以下の内容でお問い合わせを受け付けいたしまし�
 $message .= "お手数ですがお間違いないかご確認ください。\n\n";
 $message .= "●営業日以内に、担当者よりご連絡いたしますので\n";
 $message .= "今しばらくお待ちくださいませ。\n\n";
-
-// ここで上書きではなく、追加するように変更します。
-$message .= "名前: {$name}\n";
-$message .= "ふりがな: {$hurigana}\n";
-$message .= "メールアドレス: {$email}\n";
-$message .= "電話番号: {$phone}\n";
-$message .= "性別: {$sex}\n";
-$message .= "生年月日: {$birthday}\n";
-$message .= "住まいの都道府県: {$prefecture}\n";
-$message .= "大学名: {$college}\n";
-$message .= "学部: {$faculty}\n";
-$message .= "学科: {$department}\n";
-$message .= "文理: {$division}\n";
-$message .= "卒業年度: {$grad_year}\n";
 
 // 送信元のメールアドレス
 $from = "client@mail.com";
