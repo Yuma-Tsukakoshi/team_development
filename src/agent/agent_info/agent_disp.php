@@ -1,12 +1,12 @@
 <?php 
 
-require_once(dirname(__FILE__) . '/../dbconnect.php');
+require_once(dirname(__FILE__) . '/../../dbconnect.php');
 $pdo = Database::get();
 $sql = "SELECT * FROM clients WHERE client_id = :id";
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(":id",$GET["id"]);
+$stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
-$agents= $stmt->fetch();
+$agent= $stmt->fetch();
 
 ?>
 
@@ -17,7 +17,7 @@ $agents= $stmt->fetch();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
     />
-    <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
+    <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
     <title>boozer企業詳細</title>
   </head>
   <body>
@@ -36,7 +36,7 @@ $agents= $stmt->fetch();
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_index.php">
                 <span class="ml-4">企業一覧</span>
               </a>
             </li>
@@ -46,7 +46,7 @@ $agents= $stmt->fetch();
               </a>
             </li>
             <li class="relative px-6 py-3">
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_student.php">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_student.php">
                 <span class="ml-4">学生一覧</span>
               </a>
             </li>
@@ -63,7 +63,7 @@ $agents= $stmt->fetch();
       <div class="flex flex-col flex-1 w-full">
         <main class="h-full pb-16 overflow-y-auto">
           <div class="container grid px-6 mx-auto">
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業詳細</h2>
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
@@ -76,7 +76,6 @@ $agents= $stmt->fetch();
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y">
-                  <?php foreach($agents as $key => $agent){?>
                     <tr class="text-gray-700">
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?=$agent["service_name"]?></p>
@@ -103,8 +102,7 @@ $agents= $stmt->fetch();
                           </button>
                         </div>
                       </td>
-                    </tr>
-                  <?php } ?>  
+                    </tr> 
                   </tbody>
                 </table>
               </div>
