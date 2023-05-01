@@ -100,8 +100,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
                             aria-label="Edit"
                             data = <?=$agent["client_id"]?>
                           >
-                            詳細
-                            <!-- 詳細押した後に編集できるように -->
+                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?=$agent["client_id"]?>">詳細</a>
                           </button>
                         </div>
                       </td>

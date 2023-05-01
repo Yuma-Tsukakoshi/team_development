@@ -7,6 +7,16 @@ $stmt1 = $pdo->prepare($sql_1);
 $stmt1->bindValue(":id", $_REQUEST["id"]);
 $stmt1->execute();
 $agent = $stmt1->fetch();
+$sql_2 = "SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id WHERE label_client_relation.client_id = :id ";
+$stmt2 = $pdo->prepare($sql_2);
+$stmt2->bindValue(":id", $_REQUEST["id"]);
+$stmt2->execute();
+$labels = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$sql_3 = "SELECT * FROM managers WHERE client_id = :id ";
+$stmt3 = $pdo->prepare($sql_3);
+$stmt3->bindValue(":id", $_REQUEST["id"]);
+$stmt3->execute();
+$manager = $stmt3->fetch();
 ?>
 
 <!DOCTYPE html>
