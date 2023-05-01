@@ -134,7 +134,7 @@ $manager = $stmt3->fetch();
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    おすすめポイント1
+                    おすすめ<br>ポイント1
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -146,7 +146,7 @@ $manager = $stmt3->fetch();
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    おすすめポイント2
+                    おすすめ<br>ポイント2
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -158,7 +158,7 @@ $manager = $stmt3->fetch();
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    おすすめポイント3
+                    おすすめ<br>ポイント3
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -227,7 +227,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $manager["mail"] ?> 
+                    <?= $manager["mail"] ?>
                   </div>
                 </td>
               </tr>
@@ -243,6 +243,36 @@ $manager = $stmt3->fetch();
                   </div>
                 </td>
               </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="my-8 flex justify-center">
+          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-blue-500 text-white">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                  ラベル情報
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                  データ
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <?php foreach ($labels as $key => $label) { ?>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      ラベル<?= $key + 1 ?>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $label["label_name"] ?>
+                    </div>
+                  </td>
+                </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>
