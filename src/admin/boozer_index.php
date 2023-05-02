@@ -70,6 +70,7 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
                 <table class="w-full whitespace-no-wrap">
                   <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
+                      <th class="px-4 py-3">更新日時</th>
                       <th class="px-4 py-3">企業名</th>
                       <th class="px-4 py-3">掲載期間</th>
                       <th class="px-4 py-3">登録状態</th>
@@ -79,6 +80,9 @@ $agents = $pdo->query("SELECT * FROM clients")->fetchAll(PDO::FETCH_ASSOC);
                   <tbody class="bg-white divide-y">
                   <?php foreach($agents as $key => $agent){?>
                     <tr class="text-gray-700">
+                      <td class="px-4 py-3">
+                        <p class="font-semibold items-center text-sm"><?=$agent["updated_at"]?></p>
+                      </td>
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?=$agent["service_name"]?></p>
                       </td>
