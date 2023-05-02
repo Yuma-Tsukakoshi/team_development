@@ -15,8 +15,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
-    />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/search.css">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
@@ -39,7 +38,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
   </section>
 
   <main class="grid grid-cols-2">
-    <form method="post" action="" class="m-8">
+    <form method="post" action="" class="m-8 w-3">
       <div class="major">
         <h2 class="major-txt">専攻</h2>
         <img class="major-pencil-img" src="../user/assets/img/1263.png" alt="鉛筆の画像">

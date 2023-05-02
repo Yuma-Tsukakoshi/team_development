@@ -70,7 +70,7 @@ $manager = $stmt3->fetch();
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業詳細</h1>
         <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況 : 掲載中</p>
         <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
-        <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">企業情報 :<a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>">
+        <p class="my-6 text-3xl font-semibold text-gray-700 text-center">企業情報 :<a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>">
             編集
           </a></p>
         <!-- 編集に対してボタン色付ける -->
