@@ -17,6 +17,7 @@ $user = $stmt->fetch();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
+  <link rel="stylesheet" href="../../admin/admin.css">
   <title>学生情報詳細</title>
 </head>
 
@@ -41,7 +42,7 @@ $user = $stmt->fetch();
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_student.php">
-              <span class="ml-4">学生一覧に戻る</span>
+              <span class="ml-4">学生一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -56,9 +57,8 @@ $user = $stmt->fetch();
 
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
-        <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細   <?= $user["name"] ?> 様</h1>
-        <!-- <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況：掲載中</p> -->
-        <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
+        <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
+        <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">学生情報 : <a href="http://localhost:8080/user/user_info/user_edit.php?id=<?= $user["id"] ?>" class="edit_btn">編集</a></p>
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
@@ -97,7 +97,7 @@ $user = $stmt->fetch();
                   無効申請判定
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  <?=$user["valid"] ? "申請あり" : "申請なし"?>
+                  <?= $user["valid"] ? "申請あり" : "申請なし" ?>
                   <!-- ゆくゆくは申請中とか承認とかわけないと-->
                 </th>
               </tr>
