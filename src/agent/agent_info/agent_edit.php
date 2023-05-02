@@ -127,8 +127,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-
-                    <input type="text" name="catchphrase" required value="<?= $agent["catchphrase"] ?>">
+                    <input type="text" name="catchphrase" required value="<?= $agent["catchphrase"] ?>" placeholder="キャッチコピーを入力してください">
                   </div>
                 </td>
               </tr>
@@ -140,7 +139,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $agent["recommend_point1"] ?>
+                    <input type="text" name="recommend_point1" required value="<?= $agent["recommend_point1"] ?>" placeholder="おすすめポイントを入力してください">
                   </div>
                 </td>
               </tr>
@@ -152,7 +151,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $agent["recommend_point2"] ?>
+                    <input type="text" name="recommend_point2" required value="<?= $agent["recommend_point2"] ?>" placeholder="おすすめポイントを入力してください">
                   </div>
                 </td>
               </tr>
@@ -164,7 +163,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $agent["recommend_point3"] ?>
+                    <input type="text" name="recommend_point3" required value="<?= $agent["recommend_point3"] ?>" placeholder="おすすめポイントを入力してください">
                   </div>
                 </td>
               </tr>
@@ -177,6 +176,7 @@ $manager = $stmt3->fetch();
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex-shrink-0 h-10 w-10">
                     <img class="h-9 w-9" src="<?= $agent["logo_img"] ?>" alt="">
+                    <input type="text" name="recommend_point1" required value="<?= $agent["logo_img"] ?>" placeholder="画像のリンクを入力してください">
                   </div>
                 </td>
               </tr>
@@ -204,7 +204,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $manager["manager"] ?>
+                    <input type="text" name="manager" required value="<?= $manager["manager"] ?>" placeholder="担当者名を入力してください">
                   </div>
                 </td>
               </tr>
@@ -216,7 +216,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $manager["depart"] ?>
+                    <input type="text" name="depart" required value="<?= $manager["depart"] ?>" placeholder="部署を入力してください">
                   </div>
                 </td>
               </tr>
@@ -228,7 +228,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $manager["mail"] ?>
+                    <input type="mail" name="mail" required value="<?= $manager["mail"] ?>" placeholder="メールアドレスを入力してください">
                   </div>
                 </td>
               </tr>
@@ -240,7 +240,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $manager["phone"] ?>
+                    <input type="tel" name="phone" required value="<?= $manager["phone"] ?>" placeholder="電話番号を入力してください">
                   </div>
                 </td>
               </tr>
@@ -269,7 +269,7 @@ $manager = $stmt3->fetch();
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <?= $label["label_name"] ?>
+                      <input type="text" name="labels[]" required placeholder="ラベル名を入力してください" value="<?= $label["label_name"] ?>">
                     </div>
                   </td>
                 </tr>
