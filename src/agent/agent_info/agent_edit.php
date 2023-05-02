@@ -28,7 +28,6 @@ $manager = $stmt3->fetch();
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
-  <script src="../../user/assets/js/input.js" defer></script>
   <title>boozer企業編集</title>
 </head>
 
