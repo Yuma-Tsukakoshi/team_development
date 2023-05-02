@@ -71,9 +71,8 @@ $manager = $stmt3->fetch();
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業編集</h1>
         <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況 : 掲載中</p>
         <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
-        <form action="http://localhost:8080/agent/agent_info/agent_edit_check or done.php" method="POST" enctype="multipart/form-data">
-          <!-- 編集のcheckって何の役割？メールアドレスとか同じ情報登録sレ輝とかでもそれって新規登録とかじゃない？
-        メールの正規表現とか -->
+        <form action="http://localhost:8080/agent/agent_info/agent_edit_check.php" method="POST" enctype="multipart/form-data">
+        <!-- メールの正規表現とか -->
           <div class="flex justify-center">
             <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
               <thead class="bg-blue-500 text-white">

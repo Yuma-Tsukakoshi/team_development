@@ -1,8 +1,14 @@
 <?php
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
+$pdo = Database::get();
 
-$sql_1 = "UPDATE clients SET content=:content,supplement =:supplement WHERE client_id = :id";
-$sql_2 = "UPDATE managers SET content=:content,supplement =:supplement WHERE client_id = :id";
+$sql_1 = "UPDATE clients SET 
+agent_name=:agent_name,service_name =:service_name ,started_at=:started_at,ended_at=:ended_at,catchphrase=:catchphrase,recommend_point1=:recommend_point1,recommend_point2=:recommend_point2,recommend_point3=:recommend_point3, logo_img =:logo_img 
+WHERE client_id = :id";
+
+$sql_2 = "UPDATE managers SET 
+manager=:manager,depart =:depart ,mail=:mail,phone =:phone
+WHERE client_id = :id";
 
 $params1 = [
   "agent_name" => $_POST["agent_name"],
