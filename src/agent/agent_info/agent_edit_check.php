@@ -11,6 +11,7 @@ manager=:manager,depart =:depart ,mail=:mail,phone =:phone
 WHERE client_id = :id";
 
 $params1 = [
+  "id" => $_POST["client_id"],
   "agent_name" => $_POST["agent_name"],
   "service_name" => $_POST["service_name"],
   "started_at" => $_POST["started_at"],
@@ -20,13 +21,14 @@ $params1 = [
   "recommend_point2" => $_POST["recommend_point2"],
   "recommend_point3" => $_POST["recommend_point3"],
   // ↓ゆくゆくは画像アップロードする
-  "logo_img" => $_POST["logo_img"]
+  "logo_img" => $_POST["logo_img"],
 ];
 $params2 = [
+  "id" => $_POST["client_id"],
   "manager" => $_POST["manager"],
   "depart" => $_POST["depart"],
   "mail" => $_POST["mail"],
-  "phone" => $_POST["phone"]
+  "phone" => $_POST["phone"],
 ];
 
 $pdo->beginTransaction();
@@ -44,14 +46,14 @@ try {
   //   $params["image"] = $image_name;
   // }
 
-  $stmt = $pdo->prepare($sql_1);
-  $result1 = $stmt->execute($params1);
-  $stmt = $pdo->prepare($sql_2);
-  $result2 = $stmt->execute($params2);
+  $stmt1 = $pdo->prepare($sql_1);
+  $result1 = $stmt1->execute($params1);
+  $stmt2 = $pdo->prepare($sql_2);
+  $result2 = $stmt2->execute($params2);
   // executeに連想配列を渡して各バインド変数に代入 bindValueで値を入れるときに複数ある場合はこっちのほうがいい
   // labelsの内容を変更させる⇒後でこれは考える
   $pdo->commit();
-  header("Location: " . "http://localhost:8080/agent/agent_info/agent_disp.php");
+  header("Location: " . "http://localhost:8080/admin/boozer_index.php");
 } catch (Error $e) {
   $pdo->rollBack();
 }
