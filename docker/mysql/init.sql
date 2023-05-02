@@ -48,7 +48,8 @@ CREATE TABLE users (
   mail VARCHAR(255) NOT NULL,
   phone VARCHAR(255) NOT NULL,
   valid int NOT NULL default false,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) CHARSET=utf8;
 
 insert into users (id, name, hurigana, sex, birthday, college, faculty, department, division, grad_year, prefecture, mail, phone, valid,created_at) values 

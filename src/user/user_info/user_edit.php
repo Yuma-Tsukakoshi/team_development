@@ -60,6 +60,7 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
               <table class="w-full whitespace-no-wrap">
                 <thead>
                   <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
+                    <th class="px-4 py-3">更新日時</th>
                     <th class="px-4 py-3">氏名</th>
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
@@ -72,6 +73,9 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
                 <tbody class="bg-white divide-y">
                   <?php foreach ($users as $key => $user) { ?>
                     <tr class="text-gray-700">
+                      <td class="px-4 py-3">
+                        <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
+                      </td>
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
                       </td>
