@@ -144,7 +144,7 @@ $user = $stmt->fetch();
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    ふりがな
+                    フリガナ
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
@@ -204,7 +204,7 @@ $user = $stmt->fetch();
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    所在地域
+                    所在地
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">

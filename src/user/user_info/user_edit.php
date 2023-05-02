@@ -2,8 +2,11 @@
 
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
-
+$sql = "SELECT * FROM users WHERE id = :id ";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(":id", $_REQUEST["id"]);
+$stmt->execute();
+$user = $stmt->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +17,8 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
-  <title>boozer学生編集</title>
+  <link rel="stylesheet" href="../../admin/admin.css">
+  <title>学生情報編集</title>
 </head>
 
 <body>
@@ -27,7 +31,7 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_index.php">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_index.php">
               <span class="ml-4">企業一覧</span>
             </a>
           </li>
@@ -37,7 +41,7 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_student.php">
               <span class="ml-4">学生一覧</span>
             </a>
           </li>
@@ -53,104 +57,218 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
-        <div class="container grid px-6 mx-auto">
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生編集</h2>
-          <form action="http://localhost:8080/user/user_info/user_edit_check.php?id=<?= $user["id"] ?>" method="POST">
-            <div class=" w-full overflow-hidden rounded-lg shadow-xs">
-              <div class="w-full overflow-x-auto">
-                <table class="w-full whitespace-no-wrap">
-                  <thead>
-                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
-                      <th class="px-4 py-3">更新日時</th>
-                      <th class="px-4 py-3">氏名</th>
-                      <th class="px-4 py-3">大学</th>
-                      <th class="px-4 py-3">学部</th>
-                      <th class="px-4 py-3">学科</th>
-                      <th class="px-4 py-3">卒業年</th>
-                      <th class="px-4 py-3">無効申請</th>
-                      <th class="px-4 py-3">操作</th>
-                    </tr>
-                  </thead>
-                  <tbody class="bg-white divide-y">
-                    <?php foreach ($users as $key => $user) { ?>
-                      <tr class="text-gray-700">
-                        <td class="px-4 py-3">
-                          <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
-                        </td>
-                        <td class="px-4 py-3">
-                          <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                          <?= $user["college"] ?>
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                          <?= $user["faculty"] ?>
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                          <?= $user["department"] ?>
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                          <?= $user["grad_year"] ?>
-                        </td>
-                        <td class="px-4 py-3 text-xs">
-                          <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                            <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
-                            承認済
-                          </span>
-                        </td>
-                        <td class="px-4 py-3">
-                          <div class="flex items-center space-x-4 text-sm">
-                            <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                              <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
-              </div>
-              <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t sm:grid-cols-9">
-                <span class="flex items-center col-span-3">
-                  Showing 1-10 of 50
-                </span>
-                <span class="col-span-2"></span>
-                <!-- Pagination -->
-                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                  <nav aria-label="Table navigation">
-                    <ul class="inline-flex items-center">
-                      <li>
-                        <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                          <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                            <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                          </svg>
-                        </button>
-                      </li>
-                      <li>
-                        <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">1 <!-- ■１ ■２ ■3 ... みたいな -->
-                        </button>
-                      </li>
-                      <li>
-                        <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                          <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                            <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                          </svg>
-                        </button>
-                      </li>
-                    </ul>
-                  </nav>
-                </span>
-              </div>
-            </div>
-            <input type="hidden" name="user_id" value="<?= $user["id"] ?>">
-            <div class="btn_wrapper">
-              <button type="submit" class="btn submit update_btn">更新</button>
-            </div>
-          </form>
+        <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
+        <div class="my-8 flex justify-center">
+          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-blue-500 text-white">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                  申請企業一覧
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                  データ
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <!-- <?php foreach ($labels as $key => $label) { ?>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      企業<?= $key + 1 ?>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $label["label_name"] ?>
+                    </div>
+                  </td>
+                </tr>
+              <?php } ?> -->
+            </tbody>
+          </table>
+        </div>
+        <div class="my-8 flex justify-center">
+          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+            <tbody class="bg-blue-500 text-white">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                  無効申請判定
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                  <?= $user["valid"] ? "申請あり" : "申請なし" ?>
+                  <!-- ゆくゆくは申請中とか承認とかわけないと-->
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex justify-center">
+          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-blue-500 text-white">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                  学生情報
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                  データ
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    氏名
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="name" required value="<?= $user["name"] ?>" class="required" placeholder="氏名を入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    フリガナ
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="hurigana" required value="<?= $user["hurigana"] ?>" class="required" placeholder="フリガナを入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    性別
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="sex" required value="<?= $user["sex"] ?>" class="required" placeholder="性別を入力">
+                    <!-- ラジオボタンに変更 -->
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    生年月日
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="date" name="birthday" required value="<?= $user["birthday"] ?>" class="required" placeholder="生年月日を入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    メールアドレス
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="email" name="mail" required value="<?= $user["mail"] ?>" class="required" placeholder="メールアドレスを入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    電話番号
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="tel" name="mail" required value="<?= $user["phone"] ?>" class="required" placeholder="電話番号を入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    所在地
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="prefecture" required value="<?= $user["prefecture"] ?>" class="required" placeholder="所在地を入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    大学
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="college" required value="<?= $user["college"] ?>" class="required" placeholder="大学名を入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    学部
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="college" required value="<?= $user["faculty"] ?>" class="required" placeholder="学部名を入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    学科
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="department" required value="<?= $user["department"] ?>" class="required" placeholder="学科名を入力">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    文理
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="division" required value="<?= $user["division"] ?>" class="required" placeholder="文理を選択">
+                    <!-- ラジオボタンに変更する -->
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    卒業年
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <input type="text" name="grad_year" required value="<?= $user["grad_year"] ?>" class="required" placeholder="卒業年を入力">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </main>
     </div>
   </div>
+</body>
 </body>
 
 </html>
