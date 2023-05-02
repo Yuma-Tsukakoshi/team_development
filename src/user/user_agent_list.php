@@ -18,6 +18,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/search.css">
+  <link rel="stylesheet" href="../user/assets/styles/header.css">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
   <title>エージェント検索一覧</title>
