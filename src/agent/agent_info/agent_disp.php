@@ -68,8 +68,12 @@ $manager = $stmt3->fetch();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業詳細</h1>
-        <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況：掲載中</p>
+        <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況 : 掲載中</p>
         <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
+        <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">企業情報 :<a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>">
+            編集
+          </a></p>
+        <!-- 編集に対してボタン色付ける -->
         <div class="flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
