@@ -91,7 +91,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $agent["agent_name"] ?>
+                    <input type="text" name="agent_name" required value="<?= $agent["agent_name"] ?>" placeholder="企業名を入力してください">
                   </div>
                 </td>
               </tr>
@@ -103,7 +103,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $agent["service_name"] ?>
+                    <input type="text" name="service_name" required value="<?= $agent["service_name"] ?>" placeholder="サービス名を入力してください">
                   </div>
                 </td>
               </tr>
@@ -115,7 +115,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $agent["started_at"] ?> ~ <?= $agent["ended_at"] ?>
+                    <input type="date" name="started_at" required value="<?= $agent["started_at"] ?>"> ~ <input type="date" name="ended_at" required value="<?= $agent["sended_at"] ?>">
                   </div>
                 </td>
               </tr>
@@ -127,7 +127,8 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $agent["catchphrase"] ?>
+
+                    <input type="text" name="catchphrase" required value="<?= $agent["catchphrase"] ?>">
                   </div>
                 </td>
               </tr>
@@ -279,7 +280,18 @@ $manager = $stmt3->fetch();
       </main>
     </div>
   </div>
-</body>
+
+  <script>
+    const submitButton = document.querySelector('.btn.submit')
+    const inputDoms = Array.from(document.querySelectorAll('.required'))
+    inputDoms.forEach(inputDom => {
+      inputDom.addEventListener('input', event => {
+        const isFilled = inputDoms.filter(d => d.value).length === inputDoms.length
+        submitButton.disabled = !isFilled
+      })
+    });
+  </script>
+
 </body>
 
 </html>
