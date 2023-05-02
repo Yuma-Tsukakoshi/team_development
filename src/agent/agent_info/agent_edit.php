@@ -115,7 +115,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <input type="date" name="started_at" required value="<?= $agent["started_at"] ?>" class="required"> ~ <input type="date" name="ended_at" required value="<?= $agent["sended_at"] ?>" class="required">
+                    <input type="date" name="started_at" required value="<?= $agent["started_at"] ?>" class="required"> ~ <input type="date" name="ended_at" required value="<?= $agent["ended_at"] ?>" class="required">
                   </div>
                 </td>
               </tr>
