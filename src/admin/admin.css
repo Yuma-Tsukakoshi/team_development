@@ -1,10 +1,62 @@
 input{
   cursor:pointer;
-  border: #ccc 1px solid;
+  border: #ccc 2px solid;
+  border-radius: 10px;
+  padding: 5px;
+  width: 300px;
+}
 
+input.input-img{
+  width: 500px;
 }
 
 input:focus {
-    border: blue 1px solid;
+    border: blue 2px solid;
     outline: none;
+    background-color:rgba(100,149,237,0.3)
 }
+
+.top-title p{
+  margin:16px;
+}
+
+.edit_btn{
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  font-weight: 700;
+  border-radius: 9999px;
+  padding-top: 0.5rem/* 8px */;
+  padding-bottom: 0.5rem/* 8px */;
+  padding-left: 1rem/* 16px */;
+  padding-right: 1rem/* 16px */;
+}
+
+.edit_btn:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
+.btn_wrapper{
+  text-align: center;
+}
+
+.update_btn{
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 139 34 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  font-weight: 700;
+  width: 600px;
+  border-radius: 9999px;
+  padding-top: 0.8rem/* 8px */;
+  padding-bottom: 0.8rem/* 8px */;
+  padding-left: 1rem/* 16px */;
+  padding-right: 1rem/* 16px */;
+}
+.update_btn:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 100 0 / var(--tw-bg-opacity));
+}
+
