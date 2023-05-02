@@ -180,7 +180,7 @@ $manager = $stmt3->fetch();
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img class="h-9 w-9" src="<?= $agent["logo_img"] ?>" alt="">
-                      <input type="url" name="recommend_point1" required value="<?= $agent["logo_img"] ?>" class="required input-img" placeholder="画像のリンクを入力">
+                      <input type="url" name="logo_img" required value="<?= $agent["logo_img"] ?>" class="required input-img" placeholder="画像のリンクを入力">
                     </div>
                   </td>
                 </tr>
@@ -281,6 +281,7 @@ $manager = $stmt3->fetch();
               </tbody>
             </table>
           </div>
+          <input type="hidden" name="client_id" value="<?= $agent["client_id"] ?>">
           <div class="btn_wrapper">
             <button type="submit" class="btn submit update_btn">更新</button>
           </div>
