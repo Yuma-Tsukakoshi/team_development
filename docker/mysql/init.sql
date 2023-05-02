@@ -107,7 +107,8 @@ CREATE TABLE clients(
   recommend_point3 VARCHAR(255) ,
   started_at date DEFAULT NULL,
   ended_at date DEFAULT NULL,
-  logo_img VARCHAR(255) NOT NULL
+  logo_img VARCHAR(255) NOT NULL,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
 ) CHARSET=utf8;
 
 insert into clients(id, client_id, agent_name, service_name, catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at ,ended_at,logo_img) values

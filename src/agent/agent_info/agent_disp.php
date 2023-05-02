@@ -27,6 +27,7 @@ $manager = $stmt3->fetch();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
+  <link rel="stylesheet" href="../../admin/admin.css">
   <title>boozer企業詳細</title>
 </head>
 
@@ -68,8 +69,12 @@ $manager = $stmt3->fetch();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業詳細</h1>
-        <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況：掲載中</p>
-        <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
+        <div class="flex justify-center top-title">
+          <p class="my-6 text-3xl font-semibold text-gray-700">掲載状況 : 掲載中</p>
+          <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 ">企業情報 : <a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>" class="edit_btn">編集</a></p>
+        </div>
+        <!-- 編集に対してボタン色付ける -->
         <div class="flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
