@@ -108,6 +108,14 @@
 
       </div>
       
+      <div class="form-control">
+        <h2>申し込み企業一覧</h2>
+        <?php foreach($_POST['company'] as $agent){?>
+        <input type="text" name="company[]"  class="form-control" value="<?=$agent?>" disabled>
+        <?php }?>
+      </div>
+
+
       <input type="submit" id="submit-button" value="送信">
   </main>
   <script>
@@ -122,6 +130,11 @@
     })
    })
   $(function(){
+    const $company=[]
+    const inputs = $('input[name="company[]"]').each(function(index, element){
+        $company.push(element.value)
+        })
+    console.log($company)
     $("#submit-button").on('click', function(event){
                 //event.preventDefault();
 
@@ -141,11 +154,12 @@
                       division:$('input[name="division"]').val(),
                       grad_year:$('#grad_year').val(),
                       prefecture:$('#prefecture').val(),
+                      company:$company
                     },
                     dataType : "json",
                     scriptCharset: 'utf-8'
                 }).done(function(data){
-                  //console.log(data);
+                  console.log(data);
                 
                   window.location.href='./user_thanks.php'
                   
