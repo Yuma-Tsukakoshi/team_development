@@ -3,8 +3,8 @@
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 $pdo = Database::get();
-$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= GETDATE()")->fetchAll(PDO::FETCH_ASSOC);
-$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < GETDATE()")->fetchAll(PDO::FETCH_ASSOC);
+$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
+$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
 
 // if (!isset($_SESSION['id'])) {
 //     header('Location: http://localhost:8080/admin/boozer_auth/boozer_signup.php');
@@ -62,7 +62,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < GETDATE()")->fetc
         <div class="container grid px-6 mx-auto">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載企業一覧</h2>
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載中企業一覧</h2>
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
                 <thead>
@@ -75,7 +75,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < GETDATE()")->fetc
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y">
-                  <?php foreach ($agents as $key => $agent) { ?>
+                  <?php foreach ($agents1 as $key => $agent) { ?>
                     <tr class="text-gray-700">
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $agent["updated_at"] ?></p>
@@ -104,8 +104,11 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < GETDATE()")->fetc
                 </tbody>
               </table>
             </div>
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載終了企業一覧</h2>
-            <div class="w-full overflow-x-auto">
+          </div>
+          
+          <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="w-full overflow-x-auto my-6">
+              <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載終了企業一覧</h2>
               <table class="w-full whitespace-no-wrap">
                 <thead>
                   <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
@@ -117,7 +120,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < GETDATE()")->fetc
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y">
-                  <?php foreach ($agents as $key => $agent) { ?>
+                  <?php foreach ($agents2 as $key => $agent) { ?>
                     <tr class="text-gray-700">
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $agent["updated_at"] ?></p>
@@ -146,60 +149,6 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < GETDATE()")->fetc
                 </tbody>
               </table>
             </div>
-            <!-- <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t sm:grid-cols-9">
-                <span class="flex items-center col-span-3">
-                  Showing 1-10 of 50
-                </span>
-                <span class="col-span-2"></span>
-              
-                <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                  <nav aria-label="Table navigation">
-                    <ul class="inline-flex items-center">
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
-                          aria-label="Previous"
-                        >
-                          <svg
-                            class="w-4 h-4 fill-current"
-                            aria-hidden="true"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">1 
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
-                          aria-label="Next"
-                        >
-                          <svg
-                            class="w-4 h-4 fill-current"
-                            aria-hidden="true"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clip-rule="evenodd"
-                              fill-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </button>
-                      </li>
-                    </ul>
-                  </nav>
-                </span>
-              </div> -->
           </div>
         </div>
       </main>
