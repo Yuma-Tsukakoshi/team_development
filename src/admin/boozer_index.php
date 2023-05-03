@@ -95,7 +95,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
-                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>">詳細</a>
+                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=1">詳細</a>
                           </button>
                         </div>
                       </td>
@@ -105,7 +105,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
               </table>
             </div>
           </div>
-          
+
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto my-6">
               <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載終了企業一覧</h2>
@@ -140,7 +140,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
-                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>">詳細</a>
+                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"]?>&exist=0">詳細</a>
                           </button>
                         </div>
                       </td>
