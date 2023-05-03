@@ -42,7 +42,7 @@ $manager = $stmt3->fetch();
         <ul class="mt-6">
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_index.php">
-              <span class="ml-4">企業一覧に戻る</span>
+              <span class="ml-4">企業一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -69,7 +69,7 @@ $manager = $stmt3->fetch();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業編集</h1>
-        <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況 : 掲載中</p>
+        <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況 : <?= $_GET["exist"] == 1 ? "掲載中" : "掲載終了" ?></p>
         <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
         <form action="http://localhost:8080/agent/agent_info/agent_edit_check.php?id=<?= $agent["client_id"] ?>" method="POST" enctype="multipart/form-data">
           <!-- メールの正規表現とか -->
