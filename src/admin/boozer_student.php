@@ -55,6 +55,18 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
+          
+          <div class="flex justify-end my-4 ">
+            <label for="sort-by" class="mr-2">学生の並び替え：</label>
+            <div class="relative inline-flex">
+              <select id="sort-by" name="sort-by" class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="ascending">ア行から並び替え</option>
+                <option value="descending">ワ行から並び替え</option>
+              </select>
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">決定</button>
+            </div>
+          </div>
+
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
