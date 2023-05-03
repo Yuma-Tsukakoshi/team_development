@@ -20,6 +20,23 @@ try {
     "mail" => $_POST["email"],
     "phone" => $_POST["phone"],
   ]);
+
+  $id = $pdo -> lastInsertId();
+  foreach($_POST['company'] as $company){
+    $stmt=$pdo->prepare("SELECT * FROM clients where agent_name = :agent_name");
+    $stmt->bindValue(":agent_name",$company);
+    $stmt->execute();
+    $result = $stmt->fetch();
+
+
+    $stmt = $pdo->prepare("INSERT INTO user_register_client(user_id,client_id) VALUES(:user_id,:client_id)");
+    $stmt->execute([
+      "user_id" => $id,
+      "client_id" => $result['client_id'],
+    ]);
+  }
+  //session消去
+  unset($_SESSION['clients']);
     
   $pdo->commit();
 

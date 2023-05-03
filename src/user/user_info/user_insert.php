@@ -1,3 +1,20 @@
+<?php
+require_once(dirname(__FILE__) . './../../dbconnect.php');
+
+session_start();
+
+$pdo=Database::get();
+$idList=array();
+$agentsAll=$_SESSION['clients'];
+if(isset($agentsAll)){
+  foreach($agentsAll as $agents){
+    $agent_id=$agents['agent'];
+    $agent=$pdo->query("SELECT * FROM clients where client_id = $agent_id")->fetchAll(PDO::FETCH_ASSOC);
+    array_push($idList,$agent[0]['agent_name']);
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -48,6 +65,11 @@
         <input type="date" name="birthday" id="birthday" class="form-control" required/>
       </div>
       <div class="form-controll">
+        <!--都道府県に変更
+        <label for="address" class="form-label">郵便番号:</label>
+        <input type="text" id="address" class='form-control'name="address" onKeyUp="$('#address').zip2addr('#address_detail');"  required><br/>
+        <label for="address_detail" class="form-label" required>住所:</label>
+        <input type="text"class='form-control'name="address_detail" id="address_detail" >-->
         <label for="prefecture" class="form-label">住まいの都道府県:</label>
         <input type="text" name="prefecture" id="prefecture" class="form-control" required/>
       </div>
@@ -63,19 +85,24 @@
         <label for="division" class="form-label">文理:</label>
         <input type="radio" value="文系" name="division" id="division" class="form-control" required/>文系
         <input type="radio" value="理系" name="division" id="division" class="form-control" required/>理系
+
         <label for="grad_year" class="form-label">卒業年度:</label>
         <input type="text" name="grad_year" id="grad_year" class="form-control" required/>
-        <input type="submit" value="送信">
+      
       </div>
-      <!-- <div class="form-control">
+      <div class="form-control">
         <h2>申し込み企業一覧</h2>
-        <?php foreach($agents as $agent){ ?>
-        <input type="text" name="company" id="company" class="form-control"  value="<?=$agent["agent_name"]?>" >
-        <?php }?>
+        <?php if($idList != null){
+              foreach($idList as $agent){?>
+          <input type="text"  name="company[]" class="form-control" value="<?=$agent?>"required>
+        <?php }}?>
       </div>
       <input type="submit" id="submit-button"value="送信" >
     
-    </form> -->
+    </form>
+    
+      
   </main>
+  
 </body>
 </html>

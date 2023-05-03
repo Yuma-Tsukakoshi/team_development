@@ -24,6 +24,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['filter'])){
 }
 
 ?>
-<!-- SELECT main.client_id,main.service_name FROM clients AS main INNER JOIN (SELECT DISTINCT sub.service_name, sub.client_id FROM clients AS sub INNER JOIN label_client_relation ON sub.client_id=label_client_relation.client_id WHERE label_id = 1 OR label_id = 4 ) AS sub ON main.client_id=sub.client_id; -->
-<!-- SELECT service_name , labels.label_id ,labels.label_name FROM clients INNER JOIN label_client_relation ON clients.client_id=label_client_relation.client_id
-INNER JOIN labels ON label_client_relation.label_id=labels.label_id; -->
