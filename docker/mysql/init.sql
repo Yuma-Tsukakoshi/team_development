@@ -111,6 +111,7 @@ CREATE TABLE clients(
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
 ) CHARSET=utf8;
 
+
 insert into clients(id, client_id, agent_name, service_name, catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at ,ended_at,logo_img) values
 (1,1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","パーソルとベネッセの合弁会社","取引企業数は常時5,500社以上と豊富","2022年は14万人の就活生に利用される",'2023-06-03', '2023-08-12',"https://doda-student.jp/assets/img/header_logo_01.svg"),
 (2,2,'株式会社マイナビ', 'マイナビ新卒紹介',"丁寧なES添削指導","新卒情報サイトNo.1のマイナビ","大手企業の補欠枠から中小企業がメイン","学歴によって紹介企業を切り分けている",'2023-05-13', '2023-08-19',"https://転職サイト比較ナビ.com/wp-content/uploads/2017/07/d56de24e779423b861e32052727d7fc8.jpg"),

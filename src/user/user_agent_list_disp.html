@@ -4,9 +4,64 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="./assets/styles/search.css">
+  <title>エージェント詳細一覧</title>
 </head>
 <body>
-  
+  <!-- <?php include(dirname(__FILE__) . '/../components/header.php'); ?> -->
+  <section class="search">
+    <div>
+      <h1 class="search-title">DETAIL</h1>
+      <span class="search-title-jpn">-エージェント詳細-</span>
+      <div class="search-title-border"></div>
+    </div>
+  </section>
+
+  <main>
+    <section>
+      <!-- wrapperで白い囲い -->
+      <div class="wrapper">
+        <div class="inner">
+          <div>
+            <!-- 中央寄せ -->
+            <img src="" alt="企業ロゴ">
+          </div>
+          <div class="grid grid-cols-2">
+            <div class="">
+              <img src="" alt="株式会社っぽい写真">
+              <h2>株式会社マイナビ</h2>
+              <p>担当者: <span>posse</span></p>
+              <a href="#"><p>ホームぺージリンク：</p></a>
+            </div>
+            <div>
+              <img src="" alt="活動写真">
+            </div>
+          </div>
+
+          <div class="labels">
+            <!-- 同じCSSでラベルの統一感 一つにつければ全部反映！ -->
+            <span class="label-content">文系</span>
+            <span class="label-contnet">オンライン</span>
+            <span class="label-content">東京</span>
+          </div>
+          
+          <!-- 丸い囲み -->
+          <div class="recommend-wrapper">
+            <div class="recommend-content">
+              <!-- 同じCSSでラベルの統一感 一つにつければ全部反映！ -->
+              <ul>
+                <li>おススメポイント1</li>
+                <li>おススメポイント2</li>
+                <li>おススメポイント3</li>
+              </ul>
+            </div>
+          </div>
+          <!-- ↓サイズ大きくしてもいいいかも -->
+          <button class="btn-big cyan">カートに追加する</button>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
