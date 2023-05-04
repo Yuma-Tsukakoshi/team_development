@@ -14,6 +14,10 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
+  <script src="../user/assets/js/jquery-3.6.1.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
+  <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
+  <script src="../user/assets/js/student_filter.js" defer></script>
   <title>boozer学生一覧</title>
 </head>
 
@@ -55,8 +59,8 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
-          
-          <div class="flex justify-end my-4 ">
+
+          <!-- <div class="flex justify-end my-4 ">
             <label for="sort-by" class="mr-2">学生の並び替え：</label>
             <div class="relative inline-flex">
               <select id="sort-by" name="sort-by" class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
@@ -65,8 +69,13 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
               </select>
               <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">決定</button>
             </div>
-          </div>
+          </div> -->
 
+          <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="name">絞り込み検索</label>
+            <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="keyword" type="text" placeholder="カタカナを入力してください">
+          </div>
+          
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
@@ -74,50 +83,50 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
                   <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
                     <th class="px-4 py-3">更新日時</th>
                     <th class="px-4 py-3">氏名</th>
+                    <th class="px-4 py-3">フリガナ</th>
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
-                    <th class="px-4 py-3">学科</th>
                     <th class="px-4 py-3">卒業年</th>
                     <th class="px-4 py-3">無効申請</th>
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>
-                <tbody class="bg-white divide-y">
+                <tbody class="bg-white divide-y" id="student">
                   <?php foreach ($users as $key => $user) { ?>
-                    <tr class="text-gray-700">
-                      <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
-                      </td>
-                      <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["college"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["faculty"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["department"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["grad_year"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-xs">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
-                          承認済
-                        </span>
-                      </td>
-                      <td class="px-4 py-3">
-                        <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php } ?>
+                  <tr class="text-gray-700">
+                  <td class="px-4 py-3">
+                    <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
+                  </td>
+                  <td class="px-4 py-3">
+                    <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
+                  </td>
+                  <td class="px-4 py-3 text-sm hurigana">
+                    <?= $user["hurigana"] ?>
+                  </td>
+                  <td class="px-4 py-3 text-sm">
+                    <?= $user["college"] ?>
+                  </td>
+                  <td class="px-4 py-3 text-sm">
+                    <?= $user["faculty"] ?>
+                  </td>
+                  <td class="px-4 py-3 text-sm">
+                    <?= $user["grad_year"] ?>
+                  </td>
+                  <td class="px-4 py-3 text-xs">
+                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
+                      <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
+                      承認済
+                    </span>
+                  </td>
+                  <td class="px-4 py-3">
+                    <div class="flex items-center space-x-4 text-sm">
+                      <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
+                        <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
+                      </button>
+                    </div>
+                  </td>
+                  </tr>
+                <?php } ?>
                 </tbody>
               </table>
             </div>
