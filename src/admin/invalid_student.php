@@ -3,7 +3,7 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users WHERE valid = 1 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
@@ -22,8 +22,8 @@ if (isset($_SESSION['sort'])) {
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/student_filter.js" defer></script>
-  <script src="../user/assets/js/student_sort.js" defer></script>
-  <title>boozer学生一覧</title>
+  <script src="../user/assets/js/invalid_student_sort.js" defer></script>
+  <title>boozer無効申請学生一覧</title>
 </head>
 
 <body>
