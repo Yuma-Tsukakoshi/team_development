@@ -56,7 +56,7 @@ $manager = $stmt3->fetch();
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/invalid_sort_student.php">
               <span class="ml-4">無効申請一覧</span>
               <!-- 無効申請で絞り込みする -->
             </a>

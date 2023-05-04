@@ -56,7 +56,7 @@ $manager = $stmt3->fetch();
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/invalid_sort_student.php">
               <span class="ml-4">無効申請一覧</span>
               <!-- 無効申請で絞り込みする -->
             </a>
@@ -70,9 +70,9 @@ $manager = $stmt3->fetch();
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業詳細</h1>
         <div class="flex justify-center top-title">
-          <p class="my-6 text-3xl font-semibold text-gray-700">掲載状況 : <?=$_GET["exist"] == 1 ? "掲載中" : "掲載終了" ?></p>
+          <p class="my-6 text-3xl font-semibold text-gray-700">掲載状況 : <?= $_GET["exist"] == 1 ? "掲載中" : "掲載終了" ?></p>
           <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 ">企業情報 : <a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>&exist=<?= $_GET["exist"]?>" class="edit_btn">編集</a></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 ">企業情報 : <a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>&exist=<?= $_GET["exist"] ?>" class="edit_btn">編集</a></p>
         </div>
         <!-- 編集に対してボタン色付ける -->
         <div class="flex justify-center">
