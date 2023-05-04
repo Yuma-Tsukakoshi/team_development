@@ -1,12 +1,10 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-require_once(dirname(__FILE__) . '/sort_student.php');
+// require_once(dirname(__FILE__) . '/sort_student.php');
 
 $pdo = Database::get();
 $users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -66,22 +64,19 @@ $users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(P
           <div class="flex justify-end  w-full">
             <div class="mb-4">
               <label class="block text-gray-700 font-bold mb-2" for="name">絞り込み検索 :</label>
-              <input class="appearance-none border rounded  py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="keyword" type="text" placeholder="名前を入力してください">
+              <input class="appearance-none border rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="keyword" type="text" placeholder="名前を入力してください">
             </div>
             <div>
               <label for="sort-by" class=" block text-gray-700 font-bold mb-2 mr-2">学生の並び替え：</label>
               <div class="relative inline-flex">
                 <select id="sort-by" name="sort-by" class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                  <option value="ascending">ア行から並び替え</option>
-                  <option value="descending">ワ行から並び替え</option>
+                  <option value="ascending">ア行から</option>
+                  <option value="descending">ワ行から</option>
                 </select>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">決定</button>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" id="sort_btn">並び替え</button>
               </div>
             </div>
-
           </div>
-
-
 
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
@@ -111,7 +106,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(P
                         <?= $user["hurigana"] ?>
                       </td>
                       <td class="px-4 py-3 text-sm hidden">
-                        <?= mb_convert_kana($user["hurigana"], "c");?>
+                        <?= mb_convert_kana($user["hurigana"], "c"); ?>
                       </td>
                       <td class="px-4 py-3 text-sm">
                         <?= $user["college"] ?>
@@ -176,7 +171,6 @@ $users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(P
       </main>
     </div>
   </div>
-</body>
 </body>
 
 </html>
