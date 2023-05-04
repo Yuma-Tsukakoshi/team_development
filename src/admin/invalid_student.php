@@ -3,10 +3,10 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users WHERE valid = 0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users WHERE valid = 1 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
-if (isset($_SESSION['sort'])) {
-  $users = $_SESSION['sort'];
+if (isset($_SESSION['invalid_sort'])) {
+  $users = $_SESSION['invalid_sort'];
 }
 ?>
 
@@ -46,7 +46,7 @@ if (isset($_SESSION['sort'])) {
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_student.php">
               <span class="ml-4">学生一覧</span>
             </a>
           </li>
@@ -92,7 +92,7 @@ if (isset($_SESSION['sort'])) {
                     <th class="px-4 py-3">フリガナ</th>
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
-                    <th class="px-4 py-3">卒業年</th>
+                    <!-- <th class="px-4 py-3">卒業年</th> -->
                     <th class="px-4 py-3">無効申請</th>
                     <th class="px-4 py-3">操作</th>
                   </tr>
@@ -118,9 +118,9 @@ if (isset($_SESSION['sort'])) {
                       <td class="px-4 py-3 text-sm">
                         <?= $user["faculty"] ?>
                       </td>
-                      <td class="px-4 py-3 text-sm">
+                      <!-- <td class="px-4 py-3 text-sm">
                         <?= $user["grad_year"] ?>
-                      </td>
+                      </td> -->
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
                           <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
@@ -130,7 +130,7 @@ if (isset($_SESSION['sort'])) {
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">申請理由閲覧</a>
+                            <a href="http://localhost:8080/user/user_info/invalid_user_disp.php?id=<?= $user["id"] ?>">申請理由閲覧</a>
                           </button>
                         </div>
                       </td>

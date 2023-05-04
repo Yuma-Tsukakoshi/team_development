@@ -16,7 +16,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$_SESSION['sort'] = $users;
+$_SESSION['invalid_sort'] = $users;
 
 ?>
 

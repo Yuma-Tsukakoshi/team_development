@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('#sort_btn').click(function() {
     var inputVal = $('#sort-by').val(); // input要valueを取
     $.ajax({
-      url: 'http://localhost:8080/admin/invalid_sort_student.php', // 送信先のPHPファイルのパス
+      url: 'http://localhost:8080/admin/invalid_student.php', // 送信先のPHPファイルのパス
       type: 'POST',
       data: {
         input: inputVal
