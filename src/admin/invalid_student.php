@@ -3,7 +3,7 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users WHERE valid = 1 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users WHERE valid = 0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
@@ -53,7 +53,6 @@ if (isset($_SESSION['sort'])) {
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">無効申請一覧</span>
-              <!-- 無効申請で絞り込みする -->
             </a>
           </li>
         </ul>
@@ -63,7 +62,7 @@ if (isset($_SESSION['sort'])) {
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
+          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">無効申請学生一覧</h2>
 
           <div class="flex justify-end  w-full">
             <div class="mb-4">
@@ -131,7 +130,7 @@ if (isset($_SESSION['sort'])) {
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
+                            <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">申請理由閲覧</a>
                           </button>
                         </div>
                       </td>
