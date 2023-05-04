@@ -1,9 +1,14 @@
 <?php
-
+session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-$pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
+// require_once(dirname(__FILE__) . '/sort_student.php');
 
+$pdo = Database::get();
+$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_SESSION['sort'])) {
+  $users = $_SESSION['sort'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +19,11 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
+  <script src="../user/assets/js/jquery-3.6.1.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
+  <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
+  <script src="../user/assets/js/student_filter.js" defer></script>
+  <script src="../user/assets/js/student_sort.js" defer></script>
   <title>boozer学生一覧</title>
 </head>
 
@@ -55,6 +65,25 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
+
+          <div class="flex justify-end  w-full">
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2" for="name">絞り込み検索 :</label>
+              <input class="appearance-none border rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="keyword" type="text" placeholder="名前を入力してください">
+            </div>
+            <div>
+              <label for="sort-by" class=" block text-gray-700 font-bold mb-2 mr-2">学生の並び替え：</label>
+              <div class="relative inline-flex">
+                <select id="sort-by" name="sort-by" class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  <option value=""></option>
+                  <option value="ascending">ア行から</option>
+                  <option value="descending">ワ行から</option>
+                </select>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" id="sort_btn">並び替え</button>
+              </div>
+            </div>
+          </div>
+
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
@@ -62,15 +91,15 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
                   <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
                     <th class="px-4 py-3">更新日時</th>
                     <th class="px-4 py-3">氏名</th>
+                    <th class="px-4 py-3">フリガナ</th>
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
-                    <th class="px-4 py-3">学科</th>
                     <th class="px-4 py-3">卒業年</th>
                     <th class="px-4 py-3">無効申請</th>
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>
-                <tbody class="bg-white divide-y">
+                <tbody class="bg-white divide-y" id="student">
                   <?php foreach ($users as $key => $user) { ?>
                     <tr class="text-gray-700">
                       <td class="px-4 py-3">
@@ -80,13 +109,16 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
                         <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
                       </td>
                       <td class="px-4 py-3 text-sm">
+                        <?= $user["hurigana"] ?>
+                      </td>
+                      <td class="px-4 py-3 text-sm hidden">
+                        <?= mb_convert_kana($user["hurigana"], "c"); ?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
                         <?= $user["college"] ?>
                       </td>
                       <td class="px-4 py-3 text-sm">
                         <?= $user["faculty"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["department"] ?>
                       </td>
                       <td class="px-4 py-3 text-sm">
                         <?= $user["grad_year"] ?>
@@ -145,7 +177,6 @@ $users = $pdo->query("SELECT * FROM users")->fetchAll(PDO::FETCH_ASSOC);
       </main>
     </div>
   </div>
-</body>
 </body>
 
 </html>
