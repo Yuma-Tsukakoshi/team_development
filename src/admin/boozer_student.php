@@ -1,10 +1,14 @@
 <?php
-
+session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 // require_once(dirname(__FILE__) . '/sort_student.php');
 
 $pdo = Database::get();
 $users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_SESSION['sort'])) {
+  $users = $_SESSION['sort'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +23,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(P
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/student_filter.js" defer></script>
+  <script src="../user/assets/js/student_sort.js" defer></script>
   <title>boozer学生一覧</title>
 </head>
 
@@ -70,6 +75,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(P
               <label for="sort-by" class=" block text-gray-700 font-bold mb-2 mr-2">学生の並び替え：</label>
               <div class="relative inline-flex">
                 <select id="sort-by" name="sort-by" class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                  <option value=""></option>
                   <option value="ascending">ア行から</option>
                   <option value="descending">ワ行から</option>
                 </select>

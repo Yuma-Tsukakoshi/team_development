@@ -62,7 +62,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
         <div class="container grid px-6 mx-auto">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載中企業一覧</h2>
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載企業一覧</h2>
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
                 <thead>
