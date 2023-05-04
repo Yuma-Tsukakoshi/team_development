@@ -1,13 +1,15 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
+// require_once(dirname(__FILE__) . '/valid_count.php');
 
 $pdo = Database::get();
 $users = $pdo->query("SELECT * FROM users WHERE valid = 1 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
-if (isset($_SESSION['invalid_sort'])) {
-  $users = $_SESSION['invalid_sort'];
+if (isset($_SESSION['sort'])) {
+  $users = $_SESSION['sort'];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -130,7 +132,7 @@ if (isset($_SESSION['invalid_sort'])) {
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/invalid_user_disp.php?id=<?= $user["id"] ?>">申請理由閲覧</a>
+                            <a href="http://localhost:8080/user/user_info/invalid_user_disp.php?id=<?= $user["id"] ?>">申請理由</a>
                           </button>
                         </div>
                       </td>

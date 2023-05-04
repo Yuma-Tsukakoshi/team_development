@@ -11,12 +11,9 @@ if($inputVal == "ascending"){
 }else{
   $sort = "updated_at DESC";
 }
-$sql = "SELECT * FROM users WHERE valid = 1 ORDER BY $sort";
+$sql = "SELECT * FROM users WHERE valid=1 ORDER BY $sort";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$_SESSION['invalid_sort'] = $users;
-
-?>
-
+$_SESSION['sort'] = $users;
