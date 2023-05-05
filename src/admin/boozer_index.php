@@ -21,7 +21,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
-  
+  <link rel="stylesheet" href="../user/assets/styles/badge.css">
   <title>boozer企業一覧</title>
 </head>
 
@@ -50,11 +50,11 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
             </a>
           </li>
           <li class="relative px-6 py-3">
+            <div class="notifier new">
+              <div class="badge num"><?= $count[0]['COUNT(*)'] ?></div>
+            </div>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./invalid_student.php">
-              <div class="notifier new">
-                <span class="ml-4">無効申請一覧</span>
-                <div class="badge"><?= $count ?></div>
-              </div>
+              <span class="ml-4">無効申請一覧</span>
             </a>
           </li>
         </ul>

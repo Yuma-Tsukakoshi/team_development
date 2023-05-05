@@ -4,19 +4,27 @@
 }
 
 .badge {
+  width:30px;
   position: absolute;
-  top: -5px;
-  left: 24px;
+  top: 5px;
+  left: 110px;
   background: #EF476F;
   padding: 0 5px;
   height: 22px;
   border-radius: 11px;
   font-size: 14px;
-  color: #FFF;
   line-height: 22px;
   white-space: nowrap;
+  height:30px;
+  border-radius: 50%;
 }
-
+.num{
+  color: #fff;
+  font-weight: bold;
+  font-size: 22px;
+  padding-left:8px;
+  padding-top:4px;
+}
 .notifier.new .badge {
   animation: pulse 2s;
   animation-iteration-count: infinite
