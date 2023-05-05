@@ -1,13 +1,14 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-// require_once(dirname(__FILE__) . '/valid_count.php');
+require_once(dirname(__FILE__) . '/invalid_count.php');
 
 $pdo = Database::get();
 $users = $pdo->query("SELECT * FROM users WHERE valid = 1 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
-if (isset($_SESSION['sort'])) {
-  $users = $_SESSION['sort'];
+// これが原因で$usersがvalid=1で取得できない⇒sessionに問題あり
+if (isset($_SESSION['invalid'])) {
+  $users = $_SESSION['invalid'];
 }
 
 ?>

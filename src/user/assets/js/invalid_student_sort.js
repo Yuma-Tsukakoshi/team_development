@@ -2,8 +2,9 @@ $(document).ready(function() {
   $('#sort_btn').click(function() {
     var inputVal = $('#sort-by').val(); // input要valueを取
     console.log(inputVal);
+    // ↑正しい値は取って来れている
     $.ajax({
-      url: 'http://localhost:8080/admin/invalid_student.php', // 送信先のPHPファイルのパス
+      url: 'http://localhost:8080/admin/invalid_sort_student.php', // 送信先のPHPファイルのパスもあってる
       type: 'POST',
       data: {
         input: inputVal
@@ -11,6 +12,7 @@ $(document).ready(function() {
 
       success: function(data) {
         // 送信が成功した場合の処理
+        // 成功してるけどHTMLが返される正しくない
         console.log(data); // レスポンスデータをコンソに表示
       },
       error: function(xhr, status, error) {
@@ -18,7 +20,7 @@ $(document).ready(function() {
         console.error(xhr); // エラー内容をコンソールに表示
       }
     });
-    // location.reload();
+    location.reload();
   });
 });
 
