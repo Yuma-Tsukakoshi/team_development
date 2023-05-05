@@ -1,6 +1,8 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
+require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+
 $pdo = Database::get();
 $sql = "SELECT * FROM users WHERE id = :id ";
 $stmt = $pdo->prepare($sql);
@@ -18,6 +20,7 @@ $user = $stmt->fetch();
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
+  <link rel="stylesheet" href="../assets/styles/badge.css">
   <title>学生情報編集</title>
 </head>
 
@@ -46,9 +49,11 @@ $user = $stmt->fetch();
             </a>
           </li>
           <li class="relative px-6 py-3">
+            <div class="notifier new">
+              <div class="badge num"><?= $count[0]['COUNT(*)'] ?></div>
+            </div>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/invalid_student.php">
               <span class="ml-4">無効申請一覧</span>
-              <!-- 無効申請で絞り込みする -->
             </a>
           </li>
         </ul>
