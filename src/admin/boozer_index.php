@@ -2,6 +2,7 @@
 
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
+require_once(dirname(__FILE__) . '/invalid_count.php');
 $pdo = Database::get();
 $agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
 $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetchAll(PDO::FETCH_ASSOC);

@@ -1,6 +1,8 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
+require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+
 $pdo = Database::get();
 $sql = "SELECT * FROM users WHERE id = :id ";
 $stmt = $pdo->prepare($sql);

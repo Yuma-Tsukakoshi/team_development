@@ -1,6 +1,8 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
+require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+
 $pdo = Database::get();
 $sql_1 = "SELECT * FROM clients WHERE client_id = :id ";
 $stmt1 = $pdo->prepare($sql_1);
