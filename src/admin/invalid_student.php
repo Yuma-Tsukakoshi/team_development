@@ -1,13 +1,16 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
+require_once(dirname(__FILE__) . '/invalid_count.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users WHERE valid = 1 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
-if (isset($_SESSION['sort'])) {
-  $users = $_SESSION['sort'];
+// これが原因で$usersがvalid=1で取得できない⇒sessionに問題あり
+if (isset($_SESSION['invalid'])) {
+  $users = $_SESSION['invalid'];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +25,8 @@ if (isset($_SESSION['sort'])) {
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/student_filter.js" defer></script>
-  <script src="../user/assets/js/student_sort.js" defer></script>
-  <title>boozer学生一覧</title>
+  <script src="../user/assets/js/invalid_student_sort.js" defer></script>
+  <title>boozer無効申請学生一覧</title>
 </head>
 
 <body>
@@ -46,14 +49,13 @@ if (isset($_SESSION['sort'])) {
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_student.php">
               <span class="ml-4">学生一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./invalid_student.php">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">無効申請一覧</span>
-              <!-- 無効申請で絞り込みする -->
             </a>
           </li>
         </ul>
@@ -63,7 +65,7 @@ if (isset($_SESSION['sort'])) {
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
+          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">無効申請学生一覧</h2>
 
           <div class="flex justify-end  w-full">
             <div class="mb-4">
@@ -93,7 +95,7 @@ if (isset($_SESSION['sort'])) {
                     <th class="px-4 py-3">フリガナ</th>
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
-                    <th class="px-4 py-3">卒業年</th>
+                    <!-- <th class="px-4 py-3">卒業年</th> -->
                     <th class="px-4 py-3">無効申請</th>
                     <th class="px-4 py-3">操作</th>
                   </tr>
@@ -119,9 +121,9 @@ if (isset($_SESSION['sort'])) {
                       <td class="px-4 py-3 text-sm">
                         <?= $user["faculty"] ?>
                       </td>
-                      <td class="px-4 py-3 text-sm">
+                      <!-- <td class="px-4 py-3 text-sm">
                         <?= $user["grad_year"] ?>
-                      </td>
+                      </td> -->
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
                           <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
@@ -131,7 +133,7 @@ if (isset($_SESSION['sort'])) {
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
+                            <a href="http://localhost:8080/user/user_info/invalid_user_disp.php?id=<?= $user["id"] ?>">申請理由</a>
                           </button>
                         </div>
                       </td>

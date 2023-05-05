@@ -48,7 +48,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./invalid_student.php">
               <span class="ml-4">無効申請一覧</span>
               <!-- 無効申請で絞り込みする -->
             </a>
@@ -140,7 +140,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
-                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"]?>&exist=0">詳細</a>
+                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=0">詳細</a>
                           </button>
                         </div>
                       </td>
