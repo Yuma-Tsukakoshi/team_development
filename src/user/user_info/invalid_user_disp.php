@@ -87,7 +87,7 @@ $user = $stmt->fetch();
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
                   <?= $user["valid"] ? "申請あり" : "申請なし" ?>
-                  <!-- ゆくゆくは申請中とか承認とかわけないと-->
+                  <!-- ゆくゆくは申請中とか承認とか分ける⇒承認済み、承認拒否とかのステータス更新-->
                 </th>
               </tr>
             </thead>
