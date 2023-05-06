@@ -314,11 +314,13 @@ body{
 }
 
 .voices-contents-box{
-    background-color: rgb(206, 204, 204);
+    background-color: #fff;
     width: 350px;
     height: 170px;
     border-radius: 30px;
     margin-bottom: 30px;
+    border: 5px solid rgb(206, 204, 204);
+    /* backgroud-colorを白に変更＆borderプロパティで灰色の枠線 */
 }
 
 .voices-contents-box-outer{
