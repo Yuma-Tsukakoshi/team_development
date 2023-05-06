@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users WHERE id = :id ";
+$sql = "SELECT * FROM users WHERE valid = 1 AND id = :id ";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
@@ -21,7 +21,7 @@ $user = $stmt->fetch();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../assets/styles/badge.css">
-  <title>学生情報詳細</title>
+  <title>無効申請学生情報詳細</title>
 </head>
 
 <body>
@@ -63,7 +63,10 @@ $user = $stmt->fetch();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">学生情報 : <a href="http://localhost:8080/user/user_info/user_edit.php?id=<?= $user["id"] ?>" class="edit_btn">編集</a></p>
+        <div class="flex justify-center ">
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
+        </div>
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
@@ -77,34 +80,37 @@ $user = $stmt->fetch();
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <!-- <?php foreach ($labels as $key => $label) { ?>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      企業<?= $key + 1 ?>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?= $label["label_name"] ?>
-                    </div>
-                  </td>
-                </tr>
-              <?php } ?> -->
+
             </tbody>
           </table>
         </div>
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-            <tbody class="bg-blue-500 text-white">
+            <thead class="bg-blue-500 text-white">
               <tr>
                 <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
                   無効申請判定
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
                   <?= $user["valid"] ? "申請あり" : "申請なし" ?>
-                  <!-- ゆくゆくは申請中とか承認とかわけないと-->
+                  <!-- ゆくゆくは申請中とか承認とか分ける⇒承認済み、承認拒否とかのステータス更新-->
                 </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    無効申請理由
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <!-- <?= $user["invalid_reason"] ?> -->
+                    <!-- 無効申請テーブル作る 申請フォームから反映-->
+                    メールと電話のどちらも連絡がつかない
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>

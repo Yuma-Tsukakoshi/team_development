@@ -4,11 +4,21 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users WHERE id = :id ";
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(":id", $_REQUEST["id"]);
-$stmt->execute();
-$user = $stmt->fetch();
+$sql_1 = "SELECT * FROM clients WHERE client_id = :id ";
+$stmt1 = $pdo->prepare($sql_1);
+$stmt1->bindValue(":id", $_REQUEST["id"]);
+$stmt1->execute();
+$agent = $stmt1->fetch();
+$sql_2 = "SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id WHERE label_client_relation.client_id = :id ";
+$stmt2 = $pdo->prepare($sql_2);
+$stmt2->bindValue(":id", $_REQUEST["id"]);
+$stmt2->execute();
+$labels = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$sql_3 = "SELECT * FROM managers WHERE client_id = :id ";
+$stmt3 = $pdo->prepare($sql_3);
+$stmt3->bindValue(":id", $_REQUEST["id"]);
+$stmt3->execute();
+$manager = $stmt3->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +30,8 @@ $user = $stmt->fetch();
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
-  <link rel="stylesheet" href="../assets/styles/badge.css">
-  <title>学生情報詳細</title>
+  <link rel="stylesheet" href="../../user/assets/styles/badge.css">
+  <title>boozer企業詳細</title>
 </head>
 
 <body>
@@ -60,61 +70,22 @@ $user = $stmt->fetch();
       </div>
     </aside>
 
+
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
-        <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">学生情報 : <a href="http://localhost:8080/user/user_info/user_edit.php?id=<?= $user["id"] ?>" class="edit_btn">編集</a></p>
-        <div class="my-8 flex justify-center">
-          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-            <thead class="bg-blue-500 text-white">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                  申請企業一覧
-                </th>
-                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  データ
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <!-- <?php foreach ($labels as $key => $label) { ?>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      企業<?= $key + 1 ?>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?= $label["label_name"] ?>
-                    </div>
-                  </td>
-                </tr>
-              <?php } ?> -->
-            </tbody>
-          </table>
+        <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業詳細</h1>
+        <div class="flex justify-center top-title">
+          <p class="my-6 text-3xl font-semibold text-gray-700">掲載状況 : <?= $_GET["exist"] == 1 ? "掲載中" : "掲載終了" ?></p>
+          <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 ">企業情報 : <a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>&exist=<?= $_GET["exist"] ?>" class="edit_btn">編集</a></p>
         </div>
-        <div class="my-8 flex justify-center">
-          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-            <tbody class="bg-blue-500 text-white">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                  無効申請判定
-                </th>
-                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  <?= $user["valid"] ? "申請あり" : "申請なし" ?>
-                  <!-- ゆくゆくは申請中とか承認とかわけないと-->
-                </th>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <!-- 編集に対してボタン色付ける -->
         <div class="flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
               <tr>
                 <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                  学生情報
+                  企業情報
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
                   データ
@@ -125,60 +96,136 @@ $user = $stmt->fetch();
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    お問い合わせ日時
+                    企業名
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $user["created_at"] ?>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    氏名
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?= $user["name"] ?>
+                    <?= $agent["agent_name"] ?>
                   </div>
                 </td>
               </tr>
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    フリガナ
+                    サービス名
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $user["hurigana"] ?>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    性別
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?= $user["sex"] ?>
+                    <?= $agent["service_name"] ?>
                   </div>
                 </td>
               </tr>
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    生年月日
+                    掲載期間
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $user["birthday"] ?>
+                    <?= $agent["started_at"] ?> ~ <?= $agent["ended_at"] ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    キャッチコピー
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $agent["catchphrase"] ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    おすすめ<br>ポイント1
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $agent["recommend_point1"] ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    おすすめ<br>ポイント2
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $agent["recommend_point2"] ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    おすすめ<br>ポイント3
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $agent["recommend_point3"] ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    企業ロゴ
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img class="h-9 w-9" src="<?= $agent["logo_img"] ?>" alt="">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="my-8 flex justify-center">
+          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-blue-500 text-white">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                  担当者情報
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                  データ
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    担当者名
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $manager["manager"] ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    部署
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $manager["depart"] ?>
                   </div>
                 </td>
               </tr>
@@ -190,7 +237,7 @@ $user = $stmt->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $user["mail"] ?>
+                    <?= $manager["mail"] ?>
                   </div>
                 </td>
               </tr>
@@ -202,82 +249,40 @@ $user = $stmt->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $user["phone"] ?>
+                    <?= $manager["phone"] ?>
                   </div>
                 </td>
               </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="my-8 flex justify-center">
+          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-blue-500 text-white">
               <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    所在地
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?= $user["prefecture"] ?>
-                  </div>
-                </td>
+                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                  ラベル情報
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                  データ
+                </th>
               </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    大学
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?= $user["college"] ?>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    学部
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?= $user["faculty"] ?>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    学科
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?= $user["department"] ?>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    文理
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?= $user["division"] ?>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    卒業年
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?= $user["grad_year"] ?>
-                  </div>
-                </td>
-              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <?php foreach ($labels as $key => $label) { ?>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      ラベル<?= $key + 1 ?>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $label["label_name"] ?>
+                    </div>
+                  </td>
+                </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>

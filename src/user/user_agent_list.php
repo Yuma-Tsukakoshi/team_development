@@ -1,10 +1,16 @@
 <?php 
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/user_agent_filter.php');
+session_start();
 
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
 $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id")->fetchAll(PDO::FETCH_ASSOC);
+
+if(isset($_SESSION['clients'])){
+  $count=count($_SESSION['clients']);
+}
+
 
 
 ?>
@@ -15,12 +21,13 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"
-    />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/search.css">
+  <link rel="stylesheet" href="../user/assets/styles/header.css">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <title>エージェント検索一覧</title>
 </head>
 
@@ -32,14 +39,24 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       <span class="search-title-jpn">-エージェント検索-</span>
       <div class="search-title-border"></div>
     </div>
-    <div>
-      <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
+   
+    <div class="cart">
+      <div class="cart-num">
+        <?php if(isset($count)){?>
+          <?=$count?>
+        <?php }?>
+      </div>
+      <a href="./user_cartlook.php">
+        <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
+      </a>
       <div class="search-title-cart-border"></div>
     </div>
+    
+
   </section>
 
   <main class="grid grid-cols-2">
-    <form method="post" action="" class="m-8">
+    <form method="post" action="" class="m-8 w-3">
       <div class="major">
         <h2 class="major-txt">専攻</h2>
         <img class="major-pencil-img" src="../user/assets/img/1263.png" alt="鉛筆の画像">
@@ -79,6 +96,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       <div>
         <div class="my-16 ">
           <?php foreach ($agents as $key => $agent) { ?>
+          <input type="hidden" value="<?=$agent['client_id']?> " class="client_id"> 
           <div class="top agent-list">
               <img class="agent-img" src="<?=$agent["logo_img"]?>" alt="エージェント画像">
             <div>
@@ -104,7 +122,7 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
               <?php }?>
             </div>
             <div class="block">
-              <button class="btn-big cyan add-cart" id="cart<?=$key+1?>">カートに追加する</button>
+              <button class="btn-big cyan add-button" id="cart<?=$key+1?>" value="<?=$key?>">カートに追加する</button>
               <button class="btn-big blue see-details" id="agent<?=$key+1?>">詳細を見る→</button>
             </div>
           </div>
@@ -113,6 +131,35 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
       </div>
     </div>
   </main>
+  <script>
+  $(function(){
+            $('.add-button').on('click', function(event){
+              $index=this.value
+
+              console.log($index)
+                $.ajax({
+                    type: "POST",
+                    url: "./user_cartin.php",
+                    data: {
+                      id: $index,
+                      client_id:$('.client_id').eq($index).val(),
+                      
+                    },
+                    dataType : "json",
+                    scriptCharset: 'utf-8'
+                }).done(function(data){
+                  console.log(data);
+
+                  $('.cart-num').text(data)
+                  $('.add-button').eq($index).prop("disabled", true);
+                 //背景グレーとか調整する
+                 
+                }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+                    alert(errorThrown);
+                });
+            })
+          })
+  </script>
 </body>
 
 </html>

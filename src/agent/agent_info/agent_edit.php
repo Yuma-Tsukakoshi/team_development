@@ -4,11 +4,21 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users WHERE id = :id ";
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(":id", $_REQUEST["id"]);
-$stmt->execute();
-$user = $stmt->fetch();
+$sql_1 = "SELECT * FROM clients WHERE client_id = :id ";
+$stmt1 = $pdo->prepare($sql_1);
+$stmt1->bindValue(":id", $_REQUEST["id"]);
+$stmt1->execute();
+$agent = $stmt1->fetch();
+$sql_2 = "SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id WHERE label_client_relation.client_id = :id ";
+$stmt2 = $pdo->prepare($sql_2);
+$stmt2->bindValue(":id", $_REQUEST["id"]);
+$stmt2->execute();
+$labels = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+$sql_3 = "SELECT * FROM managers WHERE client_id = :id ";
+$stmt3 = $pdo->prepare($sql_3);
+$stmt3->bindValue(":id", $_REQUEST["id"]);
+$stmt3->execute();
+$manager = $stmt3->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +30,8 @@ $user = $stmt->fetch();
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
-  <link rel="stylesheet" href="../assets/styles/badge.css">
-  <title>学生情報編集</title>
+  <link rel="stylesheet" href="../../user/assets/styles/badge.css">
+  <title>boozer企業編集</title>
 </head>
 
 <body>
@@ -60,61 +70,20 @@ $user = $stmt->fetch();
       </div>
     </aside>
 
+
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
-        <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <form action="http://localhost:8080/user/user_info/user_edit_check.php?id=<?= $user["id"] ?>" method="POST" enctype="multipart/form-data">
-          <div class="my-8 flex justify-center">
-            <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-              <thead class="bg-blue-500 text-white">
-                <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                    申請企業一覧
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                    データ
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200">
-                <!-- <?php foreach ($labels as $key => $label) { ?>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      企業<?= $key + 1 ?>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?= $label["label_name"] ?>
-                    </div>
-                  </td>
-                </tr>
-              <?php } ?> -->
-              </tbody>
-            </table>
-          </div>
-          <div class="my-8 flex justify-center">
-            <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-              <tbody class="bg-blue-500 text-white">
-                <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                    無効申請判定
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                    <?= $user["valid"] ? "申請あり" : "申請なし" ?>
-                    <!-- ゆくゆくは申請中とか承認とかわけないと-->
-                  </th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業編集</h1>
+        <p class="my-6 text-3xl font-semibold text-gray-700 text-center ">掲載状況 : <?= $_GET["exist"] == 1 ? "掲載中" : "掲載終了" ?></p>
+        <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
+        <form action="http://localhost:8080/agent/agent_info/agent_edit_check.php?id=<?= $agent["client_id"] ?>" method="POST" enctype="multipart/form-data">
+          <!-- メールの正規表現とか -->
           <div class="flex justify-center">
             <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
               <thead class="bg-blue-500 text-white">
                 <tr>
                   <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                    学生情報
+                    企業情報
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
                     データ
@@ -125,49 +94,137 @@ $user = $stmt->fetch();
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      氏名
+                      企業名
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="name" required value="<?= $user["name"] ?>" class="required" placeholder="氏名を入力">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      フリガナ
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="hurigana" required value="<?= $user["hurigana"] ?>" class="required" placeholder="フリガナを入力">
+                      <input type="text" name="agent_name" required value="<?= $agent["agent_name"] ?>" class="required" placeholder="企業名を入力">
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      性別
+                      サービス名
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="sex" required value="<?= $user["sex"] ?>" class="required" placeholder="性別を入力">
-                      <!-- ラジオボタンに変更 -->
+                      <input type="text" name="service_name" required value="<?= $agent["service_name"] ?>" class="required" placeholder="サービス名を入力">
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      生年月日
+                      掲載期間
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <input type="date" name="birthday" required value="<?= $user["birthday"] ?>" class="required" placeholder="生年月日を入力">
+                      <input type="date" name="started_at" required value="<?= $agent["started_at"] ?>" class="required"> ~ <input type="date" name="ended_at" required value="<?= $agent["ended_at"] ?>" class="required">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      キャッチコピー
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <input type="text" name="catchphrase" required value="<?= $agent["catchphrase"] ?>" class="required" placeholder="キャッチコピーを入力">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      おすすめ<br>ポイント1
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <input type="text" name="recommend_point1" required value="<?= $agent["recommend_point1"] ?>" class="required" placeholder="おすすめポイントを入力">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      おすすめ<br>ポイント2
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <input type="text" name="recommend_point2" required value="<?= $agent["recommend_point2"] ?>" class="required" placeholder="おすすめポイントを入力">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      おすすめ<br>ポイント3
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <input type="text" name="recommend_point3" required value="<?= $agent["recommend_point3"] ?>" class="required" placeholder="おすすめポイントを入力">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      企業ロゴ
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img class="h-9 w-9" src="<?= $agent["logo_img"] ?>" alt="">
+                      <input type="url" name="logo_img" required value="<?= $agent["logo_img"] ?>" class="required input-img" placeholder="画像のリンクを入力">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="my-8 flex justify-center">
+            <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+              <thead class="bg-blue-500 text-white">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                    担当者情報
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                    データ
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      担当者名
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <input type="text" name="manager" required value="<?= $manager["manager"] ?>" class="required" placeholder="担当者名を入力">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      部署
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <input type="text" name="depart" required value="<?= $manager["depart"] ?>" class="required" placeholder="部署を入力">
                     </div>
                   </td>
                 </tr>
@@ -179,7 +236,7 @@ $user = $stmt->fetch();
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <input type="email" name="mail" required value="<?= $user["mail"] ?>" class="required" placeholder="メールアドレスを入力">
+                      <input type="email" name="mail" required value="<?= $manager["mail"] ?>" class="required" placeholder="メールアドレスを入力">
                     </div>
                   </td>
                 </tr>
@@ -191,90 +248,48 @@ $user = $stmt->fetch();
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <input type="tel" name="phone" required value="<?= $user["phone"] ?>" class="required" placeholder="電話番号を入力">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      所在地
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="prefecture" required value="<?= $user["prefecture"] ?>" class="required" placeholder="所在地を入力">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      大学
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="college" required value="<?= $user["college"] ?>" class="required" placeholder="大学名を入力">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      学部
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="faculty" required value="<?= $user["faculty"] ?>" class="required" placeholder="学部名を入力">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      学科
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="department" required value="<?= $user["department"] ?>" class="required" placeholder="学科名を入力">
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      文理
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="division" required value="<?= $user["division"] ?>" class="required" placeholder="文理を選択">
-                      <!-- ラジオボタンに変更する -->
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      卒業年
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <input type="text" name="grad_year" required value="<?= $user["grad_year"] ?>" class="required" placeholder="卒業年を入力">
+                      <input type="tel" name="phone" required value="<?= $manager["phone"] ?>" class="required" placeholder="電話番号を入力">
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <input type="hidden" name="id" value="<?= $user["id"] ?>">
+          <div class="my-8 flex justify-center">
+            <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+              <thead class="bg-blue-500 text-white">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                    ラベル情報
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                    データ
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <?php foreach ($labels as $key => $label) { ?>
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="text-ms font-medium text-gray-900">
+                        ラベル<?= $key + 1 ?>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                      <div class="text-ms font-medium text-gray-900">
+                        <input type="text" name="labels[]" class="required" required placeholder="ラベル名を入力" value="<?= $label["label_name"] ?>">
+                      </div>
+                    </td>
+                  </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
+          <input type="hidden" name="client_id" value="<?= $agent["client_id"] ?>">
           <div class="btn_wrapper">
             <button type="submit" class="btn submit update_btn">更新</button>
           </div>
+        </form>
       </main>
     </div>
   </div>
@@ -289,6 +304,7 @@ $user = $stmt->fetch();
       })
     });
   </script>
+
 </body>
 
 </html>

@@ -36,8 +36,8 @@ body{
     width: 100px;
     height: 100px;
     position: relative;
-    top:-80px;
-    left:1200px;
+    /*top:-80px;
+    left:1200px;*/
 }
 
 /* カートの周りの丸い枠 */
@@ -321,7 +321,7 @@ body{
     left: px;
 }
 
-.add-cart{
+.add-button{
     position: relative;
     top: -90px;
     left:400px ;
@@ -331,4 +331,33 @@ body{
     position: relative;
     top: -40px;
     left:240px ;
+}
+
+
+/*カート機能*/
+.search{
+    display: flex;
+    justify-content: space-between;
+}
+.cart{
+    display: flex;
+    margin-right: 100px;
+}
+.cart-num{
+    position: relative;
+    font-size: 30px;
+    color: #0071bc;
+}
+
+/*カートの中身*/
+.cart-content{
+    margin: 10%;
+}
+.delete-btn{
+    top: 0;
+    left: 0;
+}
+.contact-link{
+    
+    color:#0071bc;
 }
