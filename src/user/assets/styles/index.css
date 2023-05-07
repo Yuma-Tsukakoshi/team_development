@@ -203,18 +203,18 @@ body{
 }
 
 .howto-search-img{
-    height: 200px;
-    width: 130px;
+    height: 260px;
+    width: 160px;
 }
 
 .howto-agent-img{
-    height: 200px;
-    width: 210px;
+    height: 260px;
+    width: 300px;
 }
 
 .howto-apply-img{
-    height: 200px;
-    width: 210px;
+    height: 260px;
+    width: 300px;
 }
 
 /* ここからhandling company*/
@@ -292,12 +292,12 @@ body{
 }
 
 .voices-title-border{
-    width: 170px;
+    width: 160px;
     height:3px ;
     background-color: #e3cf32;
     position: relative;
-    top: 60px;
-    left: 625px;
+    top: 50px;
+    left: 640px;
 }
 
 .voices-contents{
@@ -323,33 +323,39 @@ body{
     /* backgroud-colorを白に変更＆borderプロパティで灰色の枠線 */
 }
 
-.voices-contents-box-outer{
-    width: 350px;
-    height: 170px;
-    border-radius: 30px;
-    border: red;
-    border-width: 10px;
+.voices-contents-box-sub{
+    width:340px ;
+    height: 160px;
     position: relative;
-    top: ;
-    left: ;
-/* これを上のvoices-contents-boxと重ねようとしているのに出てきてくれない、、 */
+    z-index: 5;
+    background-color: rgb(244, 247, 204);
+    position: relative;
+    top: -12px;
+    left: 5px;
+    margin: 0;
+    border-radius: 25px;
 }
 .voices-contents-txt, .voices-contents-name,.voices-contents-stars-title{
     font-size: 15px;
     word-break: break-all;
     position: relative;
     left: 20px;
-/* ここ折りたたまれない、、、 */
 }
 
 .voices-contents-txt{
     margin: 0;
     padding: 0;
+    width: 320px;
+
 }
 
 .voices-contents-stars-title{
     width: 100px;
     height: 20px;
+    margin-bottom: 0;
+    font-size: 16px;
+    top: 5px;
+    font-weight: bold;
 }
 .voices-img{
     width: 150px;
@@ -361,7 +367,7 @@ body{
     margin: 0;
     padding: 0;
     position:relative;
-    top: -35px;
+    top: -15px;
     left: 100px;
 }
 
@@ -396,9 +402,8 @@ body{
     width: 160px;
     background-color: #e3cf32;
     position: relative;
-    top: -20px;
+    top: -15px;
     left: 640px;
-
 }
 
 .creator-content{
@@ -412,8 +417,6 @@ body{
 position: relative;
 left:80px ;
 top: 50px;
-
-
 }
 
 .creator-img{
@@ -488,7 +491,7 @@ ul{
     margin-top: -30px;
 }
 .contact-title-background{
-    background-color: rgb(196, 222, 236);
+    background-color: rgb(239, 240, 186);
     height: 150px;
     width: 1440px;
 }
