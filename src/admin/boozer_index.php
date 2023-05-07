@@ -10,9 +10,16 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
 $exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDATE()")->fetch();
 $non_exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at < CURDATE()")->fetch();
 
-$sql4 = "SELECT relation.client_id,COUNT(relation.client_id) AS sum FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id GROUP BY relation.client_id ORDER BY relation.client_id ASC";
+// 今月の登録があった企業数だけを取得
+$sql4 = "SELECT relation.client_id, users.created_at,COUNT(relation.client_id) AS sum
+FROM user_register_client as relation 
+INNER JOIN clients ON relation.client_id = clients.client_id 
+INNER JOIN users ON relation.client_id = users.id
+WHERE MONTH(users.created_at) = MONTH(CURRENT_DATE()) AND YEAR(users.created_at) = YEAR(CURRENT_DATE())
+GROUP BY relation.client_id 
+ORDER BY relation.client_id ASC";
 $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
-print_r($agent_count);
+
 
 // if (!isset($_SESSION['id'])) {
 //     header('Location: http://localhost:8080/admin/boozer_auth/boozer_signup.php');
