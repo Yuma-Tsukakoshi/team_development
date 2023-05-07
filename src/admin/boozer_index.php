@@ -38,9 +38,6 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">企業一覧</span>
             </a>
-            <a href="http://localhost:8080/user/user_info/user_insert.php">
-              人数通知メールを各企業に送る
-            </a>
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
@@ -70,6 +67,9 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載企業一覧</h2>
+            <a href="http://localhost:8080/user/user_info/user_insert.php">
+              人数通知メールを各企業に送る
+            </a>
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
                 <thead>
