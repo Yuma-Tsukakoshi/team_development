@@ -12,10 +12,6 @@ $exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDA
 $sql4 = "SELECT relation.client_id,COUNT(relation.client_id) AS sum FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id GROUP BY relation.client_id ORDER BY relation.client_id ASC";
 $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
 
-// if (!isset($_SESSION['id'])) {
-//     header('Location: http://localhost:8080/admin/boozer_auth/boozer_signup.php');
-//     exit();
-// }
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +68,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載企業一覧</h2>
-            <a href="http://localhost:8080/user/user_info/user_insert.php">
+            <a href="http://localhost:8080/admin/boozer_index_countstudents.php">
               人数通知メールを各企業に送る
             </a>
             <div class="w-full overflow-x-auto">
