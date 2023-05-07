@@ -8,10 +8,23 @@ $agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fet
 $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
 
 $exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDATE()")->fetch();
+$non_exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at < CURDATE()")->fetch();
 
-$sql4 = "SELECT relation.client_id,COUNT(relation.client_id) AS sum FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id GROUP BY relation.client_id ORDER BY relation.client_id ASC";
+// 今月の登録があった企業数だけを取得
+$sql4 = "SELECT relation.client_id, users.created_at,COUNT(relation.client_id) AS sum
+FROM user_register_client as relation 
+INNER JOIN clients ON relation.client_id = clients.client_id 
+INNER JOIN users ON relation.client_id = users.id
+WHERE MONTH(users.created_at) = MONTH(CURRENT_DATE()) AND YEAR(users.created_at) = YEAR(CURRENT_DATE())
+GROUP BY relation.client_id 
+ORDER BY relation.client_id ASC";
 $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
 
+
+// if (!isset($_SESSION['id'])) {
+//     header('Location: http://localhost:8080/admin/boozer_auth/boozer_signup.php');
+//     exit();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +115,18 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                        <?= $agent_count[$key]["sum"] ?>人
+                        <?php
+                        $found = false;
+                        for ($i = 0; $i < count($agent_count); $i++) {
+                          if ($agent_count[$i]["client_id"] == $agent["client_id"]) {
+                            print_r($agent_count[$i]["sum"] . "人");
+                            $found = true;
+                            break;
+                          }
+                        }
+                        if (!$found) {
+                          print_r("0人");
+                        } ?>
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
@@ -151,7 +175,18 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
-                        <?= $agent_count[$key+$exist_count[0]]["sum"] ?>人
+                        <?php
+                        $found = false;
+                        for ($i = 0; $i < count($agent_count); $i++) {
+                          if ($agent_count[$i]["client_id"] == $agent["client_id"]) {
+                            print_r($agent_count[$i]["sum"] . "人");
+                            $found = true;
+                            break;
+                          }
+                        }
+                        if (!$found) {
+                          print_r("0人");
+                        } ?>
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
