@@ -174,7 +174,27 @@ CREATE TABLE user_register_client(
 );
 
 insert into user_register_client(id, user_id, client_id) values
-(1,1,1);
+(1,1,1),
+(2,1,5),
+(3,2,2),
+(4,3,4),
+(5,3,5),
+(6,3,6),
+(7,4,3),
+(8,5,2),
+(9,6,1),
+(10,6,4),
+(11,7,1),
+(12,9,1),
+(13,9,2),
+(14,9,3),
+(15,10,6),
+(16,11,3),
+(17,12,2),
+(18,14,7),
+(19,15,3),
+(20,15,4),
+(21,15,5);
 
 DROP TABLE IF EXISTS boozer_register_client;
 CREATE TABLE boozer_register_client(

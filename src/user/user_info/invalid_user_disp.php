@@ -9,6 +9,12 @@ $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
 $user = $stmt->fetch();
+
+$sql2 = "SELECT clients.service_name FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id ";
+$stmt2 = $pdo->prepare($sql2);
+$stmt2->bindValue(":id", $_REQUEST["id"]);
+$stmt2->execute();
+$agents = $stmt2->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +86,20 @@ $user = $stmt->fetch();
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-
+              <?php foreach ($agents as $agent) { ?>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      企業名
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $agent["service_name"] ?>
+                    </div>
+                  </td>
+                </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>

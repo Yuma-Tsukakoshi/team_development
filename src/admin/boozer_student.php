@@ -129,7 +129,7 @@ if (isset($_SESSION['sort'])) {
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
                           <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
-                          承認済
+                          申請なし
                         </span>
                       </td>
                       <td class="px-4 py-3">

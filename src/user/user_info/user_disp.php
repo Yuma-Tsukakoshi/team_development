@@ -4,11 +4,17 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users WHERE id = :id ";
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(":id", $_REQUEST["id"]);
-$stmt->execute();
-$user = $stmt->fetch();
+$sql1 = "SELECT * FROM users WHERE id = :id ";
+$stmt1 = $pdo->prepare($sql1);
+$stmt1->bindValue(":id", $_REQUEST["id"]);
+$stmt1->execute();
+$user = $stmt1->fetch();
+
+$sql2 = "SELECT clients.service_name FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id";
+$stmt2 = $pdo->prepare($sql2);
+$stmt2->bindValue(":id", $_REQUEST["id"]);
+$stmt2->execute();
+$agents = $stmt2->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -77,20 +83,20 @@ $user = $stmt->fetch();
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <!-- <?php foreach ($labels as $key => $label) { ?>
+              <?php foreach ($agents as $agent) { ?>
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      企業<?= $key + 1 ?>
+                      企業名
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <?= $label["label_name"] ?>
+                      <?= $agent["service_name"] ?>
                     </div>
                   </td>
                 </tr>
-              <?php } ?> -->
+              <?php } ?>
             </tbody>
           </table>
         </div>
