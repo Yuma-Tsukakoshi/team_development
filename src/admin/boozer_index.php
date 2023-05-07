@@ -7,6 +7,12 @@ $pdo = Database::get();
 $agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
 $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
 
+$exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDATE()")->fetch();
+
+$sql4 = "SELECT relation.client_id,COUNT(relation.client_id) AS sum FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id GROUP BY relation.client_id ORDER BY relation.client_id ASC";
+$agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
+print_r($agent_count);
+
 // if (!isset($_SESSION['id'])) {
 //     header('Location: http://localhost:8080/admin/boozer_auth/boozer_signup.php');
 //     exit();
@@ -75,6 +81,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
                     <th class="px-4 py-3">企業名</th>
                     <th class="px-4 py-3">掲載期間</th>
                     <th class="px-4 py-3">登録状態</th>
+                    <th class="px-4 py-3">申請人数</th>
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>
@@ -95,6 +102,9 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
                           <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
                           登録完了
                         </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?= $agent_count[$key]["sum"] ?>人
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
@@ -120,6 +130,7 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
                     <th class="px-4 py-3">企業名</th>
                     <th class="px-4 py-3">掲載期間</th>
                     <th class="px-4 py-3">登録状態</th>
+                    <th class="px-4 py-3">申請人数</th>
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>
@@ -140,6 +151,9 @@ $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetc
                           <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
                           登録完了
                         </span>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?= $agent_count[$key+$exist_count[0]]["sum"] ?>人
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">

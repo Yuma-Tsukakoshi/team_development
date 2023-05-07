@@ -19,6 +19,10 @@ $stmt3 = $pdo->prepare($sql_3);
 $stmt3->bindValue(":id", $_REQUEST["id"]);
 $stmt3->execute();
 $manager = $stmt3->fetch();
+
+$sql4 = "SELECT relation.client_id,COUNT(relation.client_id) AS sum FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id GROUP BY relation.client_id ORDER BY relation.client_id ASC";
+$agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
