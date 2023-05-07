@@ -13,17 +13,18 @@ body{
     position: relative;
     top: 300px;
     left: 150px;
-    width: 400px;
+    width: 440px;
     border-right:0px;
     /* ↑これ書いているのに大きすぎてはみ出しているから右に余白できちゃう */
     z-index: 10;
+    letter-spacing: 8px;
 }
 
 .hero-circle{
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    background-color: #0071bc;
+    background-color: #e3cf32;
     position: relative;
     top: 150px;
     left: 100px;
@@ -33,7 +34,7 @@ body{
     height: 100px;
     width:100px;
     border-radius: 50%;
-    background-color:#2886c4;
+    background-color:#e8ee49;
     position: relative;
     top: 10px;
     left: 270px;
@@ -53,6 +54,10 @@ body{
     position: fixed;
     right: 10px;
     bottom: 100px;
+    border-color: white;
+    border-width: 3px;
+    box-shadow: 3px 3px rgb(192, 186, 186);
+    /* border一周白くならない、上半分しか白くならない */
 
 }
 
@@ -73,6 +78,7 @@ body{
     width: 300px;
     color: white;
     font-weight: bold;
+    letter-spacing: 4px;
 
 }
 
@@ -83,6 +89,16 @@ body{
     left:120px ;
     width: 300px;
     color: white;
+    letter-spacing: 4px;
+}
+
+.about-title-border{
+    width: 220px;
+    height: 3px;
+    background-color: #e3cf32;
+    position: relative;
+    top: 60px;
+    left: 115px;
 }
 
 .about-philosophy{
@@ -92,6 +108,7 @@ body{
     left: 120px;
     width: 300px;
     color: white;
+    letter-spacing: 2px;
 }
 
 .about-txt-motto{
@@ -137,6 +154,8 @@ body{
     left: 800px;
     color: white;
 }
+
+/* 「始めの一歩」だけ色を変更できない */
 
 /* ここからHow to Use CRAFT */
 
@@ -213,6 +232,7 @@ body{
     font-size: 40px; 
     font-weight: bold;
     color: #0071bc;
+    letter-spacing: 10px;
 }
 
 .handling-jpn{
@@ -223,8 +243,17 @@ body{
     right: -930px;
     font-size: 18px;
     color: #0071bc;
+    letter-spacing: 2px;
 }
 
+.handling-company-border{
+    width: 145px;
+    height: 3px;
+    background-color:#e3cf32;
+    position: relative;
+    top:110px ;
+    left: 925px;
+}
 .handling-txt{
     width: 400px;
     height: 300px;
@@ -233,13 +262,115 @@ body{
     right: -920px;
     font-size: 18px;
     font-style: normal;
+    line-height: 50px;
+    color: rgb(87, 86, 86);
 }
+
+/* ここからvoices利用者の声 */
+
+.voices{
+    width: 1440px;
+    height: 800px;
+}
+.voices-title{
+    font-size: 40px;
+    color: #0071bc;
+    position: relative;
+    top: 100px;
+    text-align: center;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+.voices-title-jpn{
+    font-size: 20px;
+    color: #0071bc;
+    position: relative;
+    top: 70px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.voices-title-border{
+    width: 170px;
+    height:3px ;
+    background-color: #e3cf32;
+    position: relative;
+    top: 60px;
+    left: 625px;
+}
+
+.voices-contents{
+    display: flex;
+}
+
+.voices-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    top: 150px;
+    left: 60px;
+
+}
+
+.voices-contents-box{
+    background-color: #fff;
+    width: 350px;
+    height: 170px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    border: 5px solid rgb(206, 204, 204);
+    /* backgroud-colorを白に変更＆borderプロパティで灰色の枠線 */
+}
+
+.voices-contents-box-outer{
+    width: 350px;
+    height: 170px;
+    border-radius: 30px;
+    border: red;
+    border-width: 10px;
+    position: relative;
+    top: ;
+    left: ;
+/* これを上のvoices-contents-boxと重ねようとしているのに出てきてくれない、、 */
+}
+.voices-contents-txt, .voices-contents-name,.voices-contents-stars-title{
+    font-size: 15px;
+    word-break: break-all;
+    position: relative;
+    left: 20px;
+/* ここ折りたたまれない、、、 */
+}
+
+.voices-contents-txt{
+    margin: 0;
+    padding: 0;
+}
+
+.voices-contents-stars-title{
+    width: 100px;
+    height: 20px;
+}
+.voices-img{
+    width: 150px;
+    height: 150px;
+    z-index: 20;
+}
+
+.star{
+    margin: 0;
+    padding: 0;
+    position:relative;
+    top: -35px;
+    left: 100px;
+}
+
 
 /* ここからcreator */
 .creator{
     width: 1440px;
-    height: 700px;
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .creator-title{
@@ -253,78 +384,91 @@ body{
 
 .creator-title-jpn{
     position: relative;
+    top: -2px;
     text-align: center;
     font-size: 15px;
     font-style: normal;
     color: #0071bc;
+}
+
+.creator-title-border{
+    height: 3px;
+    width: 160px;
+    background-color: #e3cf32;
+    position: relative;
+    top: -20px;
+    left: 640px;
+
 }
 
 .creator-content{
     width: 1440px;
-    height:600px ;
+    height:300px ;
     background: #0071bc;
 }
 
-/* ここからnews */
-.news{
-    width: 1440px;
-    height: 700px;
-    margin-top: 0;
+.creator-img-container{
+    display: flex;
+position: relative;
+left:80px ;
+top: 50px;
+
+
 }
 
-.news-title{
-    position: relative;
-    top: 150px;
-    text-align:center;
-    font-size: 40px;
-    font-style: bold;
-    color: #0071bc;
+.creator-img{
+    width:100px ;
+    height: 150px;
+    margin-right: 80px;
+    margin-left: 80px;
+    z-index: 10;
 }
 
-.news-title-jpn{
-    position: relative;
-    top: 120px;
-    text-align: center;
-    font-size: 15px;
-    font-style: normal;
-    color: #0071bc;
+.creator-img-under1{
+    width: 100px;
+    height:150px ;
+    position: absolute;
+    top: 20px;
+    left: 70px;
+    background-color:#e3cf32 ;
 }
 
-.news-more{
-/* 位置が中央にならない */
-    color: #0071bc;
-    border-color: #0071bc;
-    background-color: transparent;
-    width: 220px;
-    height: 50px;
-    border-radius: 100px;
-    display:inline-block;
+.creator-img-under2{
+    width: 100px;
+    height:150px ;
+    position: absolute;
+    top: 20px;
+    left: 330px;
+    background-color:#e3cf32 ;
 }
 
-/* ここからcompany */
-.company{
-    width: 1440px;
-    height: 700px;
-    margin-top: 0;
+.creator-img-under3{
+    width: 100px;
+    height:150px ;
+    position: absolute;
+    top: 20px;
+    left: 590px;
+    background-color:#e3cf32 ;
 }
 
-.company-title{
-    position: relative;
-    left: 120px;
-    font-size: 40px;
-    font-style: bold;
-    color: #0071bc;
-    margin-bottom:0;
+.creator-img-under4{
+    width: 100px;
+    height:150px ;
+    position: absolute;
+    top: 20px;
+    left: 850px;
+    background-color:#e3cf32 ;
 }
 
-.company-title-jpn{
-    position: relative;
-    left: 120px;
-    font-size: 15px;
-    font-style: normal;
-    color: #0071bc;
-    margin-top: 8px;
+.creator-img-under5{
+    width: 100px;
+    height:150px ;
+    position: absolute;
+    top: 20px;
+    left: 1110px;
+    background-color:#e3cf32 ;
 }
+
 
 
 ul{
@@ -338,27 +482,13 @@ ul{
     list-style-type: square;
 
 }
-
-.company-info-title-1,.company-info-content-1,.company-info-title-2,.company-info-content-2{
-    height: 200px;
-    margin: 0;
-}
-.company-info-name,.company-info-representative,.company-info-capital,.company-info-establish,.company-info-location,.company-info-pn,.company-info-fax,.company-info-personnel,.company-info-context{
-    font-weight: bold;
-}
-
-.company-info-content-1,.company-info-content-2{
-    list-style-type: none;
-}
-
-.company-info-title-1{
-    position:relative;
-    top: 0;
-}
-
 /* ここからcontact */
+
+.contact{
+    margin-top: -30px;
+}
 .contact-title-background{
-    background-color: rgb(183, 219, 237);
+    background-color: rgb(196, 222, 236);
     height: 150px;
     width: 1440px;
 }
@@ -370,6 +500,7 @@ ul{
     text-align: center;
     position: relative;
     top: 20px;
+    letter-spacing: 3px;
 }
 
 .contact-title-jpn{
@@ -388,26 +519,40 @@ footer{
 
 .footer-content{
     display: flex;
+    /* justify-content: space-between; */
     position: relative;
     left: 200px;
-    top: 20px;
+    top: 60px;
+    font-weight: bold;
 }
 .footer-img{
-    margin-right: 100px;
+    width: 250px;
+    height: 100px;
+    margin-right: 30px;
+}
+.footer-contact-img{
+    width: 200px;
+    height: 100px;
+    margin-right: 30px;
 }
 
 .footer-row-1,.footer-row-2,.footer-row-3{
-    margin-right: 100px;
+    margin-right: 60px;
 }
 
 .footer-authority{
     display: flex;
     position: relative;
     left: 620px;
+    top: 150px;
     color: gray;
 }
 
 .footer-copyright{
     color: #0071bc;
+    letter-spacing: 2px;
     text-align: center;
+    position: relative;
+    top: 180px;
+    padding-bottom: 50px;
 }
