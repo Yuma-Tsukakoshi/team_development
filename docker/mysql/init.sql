@@ -175,10 +175,10 @@ CREATE TABLE user_register_client(
 
 insert into user_register_client(id, user_id, client_id) values
 (1,1,1),
-(2,1,5),
+(2,1,3),
 (3,2,2),
 (4,3,4),
-(5,3,5),
+(5,3,2),
 (6,3,6),
 (7,4,3),
 (8,5,2),
@@ -191,10 +191,10 @@ insert into user_register_client(id, user_id, client_id) values
 (15,10,6),
 (16,11,3),
 (17,12,2),
-(18,14,7),
+(18,14,6),
 (19,15,3),
 (20,15,4),
-(21,15,5);
+(21,15,3);
 
 DROP TABLE IF EXISTS boozer_register_client;
 CREATE TABLE boozer_register_client(
