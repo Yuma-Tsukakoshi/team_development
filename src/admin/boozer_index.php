@@ -11,7 +11,6 @@ $exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDA
 
 $sql4 = "SELECT relation.client_id,COUNT(relation.client_id) AS sum FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id GROUP BY relation.client_id ORDER BY relation.client_id ASC";
 $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
-print_r($agent_count);
 
 // if (!isset($_SESSION['id'])) {
 //     header('Location: http://localhost:8080/admin/boozer_auth/boozer_signup.php');
