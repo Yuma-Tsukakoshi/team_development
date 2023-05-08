@@ -47,7 +47,7 @@ CREATE TABLE users (
   prefecture VARCHAR(255) NOT NULL,
   mail VARCHAR(255) NOT NULL,
   phone VARCHAR(255) NOT NULL,
-  valid int NOT NULL default false,
+  valid int NOT NULL default 0,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) CHARSET=utf8;
@@ -169,7 +169,8 @@ DROP TABLE IF EXISTS user_register_client;
 CREATE TABLE user_register_client(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
-  client_id VARCHAR(255) NOT NULL
+  client_id VARCHAR(255) NOT NULL,
+  valid int NOT NULL default false,
 );
 
 insert into user_register_client(id, user_id, client_id) values
