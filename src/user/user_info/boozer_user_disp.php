@@ -16,6 +16,7 @@ $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->bindValue(":client_id", $_SESSION["id"]);
 $stmt2->execute();
 $valid = $stmt2->fetch();
+// 後で消す
 print_r($valid[0]);
 ?>
 
