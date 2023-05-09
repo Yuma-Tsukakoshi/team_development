@@ -1,16 +1,18 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
+require_once(dirname(__FILE__) . '/../admin/invalid_count.php');
+
 $pdo = Database::get();
 $sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
-$stmt->bindValue(":id", $_SERVER["id"]);
+$stmt->bindValue(":id", $_SESSION["id"]);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// if (isset($_SESSION['sort'])) {
-//   $users = $_SESSION['sort'];
-// }
+if (isset($_SESSION['agent_sort'])) {
+  $users = $_SESSION['agent_sort'];
+}
 
 $name = $_SESSION['name'];
 
@@ -29,18 +31,34 @@ $name = $_SESSION['name'];
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/student_filter.js" defer></script>
-  <script src="../user/assets/js/student_sort.js" defer></script>
+  <script src="../user/assets/js/agent_student_sort.js" defer></script>
   <title>boozer学生一覧</title>
 </head>
 
 <body>
   <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
-
+    <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-slate-500 md:block">
+      <div class="py-4 text-gray-500">
+        <a class="ml-6 text-lg font-bold text-gray-800 " href="#">
+          SideBanner
+        </a>
+        <ul class="mt-6">
+          <li class="relative px-6 py-3">
+            <div class="notifier new">
+              <div class="badge num"><?= $count[0]['COUNT(*)'] ?></div>
+            </div>
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/invalid_student.php">
+              <span class="ml-4">無効申請一覧</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">ようこそ！<?=$name?>様</h2>
+          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">ようこそ！<?= $name ?>様</h2>
 
           <div class="flex justify-end  w-full">
             <div class="mb-4">
@@ -108,7 +126,7 @@ $name = $_SESSION['name'];
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
+                            <a href="http://localhost:8080/user/user_info/boozer_user_disp.php?id=<?= $user["id"] ?>">詳細</a>
                           </button>
                         </div>
                       </td>

@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users WHERE (valid = 1 OR valid =2 ) AND id = :id ";
+$sql = "SELECT * FROM users WHERE id = :id ";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
@@ -40,21 +40,6 @@ $agents = $stmt2->fetchAll();
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_index.php">
-              <span class="ml-4">企業一覧</span>
-            </a>
-          </li>
-          <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
-              <span class="ml-4">企業新規登録</span>
-            </a>
-          </li>
-          <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_student.php">
-              <span class="ml-4">学生一覧</span>
-            </a>
-          </li>
-          <li class="relative px-6 py-3">
             <div class="notifier new">
               <div class="badge num"><?= $count[0]['COUNT(*)'] ?></div>
             </div>
@@ -69,10 +54,6 @@ $agents = $stmt2->fetchAll();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <div class="flex justify-center ">
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
-        </div>
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
@@ -116,22 +97,6 @@ $agents = $stmt2->fetchAll();
                 </th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-gray-200">
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    無効申請理由
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <!-- <?= $user["invalid_reason"] ?> -->
-                    <!-- 無効申請テーブル作る 申請フォームから反映-->
-                    メールと電話のどちらも連絡がつかない
-                  </div>
-                </td>
-              </tr>
-            </tbody>
           </table>
         </div>
         <div class="flex justify-center">
