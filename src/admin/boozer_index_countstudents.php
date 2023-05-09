@@ -20,56 +20,52 @@
   <h1>各企業にメールが送信されました。</h1>
 
   <?php
+// データベースに接続する
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-require_once(dirname(__FILE__) . '/invalid_count.php');
-
-
-// データベースから担当者情報を取得する
 $pdo = Database::get();
-$managers = $pdo->query("SELECT * FROM managers")->fetchAll(PDO::FETCH_ASSOC);
 
-// 企業別に当月のuser申し込み数をカウントする
-$sql = "SELECT c.agent_name, COUNT(c.client_id) AS count u.created_at
-        FROM clients c
-        LEFT JOIN user_register_client urc ON c.client_id = urc.client_id
-        LEFT JOIN users u ON urc.user_id = u.id
-        -- HAVING u.created_at LIKE '$current_month%'
-        GROUP BY c.client_id";
-$counts = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+// 現在の月を取得する
+$current_month = date('n');
 
-$sql = "SELECT c.agent_name, u.created_at
-        FROM clients c
-        LEFT JOIN user_register_client urc ON c.client_id = urc.client_id
-        LEFT JOIN users u ON urc.user_id = u.id
-        DATE_FORMAT(u.created_at,'%Y%m') = DATEFORMAT(NOW(),'%Y%m')
-        ";
+// managersテーブルのクエリを実行して結果を取得する
+$sql1 = "SELECT mail FROM managers";
+$stmt1 = $pdo->prepare($sql1);
+$stmt1->execute();
+$result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
+// user_register_clientテーブルのクエリを実行して結果を取得する
+$sql2 = "SELECT managers.mail, COUNT(user_register_client.user_id) AS count
+        FROM managers
+        JOIN user_register_client ON managers.client_id = user_register_client.client_id
+        JOIN users ON user_register_client.user_id = users.id
+        WHERE MONTH(users.updated_at) = $current_month
+        GROUP BY managers.mail";
+$stmt2 = $pdo->prepare($sql2);
+$stmt2->execute();
+$result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
+// メール送信処理
+if (!empty($result1) && !empty($result2)) {
+  // メール送信の設定
+  $subject = '【今月の申し込み人数】';
+  $message = "お世話になっております。\n\n";
+  $message .= "以下の企業の当月の申し込み数をお知らせいたします。\n\n";
+  foreach ($result2 as $data) {
+    $message .= $data['mail'] . '月の申込人数は' . $data['count'] . '人です' . "\n";
+  }
+  $message .= "\n以上です。よろしくお願いいたします。\n";
+  $headers = 'From: admin@mail' . "\r\n" .
+              'Reply-To: admin@mail' . "\r\n" .
+              'X-Mailer: PHP/' . phpversion();
 
-// headers関数を定義
-$headers = 'From: sender@example.com' . "\r\n" .
-            'Reply-To: sender@example.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
-// 各担当者にメールを送信する
-foreach ($managers as $manager) {
-    $to = $manager['mail'];
-    $subject = "【今月の申し込み人数】";
-    $message = "お世話になっております。\n\n";
-    $message .= "以下の企業の当月の申し込み数をお知らせいたします。\n\n";
-
-    // 担当者に対応する企業の申し込み数をメッセージに追加する
-    foreach ($counts as $count) {
-        if ($count['agent_name'] == $manager['manager']) {
-            $message .= "{$count['agent_name']}: {$count['count']}人です。\n";
-        }
-    }
-    $message .= "\n以上です。よろしくお願いいたします。\n";
-    // メールを送信する
-    if (!mail($to, $subject, $message, $headers)) {
-        echo "メールの送信に失敗しました。\n";
-    }
+  // メールを送信する
+  foreach ($result1 as $data) {
+    $to = $data['mail'];
+    $subject_with_date = str_replace('◻︎', $current_month, $subject);
+    mail($to, $subject_with_date, $message, $headers);
+  }
 }
 
+// データベースから切断する
+$pdo = null;
 ?>
-
