@@ -97,6 +97,9 @@ $name = $_SESSION['name'];
                   <?php foreach ($users as $key => $user) { ?>
                     <tr class="text-gray-700">
                       <td class="px-4 py-3">
+                        <p class="font-semibold items-center text-sm"><?= $user["user_id"] ?></p>
+                      </td>
+                      <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
                       </td>
                       <td class="px-4 py-3">
@@ -125,8 +128,8 @@ $name = $_SESSION['name'];
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/boozer_user_disp.php?id=<?= $user["id"] ?>">詳細</a>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?>>
+                            <a href="http://localhost:8080/user/user_info/boozer_user_disp.php?id=<?= $user["user_id"] ?>">詳細</a>
                           </button>
                         </div>
                       </td>
