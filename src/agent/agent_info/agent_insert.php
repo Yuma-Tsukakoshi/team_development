@@ -76,16 +76,6 @@ require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
                   <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="text-ms font-medium text-gray-900">
-                        メールアドレス
-                      </div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                    <input type="mail" name="login_mail" required class="required" placeholder="メールアドレスを入力">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-ms font-medium text-gray-900">
                         パスワード
                       </div>
                     </td>

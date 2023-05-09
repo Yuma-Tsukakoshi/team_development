@@ -5,13 +5,13 @@ session_start();
 $pdo=Database::get();
 try {
   $pdo->beginTransaction();
-  $stmt = $pdo->prepare('SELECT MAX(id)+1 FROM clients');
+  $stmt = $pdo->prepare('SELECT MAX(client_id)+1 FROM clients');
   $stmt->execute();
   $id=$stmt->fetch(PDO::FETCH_ASSOC);
   
   $stmt = $pdo->prepare("INSERT INTO clients(client_id,agent_name,service_name,catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at,ended_at,logo_img) VALUES(:client_id,:agent_name,:service_name,:catchphrase,:recommend_point1,:recommend_point2,:recommend_point3,:started_at,:ended_at,:logo_img)");
   $stmt->execute([
-    "client_id" => $id["MAX(id)+1"],
+    "client_id" => $id["MAX(client_id)+1"],
     "agent_name" => $_POST["agent_name"],
     "service_name" => $_POST["service_name"],
     "catchphrase" => $_POST["catchphrase"],
