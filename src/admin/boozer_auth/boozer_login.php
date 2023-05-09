@@ -34,7 +34,6 @@
                 </div>
                 <button type="submit" class="login_button">ログイン</button>
                 <!-- <a href="#">パスワードをお忘れの方</a> -->
-                <a href="#">新規お申し込み</a>
             </form>
         </div>
     </div>
