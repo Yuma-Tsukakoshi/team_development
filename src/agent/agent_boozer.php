@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-
 $pdo = Database::get();
 $sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
