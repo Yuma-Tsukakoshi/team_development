@@ -56,7 +56,7 @@ if (!empty($result1) && !empty($result2)) {
   foreach ($result1 as $data1) {
     $mail = $data1['mail'];
     $message = "お世話になっております。\n\n";
-    $message .= $mail . "月の申込人数は" . "\n";
+    $message .=   "今月の申込人数は" . "\n";
     foreach ($result2 as $data2) {
       if ($mail === $data2['mail']) {
         $message .=  $data2['count'] . "人" . "\n";
