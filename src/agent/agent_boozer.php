@@ -4,13 +4,16 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 $pdo = Database::get();
 $sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
-$stmt ->bindValue(":id", $_SERVER["id"]);
+$stmt->bindValue(":id", $_SERVER["id"]);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // if (isset($_SESSION['sort'])) {
 //   $users = $_SESSION['sort'];
 // }
+
+$name = $_SESSION['name'];
+
 ?>
 
 <!DOCTYPE html>
@@ -32,12 +35,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
   <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
-    <!-- side banner -->
 
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
+          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">ようこそ！<?=$name?>様</h2>
 
           <div class="flex justify-end  w-full">
             <div class="mb-4">
