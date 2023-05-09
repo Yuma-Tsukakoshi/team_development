@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS shukatsu;
 CREATE DATABASE shukatsu;
 USE shukatsu;
@@ -183,7 +184,7 @@ insert into user_register_client(id, user_id, client_id) values
 (9,6,1),
 (10,6,4),
 (11,7,1),
-(12,9,1),
+(12,8,1),
 (13,9,2),
 (14,9,3),
 (15,10,6),
@@ -204,4 +205,23 @@ CREATE TABLE boozer_register_client(
 
 insert into boozer_register_client(id, name, password, mail) values
 (1,"管理者太郎","password","kakaka@gmail.com");
+
+DROP TABLE IF EXISTS invalid_reason;
+CREATE TABLE invalid_reason(
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  client_id VARCHAR(255) NOT NULL
+  reason VARCHAR(255) NOT NULL
+);
+
+insert into invalid_reason(id, user_id, client_id, reason) values
+(1,6,1,"メールで連絡つかない"),
+(2,6,4,"電話で連絡つかない"),
+(3,7,1,"電話で連絡つかない"),
+(4,8,1,"所属大学が不明で連絡つかない"),
+(5,9,2,"メールで連絡つかない"),
+(6,9,3,"メールで連絡つかない"),
+(7,10,6,"電話で連絡つかない"),
+(8,11,3,"メールで連絡つかない"),
+(9,12,2,"連絡がつかない");
 
