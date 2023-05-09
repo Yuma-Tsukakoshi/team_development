@@ -169,31 +169,32 @@ DROP TABLE IF EXISTS user_register_client;
 CREATE TABLE user_register_client(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
-  client_id VARCHAR(255) NOT NULL
+  client_id VARCHAR(255) NOT NULL,
+  valid int NOT NULL default false
 );
 
-insert into user_register_client(id, user_id, client_id) values
-(1,1,1),
-(2,1,3),
-(3,2,2),
-(4,3,4),
-(5,3,2),
-(6,3,6),
-(7,4,3),
-(8,5,2),
-(9,6,1),
-(10,6,4),
-(11,7,1),
-(12,8,1),
-(13,9,2),
-(14,9,3),
-(15,10,6),
-(16,11,3),
-(17,12,2),
-(18,14,6),
-(19,15,3),
-(20,15,4),
-(21,15,3);
+insert into user_register_client(id, user_id, client_id,valid) values
+(1,1,1,0),
+(2,1,3,0),
+(3,2,2,0),
+(4,3,4,0),
+(5,3,2,0),
+(6,3,6,0),
+(7,4,3,0),
+(8,5,2,0),
+(9,6,1,1),
+(10,6,4,2),
+(11,7,1,1),
+(12,8,1,2),
+(13,9,2,2),
+(14,9,3,1),
+(15,10,6,1),
+(16,11,3,2),
+(17,12,2,2),
+(18,14,6,0),
+(19,15,3,0),
+(20,15,4,0),
+(21,15,3,0);
 
 DROP TABLE IF EXISTS boozer_register_client;
 CREATE TABLE boozer_register_client(
