@@ -3,7 +3,11 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id ORDER BY updated_at DESC";
+$stmt = $pdo->prepare($sql);
+$stmt ->bindValue(":id", $_SERVER["id"]);
+$stmt->execute();
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // if (isset($_SESSION['sort'])) {
 //   $users = $_SESSION['sort'];
