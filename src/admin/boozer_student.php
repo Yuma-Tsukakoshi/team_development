@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users WHERE valid=0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
@@ -128,7 +128,6 @@ if (isset($_SESSION['sort'])) {
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
                           <?= $user["valid"] ? "申請あり" : "申請なし" ?>
                         </span>
                       </td>
