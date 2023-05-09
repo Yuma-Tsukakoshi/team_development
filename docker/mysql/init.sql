@@ -211,7 +211,7 @@ DROP TABLE IF EXISTS invalid_reason;
 CREATE TABLE invalid_reason(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
-  client_id VARCHAR(255) NOT NULL
+  client_id INT NOT NULL,
   reason VARCHAR(255) NOT NULL
 );
 
