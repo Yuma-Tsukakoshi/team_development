@@ -48,23 +48,26 @@ $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 if (!empty($result1) && !empty($result2)) {
   // メール送信の設定
   $subject = '【今月の申し込み人数】';
-  $message = "お世話になっております。\n\n";
-  $message .= "以下の企業の当月の申し込み数をお知らせいたします。\n\n";
-  foreach ($result2 as $data) {
-    $message .= $data['mail'] . '月の申込人数は' . $data['count'] . '人です' . "\n";
-  }
-  $message .= "\n以上です。よろしくお願いいたします。\n";
   $headers = 'From: admin@mail' . "\r\n" .
-              'Reply-To: admin@mail' . "\r\n" .
-              'X-Mailer: PHP/' . phpversion();
+            'Reply-To: admin@mail' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
 
-  // メールを送信する
-  foreach ($result1 as $data) {
-    $to = $data['mail'];
+  // 各企業ごとにメールを送信する
+  foreach ($result1 as $data1) {
+    $mail = $data1['mail'];
+    $message = "お世話になっております。\n\n";
+    $message .= $mail . "月の申込人数は" . "\n";
+    foreach ($result2 as $data2) {
+      if ($mail === $data2['mail']) {
+        $message .=  $data2['count'] . "人" . "\n";
+      }
+    }
+    $message .= "です。\n以上です。よろしくお願いいたします。\n";
     $subject_with_date = str_replace('◻︎', $current_month, $subject);
-    mail($to, $subject_with_date, $message, $headers);
+    mail($mail, $subject_with_date, $message, $headers);
   }
 }
+
 
 // データベースから切断する
 $pdo = null;
