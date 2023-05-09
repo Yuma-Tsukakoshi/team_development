@@ -72,38 +72,4 @@ try {
   $pdo->rollBack();
   exit($e->getMessage());
 }
-
-// 送信元のメールアドレス
-$from = "craft@mail.com";
-
-// 追加ヘッダー情報
-$headers = "From:" . $from;
-
-// 宛先と件名、メッセージをそれぞれ設定してメール送信関数を呼び出す
-function send_email($to, $subject, $message, $headers) {
-  if (mail($to, $subject, $message, $headers)) {
-  } else {
-    echo "メールの送信に失敗しました。\n";
-    echo "エラー情報: " . error_get_last()['message'];
-  }
-}
-
-// admin@mail.comへのメール
-$to_admin = "admin@mail.com";
-$subject_admin = "新規企業登録のお知らせ";
-$message_admin = "新規企業が登録されました\n\n";
-send_email($to_admin, $subject_admin, $message_admin, $headers);
-
-// $POST_["email"]へのメール
-$to_client = $_POST["email"];
-$subject_client = "【株式会社boozer】企業新規登録のお知らせ";
-$message_client = "お申し込みありがとうございます。\n";
-$message_client .= "株式会社boozerでございます。\n\n";
-$message_client .= "CRAFTを通して貴社の就活エージェントにお申込みいただいたことを通知いたします。\n\n";
-$message_client .= "ご不明点あればcraft@mail.comまでご連絡ください。。\n\n";
-$message_client .= "なお、営業時間は平日9時〜18時となっております。\n";
-$message_client .= "時間外のお問い合わせは翌営業日にご連絡差し上げます。\n\n";
-$message_client .= "ご理解・ご了承の程よろしくお願い致します。";
-
-send_email($to_client, $subject_client, $message_client, $headers);
 ?>
