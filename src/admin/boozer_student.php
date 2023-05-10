@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
@@ -98,7 +98,6 @@ if (isset($_SESSION['sort'])) {
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
                     <th class="px-4 py-3">卒業年</th>
-                    <!-- <th class="px-4 py-3">無効申請</th> -->
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>

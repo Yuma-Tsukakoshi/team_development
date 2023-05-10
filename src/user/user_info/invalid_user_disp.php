@@ -10,15 +10,16 @@ $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
 $user = $stmt->fetch();
 
-$sql2 = "SELECT clients.service_name FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id ";
+$sql2 = "SELECT clients.service_name, valid FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->execute();
 $agents = $stmt2->fetchAll();
 
-$sql3 = "SELECT clients.service_name FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id INNER JOIN invalid_reason  AS reason ON reason.client_id = relation.client_id WHERE relation.user_id = :id AND (valid=1 OR valid=2)";
+$sql3 = "SELECT sub.service_name, reason.reason ,reason.user_id FROM invalid_reason as reason  RIGHT JOIN (SELECT clients.service_name , clients.client_id , relation.user_id FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE relation.user_id = :id ) AS sub ON sub.client_id = reason.client_id WHERE reason.user_id = :uid";
 $stmt3 = $pdo->prepare($sql3);
 $stmt3->bindValue(":id", $_REQUEST["id"]);
+$stmt3->bindValue(":uid", $_REQUEST["id"]);
 $stmt3->execute();
 $invalid_agents = $stmt3->fetchAll();
 ?>
@@ -75,10 +76,10 @@ $invalid_agents = $stmt3->fetchAll();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <div class="flex justify-center ">
+        <!-- <div class="flex justify-center ">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
-        </div>
+        </div> -->
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
@@ -105,7 +106,11 @@ $invalid_agents = $stmt3->fetchAll();
                       if ($agent["valid"] == 0) {
                         print_r("申請なし");
                       } elseif ($agent["valid"] == 1) {
-                        print_r("申請中");
+                        echo '<div class="flex  justify-between">
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
+        </div>';
                       } else {
                         print_r("申請承認");
                       }
@@ -139,7 +144,7 @@ $invalid_agents = $stmt3->fetchAll();
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <?= $agent["invalid_reason"] ?>
+                      <?= $agent["reason"] ?>
                     </div>
                   </td>
                 </tr>
