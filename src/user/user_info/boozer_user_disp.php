@@ -32,7 +32,7 @@ $valid = $stmt2->fetch();
 </head>
 
 <body>
-  <!-- modal処理 -->
+  <!-- modalの処理 -->
   <div>
     <form action="">
       <input type="text">
