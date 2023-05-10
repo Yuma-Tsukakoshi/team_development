@@ -4,9 +4,8 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users WHERE valid = 1 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE valid = 1 OR valid = 2 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
-// これが原因で$usersがvalid=1で取得できない⇒sessionに問題あり
 if (isset($_SESSION['invalid'])) {
   $users = $_SESSION['invalid'];
 }
@@ -99,8 +98,8 @@ if (isset($_SESSION['invalid'])) {
                     <th class="px-4 py-3">フリガナ</th>
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
-                    <!-- <th class="px-4 py-3">卒業年</th> -->
-                    <th class="px-4 py-3">無効申請</th>
+                    <th class="px-4 py-3">卒業年</th>
+                    <!-- <th class="px-4 py-3">無効申請</th> -->
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>
@@ -125,14 +124,20 @@ if (isset($_SESSION['invalid'])) {
                       <td class="px-4 py-3 text-sm">
                         <?= $user["faculty"] ?>
                       </td>
-                      <!-- <td class="px-4 py-3 text-sm">
+                      <td class="px-4 py-3 text-sm">
                         <?= $user["grad_year"] ?>
-                      </td> -->
-                      <td class="px-4 py-3 text-xs">
+                      </td>
+                      <!-- <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
-                          承認済
-                        </span>
+                          <?php
+                          if ($user["valid"] == 1) {
+                            print_r("申請中");
+                          } elseif ($user["valid"] == 2) {
+                            print_r("申請承認");
+                          } 
+                          ?>
+                      </td> -->
+                      </span>
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">

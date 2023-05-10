@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users WHERE (valid = 1 OR valid =2 ) AND id = :id ";
+$sql = "SELECT * FROM users WHERE id = :id ";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
@@ -15,6 +15,12 @@ $stmt2 = $pdo->prepare($sql2);
 $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->execute();
 $agents = $stmt2->fetchAll();
+
+$sql3 = "SELECT clients.service_name FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id INNER JOIN invalid_reason  AS reason ON reason.client_id = relation.client_id WHERE relation.user_id = :id AND (valid=1 OR valid=2)";
+$stmt3 = $pdo->prepare($sql3);
+$stmt3->bindValue(":id", $_REQUEST["id"]);
+$stmt3->execute();
+$invalid_agents = $stmt3->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +87,7 @@ $agents = $stmt2->fetchAll();
                   申請企業一覧
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  データ
+                  無効申請判定
                 </th>
               </tr>
             </thead>
@@ -90,12 +96,20 @@ $agents = $stmt2->fetchAll();
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      企業名
+                      <?= $agent["service_name"] ?>
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <?= $agent["service_name"] ?>
+                      <?php
+                      if ($agent["valid"] == 0) {
+                        print_r("申請なし");
+                      } elseif ($agent["valid"] == 1) {
+                        print_r("申請中");
+                      } else {
+                        print_r("申請承認");
+                      }
+                      ?>
                     </div>
                   </td>
                 </tr>
@@ -108,31 +122,28 @@ $agents = $stmt2->fetchAll();
             <thead class="bg-blue-500 text-white">
               <tr>
                 <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                  無効申請判定
+                  無効申請企業一覧
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  <?= $user["valid"] ? "申請あり" : "申請なし" ?>
-                  <!-- 企業名 - 申請 -->
-                  <!-- ゆくゆくは申請中とか承認とか分ける⇒承認済み、承認拒否とかのステータス更新-->
+                  無効申請理由
                 </th>
-
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    無効申請理由
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <!-- <?= $user["invalid_reason"] ?> -->
-                    <!-- 無効申請テーブル作る 申請フォームから反映-->
-                    メールと電話のどちらも連絡がつかない
-                  </div>
-                </td>
-              </tr>
+              <?php foreach ($invalid_agents as $agent) { ?>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $agent["service_name"] ?>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $agent["invalid_reason"] ?>
+                    </div>
+                  </td>
+                </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>

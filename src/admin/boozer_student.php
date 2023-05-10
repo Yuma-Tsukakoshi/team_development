@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
@@ -98,7 +98,7 @@ if (isset($_SESSION['sort'])) {
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
                     <th class="px-4 py-3">卒業年</th>
-                    <th class="px-4 py-3">無効申請</th>
+                    <!-- <th class="px-4 py-3">無効申請</th> -->
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>
@@ -125,12 +125,6 @@ if (isset($_SESSION['sort'])) {
                       </td>
                       <td class="px-4 py-3 text-sm">
                         <?= $user["grad_year"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-xs">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
-                          申請なし
-                        </span>
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
