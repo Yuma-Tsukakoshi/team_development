@@ -11,6 +11,7 @@ if (isset($_SESSION['sort'])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -29,7 +30,7 @@ if (isset($_SESSION['sort'])) {
 </head>
 
 <body>
-  <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
+<div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
     <!-- side banner -->
     <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-slate-500 md:block">
       <div class="py-4 text-gray-500">
@@ -104,7 +105,7 @@ if (isset($_SESSION['sort'])) {
                 <tbody class="bg-white divide-y" id="student">
                 <?php foreach ($users as $key => $user) {
                       if (isset($user['id'])) { ?>
-                    <tr class="text-gray-700" >
+                    <tr class="text-gray-700" ><?php if (isset($user['deleted'])) echo 'data-deleted'; ?>
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
                       </td>
@@ -187,7 +188,7 @@ function hideUser(button) {
   if (confirm('本当に削除しますか？')) {
     tr.addClass('hidden');
     $.ajax({
-      url: 'hide_user.php',
+      url: 'http://localhost:8080/admin/delete.php',
       type: 'POST',
       data: { id: id },
       success: function(data) {
