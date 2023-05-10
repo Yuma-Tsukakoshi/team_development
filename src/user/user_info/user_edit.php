@@ -22,6 +22,7 @@ $user = $stmt->fetch();
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../assets/styles/badge.css">
   <title>学生情報編集</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -230,6 +231,11 @@ $user = $stmt->fetch();
           <div class="btn_wrapper">
             <button type="submit" class="btn submit update_btn">更新</button>
           </div>
+          <div class="btn_wrapper">
+<!-- 削除ボタン -->
+          <div class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button type="button" id="delete_btn">非表示にする</button>
+          </div>
       </main>
     </div>
   </div>
@@ -243,6 +249,9 @@ $user = $stmt->fetch();
         submitButton.disabled = !isFilled
       })
     });
+
+
+
   </script>
 </body>
 
