@@ -4,17 +4,15 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/agent_invalid_count.php');
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id ORDER BY updated_at DESC";
+$sql = "SELECT * FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE (valid = 1 OR valid = 2) AND relation.client_id = :id ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_SESSION["id"]);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if (isset($_SESSION['agent_sort'])) {
-  $users = $_SESSION['agent_sort'];
+if (isset($_SESSION['invalid_agent_sort'])) {
+  $users = $_SESSION['invalid_agent_sort'];
 }
-
-$name = $_SESSION['name'];
 
 ?>
 
@@ -31,12 +29,13 @@ $name = $_SESSION['name'];
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/student_filter.js" defer></script>
-  <script src="../user/assets/js/agent_student_sort.js" defer></script>
-  <title>エージェント学生一覧</title>
+  <script src="../user/assets/js/agent_invalid_student_sort.js" defer></script>
+  <title>エージェント無効申請学生一覧</title>
 </head>
 
 <body>
   <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
+    <!-- side banner -->
     <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-slate-500 md:block">
       <div class="py-4 text-gray-500">
         <a class="ml-6 text-lg font-bold text-gray-800 " href="#">
@@ -44,7 +43,7 @@ $name = $_SESSION['name'];
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/agent/agent_boozer.php">
               <span class="ml-4">学生一覧</span>
             </a>
           </li>
@@ -52,18 +51,18 @@ $name = $_SESSION['name'];
             <div class="notifier new">
               <div class="badge num"><?= $count[0] ?></div>
             </div>
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./agent_invalid_student.php">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">無効申請一覧</span>
             </a>
           </li>
         </ul>
       </div>
     </aside>
+
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">ようこそ！<?= $name ?> 様</h2>
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
+          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">無効申請学生一覧</h2>
 
           <div class="flex justify-end  w-full">
             <div class="mb-4">
@@ -101,9 +100,6 @@ $name = $_SESSION['name'];
                 <tbody class="bg-white divide-y" id="student">
                   <?php foreach ($users as $key => $user) { ?>
                     <tr class="text-gray-700">
-                      <!-- <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $user["user_id"] ?></p>
-                      </td> -->
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
                       </td>
@@ -127,22 +123,20 @@ $name = $_SESSION['name'];
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <!-- 色の設定はクラスの付加でjqueryで行う 無効申請-->
                           <?php
-                          if ($user["valid"] == 0) {
-                            print_r("申請なし");
-                          } elseif ($user["valid"] == 1) {
+                          if ($user["valid"] == 1) {
                             print_r("申請中");
-                          } else {
+                          } elseif ($user["valid"] == 2) {
                             print_r("申請承認");
                           }
                           ?>
-                        </span>
+                      </td>
+                      </span>
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/boozer_user_disp.php?id=<?= $user["user_id"] ?>">詳細</a>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
+                            <a href="http://localhost:8080/agent/agent_invalid_student_disp.php?id=<?= $user["id"] ?>">申請理由</a>
                           </button>
                         </div>
                       </td>
