@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
-require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+require_once(dirname(__FILE__) . '/../../agent/agent_invalid_count.php');
 
 $pdo = Database::get();
 $sql = "SELECT * FROM users WHERE id = :id ";
@@ -47,7 +47,7 @@ $valid = $stmt2->fetch();
           </li>
           <li class="relative px-6 py-3">
             <div class="notifier new">
-              <div class="badge num"><?= $count[0]['COUNT(*)'] ?></div>
+              <div class="badge num"><?= $count[0] ?></div>
             </div>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/agent/agent_invalid_student.php">
               <span class="ml-4">無効申請一覧</span>
