@@ -70,7 +70,6 @@ insert into users (id, name, hurigana, sex, birthday, college, faculty, departme
 (15,"佐藤加奈","サトウカナ","女","2002-11-29","帝京平成大学","経営学部","経営学科","文系","2026","愛知県","kana@gmail.com","222-4444-7272","0","2023-04-04 19:47:43");
 
 
-
 DROP TABLE IF EXISTS label_client_relation;
 CREATE TABLE label_client_relation(
   id INT AUTO_INCREMENT PRIMARY KEY,

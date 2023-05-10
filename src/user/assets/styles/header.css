@@ -33,7 +33,7 @@ header{
   position: absolute;
   width: auto;
   height: 30px;
-  top: 40px;
+  top: 20px;
   right: 10px;
 }
 
@@ -48,8 +48,7 @@ header{
   margin: 0 auto;
 }
 
-
-a {
+.nav_list a{
   position: relative; /*アンダーラインの位置を決めるための基準 */
   text-decoration: none;
   color: inherit;
@@ -59,7 +58,7 @@ a {
   
 }
 
-a::after {
+.nav_list a::after {
   position: absolute;
   left: 0;
   content: '';
@@ -72,11 +71,11 @@ a::after {
   transition: transform 0.3s;   /*変形の時間*/
 }
 
-a:hover{
+.nav_list a:hover{
   color: black;
 }
 
-a:hover::after {
+.nav_list a:hover::after {
   transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
 }
 
