@@ -34,6 +34,8 @@ $invalid_agents = $stmt3->fetchAll();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../assets/styles/badge.css">
+  <script src="../assets/js/agent_send_valid.js" defer></script>
+  <script src="../assets/js/agent_send_invalid.js" defer></script>
   <title>無効申請学生情報詳細</title>
 </head>
 
@@ -106,10 +108,11 @@ $invalid_agents = $stmt3->fetchAll();
                       if ($agent["valid"] == 0) {
                         print_r("申請なし");
                       } elseif ($agent["valid"] == 1) {
+                        // それぞれdata-id入れて非同期で処理 承認=data-2 拒否=data-0でこのデータの数字をそのままvalidの更新に用いる 非同期jsファイル＆boozer_update_invalid.phpに記述
                         echo '<div class="flex  justify-between">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <a href="#" id="valid_btn" class="edit_btn" data="2">承認</a></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" id="invalid_btn" class="edit_btn" data="0">拒否</a></p>
         </div>';
                       } else {
                         print_r("申請承認");
