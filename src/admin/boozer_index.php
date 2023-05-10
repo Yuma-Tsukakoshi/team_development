@@ -36,6 +36,8 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <title>boozer企業一覧</title>
 </head>
 
@@ -133,6 +135,9 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
                             <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=1">詳細</a>
                           </button>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)" data-id=<?= $agent["client_id"] ?>>
+                          削除
+                          </button>
                         </div>
                       </td>
                     </tr>
@@ -193,6 +198,9 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
                             <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=0">詳細</a>
                           </button>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                          削除
+                        </button>
                         </div>
                       </td>
                     </tr>
@@ -206,6 +214,26 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 </body>
-</body>
-
+<script>
+function hideUser(button) {
+  const tr = $(button).closest('tr');
+  const id = tr.attr('data-id');
+  
+  if (confirm('本当に削除しますか？')) {
+    tr.addClass('hidden');
+    $.ajax({
+      url: 'hide_user.php',
+      type: 'POST',
+      data: { id: id },
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(xhr) {
+        console.error(xhr);
+      }
+    });
+  }
+}
+</script>
 </html>
+
