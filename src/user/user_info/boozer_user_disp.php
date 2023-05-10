@@ -32,6 +32,15 @@ $valid = $stmt2->fetch();
 </head>
 
 <body>
+  <!-- modalの処理 -->
+  <div>
+    <form action="">
+      <input type="text">
+      <input type="submit" value="送信">
+    </form>
+  </div>
+  
+
   <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
     <!-- side banner -->
     <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-slate-500 md:block">

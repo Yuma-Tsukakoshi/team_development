@@ -10,6 +10,14 @@ $sql_2 = "UPDATE managers SET
 manager=:manager,depart =:depart ,mail=:mail,phone =:phone
 WHERE client_id = :id";
 
+$sql = "INSERT INTO invalid_reason(user_id, client_id, reason) VALUES(:uid, :client_id, :reason)";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(":uid", $_SERVER["id"]);
+$stmt->bindValue(":client_id", $_SESSION["id"]);
+$stmt->bindValue(":reason", $_POST["reason"]);
+$stmt->execute();
+
+
 $params1 = [
   "id" => $_POST["client_id"],
   "agent_name" => $_POST["agent_name"],
