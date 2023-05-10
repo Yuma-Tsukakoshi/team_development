@@ -7,6 +7,14 @@ name=:name,hurigana =:hurigana ,sex =:sex, birthday=:birthday,mail=:mail,phone =
 faculty=:faculty,department =:department ,division =:division,grad_year=:grad_year
 WHERE id = :id";
 
+session_start();
+$sql = "UPDATE user_register_client SET valid = 1 WHERE user_id = :uid AND client_id = :client_id;";
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(":uid", $_SERVER["id"]);
+$stmt->bindValue(":client_id", $_SESSION["id"]);
+
+
+
 $params = [
   "id" => $_POST["id"],
   "name"=>$_POST["name"],
