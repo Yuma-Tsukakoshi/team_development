@@ -13,11 +13,11 @@ body{
     position: relative;
     top: 300px;
     left: 150px;
-    width: 440px;
+    width: 600px;
     border-right:0px;
-    /* ↑これ書いているのに大きすぎてはみ出しているから右に余白できちゃう */
     z-index: 10;
     letter-spacing: 8px;
+    font-size: 40px;
 }
 
 .hero-circle{
@@ -47,7 +47,7 @@ body{
     height:100px ;
     background-color:#0071bc;
     color: white;
-    font-size: 20px;
+    font-size: 23px;
     border-radius:15px;
     border-color: transparent;
     z-index: 50;
@@ -79,11 +79,11 @@ body{
     color: white;
     font-weight: bold;
     letter-spacing: 4px;
-
+    font-size: 40px;
 }
 
 .about-title-jpn{
-    font-size:15px;
+    font-size:20px;
     position: relative;
     top:70px ;
     left:120px ;
@@ -93,7 +93,7 @@ body{
 }
 
 .about-title-border{
-    width: 220px;
+    width: 265px;
     height: 3px;
     background-color: #e3cf32;
     position: relative;
@@ -102,9 +102,9 @@ body{
 }
 
 .about-philosophy{
-    font-size: 15px;
+    font-size: 20px;
     position: relative;
-    top: 150px;
+    top: 100px;
     left: 120px;
     width: 300px;
     color: white;
@@ -112,26 +112,27 @@ body{
 }
 
 .about-txt-motto{
-    width: 500px;
+    width: 700px;
     height:150px;
     font-size:36px;
     position: relative;
-    top:200px ;
+    top:100px ;
     left: 150px;
     color: white;
     font-style: bold;
+    letter-spacing: 10px;
 }
 
 .about-txt-description-title{
-    width:500px;
+    width:700px;
     height:50px;
-    font-size:20px;
+    font-size:50px;
     margin: 0;
     position: relative;
-    top: -100px;
-    left:800px ;
+    top: -300px;
+    left:900px ;
     color: white;
-    font-style: bold;
+    font-weight: bold;
 }
 
 .about-txt-description-title-jpn{
@@ -139,9 +140,9 @@ body{
     height:50px;
     margin: 0;
     position: relative;
-    font-size:20px;
-    top: -99px;
-    left:880px ;
+    font-size:25px;
+    left:870px ;
+    top: 50px;
     color: white;
 }
 
@@ -153,6 +154,12 @@ body{
     top: -90px;
     left: 800px;
     color: white;
+    word-spacing: 120px;
+}
+
+.about-txt-motto-span{
+    font-weight: bold;
+    font-size: 50px;
 }
 
 /* 「始めの一歩」だけ色を変更できない */
@@ -165,11 +172,11 @@ body{
     height:600px;
 }
 .howto-title{
-    width: 300px;
+    width: 500px;
     height:50px ;
     color: #0071bc;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 40px;
     position: relative;
     top:70px ;
     left:150px;
@@ -186,15 +193,16 @@ body{
     text-align: center;
     width: 800px;
     height: 400px;
+    font-size: 20px;
 }
 
 .howto-search-title,.howto-agent-title,.howto-apply-title{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .howto-agent-txt-small{
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 0;
 }
 
@@ -229,7 +237,7 @@ body{
     position: relative;
     top:200px ;
     right:-920px ;
-    font-size: 40px; 
+    font-size: 40px;
     font-weight: bold;
     color: #0071bc;
     letter-spacing: 10px;
@@ -241,13 +249,13 @@ body{
     position:relative;
     top:200px ;
     right: -930px;
-    font-size: 18px;
+    font-size: 20px;
     color: #0071bc;
     letter-spacing: 2px;
 }
 
 .handling-company-border{
-    width: 145px;
+    width: 160px;
     height: 3px;
     background-color:#e3cf32;
     position: relative;
@@ -328,7 +336,7 @@ body{
     height: 160px;
     position: relative;
     z-index: 5;
-    background-color: rgb(244, 247, 204);
+    background-color:#e3cf32;
     position: relative;
     top: -12px;
     left: 5px;
@@ -383,27 +391,27 @@ body{
     position: relative;
     text-align: center;
     margin-bottom: 0;
-    font-size: 30px;
+    font-size: 40px;
     font-style: bold;
     color: #0071bc;
 }
 
 .creator-title-jpn{
     position: relative;
-    top: -2px;
+    top: -10px;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     font-style: normal;
     color: #0071bc;
 }
 
 .creator-title-border{
     height: 3px;
-    width: 160px;
+    width: 210px;
     background-color: #e3cf32;
     position: relative;
-    top: -15px;
-    left: 640px;
+    top: -30px;
+    left: 615px;
 }
 
 .creator-content{
@@ -491,7 +499,7 @@ ul{
     margin-top: -30px;
 }
 .contact-title-background{
-    background-color: rgb(239, 240, 186);
+    background-color:rgb(212, 212, 212);
     height: 150px;
     width: 1440px;
 }
