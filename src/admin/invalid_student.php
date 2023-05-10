@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE valid = 1 OR valid = 2 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT id, updated_at, name, hurigana, college, faculty, grad_year FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE valid = 1 OR valid = 2 GROUP BY id")->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_SESSION['invalid'])) {
   $users = $_SESSION['invalid'];
@@ -126,18 +126,6 @@ if (isset($_SESSION['invalid'])) {
                       </td>
                       <td class="px-4 py-3 text-sm">
                         <?= $user["grad_year"] ?>
-                      </td>
-                      <!-- <td class="px-4 py-3 text-xs">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <?php
-                          if ($user["valid"] == 1) {
-                            print_r("申請中");
-                          } elseif ($user["valid"] == 2) {
-                            print_r("申請承認");
-                          } 
-                          ?>
-                      </td> -->
-                      </span>
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">

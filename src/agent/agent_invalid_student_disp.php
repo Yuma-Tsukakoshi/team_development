@@ -10,17 +10,12 @@ $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
 $user = $stmt->fetch();
 
-$sql2 = "SELECT clients.service_name FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id ";
+$sql2 = "SELECT service_name , reason.reason FROM clients INNER JOIN invalid_reason AS reason ON reason.client_id = clients.client_id WHERE clients.client_id=:id AND reason.user_id=:ui";
 $stmt2 = $pdo->prepare($sql2);
-$stmt2->bindValue(":id", $_REQUEST["id"]);
+$stmt2->bindValue(":ui", $_REQUEST["id"]);
+$stmt2->bindValue(":id", $_SESSION["id"]);
 $stmt2->execute();
-$agents = $stmt2->fetchAll();
-
-$sql3 = "SELECT clients.service_name FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id INNER JOIN invalid_reason  AS reason ON reason.client_id = relation.client_id WHERE relation.user_id = :id AND (valid=1 OR valid=2)";
-$stmt3 = $pdo->prepare($sql3);
-$stmt3->bindValue(":id", $_REQUEST["id"]);
-$stmt3->execute();
-$invalid_agents = $stmt3->fetchAll();
+$invalid_agents = $stmt2->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -65,54 +60,12 @@ $invalid_agents = $stmt3->fetchAll();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <!-- <div class="flex justify-center ">
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
-        </div> -->
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
               <tr>
                 <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                  申請企業一覧
-                </th>
-                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  無効申請判定
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <?php foreach ($agents as $agent) { ?>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?= $agent["service_name"] ?>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?php
-                      if ($agent["valid"] == 0) {
-                        print_r("申請なし");
-                      } elseif ($agent["valid"] == 1) {
-                        print_r("申請中");
-                      } else {
-                        print_r("申請承認");
-                      }
-                      ?>
-                    </div>
-                  </td>
-                </tr>
-              <?php } ?>
-            </tbody>
-          </table>
-        </div>
-        <div class="my-8 flex justify-center">
-          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-            <thead class="bg-blue-500 text-white">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                  無効申請企業一覧
+                  無効申請企業名
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
                   無効申請理由
@@ -120,20 +73,19 @@ $invalid_agents = $stmt3->fetchAll();
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <?php foreach ($invalid_agents as $agent) { ?>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?= $agent["service_name"] ?>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?= $agent["invalid_reason"] ?>
-                    </div>
-                  </td>
-                </tr>
-              <?php } ?>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $invalid_agents["service_name"] ?>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $invalid_agents["reason"] ?>
+                  </div>
+                </td>
+              </tr>
+              <tr>
             </tbody>
           </table>
         </div>
