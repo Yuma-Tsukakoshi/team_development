@@ -118,7 +118,7 @@ $invalid_agents = $stmt3->fetchAll();
         </div>';
                       } elseif($agent["valid"] == 2) {
                         print_r("申請承認");
-                      }elseif($agent["valid"] == 3) {
+                      } elseif ($agent["valid"] == 3) {
                         print_r("申請拒否");
                       }
                       ?>

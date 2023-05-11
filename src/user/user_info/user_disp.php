@@ -114,9 +114,11 @@ $agents = $stmt2->fetchAll();
                       print_r("申請なし");
                     } elseif ($agent["valid"] == 1) {
                       print_r("申請中");
-                    } else {
+                    } elseif ($agent["valid"] == 2) {
                       print_r("申請承認");
-                    }
+                    }elseif($agent["valid"] == 3) {
+                        print_r("申請拒否");
+                      }
                     ?>
                   </div>
                 </th>
