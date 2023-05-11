@@ -21,10 +21,11 @@ body{
 .search-title-jpn{
     position: relative;
     left: 130px;
+    font-size: 20px;
 }
 
 .search-title-border{
-    width: 180px;
+    width: 220px;
     height:3px;
     position: relative;
     left: 110px;
@@ -52,10 +53,10 @@ body{
 }
 
 .m-8{
-    width:200px;
+    width:300px;
     height:500px ;
     border-radius: 20px;
-    background-color: white;
+    background-color:white;
     position: relative;
     top: 10px;
     left: 70px;
@@ -77,14 +78,29 @@ body{
     left: 50px;
 }
 
-.checkbox{
+/* .checkbox{
     text-align: center;
     position: relative;
     top: -15px;
+} */
+
+.check-label{
+    position: relative;
+    left: 20px;
+    top: 30px;
 }
+
+.label-hover{
+    position: relative;
+    left: 20px;
+    top: 30px;
+}
+
 
 .label-hover1{
     font-size: 15px;
+    position: relative;
+
 }
 
 .checkbox-2{
@@ -202,21 +218,24 @@ body{
 /*以下検索結果 */
 .results{
     display: flex;
+    position: relative;
+    top: 40px;
+    left: -150px;
 }
 
 .results-img{
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     position: relative;
     top: 7px;
 }
 
 .results-txt{
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .results-number{
-    font-size: 40px;
+    font-size: 60px;
     color: #0071bc;
 }
 
@@ -225,8 +244,8 @@ body{
 .agent-list{
     position: relative;
     top: 10px;
-    right: 70px;
-    width: 700px;
+    right: 170px;
+    width: 800px;
     height:400px ;
     background-color: white;
     border-radius: 30px;
