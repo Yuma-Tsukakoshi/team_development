@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $('#valid_btn').click(function() {
     var inputVal = $(this).attr('data'); // input要valueを取
+    console.log(inputVal);
     $.ajax({
       url: 'http://localhost:8080/user/user_info/boozer_update_invalid.php', // 送信先のPHPファイルのパス
       type: 'POST',
@@ -16,6 +17,6 @@ $(document).ready(function() {
         console.error(xhr); // エラー内容をコンソールに表示
       }
     });
-    location.reload();
+    // location.reload();
   });
 });
