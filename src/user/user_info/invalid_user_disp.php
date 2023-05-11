@@ -12,7 +12,7 @@ $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
 $user = $stmt->fetch();
 
-$sql2 = "SELECT clients.service_name, valid FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id";
+$sql2 = "SELECT clients.service_name, valid ,relation.client_id FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->execute();
@@ -113,11 +113,13 @@ $invalid_agents = $stmt3->fetchAll();
                       } elseif ($agent["valid"] == 1) {
                         echo '<div class="flex  justify-between">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2">承認</p></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="0">拒否</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2" client=' .(string)$agent["client_id"].'>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="3" client='. (string)$agent["client_id"].'>拒否</p></p>
         </div>';
-                      } else {
+                      } elseif($agent["valid"] == 2) {
                         print_r("申請承認");
+                      }elseif($agent["valid"] == 3) {
+                        print_r("申請拒否");
                       }
                       ?>
                     </div>
