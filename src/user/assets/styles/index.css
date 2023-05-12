@@ -2,6 +2,90 @@ body{
     overflow-x:hidden;
 }
 /* ここからヒーロー */
+/* ここから流れ星 */
+.star-box{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(-75deg);
+    position:absolute;
+    top: 100px;
+}
+
+.star{
+    height: 0;
+    width: 2px;
+    background-color: #e3cf32;
+    animation-name: shooting;
+    animation-duration: 6.0s;
+    animation-timing-function: linear;
+    z-index: 40;
+}
+
+.star-box2{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(45deg);
+    position: absolute;
+    right: 0;
+    top: 30px;
+}
+
+.star-box3{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(225deg);
+    position: absolute;
+    left: 0px;
+}
+
+.star-box4{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(315deg);
+    position: absolute;
+}
+
+.star-box5{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(225deg);
+    position: absolute;
+}
+
+
+.star-box6{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(85deg);
+    position: absolute;
+    left: 1400px;
+}
+
+.star-box7{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(265deg);
+    position: absolute;
+}
+
+
+
+@keyframes shooting {
+    0% {
+        height: 0;
+        opacity: 50%;
+    }
+    50% {
+            height: 500px;
+            opacity: 100%;
+    }
+    100% {
+        height: 700px;
+        opacity: 0;
+    }
+}
+
+
 .hero{
     width:100%;
     height: 700px;
@@ -13,11 +97,11 @@ body{
     position: relative;
     top: 300px;
     left: 150px;
-    width: 440px;
+    width: 600px;
     border-right:0px;
-    /* ↑これ書いているのに大きすぎてはみ出しているから右に余白できちゃう */
     z-index: 10;
     letter-spacing: 8px;
+    font-size: 40px;
 }
 
 .hero-circle{
@@ -47,7 +131,7 @@ body{
     height:100px ;
     background-color:#0071bc;
     color: white;
-    font-size: 20px;
+    font-size: 23px;
     border-radius:15px;
     border-color: transparent;
     z-index: 50;
@@ -79,59 +163,66 @@ body{
     color: white;
     font-weight: bold;
     letter-spacing: 4px;
-
+    font-size: 40px;
+    z-index: 50;
 }
 
 .about-title-jpn{
-    font-size:15px;
+    font-size:20px;
     position: relative;
     top:70px ;
     left:120px ;
     width: 300px;
     color: white;
     letter-spacing: 4px;
+    z-index: 50;
 }
 
 .about-title-border{
-    width: 220px;
+    width: 265px;
     height: 3px;
     background-color: #e3cf32;
     position: relative;
     top: 60px;
     left: 115px;
+    z-index: 50;
 }
 
 .about-philosophy{
-    font-size: 15px;
+    font-size: 20px;
     position: relative;
-    top: 150px;
+    top: 100px;
     left: 120px;
     width: 300px;
     color: white;
     letter-spacing: 2px;
+    z-index: 50;
 }
 
 .about-txt-motto{
-    width: 500px;
+    width: 700px;
     height:150px;
     font-size:36px;
     position: relative;
-    top:200px ;
+    top:100px ;
     left: 150px;
     color: white;
     font-style: bold;
+    letter-spacing: 10px;
+    z-index: 50;
 }
 
 .about-txt-description-title{
-    width:500px;
+    width:700px;
     height:50px;
-    font-size:20px;
+    font-size:50px;
     margin: 0;
     position: relative;
-    top: -100px;
-    left:800px ;
+    top: -300px;
+    left:900px ;
     color: white;
-    font-style: bold;
+    font-weight: bold;
+    z-index: 50;
 }
 
 .about-txt-description-title-jpn{
@@ -139,10 +230,11 @@ body{
     height:50px;
     margin: 0;
     position: relative;
-    font-size:20px;
-    top: -99px;
-    left:880px ;
+    font-size:25px;
+    left:870px ;
+    top: 50px;
     color: white;
+    z-index: 50;
 }
 
 .about-txt-description-description{
@@ -153,6 +245,14 @@ body{
     top: -90px;
     left: 800px;
     color: white;
+    word-spacing: 120px;
+    z-index: 50;
+}
+
+.about-txt-motto-span{
+    font-weight: bold;
+    font-size: 50px;
+    z-index: 50;
 }
 
 /* 「始めの一歩」だけ色を変更できない */
@@ -165,11 +265,11 @@ body{
     height:600px;
 }
 .howto-title{
-    width: 300px;
+    width: 500px;
     height:50px ;
     color: #0071bc;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 40px;
     position: relative;
     top:70px ;
     left:150px;
@@ -186,15 +286,16 @@ body{
     text-align: center;
     width: 800px;
     height: 400px;
+    font-size: 20px;
 }
 
 .howto-search-title,.howto-agent-title,.howto-apply-title{
     font-weight: bold;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .howto-agent-txt-small{
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 0;
 }
 
@@ -203,18 +304,18 @@ body{
 }
 
 .howto-search-img{
-    height: 200px;
-    width: 130px;
+    height: 260px;
+    width: 160px;
 }
 
 .howto-agent-img{
-    height: 200px;
-    width: 210px;
+    height: 260px;
+    width: 300px;
 }
 
 .howto-apply-img{
-    height: 200px;
-    width: 210px;
+    height: 260px;
+    width: 300px;
 }
 
 /* ここからhandling company*/
@@ -229,7 +330,7 @@ body{
     position: relative;
     top:200px ;
     right:-920px ;
-    font-size: 40px; 
+    font-size: 40px;
     font-weight: bold;
     color: #0071bc;
     letter-spacing: 10px;
@@ -241,13 +342,13 @@ body{
     position:relative;
     top:200px ;
     right: -930px;
-    font-size: 18px;
+    font-size: 20px;
     color: #0071bc;
     letter-spacing: 2px;
 }
 
 .handling-company-border{
-    width: 145px;
+    width: 160px;
     height: 3px;
     background-color:#e3cf32;
     position: relative;
@@ -292,12 +393,12 @@ body{
 }
 
 .voices-title-border{
-    width: 170px;
+    width: 160px;
     height:3px ;
     background-color: #e3cf32;
     position: relative;
-    top: 60px;
-    left: 625px;
+    top: 50px;
+    left: 640px;
 }
 
 .voices-contents{
@@ -323,33 +424,39 @@ body{
     /* backgroud-colorを白に変更＆borderプロパティで灰色の枠線 */
 }
 
-.voices-contents-box-outer{
-    width: 350px;
-    height: 170px;
-    border-radius: 30px;
-    border: red;
-    border-width: 10px;
+.voices-contents-box-sub{
+    width:340px ;
+    height: 160px;
     position: relative;
-    top: ;
-    left: ;
-/* これを上のvoices-contents-boxと重ねようとしているのに出てきてくれない、、 */
+    z-index: 5;
+    background-color:#e3cf32;
+    position: relative;
+    top: -12px;
+    left: 5px;
+    margin: 0;
+    border-radius: 25px;
 }
 .voices-contents-txt, .voices-contents-name,.voices-contents-stars-title{
     font-size: 15px;
     word-break: break-all;
     position: relative;
     left: 20px;
-/* ここ折りたたまれない、、、 */
 }
 
 .voices-contents-txt{
     margin: 0;
     padding: 0;
+    width: 320px;
+
 }
 
 .voices-contents-stars-title{
     width: 100px;
     height: 20px;
+    margin-bottom: 0;
+    font-size: 16px;
+    top: 5px;
+    font-weight: bold;
 }
 .voices-img{
     width: 150px;
@@ -357,11 +464,11 @@ body{
     z-index: 20;
 }
 
-.star{
+.stars{
     margin: 0;
     padding: 0;
     position:relative;
-    top: -35px;
+    top: -15px;
     left: 100px;
 }
 
@@ -377,28 +484,27 @@ body{
     position: relative;
     text-align: center;
     margin-bottom: 0;
-    font-size: 30px;
+    font-size: 40px;
     font-style: bold;
     color: #0071bc;
 }
 
 .creator-title-jpn{
     position: relative;
-    top: -2px;
+    top: -10px;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     font-style: normal;
     color: #0071bc;
 }
 
 .creator-title-border{
     height: 3px;
-    width: 160px;
+    width: 210px;
     background-color: #e3cf32;
     position: relative;
-    top: -20px;
-    left: 640px;
-
+    top: -30px;
+    left: 615px;
 }
 
 .creator-content{
@@ -412,8 +518,6 @@ body{
 position: relative;
 left:80px ;
 top: 50px;
-
-
 }
 
 .creator-img{
@@ -421,7 +525,7 @@ top: 50px;
     height: 150px;
     margin-right: 80px;
     margin-left: 80px;
-    z-index: 10;
+    z-index: 100;
 }
 
 .creator-img-under1{
@@ -488,7 +592,7 @@ ul{
     margin-top: -30px;
 }
 .contact-title-background{
-    background-color: rgb(196, 222, 236);
+    background-color:rgb(212, 212, 212);
     height: 150px;
     width: 1440px;
 }
@@ -555,4 +659,17 @@ footer{
     position: relative;
     top: 180px;
     padding-bottom: 50px;
+}
+
+
+/* js用 */
+.title {
+    opacity : 0;
+    transform : translate(0, 100px);
+    transition : all 1s;
+}
+
+.title.active{
+    opacity : 1;
+    transform : translate(0, 0);
 }
