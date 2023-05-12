@@ -141,10 +141,13 @@ body{
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
+    z-index: 100;
     /* border一周白くならない、上半分しか白くならない */
-
 }
 
+.search-btn:hover{
+    cursor: pointer;
+}
 /* ここからAbout */
 .about{
     /* ここを1440にしたら余白多少はマシになった */
@@ -615,6 +618,8 @@ ul{
 }
 
 
+
+
 /* ここからフッター */
 
 footer{
@@ -623,12 +628,16 @@ footer{
 
 .footer-content{
     display: flex;
-    /* justify-content: space-between; */
     position: relative;
     left: 200px;
     top: 60px;
     font-weight: bold;
 }
+
+.footer-content:hover{
+    cursor: pointer;
+}
+
 .footer-img{
     width: 250px;
     height: 100px;
