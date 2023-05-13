@@ -1,7 +1,7 @@
-<?php 
+<?php
+session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 // require_once(dirname(__FILE__) . '/user_agent_filter.php');
-session_start();
 
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
@@ -25,7 +25,7 @@ if(isset($_SESSION['clients'])){
   <link rel="stylesheet" href="../user/assets/styles/header.css">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
   <title>エージェント検索一覧</title>
 </head>
 
@@ -90,14 +90,15 @@ if(isset($_SESSION['clients'])){
           <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
           <p class="results-txt"><span class="results-number"><?=count($agents)?></span>件ヒット</p>
       </div>
-      <!-- <?php foreach ($agent_labels as $agent_label){
-                                                      if ($agent_label["client_id"] == $agent["client_id"]) {
-                                                        print_r($agent_label["label_name"]." "); 
-                                                        }?> -->
       <div>
         <div class="my-16 ">
           <?php foreach ($agents as $key => $agent){ ?>
-            <div class="top agent-list" date-options="">
+            <div class="top agent-list" date-options="
+            <?php foreach ($agent_labels as $agent_label){
+              if ($agent_label["client_id"] == $agent["client_id"]) {
+                print_r($agent_label["label_name"] . " "); 
+              }
+            ?>">
             <input type="hidden" value="<?=$agent['client_id']?>" class="client_id"> 
             <img class="agent-img" src="<?=$agent["logo_img"]?>" alt="エージェント画像">
             <div>
@@ -119,8 +120,8 @@ if(isset($_SESSION['clients'])){
               <span class="label-major">
                 <?=$agent_label["label_name"]?>
               </span>
-              <?php } ?>
-              <?php } ?>
+              <?php }?>
+              <?php }?>
             </div>
             <div class="block">
               <button class="btn-big cyan add-button" id="cart<?=$key+1?>" value="<?=$key?>">カートに追加する</button>
