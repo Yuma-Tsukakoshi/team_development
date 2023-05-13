@@ -137,7 +137,7 @@ $name = $_SESSION['name'];
                           } elseif ($user["valid"] == 2) {
                             print_r("申請承認");
                           }elseif($agent["valid"] == 3) {
-                        print_r("申請拒否");
+                            print_r("申請拒否");
                       }
                           ?>
                         </span>
