@@ -1,7 +1,9 @@
 <?php
-
+session_start();
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+
+$_SESSION["uid"] = $_GET["id"];
 
 $pdo = Database::get();
 $sql = "SELECT * FROM users WHERE id = :id ";
@@ -10,7 +12,7 @@ $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
 $user = $stmt->fetch();
 
-$sql2 = "SELECT clients.service_name, valid FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id";
+$sql2 = "SELECT clients.service_name, valid ,relation.client_id FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->execute();
@@ -34,6 +36,9 @@ $invalid_agents = $stmt3->fetchAll();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../assets/styles/badge.css">
+  <script src="../assets/js/jquery-3.6.1.min.js" defer></script>
+  <script src="../assets/js/agent_send_valid.js" defer></script>
+  <script src="../assets/js/agent_send_invalid.js" defer></script>
   <title>無効申請学生情報詳細</title>
 </head>
 
@@ -76,10 +81,6 @@ $invalid_agents = $stmt3->fetchAll();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <!-- <div class="flex justify-center ">
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
-        </div> -->
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
@@ -108,11 +109,13 @@ $invalid_agents = $stmt3->fetchAll();
                       } elseif ($agent["valid"] == 1) {
                         echo '<div class="flex  justify-between">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2" client=' .(string)$agent["client_id"].'>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="3" client='. (string)$agent["client_id"].'>拒否</p></p>
         </div>';
-                      } else {
+                      } elseif($agent["valid"] == 2) {
                         print_r("申請承認");
+                      } elseif ($agent["valid"] == 3) {
+                        print_r("申請拒否");
                       }
                       ?>
                     </div>
