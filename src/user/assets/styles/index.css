@@ -2,6 +2,94 @@ body{
     overflow-x:hidden;
 }
 /* ここからヒーロー */
+/* ここから流れ星 */
+.star-box{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(-75deg);
+    position:absolute;
+    top: 100px;
+}
+
+.star{
+    height: 0;
+    width: 2px;
+    background-color: #e3cf32;
+    
+}
+.move{
+    animation-name: shooting;
+    animation-duration: 6.0s;
+    animation-timing-function: linear;
+    z-index: 40;
+
+}
+
+.star-box2{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(45deg);
+    position: absolute;
+    right: 0;
+    top: 30px;
+}
+
+.star-box3{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(225deg);
+    position: absolute;
+    left: 0px;
+}
+
+.star-box4{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(315deg);
+    position: absolute;
+}
+
+.star-box5{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(225deg);
+    position: absolute;
+}
+
+
+.star-box6{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(85deg);
+    position: absolute;
+    left: 1400px;
+}
+
+.star-box7{
+    height: 100px;
+    width: 100px;
+    transform: rotateZ(265deg);
+    position: absolute;
+}
+
+
+
+@keyframes shooting {
+    0% {
+        height: 0;
+        opacity: 50%;
+    }
+    50% {
+            height: 500px;
+            opacity: 100%;
+    }
+    100% {
+        height: 700px;
+        opacity: 0;
+    }
+}
+
+
 .hero{
     width:100%;
     height: 600px;
@@ -71,10 +159,13 @@ body{
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
+    z-index: 100;
     /* border一周白くならない、上半分しか白くならない */
-
 }
 
+.search-btn:hover{
+    cursor: pointer;
+}
 /* ここからAbout */
 .about{
     /* ここを1440にしたら余白多少はマシになった */
@@ -95,6 +186,7 @@ body{
     font-weight: bold;
     letter-spacing: 4px;
     font-size: 40px;
+    z-index: 50;
 }
 
 .about-title-jpn{
@@ -105,6 +197,7 @@ body{
     width: 300px;
     color: white;
     letter-spacing: 4px;
+    z-index: 50;
 }
 
 .about-title-border{
@@ -114,6 +207,7 @@ body{
     position: relative;
     top: 60px;
     left: 115px;
+    z-index: 50;
 }
 
 .about-philosophy{
@@ -124,6 +218,7 @@ body{
     width: 300px;
     color: white;
     letter-spacing: 2px;
+    z-index: 50;
 }
 
 .about-txt-motto{
@@ -136,6 +231,7 @@ body{
     color: white;
     font-style: bold;
     letter-spacing: 10px;
+    z-index: 50;
 }
 
 .about-txt-description-title{
@@ -148,6 +244,7 @@ body{
     left:900px ;
     color: white;
     font-weight: bold;
+    z-index: 50;
 }
 
 .about-txt-description-title-jpn{
@@ -159,6 +256,7 @@ body{
     left:870px ;
     top: 50px;
     color: white;
+    z-index: 50;
 }
 
 .about-txt-description-description{
@@ -170,11 +268,13 @@ body{
     left: 800px;
     color: white;
     word-spacing: 120px;
+    z-index: 50;
 }
 
 .about-txt-motto-span{
     font-weight: bold;
     font-size: 50px;
+    z-index: 50;
 }
 
 /* 「始めの一歩」だけ色を変更できない */
@@ -387,7 +487,7 @@ body{
     z-index: 20;
 }
 
-.star{
+.stars{
     margin: 0;
     padding: 0;
     position:relative;
@@ -449,7 +549,7 @@ top: 50px;
     height: 150px;
     margin-right: 80px;
     margin-left: 80px;
-    z-index: 10;
+    z-index: 100;
 }
 
 .creator-img-under1{
@@ -539,6 +639,8 @@ ul{
 }
 
 
+
+
 /* ここからフッター */
 
 footer{
@@ -547,12 +649,16 @@ footer{
 
 .footer-content{
     display: flex;
-    /* justify-content: space-between; */
     position: relative;
     left: 200px;
     top: 60px;
     font-weight: bold;
 }
+
+.footer-content:hover{
+    cursor: pointer;
+}
+
 .footer-img{
     width: 250px;
     height: 100px;
@@ -583,4 +689,17 @@ footer{
     position: relative;
     top: 180px;
     padding-bottom: 50px;
+}
+
+
+/* js用 */
+.title {
+    opacity : 0;
+    transform : translate(0, 100px);
+    transition : all 1s;
+}
+
+.title.active{
+    opacity : 1;
+    transform : translate(0, 0);
 }

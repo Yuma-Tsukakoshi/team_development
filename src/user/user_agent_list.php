@@ -60,10 +60,12 @@ if (isset($_SESSION['clients'])) {
       <div class="major">
         <h2 class="major-txt">専攻</h2>
         <img class="major-pencil-img" src="../user/assets/img/1263.png" alt="鉛筆の画像">
+        <div class="major-checkbox">
         <?php for ($i = 1; $i <= 2; $i++) { ?>
           <input type="checkbox" id="major<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
           <label for="major<?= $i ?>" class="label-hover<?= $i ?>"><?= $labels[$i - 1]["label_name"] ?> </label>
         <?php } ?>
+        </div>
         <div class="major-border"></div>
       </div>
       <div class="contact">
