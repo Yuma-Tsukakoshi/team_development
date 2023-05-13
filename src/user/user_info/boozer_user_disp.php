@@ -34,7 +34,7 @@ $valid = $stmt2->fetch();
 
 <body>
   <!-- modalの処理 -->
-  <form action="../../agent/agent_insert_reason.php">
+  <form action="http://localhost:8080/agent/agent_insert_reason.php?id=<?=$_GET["id"]?>" method="POST">
     <div class="popup" id="js-popup">
       <div class="popup-inner">
         <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
@@ -44,6 +44,7 @@ $valid = $stmt2->fetch();
             <input class="Form-Item-Input" name="reason"></input>
           </div>
           <input type="submit" class="Form-Btn" value="送信する">
+          <input type="hidden" name="client_id" value="<?=$_SESSION["id"]?>">
         </div>
       </div>
       <div class="black-background" id="js-black-bg"></div>
