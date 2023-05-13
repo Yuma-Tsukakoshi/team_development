@@ -1,6 +1,6 @@
 <?php 
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-require_once(dirname(__FILE__) . '/user_agent_filter.php');
+// require_once(dirname(__FILE__) . '/user_agent_filter.php');
 session_start();
 
 $pdo = Database::get();
@@ -10,8 +10,6 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
 if(isset($_SESSION['clients'])){
   $count=count($_SESSION['clients']);
 }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +37,6 @@ if(isset($_SESSION['clients'])){
       <span class="search-title-jpn">-エージェント検索-</span>
       <div class="search-title-border"></div>
     </div>
-   
     <div class="cart">
       <div class="cart-num">
         <?php if(isset($count)){?>
@@ -61,7 +58,7 @@ if(isset($_SESSION['clients'])){
         <h2 class="major-txt">専攻</h2>
         <img class="major-pencil-img" src="../user/assets/img/1263.png" alt="鉛筆の画像">
         <?php for($i=1;$i<=2;$i++){ ?>
-        <input type="checkbox" id="major<?=$i?>" class="check-label" name="filter[]" value="<?=$labels
+        <input type="checkbox" id="major<?=$i?>" class="check-label" name="filter" value="<?=$labels
         [$i-1]["label_id"] ?>">
         <label for="major<?=$i?>" class="label-hover<?=$i?>"><?=$labels[$i-1]["label_name"] ?> </label>
         <?php }?>
@@ -72,8 +69,8 @@ if(isset($_SESSION['clients'])){
         <img class="contact-mail-img" src="../user/assets/img/550.png" alt="メールの画像">
         <div class="contact-checkbox">
           <?php for($i=3;$i<=5;$i++){ ?>
-          <input type="checkbox" id="contact<?=$i?>"  class="check-label contact-checkbox" name="filter[]" value="<?=$labels[$i-1]["label_id"] ?>">
-          <label for="contact<?=$i?>" class="label-hover"><?=   $labels[$i-1]["label_name"] ?> </label>
+          <input type="checkbox" id="contact<?=$i?>"  class="check-label contact-checkbox" name="filter" value="<?=$labels[$i-1]["label_id"] ?>">
+          <label for="contact<?=$i?>" class="label-hover"><?= $labels[$i-1]["label_name"] ?> </label>
           <?php }?>
           <div class="contact-border"></div>
         </div>
@@ -82,7 +79,7 @@ if(isset($_SESSION['clients'])){
         <h2 class="area-txt"> エリア </h2>
         <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
         <?php for($i=6;$i<=9;$i++){ ?>
-        <input type="checkbox" id="area<?=$i?>" class="check-label" name="filter[]" value="<?=$labels[$i-1]["label_id"] ?>">
+        <input type="checkbox" id="area<?=$i?>" class="check-label" name="filter" value="<?=$labels[$i-1]["label_id"] ?>">
         <label for="area<?=$i?>" class="label-hover"><?= $labels[$i-1]["label_name"] ?></label>
         <?php }?>
       </div>
@@ -93,12 +90,16 @@ if(isset($_SESSION['clients'])){
           <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
           <p class="results-txt"><span class="results-number"><?=count($agents)?></span>件ヒット</p>
       </div>
+      <!-- <?php foreach ($agent_labels as $agent_label){
+                                                      if ($agent_label["client_id"] == $agent["client_id"]) {
+                                                        print_r($agent_label["label_name"]." "); 
+                                                        }?> -->
       <div>
         <div class="my-16 ">
-          <?php foreach ($agents as $key => $agent) { ?>
-          <input type="hidden" value="<?=$agent['client_id']?> " class="client_id"> 
-          <div class="top agent-list">
-              <img class="agent-img" src="<?=$agent["logo_img"]?>" alt="エージェント画像">
+          <?php foreach ($agents as $key => $agent){ ?>
+            <div class="top agent-list" date-options="">
+            <input type="hidden" value="<?=$agent['client_id']?>" class="client_id"> 
+            <img class="agent-img" src="<?=$agent["logo_img"]?>" alt="エージェント画像">
             <div>
               <h2 class="top-title"><?=$agent["service_name"]?></h2>
               <div class="top-title-border"></div>
@@ -114,20 +115,20 @@ if(isset($_SESSION['clients'])){
           <div class="bottom">
             <div class="labels">
               <?php foreach($agent_labels as $agent_label){ ?>
-              <?php if($agent_label["client_id"]==$agent["client_id"]){?>
+              <?php if($agent_label["client_id"]==$agent["client_id"]){ ?>
               <span class="label-major">
                 <?=$agent_label["label_name"]?>
               </span>
-              <?php }?>
-              <?php }?>
+              <?php } ?>
+              <?php } ?>
             </div>
             <div class="block">
               <button class="btn-big cyan add-button" id="cart<?=$key+1?>" value="<?=$key?>">カートに追加する</button>
               <button class="btn-big blue see-details" id="agent<?=$key+1?>">詳細を見る→</button>
             </div>
           </div>
-          <?php }?>
         </div>
+        <?php } ?>
       </div>
     </div>
   </main>
@@ -153,7 +154,6 @@ if(isset($_SESSION['clients'])){
                   $('.cart-num').text(data)
                   $('.add-button').eq($index).prop("disabled", true);
                  //背景グレーとか調整する
-                 
                 }).fail(function(XMLHttpRequest, textStatus, errorThrown){
                     alert(errorThrown);
                 });
@@ -161,5 +161,4 @@ if(isset($_SESSION['clients'])){
           })
   </script>
 </body>
-
 </html>
