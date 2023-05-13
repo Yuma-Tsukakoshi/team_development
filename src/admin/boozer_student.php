@@ -11,6 +11,7 @@ if (isset($_SESSION['sort'])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -20,7 +21,7 @@ if (isset($_SESSION['sort'])) {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
-  <script src="../user/assets/js/jquery-3.6.1.min.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/student_filter.js" defer></script>
@@ -29,7 +30,7 @@ if (isset($_SESSION['sort'])) {
 </head>
 
 <body>
-  <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
+<div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
     <!-- side banner -->
     <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-slate-500 md:block">
       <div class="py-4 text-gray-500">
@@ -91,20 +92,20 @@ if (isset($_SESSION['sort'])) {
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
                 <thead>
-                  <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
+                  <tr data-id="<?= $user['id'] ?>" class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
                     <th class="px-4 py-3">更新日時</th>
                     <th class="px-4 py-3">氏名</th>
                     <th class="px-4 py-3">フリガナ</th>
                     <th class="px-4 py-3">大学</th>
                     <th class="px-4 py-3">学部</th>
                     <th class="px-4 py-3">卒業年</th>
-                    <th class="px-4 py-3">無効申請</th>
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y" id="student">
-                  <?php foreach ($users as $key => $user) { ?>
-                    <tr class="text-gray-700">
+                <?php foreach ($users as $key => $user) {
+                      if (isset($user['id'])) { ?>
+                    <tr class="text-gray-700" ><?php if (isset($user['deleted'])) echo 'data-deleted'; ?>
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
                       </td>
@@ -126,20 +127,27 @@ if (isset($_SESSION['sort'])) {
                       <td class="px-4 py-3 text-sm">
                         <?= $user["grad_year"] ?>
                       </td>
+<<<<<<< HEAD
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
                           <?= $user["valid"] ? "申請あり" : "申請なし" ?>
                         </span>
                       </td>
+=======
+>>>>>>> ce1d02f32045ec905d9d3207cf7295ad7504f38c
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
                             <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
                           </button>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                          削除
+                        </button>
                         </div>
                       </td>
                     </tr>
-                  <?php } ?>
+                  <?php }
+                      } ?>
                 </tbody>
               </table>
             </div>
@@ -179,6 +187,30 @@ if (isset($_SESSION['sort'])) {
       </main>
     </div>
   </div>
+
+<script>
+function hideUser(button) {
+  const tr = $(button).closest('tr');
+  const id = tr.attr('data-id');
+  
+  if (confirm('本当に削除しますか？')) {
+    tr.addClass('hidden');
+    $.ajax({
+      url: 'http://localhost:8080/admin/delete.php',
+      type: 'POST',
+      data: { id: id },
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(xhr) {
+        console.error(xhr);
+      }
+    });
+  }
+}
+</script>
+
+
 </body>
 
 </html>

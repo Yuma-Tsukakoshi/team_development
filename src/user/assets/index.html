@@ -11,10 +11,11 @@
 <body>
   <!-- なっちゃん担当 トップページ -->
   <div class="hero">
-    <h1 class="hero-title-jpn">学生の学生による<br>学生のための就活サイト</h1>
-    <div class="hero-circle"></div>
-    <div class="hero-circle-2"></div>
-  <!--ここにみんなの証明写真入れる-->
+    <div class="hero-overlay">
+      <h1 class="hero-title-jpn">学生の学生による<br>学生のための就活エージェント比較サイト</h1>
+      <div class="hero-circle"></div>
+      <div class="hero-circle-2"></div>
+    </div>
   </div>
   <button class="search-btn">
     検索はこちらから▶︎
@@ -24,10 +25,10 @@
     <h3 class="about-title-jpn">ーわたしたちについてー</h3>
     <div class="about-title-border"></div>
     <h3 class="about-philosophy">Philosophy</h3>
-    <p class="about-txt-motto">「学生に寄り添う」<br>を追求した<br>エージェント比較サイト。</p>
-    <p class="about-txt-description-title">Connecting Recruitment Agency For The future </p>
+    <p class="about-txt-motto">「<span class="about-txt-motto-span">学生に寄り添う</span>」<br>を追求した<br>エージェント比較サイト。</p>
+    <p class="about-txt-description-title">C onnecting<br>R ecruitment<br>A gency<br> F or<br> T he future </p>
     <p class="about-txt-description-title-jpn">ーリクルートエージェントと学生を<br>未来に向けてつなげるために。ー</p>
-    <p class="about-txt-description-description">「就活に向けて何かしたいけど、何から始めたらいいのかわからない。」<br>そのような学生のみさなんが初めの一歩を踏み出す手助けが<br>できるよう、学生が学生目線で作った就活エージェント比較<br>サイトです。<br>数あるエージェントの中から自分に合ったエージェントを見<br>つけられるよう、人と人との繋がりを大切にしました。</p>
+    <!-- <p class="about-txt-description-description">「就活に向けて何かしたいけど、何から始めたらいいのかわからない。」<br>そのような学生のみさなんが初めの一歩を踏み出す手助けが<br>できるよう、学生が学生目線で作った就活エージェント比較<br>サイトです。<br>数あるエージェントの中から自分に合ったエージェントを見<br>つけられるよう、人と人との繋がりを大切にしました。</p> -->
   </div>
   <div class="howto">
     <h2 class="howto-title">How to Use CRAFT</h2>
@@ -41,7 +42,7 @@
         <img class="howto-agent-img" src="./img/8388.png" alt="男性がパソコンに向かっているアイコン">
         <p class="howto-agent-title">エージェントをクリック</p>
         <p class="howto-agent-txt">気になったのを何個か選んで、カートに入れる。</p>
-        <p class="howto-agent-txt-small">1度個人情報を登録すれば、エージェントの<br>一括申請が可能です。</p>
+        <p class="howto-agent-txt-small">(1度個人情報を登録すれば、エージェントの一括申請が可能です)</p>
       </div>
       <div class="howto-apply">
         <img class="howto-apply-img" src="./img/12567.png" alt="女性が面接を受けているアイコン">
@@ -66,43 +67,48 @@
     <div class="voices-container">
       <div class="voices-contents-1 voices-contents">
         <img class="voices-img" src="./img/1234.png" alt="利用者の写真">
-        <!-- <div class="voices-img-under1"></div>
-        <div class="voices-img-under2"></div> -->
-        <!-- <div class="voices-contents-box-outer"></div> -->
         <div class="voices-contents-box">
-          <p class="voices-contents-stars-title">満足度:</p>
-          <p class="star">⭐️⭐️⭐️⭐️☆</p>
-          <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
-          <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
+          <div class="voices-contents-box-sub">
+            <p class="voices-contents-stars-title">満足度:</p>
+            <p class="star">⭐️⭐️⭐️⭐️☆</p>
+            <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
+            <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
+          </div>
         </div>
       </div>
       <div class="voices-contents">
         <div class="voices-contents-2 voices-contents">
           <img class="voices-img" src="./img/1234.png" alt="利用者の写真">
           <div class="voices-contents-box">
-            <p class="voices-contents-stars-title">満足度:</p>
-            <p class="star">⭐️⭐️⭐️☆☆</p>
-            <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
-            <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
+            <div class="voices-contents-box-sub">
+              <p class="voices-contents-stars-title">満足度:</p>
+              <p class="star">⭐️⭐️⭐️☆☆</p>
+              <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
+              <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
+            </div>
           </div>
         </div>
       </div>
       <div class="voices-contents-3 voices-contents">
         <img class="voices-img" src="./img/1234.png" alt="利用者の写真">
         <div class="voices-contents-box">
-          <p class="voices-contents-stars-title">満足度:</p>
-          <p class="star">⭐️⭐️⭐️⭐️☆</p>
-          <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
-          <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
+          <div class="voices-contents-box-sub">
+            <p class="voices-contents-stars-title">満足度:</p>
+            <p class="star">⭐️⭐️⭐️⭐️☆</p>
+            <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
+            <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
+          </div>
         </div>
       </div>
       <div class="voices-contents-4 voices-contents">
         <img class="voices-img" src="./img/1234.png" alt="利用者の写真">
         <div class="voices-contents-box">
-          <p class="voices-contents-stars-title">満足度:</p>
-          <p class="star">⭐️⭐️⭐️⭐️⭐️</p>
-          <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
-          <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
+          <div class="voices-contents-box-sub">
+            <p class="voices-contents-stars-title">満足度:</p>
+            <p class="star">⭐️⭐️⭐️⭐️⭐️</p>
+            <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
+            <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
+          </div>
         </div>
       </div>
     </div>

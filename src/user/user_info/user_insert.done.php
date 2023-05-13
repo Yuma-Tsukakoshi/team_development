@@ -1,8 +1,8 @@
 <?php
 require_once(dirname(__FILE__) . './../../dbconnect.php');
-
 session_start();
 $pdo=Database::get();
+
 try {
   $pdo->beginTransaction();
   $stmt = $pdo->prepare("INSERT INTO users(name,hurigana,sex,birthday,college,faculty,department,division,grad_year,prefecture,mail,phone) VALUES(:name,:hurigana,:sex,:birthday,:college,:faculty,:department,:division,:grad_year,:prefecture,:mail,:phone)");
@@ -28,7 +28,6 @@ try {
     $stmt->execute();
     $result = $stmt->fetch();
 
-
     $stmt = $pdo->prepare("INSERT INTO user_register_client(user_id,client_id) VALUES(:user_id,:client_id)");
     $stmt->execute([
       "user_id" => $id,
@@ -49,7 +48,4 @@ try {
   $pdo->rollBack();
   exit($e->getMessage());
 }
-
-
-
 ?>

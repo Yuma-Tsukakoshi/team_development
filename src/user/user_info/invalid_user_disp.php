@@ -1,20 +1,29 @@
 <?php
-
+session_start();
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
+$_SESSION["uid"] = $_GET["id"];
+
 $pdo = Database::get();
-$sql = "SELECT * FROM users WHERE valid = 1 AND id = :id ";
+$sql = "SELECT * FROM users WHERE id = :id ";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
 $user = $stmt->fetch();
 
-$sql2 = "SELECT clients.service_name FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id ";
+$sql2 = "SELECT clients.service_name, valid ,relation.client_id FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE user_id = :id";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->execute();
 $agents = $stmt2->fetchAll();
+
+$sql3 = "SELECT sub.service_name, reason.reason ,reason.user_id FROM invalid_reason as reason  RIGHT JOIN (SELECT clients.service_name , clients.client_id , relation.user_id FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE relation.user_id = :id ) AS sub ON sub.client_id = reason.client_id WHERE reason.user_id = :uid";
+$stmt3 = $pdo->prepare($sql3);
+$stmt3->bindValue(":id", $_REQUEST["id"]);
+$stmt3->bindValue(":uid", $_REQUEST["id"]);
+$stmt3->execute();
+$invalid_agents = $stmt3->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +36,9 @@ $agents = $stmt2->fetchAll();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../assets/styles/badge.css">
+  <script src="../assets/js/jquery-3.6.1.min.js" defer></script>
+  <script src="../assets/js/agent_send_valid.js" defer></script>
+  <script src="../assets/js/agent_send_invalid.js" defer></script>
   <title>無効申請学生情報詳細</title>
 </head>
 
@@ -69,10 +81,6 @@ $agents = $stmt2->fetchAll();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <div class="flex justify-center ">
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">承認</a></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">無効申請 : <a href="#" class="edit_btn">拒否</a></p>
-        </div>
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
@@ -81,7 +89,7 @@ $agents = $stmt2->fetchAll();
                   申請企業一覧
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  データ
+                  無効申請判定
                 </th>
               </tr>
             </thead>
@@ -90,12 +98,26 @@ $agents = $stmt2->fetchAll();
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      企業名
+                      <?= $agent["service_name"] ?>
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <?= $agent["service_name"] ?>
+                      <?php
+                      if ($agent["valid"] == 0) {
+                        print_r("申請なし");
+                      } elseif ($agent["valid"] == 1) {
+                        echo '<div class="flex  justify-between">
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2" client=' .(string)$agent["client_id"].'>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="3" client='. (string)$agent["client_id"].'>拒否</p></p>
+        </div>';
+                      } elseif($agent["valid"] == 2) {
+                        print_r("申請承認");
+                      } elseif ($agent["valid"] == 3) {
+                        print_r("申請拒否");
+                      }
+                      ?>
                     </div>
                   </td>
                 </tr>
@@ -108,29 +130,28 @@ $agents = $stmt2->fetchAll();
             <thead class="bg-blue-500 text-white">
               <tr>
                 <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                  無効申請判定
+                  無効申請企業一覧
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  <?= $user["valid"] ? "申請あり" : "申請なし" ?>
-                  <!-- ゆくゆくは申請中とか承認とか分ける⇒承認済み、承認拒否とかのステータス更新-->
+                  無効申請理由
                 </th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-              <tr>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    無効申請理由
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-ms font-medium text-gray-900">
-                    <!-- <?= $user["invalid_reason"] ?> -->
-                    <!-- 無効申請テーブル作る 申請フォームから反映-->
-                    メールと電話のどちらも連絡がつかない
-                  </div>
-                </td>
-              </tr>
+              <?php foreach ($invalid_agents as $agent) { ?>
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $agent["service_name"] ?>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $agent["reason"] ?>
+                    </div>
+                  </td>
+                </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>

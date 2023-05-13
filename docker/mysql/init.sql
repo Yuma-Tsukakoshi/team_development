@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS shukatsu;
 CREATE DATABASE shukatsu;
 USE shukatsu;
@@ -49,26 +50,26 @@ CREATE TABLE users (
   phone VARCHAR(255) NOT NULL,
   valid int NOT NULL default 0,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  hidden TINYINT(1) NOT NULL DEFAULT 0
 ) CHARSET=utf8;
 
-insert into users (id, name, hurigana, sex, birthday, college, faculty, department, division, grad_year, prefecture, mail, phone, valid,created_at) values 
-(1,"神野豪気","カンノゴウキ","男","2003-09-12","慶應義塾大学","法学部","政治学科","文系","2026","神奈川県","go@gmail.com","010-2929-3150","0","2023-05-26 18:47:08"),
-(2,"塚越雄真","ツカコシユウマ","男","2002-09-10","慶應義塾大学","理工学部","情報工学科","理系","2025","埼玉県","yuma@gmail.com","012-2348-2389","0",'2023-05-19 21:45:08'),
-(3,"小野ひなの","オノヒナノ","女","2002-09-10","慶應義塾大学","理工学部","管理工学科","理系","2026","岡山県","hinanu@gmail.com","543-4326-6426","0","2023-05-12 8:27:18"),
-(4,"竹内菜月","タケウチナツキ","女","2002-09-10","慶應義塾大学","法学部","政治学科","文系","2026","東京都","natuki@gmail.com","366-5473-7354","0","2023-05-26 11:43:23"),
-(5,"平手美羽","ヒラテミユ","女","2002-09-10","慶應義塾大学","法学部","政治学科","文系","2026","東京都","hirate@gmail.com","036-6456-4536","0","2023-05-13 21:32:08"),
-(6,"渡辺太郎","ワタナベタロウ","男","2002-02-13","中央大学","法学部","法律学科","文系","2026","千葉県","taro@gmail.com","011-6111-4121","1","2023-05-29 15:42:22"),
-(7,"宮崎次郎","ミヤザキジロウ","男","2003-11-11","明治大学","政治経済学部","経済学科","文系","2026","茨城県","jiro@gmail.com","848-8182-3261","1","2023-05-26 11:21:11"),
-(8,"中西花子","ナカニシハナコ","女","2003-04-01","一橋大学","商学部","商学科","文系","2025","栃木県","nakanishi@gmail.com","020-2222-9999","1",'2023-05-30 03:22:15'),
-(9,"野口三郎","ノグチサブロウ","男","2003-07-01","早稲田大学","政治経済学部","国際政治学科","文系","2026","神奈川県","noguchi@gmail.com","020-7632-8919","1","2023-05-26 18:47:08"),
-(10,"伊藤美香","イトウミカ","女","2002-03-20","慶應義塾大学","文学部","人文学科","文系","2026","島根県","mika@gmail.com","333-4414-5252","1","2023-04-12 6:33:18"),
-(11,"山本隆太","ヤマモトリュウタ","男","2003-08-02","ハーバード大学","工学部","建築学科","理系","2025","北海道","yamamoto@gmail.com","333-0000-4946","1",'2023-04-11 03:10:53'),
-(12,"柳田邦男","ヤナギダクニオ","男","2003-11-30","関東学院大学","文学部","国文学科","文系","2026","神奈川県","tono@gmail.com","090-7632-1111","1","2023-05-26 18:47:30"),
-(13,"三田武","ミタタケル","男","2002-12-25","慶應義塾大学","経済学部","経済学科","文系","2026","鹿児島県","santa@gmail.com","444-6177-0000","0","2023-03-24 6:33:32"),
-(14,"目黒啓子","メグロケイコ","女","2003-05-30","京都大学","法学部","法律学科","文系","2026","和歌山県","ahaha@gmail.com","040-5823-5555","0","2023-04-23 23:47:55"),
-(15,"佐藤加奈","サトウカナ","女","2002-11-29","帝京平成大学","経営学部","経営学科","文系","2026","愛知県","kana@gmail.com","222-4444-7272","0","2023-04-04 19:47:43");
-
+insert into users (id, name, hurigana, sex, birthday, college, faculty, department, division, grad_year, prefecture, mail, phone,created_at) values 
+(1,"神野豪気","カンノゴウキ","男","2003-09-12","慶應義塾大学","法学部","政治学科","文系","2026","神奈川県","go@gmail.com","010-2929-3150","2023-05-26 18:47:08"),
+(2,"塚越雄真","ツカコシユウマ","男","2002-09-10","慶應義塾大学","理工学部","情報工学科","理系","2025","埼玉県","yuma@gmail.com","012-2348-2389",'2023-05-19 21:45:08'),
+(3,"小野ひなの","オノヒナノ","女","2002-09-10","慶應義塾大学","理工学部","管理工学科","理系","2026","岡山県","hinanu@gmail.com","543-4326-6426","2023-05-12 8:27:18"),
+(4,"竹内菜月","タケウチナツキ","女","2002-09-10","慶應義塾大学","法学部","政治学科","文系","2026","東京都","natuki@gmail.com","366-5473-7354","2023-05-26 11:43:23"),
+(5,"平手美羽","ヒラテミユ","女","2002-09-10","慶應義塾大学","法学部","政治学科","文系","2026","東京都","hirate@gmail.com","036-6456-4536","2023-05-13 21:32:08"),
+(6,"渡辺太郎","ワタナベタロウ","男","2002-02-13","中央大学","法学部","法律学科","文系","2026","千葉県","taro@gmail.com","011-6111-4121","2023-05-29 15:42:22"),
+(7,"宮崎次郎","ミヤザキジロウ","男","2003-11-11","明治大学","政治経済学部","経済学科","文系","2026","茨城県","jiro@gmail.com","848-8182-3261","2023-05-26 11:21:11"),
+(8,"中西花子","ナカニシハナコ","女","2003-04-01","一橋大学","商学部","商学科","文系","2025","栃木県","nakanishi@gmail.com","020-2222-9999",'2023-05-30 03:22:15'),
+(9,"野口三郎","ノグチサブロウ","男","2003-07-01","早稲田大学","政治経済学部","国際政治学科","文系","2026","神奈川県","noguchi@gmail.com","020-7632-8919","2023-05-26 18:47:08"),
+(10,"伊藤美香","イトウミカ","女","2002-03-20","慶應義塾大学","文学部","人文学科","文系","2026","島根県","mika@gmail.com","333-4414-5252","2023-04-12 6:33:18"),
+(11,"山本隆太","ヤマモトリュウタ","男","2003-08-02","ハーバード大学","工学部","建築学科","理系","2025","北海道","yamamoto@gmail.com","333-0000-4946",'2023-04-11 03:10:53'),
+(12,"柳田邦男","ヤナギダクニオ","男","2003-11-30","関東学院大学","文学部","国文学科","文系","2026","神奈川県","tono@gmail.com","090-7632-1111","2023-05-26 18:47:30"),
+(13,"三田武","ミタタケル","男","2002-12-25","慶應義塾大学","経済学部","経済学科","文系","2026","鹿児島県","santa@gmail.com","444-6177-0000","2023-03-24 6:33:32"),
+(14,"目黒啓子","メグロケイコ","女","2003-05-30","京都大学","法学部","法律学科","文系","2026","和歌山県","ahaha@gmail.com","040-5823-5555","2023-04-23 23:47:55"),
+(15,"佐藤加奈","サトウカナ","女","2002-11-29","帝京平成大学","経営学部","経営学科","文系","2026","愛知県","kana@gmail.com","222-4444-7272","2023-04-04 19:47:43");
 
 
 DROP TABLE IF EXISTS label_client_relation;
@@ -122,18 +123,19 @@ CREATE TABLE clients(
   started_at date DEFAULT NULL,
   ended_at date DEFAULT NULL,
   logo_img VARCHAR(255) NOT NULL,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP 
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  is_valid boolean default true
 ) CHARSET=utf8;
 
 
-insert into clients(client_id, agent_name, service_name, catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at ,ended_at,logo_img) values
-(1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","パーソルとベネッセの合弁会社","取引企業数は常時5,500社以上と豊富","2022年は14万人の就活生に利用される",'2023-02-01', '2023-08-12',"https://doda-student.jp/assets/img/header_logo_01.svg"),
-(2,'株式会社マイナビ', 'マイナビ新卒紹介',"丁寧なES添削指導","新卒情報サイトNo.1のマイナビ","大手企業の補欠枠から中小企業がメイン","学歴によって紹介企業を切り分けている",'2023-05-13', '2023-08-19',"https://転職サイト比較ナビ.com/wp-content/uploads/2017/07/d56de24e779423b861e32052727d7fc8.jpg"),
-(3,'NaS株式会社', 'DiG UP CAREER',"スピード内定","LINEやビデオ通話などを利用した手軽で密なコミュニケーションが取れる","オンラインで企業とのマッチングイベントが開催されており地方学生でも参加できる","特に自己分析のサポートに力を入れている",'2023-04-03', '2023-07-01',"https://nas-inc.co.jp/lp/digupcareer/assets/img/logo.svg"),
-(4,'Jobspirng株式会社', 'JobSpring',"適性検査実施","学生の価値観や適性に合う求人のみを紹介","適性検査を活かしたマッチング","内定承諾率は70%",'2023-04-23', '2023-06-10',"https://jobspring.jp/assets/img/lp/05/JobSpring_logo_v2-min.png?1653983874"),
-(5,"Goodfind","Goodfindエージェントサービス","顧客に寄り添う","ややハイスペ学生向け","外資系企業やメガベンチャー企業メイン","優秀な学生には特別選考ルートを案内",'2023-05-02', '2023-07-29',"https://img.goodfind.jp/company/logo/company_1.jpg"),
-(6,"株式会社アカリク","アカリク就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-06-01', '2023-07-28',"https://expo.nikkeibp.co.jp/xtech/online/static/assets/images/sponsor/logo_booth_8573.png"),
-(7,"株式会社リクナビ","リクナビ就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-04-21',"https://www.hiryu.co.jp/wp/wp-content/uploads/2021/07/unnamed.jpg");
+insert into clients(client_id, agent_name, service_name, catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at ,ended_at,logo_img,is_valid) values
+(1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","パーソルとベネッセの合弁会社","取引企業数は常時5,500社以上と豊富","2022年は14万人の就活生に利用される",'2023-02-01', '2023-08-12',"https://doda-student.jp/assets/img/header_logo_01.svg",true),
+(2,'株式会社マイナビ', 'マイナビ新卒紹介',"丁寧なES添削指導","新卒情報サイトNo.1のマイナビ","大手企業の補欠枠から中小企業がメイン","学歴によって紹介企業を切り分けている",'2023-05-13', '2023-08-19',"https://転職サイト比較ナビ.com/wp-content/uploads/2017/07/d56de24e779423b861e32052727d7fc8.jpg",true),
+(3,'NaS株式会社', 'DiG UP CAREER',"スピード内定","LINEやビデオ通話などを利用した手軽で密なコミュニケーションが取れる","オンラインで企業とのマッチングイベントが開催されており地方学生でも参加できる","特に自己分析のサポートに力を入れている",'2023-04-03', '2023-07-01',"https://nas-inc.co.jp/lp/digupcareer/assets/img/logo.svg",true),
+(4,'Jobspirng株式会社', 'JobSpring',"適性検査実施","学生の価値観や適性に合う求人のみを紹介","適性検査を活かしたマッチング","内定承諾率は70%",'2023-04-23', '2023-06-10',"https://jobspring.jp/assets/img/lp/05/JobSpring_logo_v2-min.png?1653983874",true),
+(5,"Goodfind","Goodfindエージェントサービス","顧客に寄り添う","ややハイスペ学生向け","外資系企業やメガベンチャー企業メイン","優秀な学生には特別選考ルートを案内",'2023-05-02', '2023-07-29',"https://img.goodfind.jp/company/logo/company_1.jpg",true),
+(6,"株式会社アカリク","アカリク就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-06-01', '2023-07-28',"https://expo.nikkeibp.co.jp/xtech/online/static/assets/images/sponsor/logo_booth_8573.png",true),
+(7,"株式会社リクナビ","リクナビ就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-04-21',"https://www.hiryu.co.jp/wp/wp-content/uploads/2021/07/unnamed.jpg",true);
 
 DROP TABLE IF EXISTS managers;
 CREATE TABLE managers(
@@ -167,34 +169,33 @@ insert into client_login(id, client_id, password) values
 
 DROP TABLE IF EXISTS user_register_client;
 CREATE TABLE user_register_client(
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   client_id VARCHAR(255) NOT NULL,
-  valid int NOT NULL default false,
+  valid int NOT NULL default false
 );
 
-insert into user_register_client(id, user_id, client_id,valid) values
-(1,1,1,0),
-(2,1,3,0),
-(3,2,2,0),
-(4,3,4,0),
-(5,3,2,0),
-(6,3,6,0),
-(7,4,3,0),
-(8,5,2,0),
-(9,6,1,0),
-(10,6,4,1),
-(11,7,1,1),
-(12,9,1,1),
-(13,9,2,1),
-(14,9,3,1),
-(15,10,6,1),
-(16,11,3,1),
-(17,12,2,1),
-(18,14,6,0),
-(19,15,3,0),
-(20,15,4,0),
-(21,15,3,0);
+insert into user_register_client(user_id, client_id,valid) values
+(1,1,0),
+(1,3,0),
+(2,2,0),
+(3,4,0),
+(3,2,0),
+(3,6,0),
+(4,3,0),
+(5,2,0),
+(6,1,1),
+(6,4,2),
+(7,1,1),
+(8,1,2),
+(9,2,2),
+(9,3,1),
+(10,6,1),
+(11,3,2),
+(12,2,2),
+(14,6,0),
+(15,3,0),
+(15,4,0),
+(15,3,0);
 
 DROP TABLE IF EXISTS boozer_register_client;
 CREATE TABLE boozer_register_client(
@@ -206,4 +207,23 @@ CREATE TABLE boozer_register_client(
 
 insert into boozer_register_client(id, name, password, mail) values
 (1,"管理者太郎","password","kakaka@gmail.com");
+
+DROP TABLE IF EXISTS invalid_reason;
+CREATE TABLE invalid_reason(
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  client_id INT NOT NULL,
+  reason VARCHAR(255) NOT NULL
+);
+
+insert into invalid_reason(id, user_id, client_id, reason) values
+(1,6,1,"メールで連絡つかない"),
+(2,6,4,"電話で連絡つかない"),
+(3,7,1,"電話で連絡つかない"),
+(4,8,1,"所属大学が不明で連絡つかない"),
+(5,9,2,"メールで連絡つかない"),
+(6,9,3,"メールで連絡つかない"),
+(7,10,6,"電話で連絡つかない"),
+(8,11,3,"メールで連絡つかない"),
+(9,12,2,"連絡がつかない");
 

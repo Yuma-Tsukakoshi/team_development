@@ -1,0 +1,272 @@
+.search-title-jpn{
+    font-size: 20px;
+    letter-spacing: 2px;
+    position: relative;
+    left: 90px;
+}
+
+.search-title-border{
+    width: 230px;
+    position: relative;
+    left: 75px;
+}
+
+.search-title-cart{
+    position: relative;
+    right: 100px;
+    top: 30px;
+}
+
+/* ここから企業詳細情報 */
+
+section{
+    background-color: aliceblue;
+    width: 100%;
+    height: 2300px;
+}
+
+.wrapper{
+    width: 1000px;
+    height: 2000px;
+    background-color:white;
+    border-radius: 40px;
+    box-shadow: 5px 5px rgb(180, 178, 178);
+    position: relative;
+    top: 50px;
+    margin: 0 auto;
+}
+.company-logo-container{
+    text-align: center;
+}
+.company-logo{
+    width: 600px;
+    height:75px ;
+    margin: 0 auto;
+    position: relative;
+    top: 30px;
+}
+
+/* これあんまり活かせていない気がする */
+.grid-cols-2{
+    background-color: white;
+    display: flex;
+
+}
+
+.company-info{
+    background-color: white;
+    position: relative;
+    top: 100px;
+}
+
+.company-info-building-img{
+    width: 80px;
+    height:80px ;
+    position: relative;
+    top: ;
+    left: 100px;
+}
+
+.company-info-name{
+    font-size: 25px;
+    letter-spacing: 2px;
+    position: relative;
+    top:-50px ;
+    left:170px;
+    font-weight: bold;
+}
+
+
+.company-info-company-number{
+    font-size: 20px;
+    position: relative;
+    top: 0px;
+    left: 170px;
+    margin-bottom: 0;
+    letter-spacing: 2px
+}
+
+.company-info-assignee{
+    font-size: 20px;
+    position: relative;
+    top:10px ;
+    left: 170px;
+    letter-spacing: 2px;
+}
+
+.company-info-hp{
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    left: 170px;
+    letter-spacing: 2px;
+}
+
+.company-info-hp-link{
+    font-size: 17px;
+    position: relative;
+    left: 0px;
+    top: -5px;
+    letter-spacing: 1px;
+}
+.company-info-hp-link:hover{
+    cursor: pointer;
+}
+
+.company-info-hp-link-bar{
+    width:300px ;
+    height: 2px;
+    position: relative;
+    top: 10px;
+    left: 170px;
+    background-color: black;
+}
+
+.company-info-hp-link-bar:hover{
+    cursor: pointer;
+}
+
+.labels{
+    display:flex;
+    flex-flow: column;
+}
+.label-content{
+    width: 200px;
+    height: 60px;
+    border-radius:50px ;
+    background-color: rgb(227, 224, 224);
+    position: relative;
+    top:150px;
+    left: 170px;
+    margin-bottom: 20px;
+}
+
+
+.company-info-hp-img{
+    width: 400px;
+    height:250px ;
+    position: relative;
+    top:150px ;
+    right:-200px ;
+}
+
+.merit{
+    word-wrap: break-word;
+    width:550px ;
+    height: 50px;
+    padding: 30px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: circle;
+    position: relative;
+    left: 30px;
+}
+
+.recommend-wrapper{
+    width:600px ;
+    height:400px ;
+    border-radius: 40px;
+    border-width: 4px;
+    border-color: #0071bc;
+    position: relative;
+    top: 160px;
+    left: 200px;
+    margin: 0;
+}
+.cyan{
+    width:350px ;
+    height: 50px;
+    position: relative;
+    top: 260px;
+    left: 330px;
+    font-size: 25px;
+}
+
+
+/* ここから下半分 */
+.inner-bottom-line{
+    width:800px ;
+    height:2px ;
+    background-color: rgb(179, 174, 174);
+    position: relative;
+    top: 350px;
+    margin: 0 auto;
+}
+
+.opinion-title{
+    font-size: 40px;
+    font-weight: bold;
+    position: relative;
+    top: 380px;
+    left: 170px;
+}
+
+.opinion-img{
+    width: 200px;
+    height:200px ;
+    position: relative;
+    top: 650px;
+    left: 150px;
+}
+
+.opinion-bubble{
+    width: 500px;
+    height:400px ;
+    background-color: rgb(195, 233, 249);
+    border-radius: 120px;
+    position: relative;
+    top:180px ;
+    left:400px;
+}
+
+.opinion-bubble-triangle{
+    content: "";
+  /* borderで三角形を作る */
+    border: 30px solid transparent;
+    border-top: 50px solid  rgb(195, 233, 249);
+  /* 配置する */
+    position: absolute;
+    top: 1700px;
+    left: 355px;
+    transform: translateX(-75%);
+    transform: rotate(63deg);
+}
+
+.opinion-bubble-text1{
+    word-wrap: break-word;
+    width: 400px;
+    position: relative;
+    top:80px ;
+    left: 50px;
+
+}
+
+.opinion-bubble-text2{
+    word-wrap: break-word;
+    width:400px;
+    margin-top: 50px;
+    position: relative;
+    top: 80px;
+    left: 50px;
+
+}
+
+.opinion-bubble-text3{
+    word-wrap: break-word;
+    width:400px;
+    margin-top: 50px;
+    position: relative;
+    top: 80px;
+    left: 50px;
+}
+.blue{
+    width:180px ;
+    height:50px ;
+    position: relative;
+    top:230px ;
+    left:700px;
+    font-size: 25px;
+}

@@ -3,9 +3,24 @@
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
+
 $pdo = Database::get();
-$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
-$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
+
+// 削除成功時のメッセージ
+if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
+  $message = "削除しました。";
+}
+
+// クライアント情報を取得
+$sql = "SELECT * FROM clients";
+$stmt = $pdo->query($sql);
+$clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true")->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($agents1);
+$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true")->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($agents2);
 
 $exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDATE()")->fetch();
 $non_exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at < CURDATE()")->fetch();
@@ -36,6 +51,8 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <title>boozer企業一覧</title>
 </head>
 
@@ -81,7 +98,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載企業一覧</h2>
-            <a href="http://localhost:8080/user/user_info/user_insert.php">
+            <a href="http://localhost:8080/admin/boozer_index_countstudents.php">
               人数通知メールを各企業に送る
             </a>
             <div class="w-full overflow-x-auto">
@@ -132,6 +149,9 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
                             <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=1">詳細</a>
+                          </button>
+                            <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                            <a href="http://localhost:8080/admin/delete.php?id=<?= $agent["client_id"] ?>">削除</a>
                           </button>
                         </div>
                       </td>
@@ -188,10 +208,13 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                           print_r("0人");
                         } ?>
                       </td>
-                      <td class="px-4 py-3">
+                      <td class="px-4 py-3" data-id="<?= $agent["client_id"] ?>">
                         <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
-                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=0">詳細</a>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
+                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=1">詳細</a>
+                          </button>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                            <a href="http://localhost:8080/admin/delete.php?id=<?= $agent["client_id"] ?>">削除</a>
                           </button>
                         </div>
                       </td>
@@ -206,6 +229,27 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 </body>
-</body>
+<script>
 
+function hideUser(button) {
+  const tr = $(button).closest('tr');
+  const id = tr.attr('data-id');
+  
+  if (confirm('本当に削除しますか？')) {
+    $.ajax({
+      url: 'http://localhost:8080/admin/delete.php',
+      type: 'POST',
+      data: { id: id },
+      success: function(data) {
+        console.log(data);
+        tr.addClass('hidden');
+      },
+      error: function(xhr) {
+        console.error(xhr);
+      }
+    });
+  }
+}
+</script>
 </html>
+
