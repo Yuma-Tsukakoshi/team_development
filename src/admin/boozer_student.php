@@ -127,14 +127,6 @@ if (isset($_SESSION['sort'])) {
                       <td class="px-4 py-3 text-sm">
                         <?= $user["grad_year"] ?>
                       </td>
-<<<<<<< HEAD
-                      <td class="px-4 py-3 text-xs">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <?= $user["valid"] ? "申請あり" : "申請なし" ?>
-                        </span>
-                      </td>
-=======
->>>>>>> ce1d02f32045ec905d9d3207cf7295ad7504f38c
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
