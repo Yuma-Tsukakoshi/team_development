@@ -9,19 +9,21 @@
   <title>Document</title>
 </head>
 <body>
+  <?php include("../../components/header.php") ?>
   <!-- なっちゃん担当 トップページ -->
   <div class="hero">
-    <h1 class="hero-title-jpn">学生の学生による<br>学生のための就活サイト</h1>
-    <div class="hero-circle"></div>
-    <div class="hero-circle-2"></div>
-  <!--ここにみんなの証明写真入れる-->
+    <div class="hero-overlay">
+      <h1 class="hero-title-jpn">「学生の学生による<br>学生のための就活エージェント比較サイト」</h1>
+      <div class="hero-circle"></div>
+      <div class="hero-circle-2"></div>
+    </div>
   </div>
   <button class="search-btn">
     検索はこちらから▶︎
   </button>
   <div class="about">
-    <h2 class="about-title">ABOUT US</h2>
-    <h3 class="about-title-jpn">ーわたしたちについてー</h3>
+    <h2 class="about-title">就活エージェント比較サイトとは？</h2>
+    <h3 class="about-title-jpn">ーAbout this siteー</h3>
     <div class="about-title-border"></div>
     <h3 class="about-philosophy">Philosophy</h3>
     <p class="about-txt-motto">「<span class="about-txt-motto-span">学生に寄り添う</span>」<br>を追求した<br>エージェント比較サイト。</p>
@@ -111,6 +113,16 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="about">
+    <h2 class="about-title">ABOUT US</h2>
+    <h3 class="about-title-jpn">ーわたしたちについてー</h3>
+    <div class="about-title-border"></div>
+    <h3 class="about-philosophy">Philosophy</h3>
+    <p class="about-txt-motto">「<span class="about-txt-motto-span">学生に寄り添う</span>」<br>を追求した<br>エージェント比較サイト。</p>
+    <p class="about-txt-description-title">C onnecting<br>R ecruitment<br>A gency<br> F or<br> T he future </p>
+    <p class="about-txt-description-title-jpn">ーリクルートエージェントと学生を<br>未来に向けてつなげるために。ー</p>
+    <!-- <p class="about-txt-description-description">「就活に向けて何かしたいけど、何から始めたらいいのかわからない。」<br>そのような学生のみさなんが初めの一歩を踏み出す手助けが<br>できるよう、学生が学生目線で作った就活エージェント比較<br>サイトです。<br>数あるエージェントの中から自分に合ったエージェントを見<br>つけられるよう、人と人との繋がりを大切にしました。</p> -->
   </div>
   <div class="creator">
     <h2 class="creator-title">CREATOR</h2>
