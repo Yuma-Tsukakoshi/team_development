@@ -1,17 +1,113 @@
-body{
-    overflow-x:hidden;
+body {
+    overflow-x: hidden;
 }
+
+/* header */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header {
+    background-color: #0071bc;
+}
+
+.header_upper {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+
+}
+
+.craft_logo {
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+    margin: auto;
+}
+
+.boozer_logo {
+    position: absolute;
+    width: auto;
+    height: 30px;
+    top: 20px;
+    right: 10px;
+}
+
+.header_lower {
+    display: flex;
+    margin: 0 auto;
+}
+
+.nav_list {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.nav_list a {
+    position: relative;
+    /*アンダーラインの位置を決めるための基準 */
+    text-decoration: none;
+    color: inherit;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: white;
+
+}
+
+.nav_list a::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: black;
+    bottom: -1px;
+    transform: scale(0, 1);
+    transform-origin: center top;
+    /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
+    transition: transform 0.3s;
+    /*変形の時間*/
+}
+
+.nav_list a:hover {
+    color: black;
+}
+
+.nav_list a:hover::after {
+    transform: scale(1, 1);
+    /*ホバー後、x軸方向に1（相対値）伸長*/
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+    font-weight: bold;
+}
+
+
 /* ここからヒーロー */
-.hero{
-    width:100%;
+.hero {
+    width: 100%;
     height: 600px;
     background-image: url(../img/top_picture.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
     margin-top: 0;
     background-color: rgba(255, 255, 255, 0.5);
+    position: relative;
 }
 
 .hero-overlay {
@@ -21,186 +117,143 @@ body{
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.5);
-    }
+}
 
-.hero-title-jpn{
+.hero-title-jpn {
     position: absolute;
     top: 300px;
     left: 150px;
-    border-right:0px;
+    border-right: 0px;
     z-index: 10;
     letter-spacing: 8px;
     font-size: 40px;
 }
 
-.hero-circle{
-    height: 200px;
-    width: 200px;
+.hero-circle {
+    height: 150px;
+    width: 150px;
     border-radius: 50%;
     background-color: #e3cf32;
     position: relative;
-    top: 150px;
-    left: 100px;
+    top: 300px;
+    left: 200px;
 
 }
-.hero-circle-2{
+
+.hero-circle-2 {
     height: 100px;
-    width:100px;
+    width: 100px;
     border-radius: 50%;
-    background-color:#e8ee49;
+    background-color: #e8ee49;
     position: relative;
-    top: 10px;
-    left: 270px;
+    top: 180px;
+    left: 280px;
     z-index: 5;
 }
 
 /* ここから「検索はこちらから」ボタン */
-.search-btn{
+.search-btn {
+    right: 60px;
     width: 250px;
-    height:100px ;
-    background-color:#0071bc;
+    height: 100px;
+    background-color: #e3cf32;
     color: white;
     font-size: 23px;
-    border-radius:15px;
+    border-radius: 15px;
     border-color: transparent;
     z-index: 50;
     position: fixed;
-    right: 10px;
     bottom: 100px;
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
-    /* border一周白くならない、上半分しか白くならない */
-
 }
 
-/* ここからAbout */
-.about{
-    /* ここを1440にしたら余白多少はマシになった */
-    width:100%;
-    height:700px ;
+.search-btn:hover {
+    background-color: #bcaa1d;
+}
+
+/* ここからShukatsu */
+.shukatsu {
     position: relative;
+    width: 100%;
+    height: 700px;
     background-color: #0071bc;
-    margin-top: 0;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.about-title{
-    position: relative;
-    top: 90px;
-    left:120px ;
-    width: 300px;
+.shukatsu-title {
     color: white;
     font-weight: bold;
     letter-spacing: 4px;
     font-size: 40px;
+    padding-top: 20px;
+    margin-bottom: 20px;
 }
 
-.about-title-jpn{
-    font-size:20px;
-    position: relative;
-    top:70px ;
-    left:120px ;
-    width: 300px;
+.shukatsu-title-jpn {
+    font-size: 20px;
     color: white;
     letter-spacing: 4px;
+    margin-bottom: 10px;
 }
 
-.about-title-border{
+.shukatsu-title-border {
     width: 265px;
     height: 3px;
     background-color: #e3cf32;
-    position: relative;
-    top: 60px;
-    left: 115px;
+    margin-bottom: 20px;
 }
 
-.about-philosophy{
-    font-size: 20px;
-    position: relative;
-    top: 100px;
-    left: 120px;
-    width: 300px;
+.shukatsu-txt-description-title-jpn {
+    font-size: 25px;
     color: white;
-    letter-spacing: 2px;
+    text-align: center;
 }
 
-.about-txt-motto{
+
+.shukatsu-txt-motto {
     width: 700px;
-    height:150px;
-    font-size:36px;
-    position: relative;
-    top:100px ;
-    left: 150px;
+    font-size: 36px;
     color: white;
-    font-style: bold;
+    font-weight: bold;
     letter-spacing: 10px;
+    text-align: center;
 }
 
-.about-txt-description-title{
-    width:700px;
-    height:50px;
-    font-size:50px;
-    margin: 0;
-    position: relative;
-    top: -300px;
-    left:900px ;
-    color: white;
-    font-weight: bold;
-}
 
-.about-txt-description-title-jpn{
-    width:500px ;
-    height:50px;
-    margin: 0;
-    position: relative;
-    font-size:25px;
-    left:870px ;
-    top: 50px;
-    color: white;
-}
-
-.about-txt-description-description{
-    width:500px;
-    height:150px;
-    position: relative;
-    font-size:15px;
-    top: -90px;
-    left: 800px;
-    color: white;
-    word-spacing: 120px;
-}
-
-.about-txt-motto-span{
-    font-weight: bold;
-    font-size: 50px;
-}
 
 /* 「始めの一歩」だけ色を変更できない */
 
 /* ここからHow to Use CRAFT */
 
-.howto{
+.howto {
     margin-top: 0;
     width: 100%;
-    height:500px;
+    height: 500px;
 }
-.howto-title{
+
+.howto-title {
     width: 500px;
-    height:50px ;
+    height: 50px;
     color: #0071bc;
     font-weight: bold;
     font-size: 40px;
     position: relative;
-    top:70px ;
-    left:150px;
+    top: 70px;
+    left: 150px;
 }
 
-.howto-steps{
-    display:flex;
+.howto-steps {
+    display: flex;
 }
 
-.howto-search,.howto-agent,.howto-apply{
+.howto-search,
+.howto-agent,
+.howto-apply {
     color: #0071bc;
     position: relative;
     top: 100px;
@@ -210,74 +263,78 @@ body{
     font-size: 20px;
 }
 
-.howto-search-title,.howto-agent-title,.howto-apply-title{
+.howto-search-title,
+.howto-agent-title,
+.howto-apply-title {
     font-weight: bold;
     font-size: 30px;
 }
 
-.howto-agent-txt-small{
+.howto-agent-txt-small {
     font-size: 13px;
     margin-top: 0;
 }
 
-.howto-agent-txt{
+.howto-agent-txt {
     margin-bottom: 7px;
 }
 
-.howto-search-img{
+.howto-search-img {
     height: 260px;
     width: 160px;
 }
 
-.howto-agent-img{
+.howto-agent-img {
     height: 260px;
     width: 300px;
 }
 
-.howto-apply-img{
+.howto-apply-img {
     height: 260px;
     width: 300px;
 }
 
 /* ここからhandling company*/
-.handling{
+.handling {
     width: 100%;
     height: 700px;
     margin-top: 0;
 
 }
-.handling-title{
+
+.handling-title {
     width: 200px;
     height: 100px;
     position: relative;
-    top:200px ;
-    right:-920px ;
+    top: 200px;
+    right: -920px;
     font-size: 40px;
     font-weight: bold;
     color: #0071bc;
     letter-spacing: 10px;
 }
 
-.handling-jpn{
-    width:250px ;
-    height:100px ;
-    position:relative;
-    top:200px ;
+.handling-jpn {
+    width: 250px;
+    height: 100px;
+    position: relative;
+    top: 200px;
     right: -930px;
     font-size: 20px;
     color: #0071bc;
     letter-spacing: 2px;
 }
 
-.handling-company-border{
+.handling-company-border {
     width: 160px;
     height: 3px;
-    background-color:#e3cf32;
+    background-color: #e3cf32;
     position: relative;
-    top:110px ;
+    top: 110px;
     left: 925px;
 }
-.handling-txt{
+
+.handling-txt {
     width: 400px;
     height: 300px;
     position: relative;
@@ -291,11 +348,12 @@ body{
 
 /* ここからvoices利用者の声 */
 
-.voices{
+.voices {
     width: 100%;
     height: 700px;
 }
-.voices-title{
+
+.voices-title {
     font-size: 40px;
     color: #0071bc;
     position: relative;
@@ -305,7 +363,7 @@ body{
     font-weight: bold;
 }
 
-.voices-title-jpn{
+.voices-title-jpn {
     font-size: 20px;
     color: #0071bc;
     position: relative;
@@ -314,20 +372,20 @@ body{
     font-weight: 400;
 }
 
-.voices-title-border{
+.voices-title-border {
     width: 160px;
-    height:3px ;
+    height: 3px;
     background-color: #e3cf32;
     position: relative;
     top: 50px;
     left: 640px;
 }
 
-.voices-contents{
+.voices-contents {
     display: flex;
 }
 
-.voices-container{
+.voices-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
@@ -336,7 +394,7 @@ body{
 
 }
 
-.voices-contents-box{
+.voices-contents-box {
     background-color: #fff;
     width: 350px;
     height: 170px;
@@ -346,33 +404,36 @@ body{
     /* backgroud-colorを白に変更＆borderプロパティで灰色の枠線 */
 }
 
-.voices-contents-box-sub{
-    width:340px ;
+.voices-contents-box-sub {
+    width: 340px;
     height: 160px;
     position: relative;
     z-index: 5;
-    background-color:#e3cf32;
+    background-color: #e3cf32;
     position: relative;
     top: -12px;
     left: 5px;
     margin: 0;
     border-radius: 25px;
 }
-.voices-contents-txt, .voices-contents-name,.voices-contents-stars-title{
+
+.voices-contents-txt,
+.voices-contents-name,
+.voices-contents-stars-title {
     font-size: 15px;
     word-break: break-all;
     position: relative;
     left: 20px;
 }
 
-.voices-contents-txt{
+.voices-contents-txt {
     margin: 0;
     padding: 0;
     width: 320px;
 
 }
 
-.voices-contents-stars-title{
+.voices-contents-stars-title {
     width: 100px;
     height: 20px;
     margin-bottom: 0;
@@ -380,30 +441,31 @@ body{
     top: 5px;
     font-weight: bold;
 }
-.voices-img{
+
+.voices-img {
     width: 150px;
     height: 150px;
     z-index: 20;
 }
 
-.star{
+.star {
     margin: 0;
     padding: 0;
-    position:relative;
+    position: relative;
     top: -15px;
     left: 100px;
 }
 
 
 /* ここからcreator */
-.creator{
+.creator {
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
 
 }
 
-.creator-title{
+.creator-title {
     position: relative;
     text-align: center;
     margin-bottom: 0;
@@ -412,7 +474,7 @@ body{
     color: #0071bc;
 }
 
-.creator-title-jpn{
+.creator-title-jpn {
     position: relative;
     top: -10px;
     text-align: center;
@@ -421,7 +483,7 @@ body{
     color: #0071bc;
 }
 
-.creator-title-border{
+.creator-title-border {
     height: 3px;
     width: 210px;
     background-color: #e3cf32;
@@ -430,107 +492,214 @@ body{
     left: 615px;
 }
 
-.creator-content{
+.creator-content {
     width: 1440px;
-    height:300px ;
+    height: 300px;
     background: #0071bc;
 }
 
-.creator-img-container{
+.creator-img-container {
     display: flex;
-position: relative;
-left:80px ;
-top: 50px;
+    position: relative;
+    left: 80px;
+    top: 50px;
 }
 
-.creator-img{
-    width:100px ;
+.creator-img {
+    width: 100px;
     height: 150px;
     margin-right: 80px;
     margin-left: 80px;
     z-index: 10;
 }
 
-.creator-img-under1{
+.creator-img-under1 {
     width: 100px;
-    height:150px ;
+    height: 150px;
     position: absolute;
     top: 20px;
     left: 70px;
-    background-color:#e3cf32 ;
+    background-color: #e3cf32;
 }
 
-.creator-img-under2{
+.creator-img-under2 {
     width: 100px;
-    height:150px ;
+    height: 150px;
     position: absolute;
     top: 20px;
     left: 330px;
-    background-color:#e3cf32 ;
+    background-color: #e3cf32;
 }
 
-.creator-img-under3{
+.creator-img-under3 {
     width: 100px;
-    height:150px ;
+    height: 150px;
     position: absolute;
     top: 20px;
     left: 590px;
-    background-color:#e3cf32 ;
+    background-color: #e3cf32;
 }
 
-.creator-img-under4{
+.creator-img-under4 {
     width: 100px;
-    height:150px ;
+    height: 150px;
     position: absolute;
     top: 20px;
     left: 850px;
-    background-color:#e3cf32 ;
+    background-color: #e3cf32;
 }
 
-.creator-img-under5{
+.creator-img-under5 {
     width: 100px;
-    height:150px ;
+    height: 150px;
     position: absolute;
     top: 20px;
     left: 1110px;
-    background-color:#e3cf32 ;
+    background-color: #e3cf32;
 }
 
 
 
-ul{
+ul {
     display: inline-block;
 }
 
-.company-info{
+.company-info {
     text-align: center;
 }
-.company-info-title-1,.company-info-title-2{
+
+.company-info-title-1,
+.company-info-title-2 {
     list-style-type: square;
 
 }
+
+/* ここからAbout */
+.about {
+    /* ここを1440にしたら余白多少はマシになった */
+    width: 100%;
+    height: 700px;
+    position: relative;
+    background-color: #0071bc;
+    margin-top: 0;
+
+}
+
+.about-title {
+    position: relative;
+    top: 90px;
+    left: 120px;
+    width: 300px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-size: 40px;
+}
+
+.about-title-jpn {
+    font-size: 20px;
+    position: relative;
+    top: 70px;
+    left: 120px;
+    width: 300px;
+    color: white;
+    letter-spacing: 4px;
+}
+
+.about-title-border {
+    width: 265px;
+    height: 3px;
+    background-color: #e3cf32;
+    position: relative;
+    top: 60px;
+    left: 115px;
+}
+
+.about-philosophy {
+    font-size: 20px;
+    position: relative;
+    top: 100px;
+    left: 120px;
+    width: 300px;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.about-txt-motto {
+    width: 700px;
+    height: 150px;
+    font-size: 36px;
+    position: relative;
+    top: 100px;
+    left: 150px;
+    color: white;
+    font-style: bold;
+    letter-spacing: 10px;
+}
+
+.about-txt-description-title {
+    width: 700px;
+    height: 50px;
+    font-size: 50px;
+    margin: 0;
+    position: relative;
+    top: -300px;
+    left: 900px;
+    color: white;
+    font-weight: bold;
+}
+
+.about-txt-description-title-jpn {
+    width: 500px;
+    height: 50px;
+    margin: 0;
+    position: relative;
+    font-size: 25px;
+    left: 870px;
+    top: 50px;
+    color: white;
+}
+
+.about-txt-description-description {
+    width: 500px;
+    height: 150px;
+    position: relative;
+    font-size: 15px;
+    top: -90px;
+    left: 800px;
+    color: white;
+    word-spacing: 120px;
+}
+
+.about-txt-motto-span {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+
 /* ここからcontact */
 
-.contact{
+.contact {
     margin-top: -30px;
 }
-.contact-title-background{
-    background-color:rgb(212, 212, 212);
+
+.contact-title-background {
+    background-color: rgb(212, 212, 212);
     height: 150px;
     width: 100%;
 }
 
-.contact-title{
+.contact-title {
     color: #0071bc;
     font-size: 30px;
-    font-weight:bold;
+    font-weight: bold;
     text-align: center;
     position: relative;
     top: 20px;
     letter-spacing: 3px;
 }
 
-.contact-title-jpn{
+.contact-title-jpn {
     color: #0071bc;
     font-size: 15px;
     font-weight: normal;
@@ -540,11 +709,11 @@ ul{
 
 /* ここからフッター */
 
-footer{
+footer {
     width: 100%;
 }
 
-.footer-content{
+.footer-content {
     display: flex;
     /* justify-content: space-between; */
     position: relative;
@@ -552,22 +721,26 @@ footer{
     top: 60px;
     font-weight: bold;
 }
-.footer-img{
+
+.footer-img {
     width: 250px;
     height: 100px;
     margin-right: 30px;
 }
-.footer-contact-img{
+
+.footer-contact-img {
     width: 200px;
     height: 100px;
     margin-right: 30px;
 }
 
-.footer-row-1,.footer-row-2,.footer-row-3{
+.footer-row-1,
+.footer-row-2,
+.footer-row-3 {
     margin-right: 60px;
 }
 
-.footer-authority{
+.footer-authority {
     display: flex;
     position: relative;
     left: 620px;
@@ -575,7 +748,7 @@ footer{
     color: gray;
 }
 
-.footer-copyright{
+.footer-copyright {
     color: #0071bc;
     letter-spacing: 2px;
     text-align: center;
