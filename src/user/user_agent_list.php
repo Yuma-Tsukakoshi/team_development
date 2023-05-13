@@ -85,12 +85,11 @@ if (isset($_SESSION['clients'])) {
           <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label>
         <?php } ?>
       </div>
-      <button class="btn-big blue">検索</button>
     </form>
     <div>
       <div class="results">
         <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
-        <p class="results-txt"><span class="results-number"><?= ?></span>件ヒット</p>
+        <p class="results-txt"><span class="results-number"><?=count($agents)?></span>件ヒット</p>
       </div>
       <div>
         <div class="my-16 ">

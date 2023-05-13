@@ -1,3 +1,17 @@
+function countVisibleElements() {
+  // 表示されている要素を取得
+  var visibleElements = $('.agent-item').filter(function() {
+    return $(this).css('display') !== 'none';
+  });
+  console.log(visibleElements);
+  // 表示されている要素の数を取得
+  var count = visibleElements.length;
+  // カウントを表示する
+//   console.log(count);
+  $('.results-number').text(count);
+}
+
+
 $('input[type="checkbox"]').change(function(){
     var filters = [];
     $('input[type="checkbox"]:checked').each(function(){
@@ -22,4 +36,6 @@ $('input[type="checkbox"]').change(function(){
     } else {
         $('.agent-item').fadeIn(300);
     }
+    countVisibleElements();
 });
+
