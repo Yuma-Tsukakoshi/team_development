@@ -20,6 +20,6 @@ $(document).ready(function() {
         console.error(xhr); // エラー内容をコンソールに表示
       }
     });
-    // location.reload();
+    location.reload();
   });
 });

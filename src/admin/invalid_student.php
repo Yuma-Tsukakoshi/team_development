@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
 $pdo = Database::get();
-$users = $pdo->query("SELECT id, updated_at, name, hurigana, college, faculty, grad_year FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE valid = 1 GROUP BY id")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT id, updated_at, name, hurigana, college, faculty, grad_year FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE relation.valid = 1 GROUP BY id")->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_SESSION['invalid'])) {
   $users = $_SESSION['invalid'];
