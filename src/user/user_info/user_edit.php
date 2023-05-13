@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users WHERE id = :id ";
+$sql = "SELECT * FROM users INNER JOIN user_register_client as relation  ON relation.user_id = users.id WHERE id = :id ";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_REQUEST["id"]);
 $stmt->execute();
@@ -64,51 +64,6 @@ $user = $stmt->fetch();
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
         <form action="http://localhost:8080/user/user_info/user_edit_check.php?id=<?= $user["id"] ?>" method="POST" enctype="multipart/form-data">
-          <div class="my-8 flex justify-center">
-            <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-              <thead class="bg-blue-500 text-white">
-                <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                    申請企業一覧
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                    データ
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200">
-                <!-- <?php foreach ($labels as $key => $label) { ?>
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      企業<?= $key + 1 ?>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?= $label["label_name"] ?>
-                    </div>
-                  </td>
-                </tr>
-              <?php } ?> -->
-              </tbody>
-            </table>
-          </div>
-          <div class="my-8 flex justify-center">
-            <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-              <tbody class="bg-blue-500 text-white">
-                <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                    無効申請判定
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                    <?= $user["valid"] ? "申請あり" : "申請なし" ?>
-                    <!-- ゆくゆくは申請中とか承認とかわけないと-->
-                  </th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
           <div class="flex justify-center">
             <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
               <thead class="bg-blue-500 text-white">
