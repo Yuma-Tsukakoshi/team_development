@@ -15,10 +15,14 @@ body{
     height: 0;
     width: 2px;
     background-color: #e3cf32;
+    
+}
+.move{
     animation-name: shooting;
     animation-duration: 6.0s;
     animation-timing-function: linear;
     z-index: 40;
+
 }
 
 .star-box2{
