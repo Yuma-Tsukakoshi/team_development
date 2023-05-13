@@ -25,6 +25,8 @@ if(isset($_SESSION['clients'])){
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/search.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
+  <link rel="stylesheet" href="../user/assets/styles/modal.css
+  ">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -33,7 +35,7 @@ if(isset($_SESSION['clients'])){
 
 <body>
   <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
-  <section class="search">
+  <section class="search" >
     <div>
       <h1 class="search-title">SEARCH</h1>
       <span class="search-title-jpn">-エージェント検索-</span>
@@ -54,6 +56,22 @@ if(isset($_SESSION['clients'])){
     
 
   </section>
+  <div class="overlay" id="js-overlay"></div>
+
+  <div id="modal-content" class="modal-content">
+    <div class="check-message">
+      <div class="check-circle">
+        <div class="check"></div>
+      </div>
+      <div class="message">商品をかごに追加しました</div>
+    </div>
+    <div class="modal-link">
+      <a  href="./user_info/user_insert.php"><p class="link-message">申し込みはこちら→</p></a>
+    </div>
+    
+
+  </div>
+
 
   <main class="grid grid-cols-2">
     <form method="post" action="" class="m-8 w-3">
@@ -125,6 +143,7 @@ if(isset($_SESSION['clients'])){
               <button class="btn-big cyan add-button" id="cart<?=$key+1?>" value="<?=$key?>">カートに追加する</button>
               <button class="btn-big blue see-details" id="agent<?=$key+1?>">詳細を見る→</button>
             </div>
+            
           </div>
           <?php }?>
         </div>
@@ -133,6 +152,26 @@ if(isset($_SESSION['clients'])){
   </main>
   <script>
   $(function(){
+            //スクロールすると上部に固定させるための設定を関数でまとめる
+            function FixedAnime() {
+              var headerH = $('.search').outerHeight(true);
+              var scroll = $(window).scrollTop();
+              if (scroll+30 >= headerH){//headerの高さ以上になったら
+                  $('.search').addClass('move');//fixedというクラス名を付与
+                }else{//それ以外は
+                  $('.search').removeClass('move');//fixedというクラス名を除去
+                }
+            }
+            // 画面をスクロールをしたら動かしたい場合の記述
+            $(window).scroll(function () {
+              FixedAnime();/* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
+            });
+
+            // ページが読み込まれたらすぐに動かしたい場合の記述
+            $(window).on('load', function () {
+              FixedAnime();/* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
+            });
+
             $('.add-button').on('click', function(event){
               $index=this.value
 
@@ -149,6 +188,17 @@ if(isset($_SESSION['clients'])){
                     scriptCharset: 'utf-8'
                 }).done(function(data){
                   console.log(data);
+                  $('.modal-content').fadeIn();
+                  $('.overlay').fadeIn(); 
+              
+                  // クリックイベント全てに対しての処理
+                  $(document).on('click touchend', function(event) {
+                    // 表示したポップアップ以外の部分をクリックしたとき
+                    if (!$(event.target).closest('.modal-content').length) {
+                      $('.modal-content').fadeOut();
+                      $('.overlay').fadeOut();
+                    }
+                  });
 
                   $('.cart-num').text(data)
                   $('.add-button').eq($index).prop("disabled", true);

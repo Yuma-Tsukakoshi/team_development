@@ -8,6 +8,12 @@ body{
     background-color: white;
 }
 
+.move{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+}
+
 .search-title{
     color: #0071bc;
     font-weight: bold;
