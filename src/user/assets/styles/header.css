@@ -9,16 +9,14 @@ img{
   object-fit: cover;
 }
 
-header{
-  background-color: rgb(67,119,181);
 
-}
 
 .header_upper{
   position: relative;
   display: flex;
   align-items: flex-end;
   margin-bottom: 10px;
+    background-color: rgba(255, 255, 255,0.5);
 
 }
 
