@@ -6,11 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/index.css">
   <link rel="stylesheet" href="../assets/styles/header.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./js/index.js" defer></script>
+  
   <title>Document</title>
 </head>
 <body>
   <!-- なっちゃん担当 トップページ -->
   <div class="hero">
+
+    <div class="star-box">
+      <div class="star"></div>
+    </div>
+
     <div class="hero-overlay">
       <h1 class="hero-title-jpn">学生の学生による<br>学生のための就活エージェント比較サイト</h1>
       <div class="hero-circle"></div>
@@ -21,17 +29,23 @@
     検索はこちらから▶︎
   </button>
   <div class="about">
-    <h2 class="about-title">ABOUT US</h2>
+    <div class="star-box2">
+      <div class="star"></div>
+    </div>
+    <h2 class="about-title title">ABOUT US</h2>
     <h3 class="about-title-jpn">ーわたしたちについてー</h3>
     <div class="about-title-border"></div>
     <h3 class="about-philosophy">Philosophy</h3>
     <p class="about-txt-motto">「<span class="about-txt-motto-span">学生に寄り添う</span>」<br>を追求した<br>エージェント比較サイト。</p>
     <p class="about-txt-description-title">C onnecting<br>R ecruitment<br>A gency<br> F or<br> T he future </p>
     <p class="about-txt-description-title-jpn">ーリクルートエージェントと学生を<br>未来に向けてつなげるために。ー</p>
+    <div class="star-box3">
+      <div class="star"></div>
+    </div>
     <!-- <p class="about-txt-description-description">「就活に向けて何かしたいけど、何から始めたらいいのかわからない。」<br>そのような学生のみさなんが初めの一歩を踏み出す手助けが<br>できるよう、学生が学生目線で作った就活エージェント比較<br>サイトです。<br>数あるエージェントの中から自分に合ったエージェントを見<br>つけられるよう、人と人との繋がりを大切にしました。</p> -->
   </div>
   <div class="howto">
-    <h2 class="howto-title">How to Use CRAFT</h2>
+    <h2 class="howto-title title">How to Use CRAFT</h2>
     <div class="howto-steps">
       <div class="howto-search">
         <img class="howto-search-img" src="./img/12386.png" alt="女性が検索しているアイコン">
@@ -52,16 +66,21 @@
     </div>
   </div>
   <div class="handling">
-    <h2 class="handling-title">HANDLING <br> COMPANY</h2>
+    <div class="star-box4">
+      <div class="star"></div>
+    </div>
+    <h2 class="handling-title title">HANDLING <br> COMPANY</h2>
     <h3 class="handling-jpn">ー取扱い会社ー</h3>
     <div class="handling-company-border"></div>
     <!--写真挿入↓-->
     <img class="handling-img" src="" alt="">
     <p class="handling-txt">ここでは、LDCの取扱会社をご紹介します。<br>幅広い選択肢の中から、お客様のライフブラ<br>ンに合った「あなたらしい」エージェント選び<br>をサポートします。</p>
   </div>
-  
+  <div class="star-box5">
+    <div class="star"></div>
+  </div>
   <div class="voices">
-    <h2 class="voices-title">VOICES</h2>
+    <h2 class="voices-title title">VOICES</h2>
     <p class="voices-title-jpn">ー利用者の声ー</p>
     <div class="voices-title-border"></div>
     <div class="voices-container">
@@ -70,7 +89,7 @@
         <div class="voices-contents-box">
           <div class="voices-contents-box-sub">
             <p class="voices-contents-stars-title">満足度:</p>
-            <p class="star">⭐️⭐️⭐️⭐️☆</p>
+            <p class="stars">⭐️⭐️⭐️⭐️☆</p>
             <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
             <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
           </div>
@@ -82,7 +101,7 @@
           <div class="voices-contents-box">
             <div class="voices-contents-box-sub">
               <p class="voices-contents-stars-title">満足度:</p>
-              <p class="star">⭐️⭐️⭐️☆☆</p>
+              <p class="stars">⭐️⭐️⭐️☆☆</p>
               <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
               <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
             </div>
@@ -94,7 +113,7 @@
         <div class="voices-contents-box">
           <div class="voices-contents-box-sub">
             <p class="voices-contents-stars-title">満足度:</p>
-            <p class="star">⭐️⭐️⭐️⭐️☆</p>
+            <p class="stars">⭐️⭐️⭐️⭐️☆</p>
             <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
             <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
           </div>
@@ -105,7 +124,7 @@
         <div class="voices-contents-box">
           <div class="voices-contents-box-sub">
             <p class="voices-contents-stars-title">満足度:</p>
-            <p class="star">⭐️⭐️⭐️⭐️⭐️</p>
+            <p class="stars">⭐️⭐️⭐️⭐️⭐️</p>
             <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
             <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
           </div>
@@ -114,7 +133,13 @@
     </div>
   </div>
   <div class="creator">
-    <h2 class="creator-title">CREATOR</h2>
+    <div class="star-box6">
+      <div class="star"></div>
+    </div>
+    <div class="star-box7">
+      <div class="star"></div>
+    </div>
+    <h2 class="creator-title title">CREATOR</h2>
     <h3 class="creator-title-jpn">ーサイト制作者紹介ー</h3>
     <div class="creator-title-border"></div>
     <!--ここに写真入れる-->
