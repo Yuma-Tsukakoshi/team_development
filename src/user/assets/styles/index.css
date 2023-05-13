@@ -227,7 +227,6 @@ li {
 
 
 /* 「始めの一歩」だけ色を変更できない */
-
 /* ここからHow to Use CRAFT */
 
 .howto {
@@ -297,53 +296,82 @@ li {
 /* ここからhandling company*/
 .handling {
     width: 100%;
-    height: 700px;
-    margin-top: 0;
+    height: 600px;
+    margin-top: 80px;
+    display: flex;
+    overflow: hidden;
+}
 
+.logos-discription{
+    margin-top: 10%;
+    margin-left: 50px;
+    font-size: 20px;
+    color: #0071bc;
+    font-weight: bold;
+}
+
+.slider {
+    display: flex;
+    animation: slideAnimation 3s linear infinite;
+    overflow: hidden;
+    margin-top:150px
+}
+
+.slider img {
+    width: 100%; /* 画像を親要素に合わせてリサイズ */
+    height: auto; /* アスペクト比を維持 */
+    object-fit: contain; /* 画像のアスペクト比を保ったまま表示 */
+    margin-right: 10px;
+}
+
+@keyframes slideAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .handling-title {
     width: 200px;
     height: 100px;
-    position: relative;
-    top: 200px;
-    right: -920px;
     font-size: 40px;
     font-weight: bold;
     color: #0071bc;
     letter-spacing: 10px;
+    margin-left: 100px;
+    margin-top: 50px;
 }
 
 .handling-jpn {
+    margin-top: 20px;
+    margin-left: 50px;
     width: 250px;
     height: 100px;
-    position: relative;
-    top: 200px;
-    right: -930px;
     font-size: 20px;
     color: #0071bc;
     letter-spacing: 2px;
+    text-decoration:underline;
+    text-decoration-color: #e3cf32;
 }
 
-.handling-company-border {
-    width: 160px;
-    height: 3px;
-    background-color: #e3cf32;
-    position: relative;
-    top: 110px;
-    left: 925px;
-}
+
 
 .handling-txt {
-    width: 400px;
-    height: 300px;
-    position: relative;
-    top: 150px;
-    right: -920px;
+    margin-top: 10px;
+    margin-left: 50px;
+    /* height: 300px; */
+    width: 100%;
     font-size: 18px;
     font-style: normal;
     line-height: 50px;
     color: rgb(87, 86, 86);
+}
+
+.handling-logos{
+    width: 50%;
+    background-color: #B7DDFF;
 }
 
 /* ここからvoices利用者の声 */
@@ -367,19 +395,21 @@ li {
     font-size: 20px;
     color: #0071bc;
     position: relative;
-    top: 70px;
+    top: 100px;
     text-align: center;
     font-weight: 400;
+    text-decoration:underline;
+    text-decoration-color: #e3cf32;
 }
 
-.voices-title-border {
+/* .voices-title-border {
     width: 160px;
     height: 3px;
     background-color: #e3cf32;
     position: relative;
     top: 50px;
     left: 640px;
-}
+} */
 
 .voices-contents {
     display: flex;
@@ -409,7 +439,7 @@ li {
     height: 160px;
     position: relative;
     z-index: 5;
-    background-color: #e3cf32;
+    background-color: #B7DDFF;
     position: relative;
     top: -12px;
     left: 5px;
@@ -481,16 +511,18 @@ li {
     font-size: 20px;
     font-style: normal;
     color: #0071bc;
+    text-decoration:underline;
+    text-decoration-color: #e3cf32;
 }
 
-.creator-title-border {
+/* .creator-title-border {
     height: 3px;
     width: 210px;
     background-color: #e3cf32;
     position: relative;
     top: -30px;
     left: 615px;
-}
+} */
 
 .creator-content {
     width: 1440px;
@@ -604,16 +636,18 @@ ul {
     width: 300px;
     color: white;
     letter-spacing: 4px;
+    text-decoration:underline;
+    text-decoration-color: #e3cf32;
 }
 
-.about-title-border {
+/* .about-title-border {
     width: 265px;
     height: 3px;
     background-color: #e3cf32;
     position: relative;
     top: 60px;
     left: 115px;
-}
+} */
 
 .about-philosophy {
     font-size: 20px;
@@ -704,6 +738,8 @@ ul {
     font-size: 15px;
     font-weight: normal;
     text-align: center;
+    text-decoration:underline;
+    text-decoration-color: #e3cf32;
 }
 
 
@@ -756,3 +792,4 @@ footer {
     top: 180px;
     padding-bottom: 50px;
 }
+

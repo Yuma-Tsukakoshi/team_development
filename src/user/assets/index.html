@@ -6,8 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/index.css">
   <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
-<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-1-11/css/7-1-11.css">
-  <title>トップページ</title>
+  <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-1-11/css/7-1-11.css">
+    <!--Google Fonts読み込み-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <title>トップページ</title>
+    <!--jQueryのリンクを読み込んだ後に、jsファイルを読み込む-->
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+    <script src="./js/freshman.js" defer></script>
 </head>
 <body>
   <header class="haeder">
@@ -74,18 +83,27 @@
     </div>
   </div>
   <div class="handling">
-    <h2 class="handling-title">HANDLING <br> COMPANY</h2>
-    <h3 class="handling-jpn">ー取扱い会社ー</h3>
-    <div class="handling-company-border"></div>
-    <!--写真挿入↓-->
-    <img class="handling-img" src="" alt="">
-    <p class="handling-txt">ここでは、LDCの取扱会社をご紹介します。<br>幅広い選択肢の中から、お客様のライフブラ<br>ンに合った「あなたらしい」エージェント選び<br>をサポートします。</p>
+    <div class="handling-logos">
+      <div class="logos-discription">
+        doda株式会社、株式会社マイナビ、NaS株式会社、Jobspirng株式会社、Goodfind、株式会社アカリク、株式会社リクナビ（随時追加）
+      </div>
+      <div class="slider">
+        <img src="../assets/img/logo_2.png">
+        <img src="../assets/img/logo_4.png">
+        <img src="../assets/img/logo_7.png">
+        <img src="../assets/img/logo_8.png">
+      </div>
+    </div>
+    <div class="handling-discription">
+      <h2 class="handling-title">HANDLING <br> COMPANY</h2>
+      <h3 class="handling-jpn">ー取扱い会社ー</h3>
+      <p class="handling-txt">ここでは、CRAFTの取扱会社をご紹介します。<br>幅広い選択肢の中から、<br>みなさんのライフブランに合った<br>「あなたらしい」エージェント選びをサポートします。</p>
+    </div>
   </div>
   
   <div class="voices">
     <h2 class="voices-title">VOICES</h2>
     <p class="voices-title-jpn">ー利用者の声ー</p>
-    <div class="voices-title-border"></div>
     <div class="voices-container">
       <div class="voices-contents-1 voices-contents">
         <img class="voices-img" src="./img/1234.png" alt="利用者の写真">
@@ -162,7 +180,6 @@
         <img class="creator-img" src="./img/creator-img.jpg" alt="自己紹介の写真">
         <div class="creator-img-under5"></div>
         <img class="creator-img" src="./img/creator-img.jpg" alt="自己紹介の写真">
-
       </div>
     </div>
   </div>
@@ -200,8 +217,23 @@
     <p class="footer-copyright">Copyright© 2019 LDC Co., Ltd, All Rights Reserved.</p>
   </div>
 </footer>
+
+    <!-- slick jsの読込み -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <!-- slickの設定 -->
+    <script type="text/javascript">
+      $(function () {
+        $('.single-item').slick({
+          accessibility: true,
+          autoplay: true,
+          autoplaySpeed: 3000,
+          speed: 400,
+        });
+      });
+    </script>
 </html>
 
-<!-- ボタンの波紋 -->
+
 
 
