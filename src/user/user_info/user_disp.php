@@ -78,7 +78,7 @@ $agents = $stmt2->fetchAll();
                   申請企業一覧
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  データ
+                  無効申請判定
                 </th>
               </tr>
             </thead>
@@ -87,42 +87,26 @@ $agents = $stmt2->fetchAll();
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      企業名
+                      <?= $agent["service_name"] ?>
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-ms font-medium text-gray-900">
-                      <?= $agent["service_name"] ?>
+                      <?php
+                      if ($agent["valid"] == 0) {
+                        print_r("申請なし");
+                      } elseif ($agent["valid"] == 1) {
+                        print_r("申請中");
+                      } elseif ($agent["valid"] == 2) {
+                        print_r("申請承認");
+                      } elseif ($agent["valid"] == 3) {
+                        print_r("申請拒否");
+                      }
+                      ?>
                     </div>
                   </td>
                 </tr>
               <?php } ?>
-            </tbody>
-          </table>
-        </div>
-        <div class="my-8 flex justify-center">
-          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
-            <tbody class="bg-blue-500 text-white">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
-                  無効申請判定
-                </th>
-                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                  <div class="text-ms font-medium text-gray-900">
-                    <?php
-                    if ($agent["valid"] == 0) {
-                      print_r("申請なし");
-                    } elseif ($agent["valid"] == 1) {
-                      print_r("申請中");
-                    } elseif ($agent["valid"] == 2) {
-                      print_r("申請承認");
-                    }elseif($agent["valid"] == 3) {
-                        print_r("申請拒否");
-                      }
-                    ?>
-                  </div>
-                </th>
-              </tr>
             </tbody>
           </table>
         </div>
