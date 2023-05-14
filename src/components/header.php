@@ -14,7 +14,7 @@
           <li class=""><a href="#">VOICES</a></li>
           <li class=""><a href="#">CREATOR</a></li>
           <li class=""><a href="#">CONTACT</a></li>
-          <li class=""><a href="#">法人向け</a></li>
+          <li class=""><a href="http://localhost:8080/agent/agent_auth/agent_login.php">法人向け</a></li>
         </ul>
         <button class="search_button">検索はこちらから</button>
       </div>

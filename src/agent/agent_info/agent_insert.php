@@ -1,7 +1,9 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
-require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+
+//ここでエラーでる
+//require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
 ?>
 <!DOCTYPE html>
