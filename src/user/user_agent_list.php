@@ -126,6 +126,7 @@ if (isset($_SESSION['clients'])) {
                       <span class="label-major">
                         ・<?= $agent_label["label_name"] ?>
                       </span>
+                      &nbsp;
                     <?php } ?>
                   <?php } ?>
                 </div>

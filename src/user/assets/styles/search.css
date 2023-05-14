@@ -245,13 +245,9 @@ img{
 
 .top-title{
     font-size: 37px;
-    position: ;
-    top:-120px ;
-    left:330px ;
 }
 
 .top-title-border{
-    width: 330px;
     height: 4px;
     background-color: #ffe600;
     position: ;
@@ -280,17 +276,11 @@ img{
     width:200px ;
     height:100px ;  
     margin: 0 auto;
-    position: ;
-    top: 20px;
 }
 
 .top-description-border{
     border-width: 1.5px;
-    width: 650px;
     color: #ffe600;
-    position: ;
-    top:-80px ;
-    left:30px ;
 }
 
 /* ここ３つwidth,heightが効かないです、、、 */
@@ -362,7 +352,7 @@ img{
 /* 加筆 */
 
 .agent-list-wrapper{
-    height: 350px;
+
     background-color: white;
     border-radius: 30px;
     box-shadow: 10px 10px rgb(160, 160, 160);
@@ -396,7 +386,7 @@ border-radius: 20px;
 .block{
     display: grid;
     gap: 10px;
-    position: relative;
+    margin-bottom: 20px;
 }
 
 .major{
@@ -437,4 +427,8 @@ label{
 .detail-wrapper{
     box-sizing: border-box;
     width: 45%;
+}
+
+.labels{
+    gap: 10px;
 }
