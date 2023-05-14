@@ -344,11 +344,13 @@ li {
 .slider {
     display: flex;
     align-items: center;
+    margin-top: 100px;
+    background-color: #fff;
 }
 
 .slider img {
-    width: 100px; /* 画像を親要素に合わせてリサイズ */
-    height: 100px; /* アスペクト比を維持 */
+    width: 200px; /* 画像を親要素に合わせてリサイズ */
+    height: 200px; /* アスペクト比を維持 */
     object-fit: contain; /* 画像のアスペクト比を保ったまま表示 */
     margin-right: 10px;
     gap: 10px;
