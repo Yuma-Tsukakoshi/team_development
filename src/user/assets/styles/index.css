@@ -1,173 +1,120 @@
 body {
     overflow-x: hidden;
-}
-
-/* header */
-body {
-    margin: 0;
-    padding: 0;
-}
-
-img {
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
+    padding-top: 0px;
 }
 
 .header {
-    background-color: #0071bc;
-}
-
-.header_upper {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 10px;
-
-}
-
-.craft_logo {
-    color: white;
-    font-weight: bold;
-    font-size: 50px;
-    margin: auto;
-}
-
-.boozer_logo {
-    position: absolute;
-    width: auto;
-    height: 30px;
-    top: 20px;
-    right: 10px;
-}
-
-.header_lower {
-    display: flex;
-    margin: 0 auto;
-}
-
-.nav_list {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-}
-
-.nav_list a {
-    position: relative;
-    /*アンダーラインの位置を決めるための基準 */
-    text-decoration: none;
-    color: inherit;
-    padding-right: 15px;
-    padding-left: 15px;
-    color: white;
-
-}
-
-.nav_list a::after {
-    position: absolute;
-    left: 0;
-    content: '';
     width: 100%;
-    height: 2px;
-    background: black;
-    bottom: -1px;
-    transform: scale(0, 1);
-    transform-origin: center top;
-    /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
-    transition: transform 0.3s;
-    /*変形の時間*/
-}
-
-.nav_list a:hover {
-    color: black;
-}
-
-.nav_list a:hover::after {
-    transform: scale(1, 1);
-    /*ホバー後、x軸方向に1（相対値）伸長*/
-}
-
-ul {
-    padding-left: 0;
-}
-
-li {
-    list-style: none;
-    font-weight: bold;
-}
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(128, 128, 128, 0.5); /* 透明な灰色の背景色に変更 */
+    font-size: 20px;
+    padding: 10px 20px;
+    position: fixed;
+    z-index: 1000;
+    color: aliceblue;
+  }
+  
+  .header-button {
+    padding-left: 20px;
+    margin-left: 0px;
+    cursor: pointer;
+  }
+  
+  .header-button:hover {
+    color: #e3cf32;
+    text-decoration: underline;
+  }
+  
+  .header-img {
+    width: auto;
+    height: 50px;
+    margin-left: auto;
+  }
+  
+ 
 
 
 /* ここからヒーロー */
 /* ここから流れ星 */
-.star-box{
+.star-box {
     height: 100px;
     width: 100px;
     transform: rotateZ(-75deg);
-    position:absolute;
-    top: 100px;
 }
 
 .star{
     height: 0;
-    width: 2px;
-    background-color: #e3cf32;
-    
-}
-.move{
+    width: 3px;
+    background-color: #fadf13;
     animation-name: shooting;
     animation-duration: 6.0s;
     animation-timing-function: linear;
-    z-index: 40;
-
 }
 
-.star-box2{
+
+.star-box2 {
     height: 100px;
     width: 100px;
-    transform: rotateZ(45deg);
+    transform: rotateZ(55deg);
     position: absolute;
-    right: 0;
-    top: 30px;
+    right: -20px;
+    top: 22px;
 }
 
-.star-box3{
+.star-box3 {
     height: 100px;
     width: 100px;
     transform: rotateZ(225deg);
     position: absolute;
-    left: 0px;
+    left: -50px;
 }
 
-.star-box4{
+.star-box4 {
     height: 100px;
     width: 100px;
     transform: rotateZ(315deg);
     position: absolute;
 }
 
-.star-box5{
+.star-box5 {
     height: 100px;
     width: 100px;
     transform: rotateZ(225deg);
     position: absolute;
+    top: 3500px;
+    left: -50px;
 }
 
 
-.star-box6{
+.star-box6 {
     height: 100px;
     width: 100px;
-    transform: rotateZ(85deg);
+    transform: rotateZ(70deg);
     position: absolute;
-    left: 1400px;
+    left: 1380px;
+    top: 3870px;
 }
 
-.star-box7{
+.star-box7 {
     height: 100px;
     width: 100px;
     transform: rotateZ(265deg);
     position: absolute;
+    top: 4070px;
 }
 
+.star-fadein{
+    opacity: 0;
+    transform: translate(0,100px);
+    transition: all 1s;
+}
+
+.star-fadein.active{
+    opacity: 1;
+    transform: translate(0,0);
+}
 
 
 @keyframes shooting {
@@ -175,10 +122,12 @@ li {
         height: 0;
         opacity: 50%;
     }
+
     50% {
-            height: 500px;
-            opacity: 100%;
+        height: 500px;
+        opacity: 100%;
     }
+
     100% {
         height: 700px;
         opacity: 0;
@@ -186,8 +135,8 @@ li {
 }
 
 
-.hero{
-    width:100%;
+.hero {
+    width: 100%;
     height: 600px;
     background-image: url(../img/top_picture.jpeg);
     background-size: cover;
@@ -209,12 +158,13 @@ li {
 
 .hero-title-jpn {
     position: absolute;
-    top: 300px;
-    left: 150px;
+    top: 250px;
+    left: 250px;
     border-right: 0px;
     z-index: 10;
     letter-spacing: 8px;
     font-size: 40px;
+    text-align: left;
 }
 
 .hero-circle {
@@ -241,7 +191,7 @@ li {
 
 
 /* 2つだけだとん？ってなるから少し増やしてみた */
-.hero-circle-3{
+.hero-circle-3 {
     height: 150px;
     width: 150px;
     border-radius: 50%;
@@ -251,7 +201,7 @@ li {
     left: 800px;
 }
 
-.hero-circle-4{
+.hero-circle-4 {
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -274,10 +224,11 @@ li {
     border-color: transparent;
     z-index: 50;
     position: fixed;
-    bottom: 100px;
+    top: 400px;
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
+    z-index: 100px;
 }
 
 .search-btn:hover {
@@ -287,10 +238,9 @@ li {
 
 /* ここからShukatsu */
 .shukatsu {
-
-    position: relative;
+    /* position: relative; */
     width: 100%;
-    height: 700px;
+    height: 500px;
     background-color: #0071bc;
     display: flex;
     flex-direction: column;
@@ -313,13 +263,16 @@ li {
     color: white;
     letter-spacing: 4px;
     margin-bottom: 10px;
+
 }
 
 .shukatsu-title-border {
     width: 330px;
     height: 3px;
     background-color: #e3cf32;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
+    margin-top: -15px;
+    
 
 }
 
@@ -351,15 +304,27 @@ li {
     height: 500px;
 }
 
-.howto-title {
-    width: 500px;
-    height: 50px;
+.how-to{
+    margin-bottom: 50px;
+    margin-left: 0px;
+    height: 0px;
+    font-size: 20px;
+    color: #0071bc;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    text-decoration-color: #e3cf32;
+}
+
+.howto-title{
+    margin-top: 100px;
+    text-align: center;
     color: #0071bc;
     font-weight: bold;
     font-size: 40px;
-    position: relative;
-    top: 70px;
-    left: 150px;
+}
+
+.bold{
+    font-weight: bold;
 }
 
 .howto-steps {
@@ -370,7 +335,6 @@ li {
 .howto-agent,
 .howto-apply {
     color: #0071bc;
-    position: relative;
     top: 100px;
     text-align: center;
     width: 800px;
@@ -394,20 +358,18 @@ li {
     margin-bottom: 7px;
 }
 
-.howto-search-img {
-    height: 260px;
+.howto-search-img{
+    height: 200px;
     width: 160px;
 }
 
-.howto-agent-img {
-    height: 260px;
-    width: 300px;
+.howto-agent-img,
+.howto-apply-img{
+    height: 200px;
+    width: 200px;
 }
 
-.howto-apply-img {
-    height: 260px;
-    width: 300px;
-}
+
 
 /* ここからhandling company*/
 .handling {
@@ -418,15 +380,15 @@ li {
     overflow: hidden;
 }
 
-.logos-discription{
+.logos-discription {
     margin-top: 10%;
-    margin-left: 50px;
+    margin-left: 15px;
     font-size: 20px;
     color: #0071bc;
     font-weight: bold;
 }
 
-.handling-logos{
+.handling-logos {
     width: 50%;
     background-color: #B7DDFF;
     flex-direction: column;
@@ -442,18 +404,23 @@ li {
 }
 
 .slider img {
-    width: 200px; /* 画像を親要素に合わせてリサイズ */
-    height: 200px; /* アスペクト比を維持 */
-    object-fit: contain; /* 画像のアスペクト比を保ったまま表示 */
+    width: 200px;
+    /* 画像を親要素に合わせてリサイズ */
+    height: 200px;
+    /* アスペクト比を維持 */
+    object-fit: contain;
+    /* 画像のアスペクト比を保ったまま表示 */
     margin-right: 10px;
     gap: 10px;
+}
+
+.slider img:not(:last-child) {
+    margin-right: 50px;
 }
 
 
 
 .handling-title {
-    width: 200px;
-    height: 100px;
     font-size: 40px;
     font-weight: bold;
     color: #0071bc;
@@ -462,15 +429,14 @@ li {
     margin-top: 50px;
 }
 
-.handling-jpn {
-    margin-top: 20px;
-    margin-left: 50px;
-    width: 250px;
+.handling-jpn 
+{
+    margin-left: 100px;
     height: 100px;
     font-size: 20px;
     color: #0071bc;
     letter-spacing: 2px;
-    text-decoration:underline;
+    text-decoration: underline;
     text-decoration-color: #e3cf32;
 }
 
@@ -493,30 +459,28 @@ li {
 
 .voices {
     width: 100%;
-    height: 700px;
+    height: 600px;
 }
 
 .voices-title {
+    margin-top: 50px;
     font-size: 40px;
     color: #0071bc;
     position: relative;
-    top: 100px;
     text-align: center;
-    letter-spacing: 10px;
     font-weight: bold;
 }
 
-.voices-title-jpn {
+.voices-title-jpn
+{
     font-size: 20px;
     color: #0071bc;
-    position: relative;
-    top: 100px;
-    text-align: center;
-    font-weight: 400;
-    text-decoration:underline;
+    letter-spacing: 2px;
+    text-decoration: underline;
     text-decoration-color: #e3cf32;
+    font-weight: bold;
+    text-align: center;
 }
-
 
 .voices-contents {
     display: flex;
@@ -526,9 +490,8 @@ li {
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
-    top: 150px;
+    top: 30px;
     left: 60px;
-
 }
 
 .voices-contents-box {
@@ -587,8 +550,8 @@ li {
 }
 
 
-.stars{
-    margin: 0;
+.stars {
+    margin-left: 50px;
     padding: 0;
     position: relative;
     top: -6px;
@@ -613,6 +576,7 @@ li {
     font-size: 40px;
     font-style: bold;
     color: #0071bc;
+    /* height: 150px; */
 }
 
 .creator-title-jpn {
@@ -620,7 +584,7 @@ li {
     font-size: 20px;
     font-style: normal;
     color: #0071bc;
-    text-decoration:underline;
+    text-decoration: underline;
     text-decoration-color: #e3cf32;
 }
 
@@ -642,7 +606,7 @@ li {
     height: 150px;
     margin-right: 80px;
     margin-left: 80px;
-    z-index: 100;
+    z-index: 10;
 }
 
 .creator-img-under1 {
@@ -690,9 +654,9 @@ li {
     background-color: #e3cf32;
 }
 
-.creator-title-border{
+.creator-title-border {
     position: relative;
-    top:-10px;
+    top: -10px;
 }
 
 ul {
@@ -713,18 +677,29 @@ ul {
 .about {
     /* ここを1440にしたら余白多少はマシになった */
     width: 100%;
-    height: 700px;
-    position: relative;
+    height: 600px;
+    /* position: relative; */
     background-color: #0071bc;
     margin-top: 0;
+    display: flex;
+}
 
+.about-left{
+    margin-left: 150px;
+    margin-top: 100px;
+    width: 50%;
+}
+
+.about-right{
+    margin-left: 100px;
+    margin-top: 50px;
+    width: 50%;
 }
 
 .about-title {
-    position: relative;
+    /* position: relative; */
     top: 90px;
     left: 120px;
-    width: 300px;
     color: white;
     font-weight: bold;
     letter-spacing: 4px;
@@ -733,13 +708,13 @@ ul {
 
 .about-title-jpn {
     font-size: 20px;
-    position: relative;
+    /* position: relative; */
     top: 80px;
     left: 120px;
-    width: 300px;
+    /* width: 300px; */
     color: white;
     letter-spacing: 4px;
-    text-decoration:underline;
+    text-decoration: underline;
     text-decoration-color: #e3cf32;
 }
 
@@ -755,20 +730,19 @@ ul {
 
 .about-philosophy {
     font-size: 20px;
-    position: relative;
+    /* position: relative; */
     top: 100px;
     left: 120px;
-    width: 300px;
     color: white;
     letter-spacing: 2px;
 }
 
 
 .about-txt-motto {
-    width: 700px;
+    /* width: 700px; */
     height: 150px;
     font-size: 36px;
-    position: relative;
+    /* position: relative; */
     top: 180px;
     left: 150px;
     color: white;
@@ -778,37 +752,32 @@ ul {
 
 
 .about-txt-description-title {
-    width: 700px;
+    /* width: 700px; */
     height: 50px;
     font-size: 50px;
     margin: 0;
-
-    position: relative;
-    top: -200px;
-    left: 950px;
+    /* position: relative; */
+    /* top: -200px;
+    left: 950px; */
     color: white;
     font-weight: bold;
     text-align: left;
 }
 
 .about-txt-description-title-jpn {
-    width: 500px;
-    height: 50px;
-    margin: 0;
-    position: relative;
+    /* height: 50px; */
+    margin-top: 350px;
     font-size: 25px;
-    left: 870px;
-    top: 150px;
     color: white;
 }
 
 .about-txt-description-description {
-    width: 500px;
+    /* width: 500px; */
     height: 150px;
-    position: relative;
+    /* position: relative; */
     font-size: 15px;
     top: -90px;
-    left: 800px;
+    left: 500px;
     color: white;
     word-spacing: 120px;
 }
@@ -846,44 +815,44 @@ ul {
     font-size: 15px;
     font-weight: normal;
     text-align: center;
-    text-decoration:underline;
+    text-decoration: underline;
     text-decoration-color: #e3cf32;
 }
-  
-  .footer-content {
+
+.footer-content {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
-  }
-  
-  .footer-img {
+}
+
+.footer-img {
     height: 70px;
     margin-right: 30px;
-  }
-  
-  .footer-row-1,
-  .footer-row-2,
-  .footer-row-3 {
+}
+
+.footer-row-1,
+.footer-row-2,
+.footer-row-3 {
     margin-right: 60px;
-  }
-  
-  .footer-authority {
+}
+
+.footer-authority {
     display: flex;
     justify-content: center;
     color: gray;
     margin-top: 50px;
-  }
-  
-  .footer-copyright {
+}
+
+.footer-copyright {
     color: #0071bc;
     letter-spacing: 2px;
     text-align: center;
     padding-top: 20px;
-  }
-  
-  /* 追加のスタイル */
-  .footer-content p {
+}
+
+/* 追加のスタイル */
+.footer-content p {
     margin: 0;
     padding: 5px;
     cursor: pointer;
@@ -891,35 +860,33 @@ ul {
     font-weight: bold;
     text-decoration: none;
     transition: color 0.3s;
-  }
-  
-  .footer-content p:hover {
+}
+
+.footer-content p:hover {
     color: #0071bc;
-  }
-  
-  .footer-authority p {
+}
+
+.footer-authority p {
     margin: 0;
     padding: 5px;
     color: gray;
     font-size: 12px;
-  }
-  
-  .footer-copyright {
-    font-size: 12px;
-  }
-  
+}
 
-=======
+.footer-copyright {
+    font-size: 12px;
+}
+
+
 
 /* js用 */
 .title {
-    opacity : 0;
-    transform : translate(0, 100px);
-    transition : all 1s;
+    opacity: 0;
+    transform: translate(0, 100px);
+    transition: all 1s;
 }
 
-.title.active{
-    opacity : 1;
-    transform : translate(0, 0);
+.title.active {
+    opacity: 1;
+    transform: translate(0, 0);
 }
-
