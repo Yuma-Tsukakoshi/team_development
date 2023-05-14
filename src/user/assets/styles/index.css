@@ -44,10 +44,10 @@ body {
     transform: rotateZ(-75deg);
 }
 
-.star {
+.star{
     height: 0;
     width: 3px;
-    background-color: #e3cf32;
+    background-color: #fadf13;
     animation-name: shooting;
     animation-duration: 6.0s;
     animation-timing-function: linear;
@@ -57,10 +57,10 @@ body {
 .star-box2 {
     height: 100px;
     width: 100px;
-    transform: rotateZ(45deg);
+    transform: rotateZ(55deg);
     position: absolute;
-    right: 0;
-    top: 30px;
+    right: -20px;
+    top: 22px;
 }
 
 .star-box3 {
@@ -68,7 +68,7 @@ body {
     width: 100px;
     transform: rotateZ(225deg);
     position: absolute;
-    left: 0px;
+    left: -50px;
 }
 
 .star-box4 {
@@ -83,15 +83,18 @@ body {
     width: 100px;
     transform: rotateZ(225deg);
     position: absolute;
+    top: 3500px;
+    left: -50px;
 }
 
 
 .star-box6 {
     height: 100px;
     width: 100px;
-    transform: rotateZ(85deg);
+    transform: rotateZ(70deg);
     position: absolute;
-    left: 1400px;
+    left: 1380px;
+    top: 3870px;
 }
 
 .star-box7 {
@@ -99,8 +102,19 @@ body {
     width: 100px;
     transform: rotateZ(265deg);
     position: absolute;
+    top: 4070px;
 }
 
+.star-fadein{
+    opacity: 0;
+    transform: translate(0,100px);
+    transition: all 1s;
+}
+
+.star-fadein.active{
+    opacity: 1;
+    transform: translate(0,0);
+}
 
 
 @keyframes shooting {
@@ -210,7 +224,7 @@ body {
     border-color: transparent;
     z-index: 50;
     position: fixed;
-    bottom: 100px;
+    top: 400px;
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
@@ -224,10 +238,9 @@ body {
 
 /* ここからShukatsu */
 .shukatsu {
-
-    position: relative;
+    /* position: relative; */
     width: 100%;
-    height: 700px;
+    height: 500px;
     background-color: #0071bc;
     display: flex;
     flex-direction: column;
@@ -291,15 +304,27 @@ body {
     height: 500px;
 }
 
-.howto-title {
-    width: 500px;
-    height: 50px;
+.how-to{
+    margin-bottom: 50px;
+    margin-left: 0px;
+    height: 0px;
+    font-size: 20px;
+    color: #0071bc;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    text-decoration-color: #e3cf32;
+}
+
+.howto-title{
+    margin-top: 100px;
+    text-align: center;
     color: #0071bc;
     font-weight: bold;
     font-size: 40px;
-    position: relative;
-    top: 70px;
-    left: 150px;
+}
+
+.bold{
+    font-weight: bold;
 }
 
 .howto-steps {
@@ -310,7 +335,6 @@ body {
 .howto-agent,
 .howto-apply {
     color: #0071bc;
-    position: relative;
     top: 100px;
     text-align: center;
     width: 800px;
@@ -334,20 +358,18 @@ body {
     margin-bottom: 7px;
 }
 
-.howto-search-img {
-    height: 260px;
+.howto-search-img{
+    height: 200px;
     width: 160px;
 }
 
-.howto-agent-img {
-    height: 260px;
-    width: 300px;
+.howto-agent-img,
+.howto-apply-img{
+    height: 200px;
+    width: 200px;
 }
 
-.howto-apply-img {
-    height: 260px;
-    width: 300px;
-}
+
 
 /* ここからhandling company*/
 .handling {
@@ -457,6 +479,7 @@ body {
     text-decoration: underline;
     text-decoration-color: #e3cf32;
     font-weight: bold;
+    text-align: center;
 }
 
 .voices-contents {
@@ -528,7 +551,7 @@ body {
 
 
 .stars {
-    margin: 0;
+    margin-left: 50px;
     padding: 0;
     position: relative;
     top: -6px;
@@ -553,7 +576,7 @@ body {
     font-size: 40px;
     font-style: bold;
     color: #0071bc;
-    height: 150px;
+    /* height: 150px; */
 }
 
 .creator-title-jpn {
@@ -654,18 +677,29 @@ ul {
 .about {
     /* ここを1440にしたら余白多少はマシになった */
     width: 100%;
-    height: 700px;
-    position: relative;
+    height: 600px;
+    /* position: relative; */
     background-color: #0071bc;
     margin-top: 0;
+    display: flex;
+}
 
+.about-left{
+    margin-left: 150px;
+    margin-top: 100px;
+    width: 50%;
+}
+
+.about-right{
+    margin-left: 100px;
+    margin-top: 50px;
+    width: 50%;
 }
 
 .about-title {
-    position: relative;
+    /* position: relative; */
     top: 90px;
     left: 120px;
-    width: 500px;
     color: white;
     font-weight: bold;
     letter-spacing: 4px;
@@ -674,10 +708,10 @@ ul {
 
 .about-title-jpn {
     font-size: 20px;
-    position: relative;
+    /* position: relative; */
     top: 80px;
     left: 120px;
-    width: 300px;
+    /* width: 300px; */
     color: white;
     letter-spacing: 4px;
     text-decoration: underline;
@@ -696,20 +730,19 @@ ul {
 
 .about-philosophy {
     font-size: 20px;
-    position: relative;
+    /* position: relative; */
     top: 100px;
     left: 120px;
-    width: 300px;
     color: white;
     letter-spacing: 2px;
 }
 
 
 .about-txt-motto {
-    width: 700px;
+    /* width: 700px; */
     height: 150px;
     font-size: 36px;
-    position: relative;
+    /* position: relative; */
     top: 180px;
     left: 150px;
     color: white;
@@ -719,34 +752,29 @@ ul {
 
 
 .about-txt-description-title {
-    width: 700px;
+    /* width: 700px; */
     height: 50px;
     font-size: 50px;
     margin: 0;
-
-    position: relative;
-    top: -200px;
-    left: 950px;
+    /* position: relative; */
+    /* top: -200px;
+    left: 950px; */
     color: white;
     font-weight: bold;
     text-align: left;
 }
 
 .about-txt-description-title-jpn {
-    width: 1000px;
-    height: 50px;
-    margin: 0;
-    position: relative;
+    /* height: 50px; */
+    margin-top: 350px;
     font-size: 25px;
-    left: 600px;
-    top: 150px;
     color: white;
 }
 
 .about-txt-description-description {
-    width: 500px;
+    /* width: 500px; */
     height: 150px;
-    position: relative;
+    /* position: relative; */
     font-size: 15px;
     top: -90px;
     left: 500px;
