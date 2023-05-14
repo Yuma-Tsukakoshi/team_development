@@ -5,32 +5,72 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/index.css">
-  <link rel="stylesheet" href="../assets/styles/header.css">
-  <title>Document</title>
-</head>
+
+  <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+  <!--Google Fonts読み込み-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+  <!-- slick -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+  <!-- <script src="../assets/js/freshman.js" defer></script> -->
+  <title>トップページ</title>
+
 <body>
+  <header class="header">
+      <div class="header-button" data-target="#What">就活エージェント比較サイトとは？</div>
+      <div class="header-button" data-target="#howto-section">使い方</div>
+      <div class="header-button" data-target="#handling-section">取扱い会社</div>
+      <div class="header-button" data-target="#voices-section">利用者の声</div>
+      <div class="header-button" data-target="#about-section">私たちについて</div>
+      <img class="header-img" src="../assets/img/boozer_logo_white.png" alt="">
+  </header>
+
   <!-- なっちゃん担当 トップページ -->
   <div class="hero">
-    <h1 class="hero-title-jpn">学生の学生による<br>学生のための就活サイト</h1>
-    <div class="hero-circle"></div>
-    <div class="hero-circle-2"></div>
-  <!--ここにみんなの証明写真入れる-->
+    <div class="star-box">
+      <div class="star"></div>
+    </div>
+
+    <div class="hero-overlay">
+      <!-- 意図した全角だから消さないでね -->
+      <h1 class="hero-title-jpn">「学生の学生による<br>　学生のための就活エージェント比較サイト」</h1>
+      <div class="hero-circle"></div>
+      <div class="hero-circle-2"></div>
+      <div class="hero-circle-3"></div>
+      <div class="hero-circle-4"></div>
+    </div>
   </div>
   <button class="search-btn">
     検索はこちらから▶︎
   </button>
-  <div class="about">
-    <h2 class="about-title">ABOUT US</h2>
-    <h3 class="about-title-jpn">ーわたしたちについてー</h3>
-    <div class="about-title-border"></div>
-    <h3 class="about-philosophy">Philosophy</h3>
-    <p class="about-txt-motto">「<span class="about-txt-motto-span">学生に寄り添う</span>」<br>を追求した<br>エージェント比較サイト。</p>
-    <p class="about-txt-description-title">C onnecting<br>R ecruitment<br>A gency<br> F or<br> T he future </p>
-    <p class="about-txt-description-title-jpn">ーリクルートエージェントと学生を<br>未来に向けてつなげるために。ー</p>
-    <!-- <p class="about-txt-description-description">「就活に向けて何かしたいけど、何から始めたらいいのかわからない。」<br>そのような学生のみさなんが初めの一歩を踏み出す手助けが<br>できるよう、学生が学生目線で作った就活エージェント比較<br>サイトです。<br>数あるエージェントの中から自分に合ったエージェントを見<br>つけられるよう、人と人との繋がりを大切にしました。</p> -->
+  <div class="shukatsu" id="What">
+    <div class="star-box2">
+      <div class="star"></div>
+    </div>
+  <div ><h2 class="shukatsu-title">就活エージェント比較サイトとは？</h2></div>
+      <h3 class="shukatsu-title-jpn">ーAbout this websiteー</h3>
+      <div class="shukatsu-title-border"></div>
+      <div class="description">
+      <p class="shukatsu-txt-description-title-jpn">就活エージェントとは？：就活のプロと対話しながらそれぞれの学生に合った企業を探すサービスのこと</p>
+      <p class="shukatsu-txt-description-title-jpn compare">比較サイトとは？：エージェントを絞り込み検索で比較するサイト</p>
+      <br>
+      <p class="shukatsu-txt-description-title-jpn">このサイトでは、数あるエージェントの中からあなたに合ったエージェント選びをサポートします。</p>
+      <div class="star-box3">
+        <div class="star"></div>
+      </div>
+    </div>
+
   </div>
-  <div class="howto">
-    <h2 class="howto-title">How to Use CRAFT</h2>
+
+  <div class="howto" id="howto-section">
+    <div class="howto-title .title">
+      使い方
+      <h3 class="how-to">ーHOW TOー</h3>
+    </div>
+
     <div class="howto-steps">
       <div class="howto-search">
         <img class="howto-search-img" src="./img/12386.png" alt="女性が検索しているアイコン">
@@ -41,7 +81,7 @@
         <img class="howto-agent-img" src="./img/8388.png" alt="男性がパソコンに向かっているアイコン">
         <p class="howto-agent-title">エージェントをクリック</p>
         <p class="howto-agent-txt">気になったのを何個か選んで、カートに入れる。</p>
-        <p class="howto-agent-txt-small">(1度個人情報を登録すれば、エージェントの一括申請が可能です)</p>
+        <p class="howto-agent-txt-small">(1度個人情報を登録すれば、エージェントの <span class="bold">一括申請</span>が可能です)</p>
       </div>
       <div class="howto-apply">
         <img class="howto-apply-img" src="./img/12567.png" alt="女性が面接を受けているアイコン">
@@ -50,26 +90,50 @@
       </div>
     </div>
   </div>
-  <div class="handling">
-    <h2 class="handling-title">HANDLING <br> COMPANY</h2>
-    <h3 class="handling-jpn">ー取扱い会社ー</h3>
-    <div class="handling-company-border"></div>
-    <!--写真挿入↓-->
-    <img class="handling-img" src="" alt="">
-    <p class="handling-txt">ここでは、LDCの取扱会社をご紹介します。<br>幅広い選択肢の中から、お客様のライフブラ<br>ンに合った「あなたらしい」エージェント選び<br>をサポートします。</p>
+
+  <!-- 取り扱い会社 -->
+  <div class="handling" id="handling-section">
+    <div class="handling-logos">
+      <div class="logos-discription">
+        doda株式会社、株式会社マイナビ、NaS株式会社、
+        <br>Jobspirng株式会社、Goodfind、株式会社アカリク、株式会社リクナビ
+        <br>（随時追加）
+      </div>
+      <div class="slider">
+        <img src="../assets/img/logo_2.png">
+        <img src="../assets/img/logo_4.png">
+        <img src="../assets/img/logo_7.png">
+        <img src="../assets/img/logo_8.png">
+        <img src="../assets/img/logo_9.png">
+        <img src="../assets/img/logo_10.png">
+        <img src="../assets/img/logo_11.png">
+      </div>
+    </div>    
+    <style>
+      .slick-dots li {
+        display: none;
+      }
+    </style>
+    <div class="handling-discription">
+      <h2 class="handling-title">取り扱い会社</h2>
+      <h3 class="handling-jpn">ーHANDLING COMPANYー</h3>
+      <p class="handling-txt">ここでは、CRAFTの取扱会社をご紹介します。<br>幅広い選択肢の中から、<br>みなさんのライフブランに合った<br>「あなたらしい」エージェント選びをサポートします。</p>
+    </div>
   </div>
-  
-  <div class="voices">
-    <h2 class="voices-title">VOICES</h2>
-    <p class="voices-title-jpn">ー利用者の声ー</p>
-    <div class="voices-title-border"></div>
+
+  <div class="voices" id="voices-section">
+    <h2 class="voices-title">利用者の声</h2>
+    <p class="voices-title-jpn">ーVOICESー</p>
+    <div class="star-box4">
+      <div class="star"></div>
+    </div>
     <div class="voices-container">
       <div class="voices-contents-1 voices-contents">
         <img class="voices-img" src="./img/1234.png" alt="利用者の写真">
         <div class="voices-contents-box">
           <div class="voices-contents-box-sub">
             <p class="voices-contents-stars-title">満足度:</p>
-            <p class="star">⭐️⭐️⭐️⭐️☆</p>
+            <p class="stars">⭐️⭐️⭐️⭐️☆</p>
             <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
             <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
           </div>
@@ -81,7 +145,7 @@
           <div class="voices-contents-box">
             <div class="voices-contents-box-sub">
               <p class="voices-contents-stars-title">満足度:</p>
-              <p class="star">⭐️⭐️⭐️☆☆</p>
+              <p class="stars">⭐️⭐️⭐️☆☆</p>
               <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
               <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
             </div>
@@ -93,7 +157,7 @@
         <div class="voices-contents-box">
           <div class="voices-contents-box-sub">
             <p class="voices-contents-stars-title">満足度:</p>
-            <p class="star">⭐️⭐️⭐️⭐️☆</p>
+            <p class="stars">⭐️⭐️⭐️⭐️☆</p>
             <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
             <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
           </div>
@@ -104,7 +168,7 @@
         <div class="voices-contents-box">
           <div class="voices-contents-box-sub">
             <p class="voices-contents-stars-title">満足度:</p>
-            <p class="star">⭐️⭐️⭐️⭐️⭐️</p>
+            <p class="stars">⭐️⭐️⭐️⭐️⭐️</p>
             <p class="voices-contents-txt">一括で複数のエージェント企業に申し込むことができたので、気軽に就活を始めることができました。</p>
             <p class="voices-contents-name">慶應義塾大学4年小野媛乃さん</p>
           </div>
@@ -112,9 +176,32 @@
       </div>
     </div>
   </div>
+  <div class="about" id="about-section" >
+    <div class="star-box5">
+      <div class="star"></div>
+    </div>
+      <div class="about-left">
+        <div class="about-title"><h2 >わたしたちについて</h2></div>
+        <div class="about-title-jpn"><h3 >ーABOUT USー</h3></div>
+        <div class="about-title-border"></div>
+        <div class="about-philosophy"><h3 >Philosophy</h3></div>
+        <p class="about-txt-motto">「<span class="about-txt-motto-span">学生に寄り添う</span>」<br>を追求した<br>エージェント比較サイト。</p>
+      </div>
+      <div class="about-right">
+        <p class="about-txt-description-title">C onnecting<br>R ecruitment<br>A gency<br> F or<br> T he future </p>
+        <p class="about-txt-description-title-jpn">ーリクルートエージェントと学生を<br>未来に向けてつなげるために。ー</p>
+      </div>
+    <!-- <p class="about-txt-description-description">「就活に向けて何かしたいけど、何から始めたらいいのかわからない。」<br>そのような学生のみさなんが初めの一歩を踏み出す手助けが<br>できるよう、学生が学生目線で作った就活エージェント比較<br>サイトです。<br>数あるエージェントの中から自分に合ったエージェントを見<br>つけられるよう、人と人との繋がりを大切にしました。</p> -->
+  </div>
   <div class="creator">
-    <h2 class="creator-title">CREATOR</h2>
-    <h3 class="creator-title-jpn">ーサイト制作者紹介ー</h3>
+    <div class="star-box6">
+      <div class="star"></div>
+    </div>
+    <div class="star-box7">
+      <div class="star"></div>
+    </div>
+    <h2 class="creator-title .title">サイト制作者紹介</h2>
+    <h3 class="creator-title-jpn">ーCREATORー</h3>
     <div class="creator-title-border"></div>
     <!--ここに写真入れる-->
     <div class="creator-content">
@@ -129,19 +216,15 @@
         <img class="creator-img" src="./img/creator-img.jpg" alt="自己紹介の写真">
         <div class="creator-img-under5"></div>
         <img class="creator-img" src="./img/creator-img.jpg" alt="自己紹介の写真">
-
       </div>
     </div>
+    <div>
+    </div>
   </div>
-</body>
-<footer class="contact">
-  <div class="contact-title-background">
-    <h2 class="contact-title">CONTACT</h2>
-    <h3 class="contact-title-jpn">ーお問い合わせー</h3>
-  </div>
+<footer class="footer">
   <div>
     <div class="footer-content">
-      <img class="footer-img" src="./img/IMG-0582.png" alt="life consulting designのロゴ">
+      <img class="footer-img" src="../assets/img/boozer_logo-1.png" alt="life consulting designのロゴ">
       <div class="footer-row-1">
         <p class="footer-about">わたしたちについて</p>
         <p class="footer-howto">サービス紹介</p>
@@ -153,19 +236,17 @@
       <div class="footer-row-3">
         <p class="footer-news">お知らせ</p>
         <p class="footer-company">会社概要</p>
-      </div>
-      <!-- ここ写真！！ -->
-      <img class="footer-contact-img" src="./img/contact.jpeg" alt="お問い合わせ情報">
     </div>
-    <!-- ここ写真が入らない、、、 -->
-    <!-- <img class="footer-contact-info" src="./img/contact.jpeg" alt=""> -->
-    <div class="footer-authority">
-      <p class="footer-declaration">個人情報保護宣言</p>
-      <p class="footer-line">｜</p>
-      <p class="footer-policy">勧誘方針</p>
-    </div>
-    <p class="footer-copyright">Copyright© 2019 LDC Co., Ltd, All Rights Reserved.</p>
   </div>
 </footer>
+<script src="../assets/js/freshman.js"></script>
+
+</body>
+
+
+
 </html>
+
+
+
 
