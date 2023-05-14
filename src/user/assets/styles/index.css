@@ -1,100 +1,25 @@
 body {
     overflow-x: hidden;
+    padding-top: 0px;
 }
 
 /* header */
-body {
-    margin: 0;
-    padding: 0;
-}
-
-img {
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .header {
+    display: flex;
     background-color: #0071bc;
-}
-
-.header_upper {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 10px;
-
-}
-
-.craft_logo {
+    font-size: 20px;
     color: white;
-    font-weight: bold;
-    font-size: 50px;
-    margin: auto;
-}
-
-.boozer_logo {
-    position: absolute;
-    width: auto;
-    height: 30px;
-    top: 20px;
-    right: 10px;
-}
-
-.header_lower {
-    display: flex;
-    margin: 0 auto;
-}
-
-.nav_list {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-}
-
-.nav_list a {
-    position: relative;
-    /*アンダーラインの位置を決めるための基準 */
-    text-decoration: none;
-    color: inherit;
-    padding-right: 15px;
-    padding-left: 15px;
-    color: white;
-
-}
-
-.nav_list a::after {
-    position: absolute;
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: black;
-    bottom: -1px;
-    transform: scale(0, 1);
-    transform-origin: center top;
-    /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
-    transition: transform 0.3s;
-    /*変形の時間*/
-}
-
-.nav_list a:hover {
-    color: black;
-}
-
-.nav_list a:hover::after {
-    transform: scale(1, 1);
-    /*ホバー後、x軸方向に1（相対値）伸長*/
-}
-
-ul {
-    padding-left: 0;
-}
-
-li {
-    list-style: none;
-    font-weight: bold;
-}
+  }
+  
+  .header-button {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  
+  .header-button:hover {
+    color: blue;
+  }
+  
 
 
 /* ここからヒーロー */
@@ -103,24 +28,17 @@ li {
     height: 100px;
     width: 100px;
     transform: rotateZ(-75deg);
-    position: absolute;
-    top: 100px;
 }
 
 .star {
     height: 0;
-    width: 2px;
+    width: 3px;
     background-color: #e3cf32;
-
-}
-
-.move {
     animation-name: shooting;
     animation-duration: 6.0s;
     animation-timing-function: linear;
-    z-index: 40;
-
 }
+
 
 .star-box2 {
     height: 100px;
@@ -212,8 +130,8 @@ li {
 
 .hero-title-jpn {
     position: absolute;
-    top: 300px;
-    left: 150px;
+    top: 250px;
+    left: 250px;
     border-right: 0px;
     z-index: 10;
     letter-spacing: 8px;
@@ -282,6 +200,7 @@ li {
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
+    z-index: 100px;
 }
 
 .search-btn:hover {
@@ -317,13 +236,16 @@ li {
     color: white;
     letter-spacing: 4px;
     margin-bottom: 10px;
+
 }
 
 .shukatsu-title-border {
     width: 330px;
     height: 3px;
     background-color: #e3cf32;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
+    margin-top: -15px;
+    
 
 }
 
@@ -424,7 +346,7 @@ li {
 
 .logos-discription {
     margin-top: 10%;
-    margin-left: 50px;
+    margin-left: 15px;
     font-size: 20px;
     color: #0071bc;
     font-weight: bold;
@@ -463,8 +385,6 @@ li {
 
 
 .handling-title {
-    width: 200px;
-    height: 100px;
     font-size: 40px;
     font-weight: bold;
     color: #0071bc;
@@ -473,10 +393,9 @@ li {
     margin-top: 50px;
 }
 
-.handling-jpn {
-    margin-top: 20px;
-    margin-left: 50px;
-    width: 250px;
+.handling-jpn 
+{
+    margin-left: 100px;
     height: 100px;
     font-size: 20px;
     color: #0071bc;
@@ -504,30 +423,27 @@ li {
 
 .voices {
     width: 100%;
-    height: 700px;
+    height: 600px;
 }
 
 .voices-title {
+    margin-top: 50px;
     font-size: 40px;
     color: #0071bc;
     position: relative;
-    top: 100px;
     text-align: center;
-    letter-spacing: 10px;
     font-weight: bold;
 }
 
-.voices-title-jpn {
+.voices-title-jpn
+{
     font-size: 20px;
     color: #0071bc;
-    position: relative;
-    top: 100px;
-    text-align: center;
-    font-weight: 400;
+    letter-spacing: 2px;
     text-decoration: underline;
     text-decoration-color: #e3cf32;
+    font-weight: bold;
 }
-
 
 .voices-contents {
     display: flex;
@@ -537,9 +453,8 @@ li {
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
-    top: 150px;
+    top: 30px;
     left: 60px;
-
 }
 
 .voices-contents-box {
@@ -624,6 +539,7 @@ li {
     font-size: 40px;
     font-style: bold;
     color: #0071bc;
+    height: 150px;
 }
 
 .creator-title-jpn {
@@ -653,7 +569,7 @@ li {
     height: 150px;
     margin-right: 80px;
     margin-left: 80px;
-    z-index: 100;
+    z-index: 10;
 }
 
 .creator-img-under1 {
@@ -735,7 +651,7 @@ ul {
     position: relative;
     top: 90px;
     left: 120px;
-    width: 300px;
+    width: 500px;
     color: white;
     font-weight: bold;
     letter-spacing: 4px;
@@ -803,12 +719,12 @@ ul {
 }
 
 .about-txt-description-title-jpn {
-    width: 500px;
+    width: 1000px;
     height: 50px;
     margin: 0;
     position: relative;
     font-size: 25px;
-    left: 870px;
+    left: 600px;
     top: 150px;
     color: white;
 }
@@ -819,7 +735,7 @@ ul {
     position: relative;
     font-size: 15px;
     top: -90px;
-    left: 800px;
+    left: 500px;
     color: white;
     word-spacing: 120px;
 }
