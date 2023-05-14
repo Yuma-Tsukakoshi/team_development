@@ -2,31 +2,38 @@ body{
     overflow-x: hidden;
 }
 
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+
 .search{
     width:100% ;
     height:150px ;
     background-color: white;
+
 }
 
 .search-title{
     color: #0071bc;
     font-weight: bold;
     font-size: 60px;
-    position: relative;
+    position: ;
     top: 10px;
     left: 70px;
     letter-spacing: 10px;
 }
 
 .search-title-jpn{
-    position: relative;
+    position: ;
     left: 130px;
 }
 
 .search-title-border{
     width: 180px;
     height:3px;
-    position: relative;
+    position: ;
     left: 110px;
     background-color: #ffe600;
 
@@ -35,7 +42,7 @@ body{
 .search-title-cart{
     width: 100px;
     height: 100px;
-    position: relative;
+    position: ;
     /* top:-80px;
     left:1200px; */
 }
@@ -52,34 +59,32 @@ body{
 }
 
 .m-8{
-    width:230px;
+
+    width:40%;
     height:500px ;
     border-radius: 20px;
     background-color: white;
-    position: relative;
-    top: 10px;
-    left: 70px;
+    position: ;
     box-shadow: 5px 5px  rgb(180, 179, 179);
+    margin: 20px 10%;
 }
 
 .major-pencil-img{
-    width:50px ;
-    height: 50px;
-    position: relative;
-    top:-30px ;
-    left:5px ;
+    /* width:50px ; */
+    height: 35px;
 }
 
 .major-txt{
     font-size: 20px;
-    position: relative;
+    position: ;
     top: 10px;
     left: 50px;
 }
 
+
 .checkbox{
     text-align: center;
-    position: relative;
+    position: ;
     top: -15px;
 }
 
@@ -97,7 +102,7 @@ body{
 
 .major-border{
     border-width: 1px;
-    position: relative;
+    position: ;
     top: 10px;
     left: 25px;
     color: gray;
@@ -107,15 +112,12 @@ body{
 
 /* 以下「面談方法」 */
 .contact-mail-img{
-    width: 50px;
-    height: 50px;
-    position: relative;
-    left:5px ;
+    height: 35px;
 }
 
 .contact-txt{
     font-size: 20px;
-    position: relative;
+    position: ;
     top: 40px;
     left:50px ;
 }
@@ -123,7 +125,7 @@ body{
 .contact-border{
     border-width: 1px;
     color: gray;
-    position: relative;
+    position: ;
     top: 50px;
     left: 25px;
     width: 150px;
@@ -132,69 +134,65 @@ body{
 /* 以下、「エリア」 */
 
 .area-point-img{
-    width: 50px;
-    height: 50px;
-    position: relative;
-    top: 30px;;
-    left:5px ;
+    height: 35px;
 }
 
 .area-txt{
     font-size: 20px;
-    position: relative;
+    position: ;
     top: 70px;
     left: 50px;
 }
 
 .area-tokyo-checkbox{
-    position: relative;
+    position: ;
     top:20px ;
     left:;
 }
 
 .area-tokyo-txt{
-    position: relative;
+    position: ;
     top: 20px;
     left: ;
 }
 
 .area-osaka-checkbox{
-    position: relative;
+    position: ;
     top:30px ;
     left: ;
 }
 
 .area-osaka-txt{
-    position: relative;
+    position: ;
     top: 30px;
     left:;
 }
 
 .area-nagoya-checkbox{
-    position: relative;
+    position: ;
     top: 40px;
     left: ;
 }
 
 .area-nagoya-txt{
-    position: relative;
+    position: ;
     top:40px ;
     left: ;
 }
 
 .area-fukuoka-checkbox{
-    position: relative;
+    position: ;
     top: 50px;
     left: ;
 }
 
 .area-fukuoka-txt{
-    position: relative;
+    position: ;
     top:50px ;
     left: ;
 }
 .btn-big,.blue{
-    position: relative;
+    position: ;
     top: 80px;
     left: 55px;
 }
@@ -207,7 +205,7 @@ body{
 .results-img{
     width: 50px;
     height: 50px;
-    position: relative;
+    position: ;
     top: 7px;
 }
 
@@ -222,31 +220,37 @@ body{
 
 /* 以下エージェント掲載ボックス */
 
-.agent-list{
-    position: relative;
-    top: 10px;
+.agent-list {
+    position: ;
+    display: flex;
+    /* top: 10px;
     right: 70px;
-    width: 700px;
-    height:400px ;
-    background-color: white;
+    width: 80%;
+    height: 20%; */
+    /* background-color: white;
     border-radius: 30px;
-    box-shadow: 10px 10px rgb(160, 160, 160);
-}
+    box-shadow: 10px 10px rgb(160, 160, 160); */
+    margin: auto;
+    gap: 20px;
+    box-sizing: border-box;
 
+}
 .agent-img{
     width: 260px;
     height: 185px;
-    position: relative;
+    position: ;
     padding: 8px;
     top: 30px;
     left:50px ;
     border-width: 5px ;
     box-shadow: 7px 7px #ffe600;
+    margin: 10px;
+    object-fit: contain;
 }
 
 .top-title{
-    font-size: 40px;
-    position: relative;
+    font-size: 37px;
+    position: ;
     top:-120px ;
     left:330px ;
 }
@@ -255,7 +259,7 @@ body{
     width: 330px;
     height: 4px;
     background-color: #ffe600;
-    position: relative;
+    position: ;
     top:-115px ;
     left: 320px;
 }
@@ -265,7 +269,7 @@ body{
     height: 150px;
     background-color: rgba(240, 235, 235,0.6);
     border-radius: 30px;
-    position: relative;
+    position: ;
     top:-100px ;
     left: 340px;
 }
@@ -273,7 +277,7 @@ body{
 .top-description-title{
     font-size: 20px;
     color: #1291e6;
-    position: relative;
+    position: ;
     top:15px ;
     left:15px;
     font-weight: bold;
@@ -284,7 +288,7 @@ body{
     width:200px ;
     height:100px ;  
     margin: 0 auto;
-    position: relative;
+    position: ;
     top: 20px;
 }
 
@@ -292,7 +296,7 @@ body{
     border-width: 1.5px;
     width: 650px;
     color: #ffe600;
-    position: relative;
+    position: ;
     top:-80px ;
     left:30px ;
 }
@@ -303,7 +307,7 @@ body{
     width: 240px;
     height: 180px;
     background-color: rgba(201, 201, 201, 0.6);
-    position: relative;
+    position: ;
 
 }
 
@@ -317,18 +321,18 @@ body{
     width: 400px;
     height: 80px;
     background-color: rgb(201, 201, 201, 0.6);
-    position: relative;
+    position: ;
     left: px;
 }
 
 .add-button{
-    position: relative;
-    top: -90px;
+    position: ;
+    top: -85px;
     left:400px ;
 }
 
 .see-details{
-    position: relative;
+    position: ;
     top: -40px;
     left:240px ;
 }
@@ -338,13 +342,14 @@ body{
 .search{
     display: flex;
     justify-content: space-between;
+    margin: 0 10%;
 }
 .cart{
     display: flex;
-    margin-right: 100px;
+    margin-right: 15%;
 }
 .cart-num{
-    position: relative;
+    position: ;
     font-size: 30px;
     color: #0071bc;
 }
@@ -360,4 +365,72 @@ body{
 .contact-link{
     
     color:#0071bc;
+}
+
+/* 加筆 */
+
+.agent-list-wrapper{
+    height: 350px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 10px 10px rgb(160, 160, 160);
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    margin-right: 20px;
+
+}
+
+.bottom{
+    display: flex;
+        top: 10px;
+    right: 70px;
+    width: 80%;
+    height: 20%;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 10px auto;
+
+}
+
+.results-wrapper{
+    position: relative;
+    left: -150px;
+}
+
+.label-major{
+border-radius: 20px;
+}
+
+.block{
+    display: grid;
+    gap: 10px;
+    position: relative;
+}
+
+.major{
+    /* display: flex; */
+    margin: 10px 30px 5px 30px;
+}
+
+
+.major-container{
+    display: flex;
+}
+
+.contact-container{
+    display: flex;
+}
+
+.area-container{
+    display: flex;
+}
+
+.contact{
+    margin: 10px 30px 5px 30px;
+
+}
+
+.area{
+    margin: 10px 30px 5px 30px;
+
 }
