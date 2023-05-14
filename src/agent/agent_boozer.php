@@ -26,7 +26,7 @@ $name = $_SESSION['name'];
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
+  <link rel="stylesheet" href="./../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
   <script src="../user/assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
@@ -186,9 +186,18 @@ $name = $_SESSION['name'];
               </span>
             </div>
           </div>
+
+          <!--csvダウンロードボタン-->
+          <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-7 w-10">
+            <a href="./agent_csv.php">
+              <button>csvダウンロード</button>
+            </a>
+          </div>
         </div>
       </main>
     </div>
+
+
   </div>
 </body>
 
