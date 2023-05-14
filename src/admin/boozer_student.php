@@ -188,7 +188,7 @@ function hideUser(button) {
   if (confirm('本当に削除しますか？')) {
     tr.addClass('hidden');
     $.ajax({
-      url: 'http://localhost:8080/admin/delete.php',
+      url: 'http://localhost:8080/admin/delete_student.php',
       type: 'POST',
       data: { id: id },
       success: function(data) {
