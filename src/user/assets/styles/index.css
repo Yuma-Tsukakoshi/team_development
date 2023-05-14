@@ -3,23 +3,37 @@ body {
     padding-top: 0px;
 }
 
-/* header */
 .header {
+    width: 100%;
     display: flex;
-    background-color: #0071bc;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(128, 128, 128, 0.5); /* 透明な灰色の背景色に変更 */
     font-size: 20px;
-    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    z-index: 1000;
+    color: aliceblue;
   }
   
   .header-button {
-    margin-right: 20px;
+    padding-left: 20px;
+    margin-left: 0px;
     cursor: pointer;
   }
   
   .header-button:hover {
-    color: blue;
+    color: #e3cf32;
+    text-decoration: underline;
   }
   
+  .header-img {
+    width: auto;
+    height: 50px;
+    margin-left: auto;
+  }
+  
+ 
 
 
 /* ここからヒーロー */
