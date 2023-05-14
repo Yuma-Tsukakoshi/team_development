@@ -1,6 +1,9 @@
+
 body {
     overflow-x: hidden;
     padding-top: 0px;
+
+    /* outline: 2px red solid; */
 }
 
 .header {
@@ -8,7 +11,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(128, 128, 128, 0.5); /* 透明な灰色の背景色に変更 */
+    background-color: rgba(128, 128, 128, 0.8); /* 透明な灰色の背景色に変更 */
     font-size: 20px;
     padding: 10px 20px;
     position: fixed;
@@ -38,86 +41,11 @@ body {
 
 /* ここからヒーロー */
 /* ここから流れ星 */
-.star-box {
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(-75deg);
-}
-
-.star{
-    height: 0;
-    width: 3px;
-    background-color: #fadf13;
-    animation-name: shooting;
-    animation-duration: 6.0s;
-    animation-timing-function: linear;
-}
-
-
-.star-box2 {
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(55deg);
-    position: absolute;
-    right: -20px;
-    top: 22px;
-}
-
-.star-box3 {
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(225deg);
-    position: absolute;
-    left: -50px;
-}
-
-.star-box4 {
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(315deg);
-    position: absolute;
-}
-
-.star-box5 {
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(225deg);
-    position: absolute;
-    top: 3500px;
-    left: -50px;
-}
-
-
-.star-box6 {
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(70deg);
-    position: absolute;
-    left: 1380px;
-    top: 3870px;
-}
-
-.star-box7 {
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(265deg);
-    position: absolute;
-    top: 4070px;
-}
-
-.star-fadein{
-    opacity: 0;
-    transform: translate(0,100px);
-    transition: all 1s;
-}
-
-.star-fadein.active{
     opacity: 1;
-    transform: translate(0,0);
-}
+} */ */
 
-
-@keyframes shooting {
+/* これヒーロー用 */
+@keyframes  {
     0% {
         height: 0;
         opacity: 50%;
@@ -224,7 +152,7 @@ body {
     border-color: transparent;
     z-index: 50;
     position: fixed;
-    top: 400px;
+    top: 650px;
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
@@ -321,6 +249,25 @@ body {
     color: #0071bc;
     font-weight: bold;
     font-size: 40px;
+    opacity: 0;
+}
+
+.fadeUp{
+    animation-name:fadeUpAnime;
+    animation-duration:0.5s;
+    animation-fill-mode:forwards;
+    opacity:0;
+    }
+
+@keyframes fadeUpAnime{
+    from {
+    opacity: 0;
+    transform: translateY(100px);
+}
+    to {
+    opacity: 1;
+    transform: translateY(0);
+}
 }
 
 .bold{
@@ -380,6 +327,10 @@ body {
     overflow: hidden;
 }
 
+.handling-discription{
+    margin-left: 100px;
+}
+
 .logos-discription {
     margin-top: 10%;
     margin-left: 15px;
@@ -427,6 +378,7 @@ body {
     letter-spacing: 10px;
     margin-left: 100px;
     margin-top: 50px;
+    opacity: 0;
 }
 
 .handling-jpn 
@@ -469,6 +421,7 @@ body {
     position: relative;
     text-align: center;
     font-weight: bold;
+    opacity: 0;
 }
 
 .voices-title-jpn
@@ -480,6 +433,7 @@ body {
     text-decoration-color: #e3cf32;
     font-weight: bold;
     text-align: center;
+    opacity: 0;
 }
 
 .voices-contents {
@@ -565,7 +519,6 @@ body {
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
-
 }
 
 .creator-title {
@@ -576,7 +529,8 @@ body {
     font-size: 40px;
     font-style: bold;
     color: #0071bc;
-    /* height: 150px; */
+    opacity: 0;
+
 }
 
 .creator-title-jpn {
@@ -586,6 +540,7 @@ body {
     color: #0071bc;
     text-decoration: underline;
     text-decoration-color: #e3cf32;
+    opacity: 0;
 }
 
 
@@ -704,6 +659,7 @@ ul {
     font-weight: bold;
     letter-spacing: 4px;
     font-size: 40px;
+    opacity: 0;
 }
 
 .about-title-jpn {
@@ -716,6 +672,8 @@ ul {
     letter-spacing: 4px;
     text-decoration: underline;
     text-decoration-color: #e3cf32;
+    margin-bottom: 50px;
+    opacity: 0;
 }
 
 /* .about-title-border {
@@ -784,7 +742,7 @@ ul {
 
 .about-txt-motto-span {
     font-weight: bold;
-    font-size: 50px;
+    font-size: 45px;
 }
 
 
@@ -819,11 +777,14 @@ ul {
     text-decoration-color: #e3cf32;
 }
 
+.footer{
+    height: 300px;
+}
 .footer-content {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 30px;
+    align-items:center;
+    margin-top: 100px;
 }
 
 .footer-img {
@@ -834,8 +795,10 @@ ul {
 .footer-row-1,
 .footer-row-2,
 .footer-row-3 {
-    margin-right: 60px;
+    margin-right: 40px;
 }
+
+
 
 .footer-authority {
     display: flex;
