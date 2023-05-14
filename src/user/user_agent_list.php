@@ -3,6 +3,9 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 // require_once(dirname(__FILE__) . '/user_agent_filter.php');
 
+if (isset($_SESSION['clients'])) {
+  $count = count($_SESSION['clients']);
+}
 
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
@@ -10,9 +13,6 @@ $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labe
 
 $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
 
-if (isset($_SESSION['clients'])) {
-  $count = count($_SESSION['clients']);
-}
 
 ?>
 <!DOCTYPE html>

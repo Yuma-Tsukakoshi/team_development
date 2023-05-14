@@ -16,6 +16,7 @@ $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->bindValue(":client_id", $_SESSION["id"]);
 $stmt2->execute();
 $valid = $stmt2->fetch();
+
 ?>
 
 <!DOCTYPE html>
@@ -93,8 +94,10 @@ $valid = $stmt2->fetch();
                     print_r("申請なし");
                   } elseif ($valid[0] == 1) {
                     print_r("申請中");
-                  } else {
+                  } elseif ($valid[0] == 2) {
                     print_r("申請承認");
+                  } elseif ($valid[0] == 3) {
+                    print_r("申請拒否");
                   }
                   ?>
                 </th>
