@@ -1,8 +1,29 @@
-<!-- SQL文を発行するページ -->
+<?php
+require_once(dirname(__FILE__) . '/../dbconnect.php');
+session_start();
 
-<!-- INSERT 文 -->
+$pdo = Database::get();
+$pdo->beginTransaction();
 
-<!-- UPDATE文 -->
+$sql = "INSERT INTO invalid_reason(user_id, client_id, reason) VALUES(:uid, :client_id, :reason)";
+$id = $pdo->lastInsertId();
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(":uid", $_GET["id"]);
+$_SESSION['client_id'] = $_POST["client_id"];
+$stmt->bindValue(":client_id", $_SESSION["client_id"]);
+$stmt->bindValue(":reason", $_POST["reason"]); // 修正点：reasonのバインドを追加
+$stmt->execute();
 
+$sql2 = "UPDATE user_register_client SET valid = 1 WHERE user_id = :uid AND client_id = :client_id";
+$stmt2 = $pdo->prepare($sql2);
+$stmt2->bindValue(":uid", $_GET["id"]);
+$stmt2->bindValue(":client_id", $_SESSION["client_id"]);
+$stmt2->execute();
 
-<!-- Header location リダイレクト agent_boozer.php -->
+$pdo->commit();
+
+session_write_close();
+
+header('Location: http://localhost:8080/agent/agent_boozer.php');
+exit();
+?>
