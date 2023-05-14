@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 // require_once(dirname(__FILE__) . '/user_agent_filter.php');
-session_start();
+
 
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
@@ -91,7 +92,7 @@ if (isset($_SESSION['clients'])) {
     <div>
       <div class="results">
         <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
-        <p class="results-txt"><span class="results-number"><?=count($agents)?></span>件ヒット</p>
+        <p class="results-txt"><span class="results-number"></span>件ヒット</p>
       </div>
       <div>
         <div class="my-16 ">

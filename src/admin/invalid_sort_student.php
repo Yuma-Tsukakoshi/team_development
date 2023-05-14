@@ -11,7 +11,7 @@ if($inputVal == "ascending"){
 }else{
   $sort = "updated_at DESC";
 }
-$sql = "SELECT * FROM users WHERE valid = 1 ORDER BY $sort";
+$sql = "SELECT id, updated_at, name, hurigana, college, faculty, grad_year FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE relation.valid = 1 ORDER BY $sort";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
