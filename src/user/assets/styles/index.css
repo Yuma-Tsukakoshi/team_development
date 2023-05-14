@@ -333,29 +333,28 @@ li {
     font-weight: bold;
 }
 
-.slider {
-    display: flex;
-    animation: slideAnimation 3s linear infinite;
-    overflow: hidden;
-    margin-top:150px
+.handling-logos{
+    width: 50%;
+    background-color: #B7DDFF;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
 }
 
-.logos img {
-    width: 50px; /* 画像を親要素に合わせてリサイズ */
-    height: 50px; /* アスペクト比を維持 */
+.slider {
+    display: flex;
+    align-items: center;
+}
+
+.slider img {
+    width: 100px; /* 画像を親要素に合わせてリサイズ */
+    height: 100px; /* アスペクト比を維持 */
     object-fit: contain; /* 画像のアスペクト比を保ったまま表示 */
     margin-right: 10px;
     gap: 10px;
 }
 
-@keyframes slideAnimation {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
+
 
 .handling-title {
     width: 200px;
@@ -393,10 +392,7 @@ li {
     color: rgb(87, 86, 86);
 }
 
-.handling-logos{
-    width: 50%;
-    background-color: #B7DDFF;
-}
+
 
 /* ここからvoices利用者の声 */
 
