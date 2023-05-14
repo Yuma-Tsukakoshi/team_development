@@ -59,8 +59,8 @@ if (isset($_SESSION['clients'])) {
     <form method="post" action="" class="m-8 w-3">
       <div class="major">
         <div class="major-container">
-        <h2 class="major-txt">専攻</h2>
-        <img class="major-pencil-img" src="../user/assets/img/1263.png" alt="鉛筆の画像">
+          <img class="major-pencil-img" src="../user/assets/img/1263.png" alt="鉛筆の画像">
+          <h2 class="major-txt">専攻</h2>
         </div>
         <?php for ($i = 1; $i <= 2; $i++) { ?>
           <input type="checkbox" id="major<?= $i ?>" class="check-label" name="filter[]" value="<?= $labels[$i - 1]["label_id"] ?>">
@@ -70,8 +70,8 @@ if (isset($_SESSION['clients'])) {
       </div>
       <div class="contact">
         <div class="contact-container">
-        <h2 class="contact-txt">面談方法</h2>
-        <img class="contact-mail-img" src="../user/assets/img/550.png" alt="メールの画像">
+          <img class="contact-mail-img" src="../user/assets/img/550.png" alt="メールの画像">
+          <h2 class="contact-txt">面談方法</h2>
         </div>
         <div class="contact-checkbox">
           <?php for ($i = 3; $i <= 5; $i++) { ?>
@@ -84,15 +84,15 @@ if (isset($_SESSION['clients'])) {
       <div class="area">
       <div class="area-container">
 
-        <h2 class="area-txt"> エリア </h2>
         <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
+        <h2 class="area-txt"> エリア </h2>
       </div>
         <?php for ($i = 6; $i <= 9; $i++) { ?>
           <input type="checkbox" id="area<?= $i ?>" class="check-label" name="filter[]" value="<?= $labels[$i - 1]["label_id"] ?>">
           <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label>
+          
         <?php } ?>
       </div>
-      <button class="btn-big blue">検索</button>
     </form>
     <div class="results-wrapper">
       <div class="results">
