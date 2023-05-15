@@ -17,12 +17,6 @@ $(window).scroll(function() {
 
 
 
-
-
-
-
-
-
 // ↓これできてる！タイトルがふわっと出てくるやつ
 // 動きのきっかけとなるアニメーションの名前を定義
 function fadeAnime(){
