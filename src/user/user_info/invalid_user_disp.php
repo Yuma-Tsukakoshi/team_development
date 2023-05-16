@@ -58,7 +58,7 @@ $invalid_agents = $stmt3->fetchAll();
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
-              <span class="ml-4">企業新規登録</span>
+              <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -109,10 +109,10 @@ $invalid_agents = $stmt3->fetchAll();
                       } elseif ($agent["valid"] == 1) {
                         echo '<div class="flex  justify-between">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2" client=' .(string)$agent["client_id"].'>承認</p></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="3" client='. (string)$agent["client_id"].'>拒否</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="3" client=' . (string)$agent["client_id"] . '>拒否</p></p>
         </div>';
-                      } elseif($agent["valid"] == 2) {
+                      } elseif ($agent["valid"] == 2) {
                         print_r("申請承認");
                       } elseif ($agent["valid"] == 3) {
                         print_r("申請拒否");
