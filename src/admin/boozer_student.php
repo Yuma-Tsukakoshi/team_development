@@ -36,7 +36,7 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
 </head>
 
 <body>
-<div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
+  <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
     <!-- side banner -->
     <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-slate-500 md:block">
       <div class="py-4 text-gray-500">
@@ -51,7 +51,7 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
-              <span class="ml-4">企業新規登録</span>
+              <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -109,6 +109,7 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y" id="student">
+
                 <?php foreach ($users as $key => $user) {
                       if (isset($user['id'])) { ?>
                     <tr class="text-gray-700" ><?php if (isset($user['deleted'])) echo 'data-deleted'; ?>
@@ -144,8 +145,9 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
                         </div>
                       </td>
                     </tr>
+
                   <?php }
-                      } ?>
+                  } ?>
                 </tbody>
               </table>
             </div>
@@ -186,6 +188,7 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
     </div>
   </div>
 
+
 <script>
 function hideUser(button) {
   const tr = $(button).closest('tr');
@@ -203,10 +206,8 @@ function hideUser(button) {
       error: function(xhr) {
         console.error(xhr);
       }
-    });
-  }
-}
-</script>
+    }
+  </script>
 
 
 </body>
