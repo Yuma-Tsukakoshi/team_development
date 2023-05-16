@@ -282,8 +282,9 @@ $valid = $stmt2->fetch();
 
           </button>
         </div>
-        <button class="form-open" id="js-show-popup">無効申請する</button>
-
+        <?php if($valid[0] == 0){ 
+          echo '<button class="form-open" id="js-show-popup">無効申請する</button>';
+        } ?>
       </main>
     </div>
   </div>
