@@ -9,6 +9,12 @@ if (isset($_SESSION['sort'])) {
 $pdo = Database::get();
 $users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
+
+// 削除成功時のメッセージ
+if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
+  $message = "削除しました。";
+}
+
 ?>
 
 
@@ -133,8 +139,8 @@ $users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at
                             <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
                           </button>
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
-                          削除
-                        </button>
+                            <a href="http://localhost:8080/user/user_info/delete_user.php?id=<?= $user["id"] ?>">削除</a>
+                          </button>
                         </div>
                       </td>
                     </tr>
@@ -188,7 +194,7 @@ function hideUser(button) {
   if (confirm('本当に削除しますか？')) {
     tr.addClass('hidden');
     $.ajax({
-      url: 'http://localhost:8080/admin/delete.php',
+      url: 'http://localhost:8080/user/user_info/delete_user.php',
       type: 'POST',
       data: { id: id },
       success: function(data) {
