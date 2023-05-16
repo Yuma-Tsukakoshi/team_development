@@ -46,7 +46,7 @@ $agents = $stmt2->fetchAll();
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
-              <span class="ml-4">企業新規登録</span>
+              <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">

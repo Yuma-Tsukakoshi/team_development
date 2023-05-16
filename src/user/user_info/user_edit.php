@@ -41,7 +41,7 @@ $user = $stmt->fetch();
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
-              <span class="ml-4">企業新規登録</span>
+              <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -232,10 +232,10 @@ $user = $stmt->fetch();
             <button type="submit" class="btn submit update_btn">更新</button>
           </div>
           <div class="btn_wrapper">
-<!-- 削除ボタン -->
-          <div class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-          <button type="button" id="delete_btn">非表示にする</button>
-          </div>
+            <!-- 削除ボタン -->
+            <div class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              <button type="button" id="delete_btn">非表示にする</button>
+            </div>
       </main>
     </div>
   </div>
@@ -249,9 +249,6 @@ $user = $stmt->fetch();
         submitButton.disabled = !isFilled
       })
     });
-
-
-
   </script>
 </body>
 
