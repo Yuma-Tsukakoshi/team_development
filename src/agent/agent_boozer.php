@@ -3,17 +3,16 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/agent_invalid_count.php');
 
+if (isset($_SESSION['agent_sort'])) {
+  $users = $_SESSION['agent_sort'];
+}
+
 $pdo = Database::get();
 $sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_SESSION["id"]);
-
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-if (isset($_SESSION['agent_sort'])) {
-  $users = $_SESSION['agent_sort'];
-}
 
 $name = $_SESSION['name'];
 
@@ -26,7 +25,7 @@ $name = $_SESSION['name'];
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
+  <link rel="stylesheet" href="./../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
   <script src="../user/assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
@@ -136,7 +135,7 @@ $name = $_SESSION['name'];
                             print_r("申請中");
                           } elseif ($user["valid"] == 2) {
                             print_r("申請承認");
-                          }elseif($agent["valid"] == 3) {
+                          } elseif ($user["valid"] == 3) {
                             print_r("申請拒否");
                       }
                           ?>
@@ -186,9 +185,18 @@ $name = $_SESSION['name'];
               </span>
             </div>
           </div>
+
+          <!--csvダウンロードボタン-->
+          <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-7 w-10">
+            <a href="./agent_csv.php">
+              <button>csvダウンロード</button>
+            </a>
+          </div>
         </div>
       </main>
     </div>
+
+
   </div>
 </body>
 

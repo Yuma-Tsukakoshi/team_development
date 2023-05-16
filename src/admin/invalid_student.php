@@ -3,12 +3,12 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
-$pdo = Database::get();
-$users = $pdo->query("SELECT id, updated_at, name, hurigana, college, faculty, grad_year FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE valid = 1 GROUP BY id")->fetchAll(PDO::FETCH_ASSOC);
-
 if (isset($_SESSION['invalid'])) {
   $users = $_SESSION['invalid'];
 }
+$pdo = Database::get();
+$users = $pdo->query("SELECT id, updated_at, name, hurigana, college, faculty, grad_year FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE relation.valid = 1 GROUP BY id")->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -45,7 +45,7 @@ if (isset($_SESSION['invalid'])) {
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
-              <span class="ml-4">企業新規登録</span>
+              <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">

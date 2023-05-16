@@ -2,10 +2,12 @@ body{
     overflow-x: hidden;
 }
 
+
 img{
     max-width: 100%;
     height: auto;
 }
+
 
 
 .search{
@@ -13,6 +15,12 @@ img{
     height:150px ;
     background-color: white;
 
+}
+
+.move{
+    position: fixed;
+    z-index: 100;
+    top: 0;
 }
 
 .search-title{
@@ -28,10 +36,11 @@ img{
 .search-title-jpn{
     position: ;
     left: 130px;
+    font-size: 20px;
 }
 
 .search-title-border{
-    width: 180px;
+    width: 220px;
     height:3px;
     position: ;
     left: 110px;
@@ -60,10 +69,12 @@ img{
 
 .m-8{
 
+
     width:40%;
     height:500px ;
     border-radius: 20px;
     background-color: white;
+
     box-shadow: 5px 5px  rgb(180, 179, 179);
     margin: 20px 10%;
     gap: 50px;
@@ -79,14 +90,29 @@ img{
 }
 
 
-.checkbox{
+/* .checkbox{
     text-align: center;
     position: ;
     top: -15px;
+} */
+
+.check-label{
+    position: relative;
+    left: 20px;
+    top: 30px;
 }
 
+.label-hover{
+    position: relative;
+    left: 20px;
+    top: 30px;
+}
+
+
 .label-hover1{
+
     /* font-size: 15px; */
+
 }
 
 .checkbox-2{
@@ -101,9 +127,13 @@ img{
     border-width: 1px;
     position: ;
     top: 10px;
+
     left: 25px;
     color: gray;
     width: 150px;
+}
+.major-checkbox{
+    display: flex;
 }
 
 
@@ -140,6 +170,7 @@ img{
     top: 70px;
     left: 50px;
 }
+
 
 .area-tokyo-checkbox{
     position: ;
@@ -188,6 +219,7 @@ img{
     top:50px ;
     left: ;
 }
+
 .btn-big,.blue{
     position: ;
     top: 80px;
@@ -197,6 +229,9 @@ img{
 /*以下検索結果 */
 .results{
     display: flex;
+    position: relative;
+    top: 40px;
+    left: -150px;
 }
 
 .results-img{
@@ -205,15 +240,16 @@ img{
 }
 
 .results-txt{
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .results-number{
-    font-size: 40px;
+    font-size: 60px;
     color: #0071bc;
 }
 
 /* 以下エージェント掲載ボックス */
+
 
 .agent-list {
     position: ;
@@ -223,6 +259,7 @@ img{
     width: 80%;
     height: 20%; */
     /* background-color: white;
+=
     border-radius: 30px;
     box-shadow: 10px 10px rgb(160, 160, 160); */
     margin: auto;

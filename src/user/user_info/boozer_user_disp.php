@@ -16,6 +16,7 @@ $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->bindValue(":client_id", $_SESSION["id"]);
 $stmt2->execute();
 $valid = $stmt2->fetch();
+
 ?>
 
 <!DOCTYPE html>
@@ -28,18 +29,29 @@ $valid = $stmt2->fetch();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../assets/styles/badge.css">
+  <link rel="stylesheet" href="_user_disp.css">
   <title>エージェント学生情報詳細</title>
 </head>
 
 <body>
   <!-- modalの処理 -->
-  <div>
-    <form action="">
-      <input type="text">
-      <input type="submit" value="送信">
-    </form>
-  </div>
-  
+  <form action="http://localhost:8080/agent/agent_insert_reason.php?id=<?=$_GET["id"]?>" method="POST">
+    <div class="popup" id="js-popup">
+      <div class="popup-inner">
+        <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
+        <div class="Form">
+          <div class="Form-Item">
+            <p class="Form-Item-Label isMsg">理由</p>
+            <input class="Form-Item-Input" name="reason"></input>
+          </div>
+          <input type="submit" class="Form-Btn" value="送信する">
+          <input type="hidden" name="client_id" value="<?=$_SESSION["id"]?>">
+        </div>
+      </div>
+      <div class="black-background" id="js-black-bg"></div>
+    </div>
+  </form>
+
 
   <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
     <!-- side banner -->
@@ -82,8 +94,10 @@ $valid = $stmt2->fetch();
                     print_r("申請なし");
                   } elseif ($valid[0] == 1) {
                     print_r("申請中");
-                  } else {
+                  } elseif ($valid[0] == 2) {
                     print_r("申請承認");
+                  } elseif ($valid[0] == 3) {
+                    print_r("申請拒否");
                   }
                   ?>
                 </th>
@@ -263,10 +277,18 @@ $valid = $stmt2->fetch();
             </tbody>
           </table>
         </div>
+        <div>
+          <button>
+
+          </button>
+        </div>
+        <button class="form-open" id="js-show-popup">無効申請する</button>
+
       </main>
     </div>
   </div>
 </body>
 </body>
+<script src="_user_disp.js"></script>
 
 </html>

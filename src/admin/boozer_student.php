@@ -3,12 +3,18 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
-$pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
-
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
 }
+$pdo = Database::get();
+$users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+
+
+// 削除成功時のメッセージ
+if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
+  $message = "削除しました。";
+}
+
 ?>
 
 
@@ -30,7 +36,7 @@ if (isset($_SESSION['sort'])) {
 </head>
 
 <body>
-<div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
+  <div class="flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen}">
     <!-- side banner -->
     <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-slate-500 md:block">
       <div class="py-4 text-gray-500">
@@ -45,7 +51,7 @@ if (isset($_SESSION['sort'])) {
           </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
-              <span class="ml-4">企業新規登録</span>
+              <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -103,6 +109,7 @@ if (isset($_SESSION['sort'])) {
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y" id="student">
+
                 <?php foreach ($users as $key => $user) {
                       if (isset($user['id'])) { ?>
                     <tr class="text-gray-700" ><?php if (isset($user['deleted'])) echo 'data-deleted'; ?>
@@ -133,13 +140,14 @@ if (isset($_SESSION['sort'])) {
                             <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
                           </button>
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
-                          削除
-                        </button>
+                            <a href="http://localhost:8080/user/user_info/delete_user.php?id=<?= $user["id"] ?>">削除</a>
+                          </button>
                         </div>
                       </td>
                     </tr>
+
                   <?php }
-                      } ?>
+                  } ?>
                 </tbody>
               </table>
             </div>
@@ -179,6 +187,9 @@ if (isset($_SESSION['sort'])) {
       </main>
     </div>
   </div>
+  </body>
+
+  </body>
 
 <script>
 function hideUser(button) {
@@ -188,7 +199,7 @@ function hideUser(button) {
   if (confirm('本当に削除しますか？')) {
     tr.addClass('hidden');
     $.ajax({
-      url: 'http://localhost:8080/admin/delete.php',
+      url: 'http://localhost:8080/user/user_info/delete_user.php',
       type: 'POST',
       data: { id: id },
       success: function(data) {
@@ -201,8 +212,4 @@ function hideUser(button) {
   }
 }
 </script>
-
-
-</body>
-
 </html>

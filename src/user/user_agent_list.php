@@ -1,15 +1,19 @@
 <?php
-require_once(dirname(__FILE__) . '/../dbconnect.php');
-require_once(dirname(__FILE__) . '/user_agent_filter.php');
+
 session_start();
+require_once(dirname(__FILE__) . '/../dbconnect.php');
+// require_once(dirname(__FILE__) . '/user_agent_filter.php');
+
+if (isset($_SESSION['clients'])) {
+  $count = count($_SESSION['clients']);
+}
 
 $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
 $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id")->fetchAll(PDO::FETCH_ASSOC);
 
-if (isset($_SESSION['clients'])) {
-  $count = count($_SESSION['clients']);
-}
+
+$agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
 
 
 
@@ -25,15 +29,17 @@ if (isset($_SESSION['clients'])) {
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/search.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
+  <link rel="stylesheet" href="../user/assets/styles/modal.css
+  ">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
   <title>エージェント検索一覧</title>
 </head>
 
 <body>
   <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
-  <section class="search">
+  <section class="search" >
     <div>
       <h1 class="search-title">SEARCH</h1>
       <span class="search-title-jpn">-エージェント検索-</span>
@@ -54,6 +60,22 @@ if (isset($_SESSION['clients'])) {
 
 
   </section>
+  <div class="overlay" id="js-overlay"></div>
+
+  <div id="modal-content" class="modal-content">
+    <div class="check-message">
+      <div class="check-circle">
+        <div class="check"></div>
+      </div>
+      <div class="message">商品をかごに追加しました</div>
+    </div>
+    <div class="modal-link">
+      <a  href="./user_info/user_insert.php"><p class="link-message">申し込みはこちら→</p></a>
+    </div>
+    
+
+  </div>
+
 
   <main class="grid grid-cols-2">
     <form method="post" action="" class="m-8 w-3">
@@ -75,7 +97,7 @@ if (isset($_SESSION['clients'])) {
         </div>
         <div class="contact-checkbox">
           <?php for ($i = 3; $i <= 5; $i++) { ?>
-            <input type="checkbox" id="contact<?= $i ?>" class="check-label contact-checkbox" name="filter[]" value="<?= $labels[$i - 1]["label_id"] ?>">
+            <input type="checkbox" id="contact<?= $i ?>" class="check-label contact-checkbox" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
             <label for="contact<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?> </label>
           <?php } ?>
           <div class="contact-border"></div>
@@ -142,33 +164,64 @@ if (isset($_SESSION['clients'])) {
     </div>
   </main>
   <script>
-    $(function() {
-      $('.add-button').on('click', function(event) {
-        $index = this.value
+  $(function(){
+            //スクロールすると上部に固定させるための設定を関数でまとめる
+            function FixedAnime() {
+              var headerH = $('.search').outerHeight(true);
+              var scroll = $(window).scrollTop();
+              if (scroll+30 >= headerH){//headerの高さ以上になったら
+                  $('.search').addClass('move');//fixedというクラス名を付与
+                }else{//それ以外は
+                  $('.search').removeClass('move');//fixedというクラス名を除去
+                }
+            }
+            // 画面をスクロールをしたら動かしたい場合の記述
+            $(window).scroll(function () {
+              FixedAnime();/* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
+            });
 
-        console.log($index)
-        $.ajax({
-          type: "POST",
-          url: "./user_cartin.php",
-          data: {
-            id: $index,
-            client_id: $('.client_id').eq($index).val(),
+            // ページが読み込まれたらすぐに動かしたい場合の記述
+            $(window).on('load', function () {
+              FixedAnime();/* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
+            });
 
-          },
-          dataType: "json",
-          scriptCharset: 'utf-8'
-        }).done(function(data) {
-          console.log(data);
+            $('.add-button').on('click', function(event){
+              $index=this.value
 
-          $('.cart-num').text(data)
-          $('.add-button').eq($index).prop("disabled", true);
-          //背景グレーとか調整する
+              console.log($index)
+                $.ajax({
+                    type: "POST",
+                    url: "./user_cartin.php",
+                    data: {
+                      id: $index,
+                      client_id:$('.client_id').eq($index).val(),
+                      
+                    },
+                    dataType : "json",
+                    scriptCharset: 'utf-8'
+                }).done(function(data){
+                  console.log(data);
+                  $('.modal-content').fadeIn();
+                  $('.overlay').fadeIn(); 
+              
+                  // クリックイベント全てに対しての処理
+                  $(document).on('click touchend', function(event) {
+                    // 表示したポップアップ以外の部分をクリックしたとき
+                    if (!$(event.target).closest('.modal-content').length) {
+                      $('.modal-content').fadeOut();
+                      $('.overlay').fadeOut();
+                    }
+                  });
 
-        }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-          alert(errorThrown);
-        });
-      })
-    })
+                  $('.cart-num').text(data)
+                  $('.add-button').eq($index).prop("disabled", true);
+                 //背景グレーとか調整する
+                 
+                }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+                    alert(errorThrown);
+                });
+            })
+          })
   </script>
 </body>
 
