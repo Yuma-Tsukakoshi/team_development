@@ -15,118 +15,179 @@
   <!-- Google Fonts読み込み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./../../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="../assets/styles/header.css">
+  <link rel="stylesheet" href="../assets/styles/form.css">
+  <link rel="stylesheet" href="../assets/styles/cart.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
     rel="stylesheet">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="./../assets/js/jquery.zip2addr.js"></script>
 </head>
 
 <body>
-  <header>
-
-  </header>
+  <?php include(dirname(__FILE__) . './../../components/header.php'); ?>
   <main>
-    <h1>お申し込み確認フォーム</h1>
-    <!--<form action="./user_insert.done.php" method="post">-->
+    <div class="phase-image">
+      <div class="first-box">カート一覧</div>
+      <div class="border-line"></div>
+      <div class="second-box">申し込みフォーム</div>
+      <div class="border-line"></div>
+      <div class="third-box">申し込み確認</div>
+
+    </div>
+    <div class="check-form" >
+      <div class="text-2xl text-gray-800 font-bold mb-6">お申し込み確認フォーム</div>
+      <div class="mb-4 ">
+        <label class="block text-gray-700 font-bold mb-2" for="name">名前</label>
+        <div class="flex">
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="name"id="name" type="text" value="<?=$_POST['name']?>" disabled>
+          <button class="edit-button" data-value="1">編集</button>
+        </div>
+      </div>
+      <div class="mb-4 ">
+        <label class="block text-gray-700 font-bold mb-2" for="hurigana">ふりがな</label>
+        <div class="flex">
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="hurigana"id="hurigana" type="text" value="<?=$_POST['hurigana']?>" disabled>
+          <button class="edit-button" data-value="2">編集</button>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="email">メールアドレス</label>
+        <div class="flex">
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="email"id="email" type="text" value="<?=$_POST['email']?>" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" disabled>
+          <button class="edit-button" data-value="3">編集</button>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="phone">電話番号</label>
+        <div class="flex">
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="phone"id="phone" type="tel" value="<?=$_POST['phone']?>"pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。" disabled>
+          <button class="edit-button" data-value="4">編集</button>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div>
+          <label class="block text-gray-700 font-bold mb-2" for="sex">性別</label>
+          <div class="flex radio-field">
+            <div class="radio-input">
+              <input type="radio" name="sex" id="sex" value="女"  <?php if( $_POST['sex'] == '女'){?>checked<?php }?> class="radio-button" disabled/>女性
+            </div>
+            <div class="radio-input">
+              <input type="radio" name="sex" id="sex" value="男" <?php if( $_POST['sex'] == '男'){?>checked<?php }?> class="radio-button"disabled/>男性
+            </div>
+            <div class="radio-input">
+              <input type="radio" name="sex" id="sex" value="その他" <?php if( $_POST['sex'] == 'その他'){?>checked<?php }?> class="radio-button"disabled/>その他
+            </div>
+            <button class="edit-button"  type="button" data-name="sex" data-type="radio" >編集</button>
+          </div>
+        </div>    
+      </div>
+      <div class="mb-4 ">
+        <label class="block text-gray-700 font-bold mb-2" for="birthday">生年月日</label>
+        <div class="flex">
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="birthday"id="birthday" type="date" value="<?=$_POST['birthday']?>" disabled>
+          <button class="edit-button" data-value="5">編集</button>
+        </div>
+      </div>
+      <div class="mb-4 ">
+        <label class="block text-gray-700 font-bold mb-2" for="prefecture">住まいの都道府県</label>
+        <div class="flex">
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="prefecture"id="prefecture" type="text" value="<?=$_POST['prefecture']?>" disabled>
+          <button class="edit-button" data-value="6">編集</button>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="college">大学名</label>
+        <div class="flex">
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="college"id="college" type="text" value="<?=$_POST['college']?>" disabled>
+          <button class="edit-button" data-value="7">編集</button>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div class="form-control flex">
+        <div class="double-input">
+          <label class="block text-gray-700 font-bold mb-2 " for="faculty">学部</label>
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline double-content " name="faculty"id="faculty" type="text" value="<?=$_POST['faculty']?>" disabled >
+        </div>
+        <div class="double-input">
+          <label class="block text-gray-700 font-bold mb-2" for="department">学科</label>
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  double-content " name="department"id="department" type="text" disabled value="<?=$_POST['department']?>" >
+        </div>
+        <button class="edit-button button-mg" type="button"  data-type="double">編集</button>
+        </div>
   
-      <div class="form-controll" >
-        <label for="name" class="form-label">名前:</label>
-        <input type="text" name="name" id="name" class="form-control" value="<?=$_POST['name']?>" disabled/>
-        <button class="edit-button" data-value="1">編集</button>
       </div>
-      <div class="form-controll">
-        <label for="hurigana" class="form-label">ふりがな:</label>
-        <input type="text" name="hurigana" id="hurigana" class="form-control" value="<?=$_POST['hurigana']?>" disabled/>
-        <button class="edit-button" data-value="2">編集</button>
-      </div>
-      <div class="form-controll">
-        <label for="email" class="form-label">メールアドレス:</label>
-        <input type="email" name="email" id="email" class="form-control" value="<?=$_POST['email']?>" disabled/>
-        <button class="edit-button" data-value="3">編集</button>
-      </div>
-      <div class="form-controll">
-        <label for="phone" class="form-label">電話番号:</label>
-        <input type="tel" name="phone" id="phone" class="form-control" pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。" value="<?=$_POST['phone']?>" disabled/>
-        <button class="edit-button" data-value="4">編集</button>
-      </div>
-      <div class="form-controll">
-        <fieldset class="form-control" disabled>
-        <label for="sex" class="form-label">性別:</label>
-        <input type="radio" name="sex" id="sex" value="女"  <?php if( $_POST['sex'] == '女'){?>checked<?php }?>/>女性
-        <input type="radio" name="sex" id="sex" value="男" <?php if( $_POST['sex'] == '男'){?>checked<?php }?> />男性
-        <input type="radio" name="sex" id="sex" value="その他" <?php if( $_POST['sex'] == 'その他'){?>checked<?php }?>/>その他
-        </fieldset>
-        <button class="edit-button" data-value="5">編集</button>
-
-      </div>
-      <div class="form-controll">
-        <label for="birthday" class="form-label">生年月日:</label>
-        <input type="date" name="birthday" id="birthday" class="form-control" value="<?=$_POST['birthday']?>" disabled/>
-        <button class="edit-button" data-value="6">編集</button>
-      </div>
-      <div class="form-controll">
-        <!--自動入力-->
-        <fieldset class="form-control" disabled>
-          <!-- <label for="address" class="form-label">郵便番号:</label>
-          <input type="text" id="address" name="address" onKeyUp="$('#address').zip2addr('#address_detail');" value="<?=$_POST['address']?>" ><br/>
-          <label for="address_detail" class="form-label">住所:</label>
-          <input type="text" name="address_detail" id="address_detail" value="<?=$_POST['address_detail']?>" > -->
-          <label for="prefecture" class="form-label">住まいの都道府県:</label>
-          <input type="text" name="prefecture" id="prefecture" value="<?=$_POST['prefecture']?>">
-        </fieldset>
-        <button class="edit-button" data-value="7">編集</button>
-      </div>
-      <div class="form-controll">
-        <label for="college" class="form-label">大学名:</label>
-        <input type="text" name="college" id="college" class="form-control" value="<?=$_POST['college']?>" disabled/>
-        <button class="edit-button" data-value="8">編集</button>
-      </div>
-      <div class="form-controll">
-        <fieldset class="form-control" disabled>
-        <label for="faculty" class="form-label">学部:</label>
-        <input type="text" name="faculty" id="faculty"  value="<?=$_POST['faculty']?>" />
-        <label for="department" class="form-label">学科:</label>
-        <input type="text" name="department" id="department"  value="<?=$_POST['department']?>" />
-
-        </fieldset>
-        <button class="edit-button" data-value="9">編集</button>
-      </div>
-      <div class="form-controll">
-        <fieldset class="form-control" disabled>
-          <label for="division" class="form-label">文理:</label>
-          <input type="radio" name="division" id="division"  value="理系" <?php if( $_POST['division'] == '文系'){?>checked<?php }?> />文系
-          <input type="radio" name="division" id="division"
-          value="理系" <?php if( $_POST['division'] == '理系'){?>checked<?php }?> />理系
-        </fieldset>
-        <button class="edit-button" data-value="10">編集</button>
-      </div>
-      <div class="form-controll">
-        <label for="grad_year" class="form-label">卒業年度:</label>
-        <input type="text" name="grad_year" id="grad_year" class="form-control" value="<?=$_POST['grad_year']?>" disabled/>
-        <button class="edit-button" data-value="11">編集</button>
-
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2 " for="faculty">文理</label>
+        <div class="flex radio-field">
+          <div class="radio-input">
+            <input type="radio" name="division" id="division"  value="文系" <?php if( $_POST['division'] == '文系'){?>checked<?php }?> class="radio-button" disabled />文系
+          </div>
+          <div class="radio-input">
+            <input type="radio" name="division" id="division"
+            value="理系" <?php if( $_POST['division'] == '理系'){?>checked<?php }?> class="radio-button" disabled />理系
+          </div>
+          <button class="edit-button"  type="button" data-name="division" data-type="radio" >編集</button>
+        </div>
+      </div>  
+       
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="grad_year">卒業年度</label>
+        <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control " name="grad_year"id="grad_year" type="text" value="<?=$_POST['grad_year']?>" disabled >
+        <button class="edit-button" data-value="9">編集</button> 
       </div>
       
-      <div class="form-control">
-        <h2>申し込み企業一覧</h2>
+      <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="company">申し込み企業一覧</label>
         <?php foreach($_POST['company'] as $agent){?>
-        <input type="text" name="company[]"  class="form-control" value="<?=$agent?>" disabled>
+        <input  name="company[]" class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control " value="<?=$agent?>" disabled>
         <?php }?>
       </div>
+      <div class="flex items-center justify-center">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline" id="submit-button"type="submit">
+            送信する
+        </button>
+      </div>
 
-
-      <input type="submit" id="submit-button" value="送信">
+    </div>
+    
   </main>
   <script>
-  $count=0;
+    $(function(){
+      $('.first-box').css('background-color','#dcdcdc')
+      $('.third-box').css('background-color','#ffff66')
+      $('.third-box').toggleClass('active')
+
+    })
    $(function(){
       $('.edit-button').click(function(){
       $number=$(this).data('value')
-      $('.form-control').eq($number-1).prop('disabled',false)
-      $('.form-control').eq($number-1).val('')
-      $count++;
-   
+      $type=$(this).data('type')
+      $name=$(this).data('name')
+      console.log($type)
+      if($type=='radio'){
+        var f=document.getElementsByName($name);
+        for(var i=0;i<f.length;i++){
+              f[i].disabled=false;
+              f[i].required=true;
+          }
+      }
+      else if($type=='double'){
+        var f=document.getElementsByClassName('double-content');
+        for(var i=0;i<f.length;i++){
+              f[i].disabled=false;
+              f[i].required=true;
+              f[i].style.border = "1px solid #0071bc";
+              f[i].value='';
+          }
+      }
+      else{
+        $('.form-control').eq($number-1).css('border','1px solid #0071bc')
+        $('.form-control').eq($number-1).prop('disabled',false)
+        $('.form-control').eq($number-1).prop('required',true)
+        $('.form-control').eq($number-1).val('')
+      }
     })
    })
   $(function(){
@@ -160,7 +221,6 @@
                     scriptCharset: 'utf-8'
                 }).done(function(data){
                   console.log(data);
-                
                   window.location.href='./user_thanks.php'
                   
                 }).fail(function(XMLHttpRequest, textStatus, errorThrown){

@@ -163,6 +163,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetc
       </div>
     </div>
   </main>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
   <script>
   $(function(){
             //スクロールすると上部に固定させるための設定を関数でまとめる

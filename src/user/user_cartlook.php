@@ -22,9 +22,8 @@ if(isset($_SESSION['clients'])){
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
-  <link rel="stylesheet" href="../user/assets/styles/search.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
-  
+  <link rel="stylesheet" href="../user/assets/styles/cart.css">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -33,25 +32,32 @@ if(isset($_SESSION['clients'])){
 
 <body>
   <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
-  <section>
-      <h1>カート</h1>
-  </section>
   <main>
+    <div class="phase-image">
+      <div class="first-box">カート一覧</div>
+      <div class="border-line"></div>
+      <div class="second-box">申し込みフォーム</div>
+      <div class="border-line"></div>
+      <div class="third-box">申し込み確認</div>
+
+    </div>
     <div class="cart-content">
       <ul>
         <?php 
         if($clients != null){
         for($i=0; $i<count($clients); $i++){?>
         
-        <li class="flex justify-between my-5">
-          <?=$clients[$i]['agent_name']?>
+        <li class="agent-list">
+          <p class="agent-name">
+            <?=$clients[$i]['agent_name']?>
+          </p>
           
           <button class="btn-big blue delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" >削除</button>
         </li>
         <?php }}?>
       </ul>
-      <div >
-        <a class="contact-link" href="./user_info/user_insert.php">お申し込み確認フォーム</a>
+      <div class="contact-link">
+        <a href="./user_info/user_insert.php">申し込みフォームはこちら</a>
       </div>
     </div>
     
