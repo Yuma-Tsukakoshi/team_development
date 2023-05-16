@@ -187,7 +187,9 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
       </main>
     </div>
   </div>
+  </body>
 
+  </body>
 
 <script>
 function hideUser(button) {
@@ -206,10 +208,8 @@ function hideUser(button) {
       error: function(xhr) {
         console.error(xhr);
       }
-    }
-  </script>
-
-
-</body>
-
+    });
+  }
+}
+</script>
 </html>
