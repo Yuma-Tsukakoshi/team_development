@@ -3,12 +3,12 @@ session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
 
-$pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users WHERE valid=0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
-
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
 }
+$pdo = Database::get();
+$users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 
