@@ -5,6 +5,7 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 //ここでエラーでる
 //require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">

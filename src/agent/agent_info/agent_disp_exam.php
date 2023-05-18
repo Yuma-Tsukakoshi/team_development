@@ -2,7 +2,7 @@
 
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
-// require_once(dirname(__FILE__) . '/../../admin/invalid_exam_count.php');
+require_once(dirname(__FILE__) . '/../../admin/invalid_exam_count.php');
 
 
 $pdo = Database::get();
@@ -34,7 +34,7 @@ $manager = $stmt3->fetch();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../../user/assets/styles/badge.css">
-  <script src="../../user/assets/js/jquery-3.6.1.min.js" defer ></script>
+  <script src="../../user/assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="../../user/assets/js/agent_exam_valid.js" defer></script>
   <script src="../../user/assets/js/agent_exam_invalid.js" defer></script>
   <title>boozer申請企業詳細</title>
@@ -55,6 +55,9 @@ $manager = $stmt3->fetch();
             </a>
           </li>
           <li class="relative px-6 py-3">
+            <div class="notifier new">
+              <div class="badge num"><?= $exam[0]['COUNT(*)'] ?></div>
+            </div>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/admin/boozer_agent_exam.php">
               <span class="ml-4">企業申請一覧</span>
             </a>
