@@ -17,9 +17,9 @@ $stmt = $pdo->query($sql);
 $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true AND exist= true")->fetchAll(PDO::FETCH_ASSOC);
+$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents1);
-$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true AND exist= true")->fetchAll(PDO::FETCH_ASSOC);
+$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents2);
 
 $exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDATE()")->fetch();
@@ -98,9 +98,6 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載企業一覧</h2>
-            <a href="http://localhost:8080/admin/boozer_index_countstudents.php">
-              人数通知メールを各企業に送る
-            </a>
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
                 <thead>
@@ -150,7 +147,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
                             <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=1">詳細</a>
                           </button>
-                            <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
                             <a href="http://localhost:8080/admin/delete.php?id=<?= $agent["client_id"] ?>">削除</a>
                           </button>
                         </div>
@@ -229,27 +226,5 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 </body>
-<script>
 
-function hideUser(button) {
-  const tr = $(button).closest('tr');
-  const id = tr.attr('data-id');
-  
-  if (confirm('本当に削除しますか？')) {
-    $.ajax({
-      url: 'http://localhost:8080/admin/delete.php',
-      type: 'POST',
-      data: { id: id },
-      success: function(data) {
-        console.log(data);
-        tr.addClass('hidden');
-      },
-      error: function(xhr) {
-        console.error(xhr);
-      }
-    });
-  }
-}
-</script>
 </html>
-
