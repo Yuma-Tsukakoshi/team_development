@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 // require_once(dirname(__FILE__) . '/user_agent_filter.php');
@@ -11,7 +12,9 @@ $pdo = Database::get();
 $labels = $pdo->query("SELECT * FROM labels")->fetchAll(PDO::FETCH_ASSOC);
 $agent_labels = $pdo->query("SELECT * FROM label_client_relation INNER JOIN labels ON label_client_relation.label_id = labels.label_id")->fetchAll(PDO::FETCH_ASSOC);
 
+
 $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetchAll(PDO::FETCH_ASSOC);
+
 
 
 ?>
@@ -73,19 +76,21 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetc
   <main class="grid grid-cols-2">
     <form method="post" action="" class="m-8 w-3">
       <div class="major">
-        <h2 class="major-txt">専攻</h2>
-        <img class="major-pencil-img" src="../user/assets/img/1263.png" alt="鉛筆の画像">
-        <div class="major-checkbox">
-          <?php for ($i = 1; $i <= 2; $i++) { ?>
-            <input type="checkbox" id="major<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
-            <label for="major<?= $i ?>" class="label-hover<?= $i ?>"><?= $labels[$i - 1]["label_name"] ?> </label>
-          <?php } ?>
+        <div class="major-container">
+          <img class="major-pencil-img" src="../user/assets/img/1263.png" alt="鉛筆の画像">
+          <h2 class="major-txt">専攻</h2>
         </div>
+        <?php for ($i = 1; $i <= 2; $i++) { ?>
+          <input type="checkbox" id="major<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
+          <label for="major<?= $i ?>" class="label-hover<?= $i ?>"><?= $labels[$i - 1]["label_name"] ?> </label>
+        <?php } ?>
         <div class="major-border"></div>
       </div>
       <div class="contact">
-        <h2 class="contact-txt">面談方法</h2>
-        <img class="contact-mail-img" src="../user/assets/img/550.png" alt="メールの画像">
+        <div class="contact-container">
+          <img class="contact-mail-img" src="../user/assets/img/550.png" alt="メールの画像">
+          <h2 class="contact-txt">面談方法</h2>
+        </div>
         <div class="contact-checkbox">
           <?php for ($i = 3; $i <= 5; $i++) { ?>
             <input type="checkbox" id="contact<?= $i ?>" class="check-label contact-checkbox" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
@@ -95,8 +100,10 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetc
         </div>
       </div>
       <div class="area">
-        <h2 class="area-txt"> エリア </h2>
+      <div class="area-container">
         <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
+        <h2 class="area-txt"> エリア </h2>
+      </div>
         <?php for ($i = 6; $i <= 9; $i++) { ?>
           <input type="checkbox" id="area<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
           <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label>
@@ -106,7 +113,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetc
     <div class="results-wrapper">
       <div class="results">
         <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
-        <p class="results-txt"><span class="results-number"></span>件ヒット</p>
+        <p class="results-txt"><span class="results-number"><?= count($agents) ?></span>件ヒット</p>
       </div>
       <div>
         <div class="my-16 ">
@@ -131,13 +138,16 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE()")->fetc
                   <div class="top-description-border"></div>
                 </div>
               </div>
+              <div class="top-description-border"></div>
+
               <div class="bottom">
                 <div class="labels">
                   <?php foreach ($agent_labels as $agent_label) { ?>
                     <?php if ($agent_label["client_id"] == $agent["client_id"]) { ?>
                       <span class="label-major">
-                        <?= $agent_label["label_name"] ?>
+                        ・<?= $agent_label["label_name"] ?>
                       </span>
+                      &nbsp;
                     <?php } ?>
                   <?php } ?>
                 </div>

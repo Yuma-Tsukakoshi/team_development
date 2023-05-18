@@ -7,7 +7,13 @@ if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
 }
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+
+
+// 削除成功時のメッセージ
+if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
+  $message = "削除しました。";
+}
 
 ?>
 
@@ -103,41 +109,43 @@ $users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y" id="student">
-                  <?php foreach ($users as $key => $user) {
-                    if (isset($user['id'])) { ?>
-                      <tr class="text-gray-700"><?php if (isset($user['deleted'])) echo 'data-deleted'; ?>
-                        <td class="px-4 py-3">
-                          <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
-                        </td>
-                        <td class="px-4 py-3">
-                          <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                          <?= $user["hurigana"] ?>
-                        </td>
-                        <td class="px-4 py-3 text-sm hidden">
-                          <?= mb_convert_kana($user["hurigana"], "c"); ?>
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                          <?= $user["college"] ?>
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                          <?= $user["faculty"] ?>
-                        </td>
-                        <td class="px-4 py-3 text-sm">
-                          <?= $user["grad_year"] ?>
-                        </td>
-                        <td class="px-4 py-3">
-                          <div class="flex items-center space-x-4 text-sm">
-                            <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                              <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
-                            </button>
-                            <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
-                              削除
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
+
+                <?php foreach ($users as $key => $user) {
+                      if (isset($user['id'])) { ?>
+                    <tr class="text-gray-700" ><?php if (isset($user['deleted'])) echo 'data-deleted'; ?>
+                      <td class="px-4 py-3">
+                        <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
+                      </td>
+                      <td class="px-4 py-3">
+                        <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?= $user["hurigana"] ?>
+                      </td>
+                      <td class="px-4 py-3 text-sm hidden">
+                        <?= mb_convert_kana($user["hurigana"], "c"); ?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?= $user["college"] ?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?= $user["faculty"] ?>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?= $user["grad_year"] ?>
+                      </td>
+                      <td class="px-4 py-3">
+                        <div class="flex items-center space-x-4 text-sm">
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
+                            <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
+                          </button>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                            <a href="http://localhost:8080/user/user_info/delete_user.php?id=<?= $user["id"] ?>">削除</a>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
                   <?php }
                   } ?>
                 </tbody>
@@ -179,32 +187,29 @@ $users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at
       </main>
     </div>
   </div>
+  </body>
 
-  <script>
-    function hideUser(button) {
-      const tr = $(button).closest('tr');
-      const id = tr.attr('data-id');
+  </body>
 
-      if (confirm('本当に削除しますか？')) {
-        tr.addClass('hidden');
-        $.ajax({
-          url: 'http://localhost:8080/admin/delete.php',
-          type: 'POST',
-          data: {
-            id: id
-          },
-          success: function(data) {
-            console.log(data);
-          },
-          error: function(xhr) {
-            console.error(xhr);
-          }
-        });
+<script>
+function hideUser(button) {
+  const tr = $(button).closest('tr');
+  const id = tr.attr('data-id');
+  
+  if (confirm('本当に削除しますか？')) {
+    tr.addClass('hidden');
+    $.ajax({
+      url: 'http://localhost:8080/user/user_info/delete_user.php',
+      type: 'POST',
+      data: { id: id },
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(xhr) {
+        console.error(xhr);
       }
-    }
-  </script>
-
-
-</body>
-
+    });
+  }
+}
+</script>
 </html>
