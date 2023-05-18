@@ -125,7 +125,7 @@ CREATE TABLE clients(
   logo_img VARCHAR(255) NOT NULL,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   is_valid boolean default true,
-  exist boolean default false,
+  exist boolean default false
 ) CHARSET=utf8;
 
 
@@ -137,9 +137,9 @@ insert into clients(client_id, agent_name, service_name, catchphrase,recommend_p
 (5,"Goodfind","Goodfindエージェントサービス","顧客に寄り添う","ややハイスペ学生向け","外資系企業やメガベンチャー企業メイン","優秀な学生には特別選考ルートを案内",'2023-05-02', '2023-07-29',"https://img.goodfind.jp/company/logo/company_1.jpg",true,1),
 (6,"株式会社アカリク","アカリク就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-06-01', '2023-07-28',"https://expo.nikkeibp.co.jp/xtech/online/static/assets/images/sponsor/logo_booth_8573.png",true,1),
 (7,"株式会社リクナビ","リクナビ就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-04-21',"https://www.hiryu.co.jp/wp/wp-content/uploads/2021/07/unnamed.jpg",true,1),
-(8,"株式会社キャリアチケット","キャリアチケット","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-04-21',"https://img.my-best.com/product_images/d9a40ba15d8c2d37b5772ef566d35de4.png?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=770263a3b6acbe9836faf71ef16fd26e",true,0),
-(9,"株式会社キャリセン","キャリセン就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-04-21',"https://img.my-best.com/product_images/c2a9349fe5835a278d684596be47095f.jpg?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=674ddb02e2edaddb60165966264c7384",true,0),
-(10,"株式会社irodas","irodas就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-04-21',"https://img.my-best.com/product_images/aff6dd81c415b9d5e56e036fb8f62c59?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=cf4b97edc186c7aa3b8c34094d151289",true,0);
+(8,"株式会社キャリアチケット","キャリアチケット","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-06-21',"https://img.my-best.com/product_images/d9a40ba15d8c2d37b5772ef566d35de4.png?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=770263a3b6acbe9836faf71ef16fd26e",true,0),
+(9,"株式会社キャリセン","キャリセン就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-06-21',"https://img.my-best.com/product_images/c2a9349fe5835a278d684596be47095f.jpg?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=674ddb02e2edaddb60165966264c7384",true,0),
+(10,"株式会社irodas","irodas就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-07-21',"https://img.my-best.com/product_images/aff6dd81c415b9d5e56e036fb8f62c59?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=cf4b97edc186c7aa3b8c34094d151289",true,0);
 
 DROP TABLE IF EXISTS managers;
 CREATE TABLE managers(

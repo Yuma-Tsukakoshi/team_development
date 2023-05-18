@@ -22,9 +22,6 @@ $agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is
 $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true AND exist= true")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents2);
 
-$exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDATE()")->fetch();
-$non_exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at < CURDATE()")->fetch();
-
 // 今月の登録があった企業数だけを取得
 $sql4 = "SELECT relation.client_id, users.created_at,COUNT(relation.client_id) AS sum
 FROM user_register_client as relation 
@@ -71,7 +68,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/admin/boozer_agent_exam.php">
               <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
@@ -150,7 +147,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
                             <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=1">詳細</a>
                           </button>
-                            <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
                             <a href="http://localhost:8080/admin/delete.php?id=<?= $agent["client_id"] ?>">削除</a>
                           </button>
                         </div>
@@ -230,26 +227,27 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </body>
 <script>
+  function hideUser(button) {
+    const tr = $(button).closest('tr');
+    const id = tr.attr('data-id');
 
-function hideUser(button) {
-  const tr = $(button).closest('tr');
-  const id = tr.attr('data-id');
-  
-  if (confirm('本当に削除しますか？')) {
-    $.ajax({
-      url: 'http://localhost:8080/admin/delete.php',
-      type: 'POST',
-      data: { id: id },
-      success: function(data) {
-        console.log(data);
-        tr.addClass('hidden');
-      },
-      error: function(xhr) {
-        console.error(xhr);
-      }
-    });
+    if (confirm('本当に削除しますか？')) {
+      $.ajax({
+        url: 'http://localhost:8080/admin/delete.php',
+        type: 'POST',
+        data: {
+          id: id
+        },
+        success: function(data) {
+          console.log(data);
+          tr.addClass('hidden');
+        },
+        error: function(xhr) {
+          console.error(xhr);
+        }
+      });
+    }
   }
-}
 </script>
-</html>
 
+</html>

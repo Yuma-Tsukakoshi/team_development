@@ -17,13 +17,8 @@ $stmt = $pdo->query($sql);
 $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true")->fetchAll(PDO::FETCH_ASSOC);
+$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true AND exist=false")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents1);
-$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true")->fetchAll(PDO::FETCH_ASSOC);
-// var_dump($agents2);
-
-$exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at >= CURDATE()")->fetch();
-$non_exist_count = $pdo->query("SELECT COUNT(*) FROM clients WHERE ended_at < CURDATE()")->fetch();
 
 // 今月の登録があった企業数だけを取得
 $sql4 = "SELECT relation.client_id, users.created_at,COUNT(relation.client_id) AS sum
@@ -53,7 +48,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
-  <title>boozer企業一覧</title>
+  <title>boozer申請企業一覧</title>
 </head>
 
 <body>
@@ -95,9 +90,8 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <div class="container grid px-6 mx-auto">
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
+          <h2 class="my-6 text-2xl font-semibold text-gray-700 ">申請企業一覧</h2>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載企業一覧</h2>
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
                 <thead>
@@ -106,7 +100,6 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                     <th class="px-4 py-3">企業名</th>
                     <th class="px-4 py-3">掲載期間</th>
                     <th class="px-4 py-3">登録状態</th>
-                    <th class="px-4 py-3">申請人数</th>
                     <th class="px-4 py-3">操作</th>
                   </tr>
                 </thead>
@@ -125,93 +118,14 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
                           <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
-                          登録完了
+                          未登録
                         </span>
                       </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?php
-                        $found = false;
-                        for ($i = 0; $i < count($agent_count); $i++) {
-                          if ($agent_count[$i]["client_id"] == $agent["client_id"]) {
-                            print_r($agent_count[$i]["sum"] . "人");
-                            $found = true;
-                            break;
-                          }
-                        }
-                        if (!$found) {
-                          print_r("0人");
-                        } ?>
-                      </td>
+            
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>
-                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=1">詳細</a>
-                          </button>
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
-                            <a href="http://localhost:8080/admin/delete.php?id=<?= $agent["client_id"] ?>">削除</a>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php } ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto my-6">
-              <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載終了企業一覧</h2>
-              <table class="w-full whitespace-no-wrap">
-                <thead>
-                  <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
-                    <th class="px-4 py-3">更新日時</th>
-                    <th class="px-4 py-3">企業名</th>
-                    <th class="px-4 py-3">掲載期間</th>
-                    <th class="px-4 py-3">登録状態</th>
-                    <th class="px-4 py-3">申請人数</th>
-                    <th class="px-4 py-3">操作</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y">
-                  <?php foreach ($agents2 as $key => $agent) { ?>
-                    <tr class="text-gray-700">
-                      <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $agent["updated_at"] ?></p>
-                      </td>
-                      <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $agent["service_name"] ?></p>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $agent["started_at"] ?> ~ <?= $agent["ended_at"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-xs">
-                        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
-                          登録完了
-                        </span>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?php
-                        $found = false;
-                        for ($i = 0; $i < count($agent_count); $i++) {
-                          if ($agent_count[$i]["client_id"] == $agent["client_id"]) {
-                            print_r($agent_count[$i]["sum"] . "人");
-                            $found = true;
-                            break;
-                          }
-                        }
-                        if (!$found) {
-                          print_r("0人");
-                        } ?>
-                      </td>
-                      <td class="px-4 py-3" data-id="<?= $agent["client_id"] ?>">
-                        <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
-                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=0">詳細</a>
-                          </button>
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
-                            <a href="http://localhost:8080/admin/delete.php?id=<?= $agent["client_id"] ?>">削除</a>
+                            <a href="http://localhost:8080/agent/agent_info/agent_disp_exam.php?id=<?= $agent["client_id"] ?>">詳細</a>
                           </button>
                         </div>
                       </td>
