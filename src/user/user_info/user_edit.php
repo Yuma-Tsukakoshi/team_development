@@ -2,6 +2,7 @@
 
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+require_once(dirname(__FILE__) . '/../../admin/invalid_exam_count.php');
 
 $pdo = Database::get();
 $sql = "SELECT * FROM users INNER JOIN user_register_client as relation  ON relation.user_id = users.id WHERE id = :id ";
@@ -40,6 +41,9 @@ $user = $stmt->fetch();
             </a>
           </li>
           <li class="relative px-6 py-3">
+            <div class="notifier new">
+              <div class="badge num"><?= $exam[0]['COUNT(*)'] ?></div>
+            </div>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">企業申請一覧</span>
             </a>

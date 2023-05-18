@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_exam_count.php');
 
+
 $pdo = Database::get();
 $sql_1 = "SELECT * FROM clients WHERE client_id = :id ";
 $stmt1 = $pdo->prepare($sql_1);
@@ -21,9 +22,6 @@ $stmt3->bindValue(":id", $_REQUEST["id"]);
 $stmt3->execute();
 $manager = $stmt3->fetch();
 
-$sql4 = "SELECT relation.client_id,COUNT(relation.client_id) AS sum FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id GROUP BY relation.client_id ORDER BY relation.client_id ASC";
-$agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +34,10 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../../user/assets/styles/badge.css">
-  <title>boozer企業詳細</title>
+  <script src="../../user/assets/js/jquery-3.6.1.min.js" defer></script>
+  <script src="../../user/assets/js/agent_exam_valid.js" defer></script>
+  <script src="../../user/assets/js/agent_exam_invalid.js" defer></script>
+  <title>boozer申請企業詳細</title>
 </head>
 
 <body>
@@ -82,20 +83,46 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業詳細</h1>
-        <div class="flex justify-center top-title">
-          <p class="my-6 text-3xl font-semibold text-gray-700">掲載状況 :
-            <?php
-            if ($_GET["exist"] == 0) {
-              print_r("掲載終了");
-            } elseif ($_GET["exist"] == 1) {
-              print_r("掲載中");
-            } elseif ($_GET["exist"] == 2) {
-              print_r("掲載拒否");
-            }
-            ?>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 ">企業情報 : <a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>&exist=<?= $_GET["exist"] ?>" class="edit_btn">編集</a></p>
+        <div class="my-8 flex justify-center">
+          <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-blue-500 text-white">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-lg  font-medium uppercase tracking-wider">
+                  申請企業
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
+                  企業申請判定
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $agent["service_name"] ?>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?php
+                    if ($agent["exist"] == 0) {
+                      echo '<div class="flex  justify-between">
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">企業申請 : <p id="valid_exam_btn" class="edit_btn" data="1" client=' . (string)$agent["client_id"] . '>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_exam_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>拒否</p></p>
+        </div>';
+                    } elseif ($agent["exist"] == 1) {
+                      print_r("申請承認");
+                    } elseif ($agent["exist"] == 2) {
+                      print_r("申請拒否");
+                    }
+                    ?>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <!-- 編集に対してボタン色付ける -->
         <div class="flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
