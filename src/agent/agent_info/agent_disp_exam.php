@@ -2,6 +2,8 @@
 
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+// require_once(dirname(__FILE__) . '/../../admin/invalid_exam_count.php');
+
 
 $pdo = Database::get();
 $sql_1 = "SELECT * FROM clients WHERE client_id = :id ";
@@ -32,6 +34,7 @@ $manager = $stmt3->fetch();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../../user/assets/styles/badge.css">
+  <script src="../../user/assets/js/jquery-3.6.1.min.js" defer ></script>
   <script src="../../user/assets/js/agent_exam_valid.js" defer></script>
   <script src="../../user/assets/js/agent_exam_invalid.js" defer></script>
   <title>boozer申請企業詳細</title>
@@ -102,8 +105,8 @@ $manager = $stmt3->fetch();
                     if ($agent["exist"] == 0) {
                       echo '<div class="flex  justify-between">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">企業申請 : <p id="valid_btn" class="edit_btn" data="1" client=' . (string)$agent["client_id"] . '>承認</p></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>拒否</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">企業申請 : <p id="valid_exam_btn" class="edit_btn" data="1" client=' . (string)$agent["client_id"] . '>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_exam_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>拒否</p></p>
         </div>';
                     } elseif ($agent["exist"] == 1) {
                       print_r("申請承認");

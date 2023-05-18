@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#invalid_btn').click(function() {
+  $('#invalid_exam_btn').click(function() {
     var inputVal = $(this).attr('data');
     var inputId = $(this).attr('client'); 
     console.log(inputVal);
