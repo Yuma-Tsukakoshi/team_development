@@ -113,7 +113,7 @@ if (isset($agentsAll)) {
         </div>
         <div class="mb-4 ">
           <label class="block text-gray-700 font-bold mb-2" for="grad_year">卒業年度</label>
-          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="grad_year"id="grad_year" type="text" placeholder="2025年" required>
+          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="grad_year"id="grad_year" type="text" placeholder="2025" required>
         </div>
       </div>
       <div class="mb-4">
