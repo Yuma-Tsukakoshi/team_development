@@ -2,6 +2,7 @@
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
+require_once(dirname(__FILE__) . '/invalid_exam_count.php');
 
 if (isset($_SESSION['invalid'])) {
   $users = $_SESSION['invalid'];
@@ -44,6 +45,9 @@ $users = $pdo->query("SELECT id, updated_at, name, hurigana, college, faculty, g
             </a>
           </li>
           <li class="relative px-6 py-3">
+            <div class="notifier new">
+              <div class="badge num"><?= $exam[0]['COUNT(*)'] ?></div>
+            </div>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/admin/boozer_agent_exam.php">
               <span class="ml-4">企業申請一覧</span>
             </a>
