@@ -19,8 +19,11 @@ $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents1);
-$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true AND exist= true")->fetchAll(PDO::FETCH_ASSOC);
+$agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents2);
+$agents3 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true AND exist= 2")->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($agents3);
+
 
 // 今月の登録があった企業数だけを取得
 $sql4 = "SELECT relation.client_id, users.created_at,COUNT(relation.client_id) AS sum
@@ -124,15 +127,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <?php
-                          if ($agent["exist"] == 0) {
-                            print_r("申請中");
-                          } elseif ($agent["exist"] == 1) {
-                            print_r("申請承認");
-                          } elseif ($agent["exist"] == 2) {
-                            print_r("申請拒否");
-                          }
-                          ?>
+                          登録承認
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
@@ -211,6 +206,54 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                         if (!$found) {
                           print_r("0人");
                         } ?>
+                      </td>
+                      <td class="px-4 py-3" data-id="<?= $agent["client_id"] ?>">
+                        <div class="flex items-center space-x-4 text-sm">
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
+                            <a href="http://localhost:8080/agent/agent_info/agent_disp.php?id=<?= $agent["client_id"] ?>&exist=0">詳細</a>
+                          </button>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                            <a href="http://localhost:8080/admin/delete.php?id=<?= $agent["client_id"] ?>">削除</a>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="w-full overflow-x-auto my-6">
+              <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載拒否企業一覧</h2>
+              <table class="w-full whitespace-no-wrap">
+                <thead>
+                  <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b">
+                    <th class="px-4 py-3">更新日時</th>
+                    <th class="px-4 py-3">企業名</th>
+                    <th class="px-4 py-3">掲載期間</th>
+                    <th class="px-4 py-3">登録状態</th>
+                    <th class="px-4 py-3">操作</th>
+                  </tr>
+                </thead>
+                <tbody class="bg-white divide-y">
+                  <?php foreach ($agents2 as $key => $agent) { ?>
+                    <tr class="text-gray-700">
+                      <td class="px-4 py-3">
+                        <p class="font-semibold items-center text-sm"><?= $agent["updated_at"] ?></p>
+                      </td>
+                      <td class="px-4 py-3">
+                        <p class="font-semibold items-center text-sm"><?= $agent["service_name"] ?></p>
+                      </td>
+                      <td class="px-4 py-3 text-sm">
+                        <?= $agent["started_at"] ?> ~ <?= $agent["ended_at"] ?>
+                      </td>
+                      <td class="px-4 py-3 text-xs">
+                        <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full">
+                          <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
+                          登録拒否
+                        </span>
                       </td>
                       <td class="px-4 py-3" data-id="<?= $agent["client_id"] ?>">
                         <div class="flex items-center space-x-4 text-sm">
