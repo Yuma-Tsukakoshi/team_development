@@ -238,7 +238,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y">
-                  <?php foreach ($agents2 as $key => $agent) { ?>
+                  <?php foreach ($agents3 as $key => $agent) { ?>
                     <tr class="text-gray-700">
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $agent["updated_at"] ?></p>
