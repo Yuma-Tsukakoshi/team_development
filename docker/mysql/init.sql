@@ -108,7 +108,15 @@ insert into label_client_relation (id, client_id, label_id) values
 (26, 6, 6),
 (27, 7, 2),
 (28, 7, 5),
-(29, 7, 6);
+(29, 7, 6),
+(30, 8, 2),
+(31, 8, 4),
+(32, 8, 5),
+(33, 9, 1),
+(34, 9, 2),
+(35, 9, 4),
+(36, 10, 1),
+(37, 10, 3);
 
 
 DROP TABLE IF EXISTS clients;
@@ -158,7 +166,10 @@ insert into managers(client_id, manager_id, manager, depart, mail, phone) values
 (4,4,"担当者四郎","営業部","sisi@gmail.com","765-9206-2775"),
 (5,5,"担当者五郎","営業部","gogo@gmail.com","976-2852-6326"),
 (6,6,"担当者六郎","営業部","rokku@gmail.com","224-5437-5437"),
-(7,7,"担当者七郎","営業部","nanana@gmail.com","224-5567-5997");
+(7,7,"担当者七郎","営業部","nanana@gmail.com","224-5567-5997"),
+(8,8,"担当者八郎","営業部","hatti@gmail.com","224-5437-5437"),
+(9,9,"担当者九郎","営業部","kyuu@gmail.com","224-5437-5437"),
+(10,10,"担当者十郎","営業部","tenten@gmail.com","224-5437-5437");
 
 
 DROP TABLE IF EXISTS client_login;
