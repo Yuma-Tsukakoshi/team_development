@@ -79,8 +79,16 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業詳細</h1>
         <div class="flex justify-center top-title">
-          <p class="my-6 text-3xl font-semibold text-gray-700">掲載状況 : <?= $_GET["exist"] == 1 ? "掲載中" : "掲載終了" ?></p>
-          <!-- 掲載状況期間によって色で示す 掲載停止か掲載中-->
+          <p class="my-6 text-3xl font-semibold text-gray-700">掲載状況 : 
+            <?php
+              if ($_GET["exist"] == 0) {
+                print_r("掲載終了");
+              } elseif ($_GET["exist"] == 1) {
+                print_r("掲載中");
+              } elseif ($_GET["exist"] == 2) {
+                print_r("掲載拒否");
+              }
+            ?>
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 ">企業情報 : <a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>&exist=<?= $_GET["exist"] ?>" class="edit_btn">編集</a></p>
         </div>
         <!-- 編集に対してボタン色付ける -->
