@@ -7,7 +7,7 @@ if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
 }
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users WHERE is_valid=1 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
 
 // 削除成功時のメッセージ
