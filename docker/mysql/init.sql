@@ -125,7 +125,7 @@ CREATE TABLE clients(
   logo_img VARCHAR(255) NOT NULL,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   is_valid boolean default true,
-  exist boolean default false
+  exist int default false
 ) CHARSET=utf8;
 
 

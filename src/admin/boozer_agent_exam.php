@@ -61,7 +61,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/admin/boozer_index.php">
               <span class="ml-4">企業一覧</span>
             </a>
           </li>
@@ -121,7 +121,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                           未登録
                         </span>
                       </td>
-            
+
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $agent["client_id"] ?>>

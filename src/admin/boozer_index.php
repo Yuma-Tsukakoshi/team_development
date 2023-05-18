@@ -17,7 +17,7 @@ $stmt = $pdo->query($sql);
 $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true AND exist= true")->fetchAll(PDO::FETCH_ASSOC);
+$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents1);
 $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true AND exist= true")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents2);
@@ -124,8 +124,15 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                       </td>
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                          <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
-                          登録完了
+                          <?php
+                          if ($agent["exist"] == 0) {
+                            print_r("申請中");
+                          } elseif ($agent["exist"] == 1) {
+                            print_r("申請承認");
+                          } elseif ($agent["exist"] == 2) {
+                            print_r("申請拒否");
+                          }
+                          ?>
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">
@@ -188,7 +195,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
                       <td class="px-4 py-3 text-xs">
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
                           <!-- 色の設定はクラスの付加でjqueryで行う 登録無効（拒否）-->
-                          登録完了
+                          登録承認
                         </span>
                       </td>
                       <td class="px-4 py-3 text-sm">

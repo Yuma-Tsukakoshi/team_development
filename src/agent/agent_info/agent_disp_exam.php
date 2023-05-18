@@ -83,29 +83,35 @@ $manager = $stmt3->fetch();
                   申請企業
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">
-                企業申請判定
+                  企業申請判定
                 </th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-                <tr>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?= $agent["service_name"] ?>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="text-ms font-medium text-gray-900">
-                      <?php
-                        echo '<div class="flex  justify-between">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?= $agent["service_name"] ?>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-ms font-medium text-gray-900">
+                    <?php
+                    if ($agent["exist"] == 0) {
+                      echo '<div class="flex  justify-between">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">企業申請 : <p id="valid_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>承認</p></p>
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="3" client=' . (string)$agent["client_id"] . '>拒否</p></p>
         </div>';
-                      ?>
-                    </div>
-                  </td>
-                </tr>
+                    } elseif ($agent["exist"] == 1) {
+                      print_r("申請承認");
+                    } elseif ($agent["exist"] == 2) {
+                      print_r("申請拒否");
+                    }
+                    ?>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
