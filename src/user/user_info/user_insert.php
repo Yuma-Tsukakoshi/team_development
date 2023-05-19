@@ -39,9 +39,9 @@ if (isset($agentsAll)) {
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
-      <div class="second-box">申し込みフォーム</div>
+      <div class="second-box">申し込み<span>フォーム</span></div>
       <div class="border-line"></div>
-      <div class="third-box">申し込み確認</div>
+      <div class="third-box">申し込み<span>確認</span></div>
       <div class="border-line"></div>
       <div class="fourth-box">完了</div>
 

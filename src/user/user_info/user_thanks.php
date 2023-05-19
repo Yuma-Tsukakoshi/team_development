@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>申し込み完了</title>
     <!-- スタイルシート読み込み -->
-    <link rel="stylesheet" href="./user/assets/styles/common.css">
+    <link rel="stylesheet" href="../assets/styles/common.css">
     <link rel="stylesheet" href="../assets/styles/cart.css">
   <!-- Google Fonts読み込み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,21 +14,35 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="./../../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="../assets/styles/header.css">
+  <link rel="stylesheet" href="../assets/styles/form.css">
+  <link rel="stylesheet" href="../assets/styles/cart.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript" src="./../assets/js/jquery.zip2addr.js"></script>
 </head>
 <body>
-   <div class="phase-image">
+  <?php include(dirname(__FILE__) . '/../../components/header.php'); ?>
+  <main>
+    <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
-      <div class="second-box">申し込みフォーム</div>
+      <div class="second-box">申し込み<span>フォーム</span></div>
       <div class="border-line"></div>
-      <div class="third-box">申し込み確認</div>
+      <div class="third-box">申し込み<span>確認</span></div>
       <div class="border-line"></div>
       <div class="fourth-box">完了</div>
 
     </div>
-  <h1>申し込みが完了しました。</h1>
+    <div class="thanks-area">
+      <div class="thanks-message">
+        <div class="message-content">申し込みが完了<span>しました。</span></div>
+        <div class="return-link">
+          <a href="../assets/index.html">トップに戻る</a>
+        </div>
+      </div>
+     
+    </div>
+  </main>
 
 
 <?php
@@ -83,7 +97,6 @@ send_email($to_admin, $subject_admin, $message_admin, $headers);
 
 ?>
 
-<a href="../assets/index.html"><p>トップに戻る</p></a>
 </body>
 <script>
   $('.first-box').css('background-color','#dcdcdc')
