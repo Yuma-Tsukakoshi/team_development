@@ -53,10 +53,9 @@
   background-color: #dcdcdc;
 }
 .agent-list{
-  display: flex;
-  justify-content: center;
-  gap: 20%;
-  margin-bottom: 30px;
+  margin: 10px 15%;
+  display: grid;
+  grid-template-columns: 4fr  1fr auto;
 }
 .cart-content{
   width: 100%;
@@ -69,6 +68,7 @@
 .agent-name{
   font-size: 30px;
   font-weight: 400;
+  text-align: left;
 }
 .contact-link{
   margin-top: 10%;

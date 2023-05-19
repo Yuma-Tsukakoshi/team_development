@@ -54,7 +54,7 @@ if(isset($_SESSION['clients'])){
             <?=$clients[$i]['agent_name']?>
           </p>
           
-          <button class="btn-big blue delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" >削除</button>
+          <button class="btn-big blue delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" onclick="return confirm('削除してもよろしいですか?')" >削除</button>
         </li>
         <?php }}?>
       </ul>
