@@ -7,9 +7,6 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
   $clients=$_SESSION['clients'];
-  foreach($clients as $client){
-    print_r($client);
-  }
 }
 
 $pdo = Database::get();
