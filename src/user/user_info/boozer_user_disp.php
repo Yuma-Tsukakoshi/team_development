@@ -57,7 +57,7 @@ $valid = $stmt2->fetch();
               <label class="radio-input" for="reason4">
                 <input type="radio" name="reason" id="reason4" value="other" class="radio-button" required />その他
               </label>
-              <input type="text" name="reason" id="otherInput">
+              <input type="text" name="reason_text" id="otherInput">
             </div>
           </div>
           <input type="submit" class="Form-Btn" value="送信する">
