@@ -11,7 +11,11 @@ $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":uid", $_GET["id"]);
 $_SESSION['client_id'] = $_POST["client_id"];
 $stmt->bindValue(":client_id", $_SESSION["client_id"]);
-$stmt->bindValue(":reason", $_POST["reason"]); // 修正点：reasonのバインドを追加
+if($_POST["reason_text"] == ""){
+  $stmt->bindValue(":reason", $_POST["reason"]);
+}else{
+  $stmt->bindValue(":reason", $_POST["reason_text"]);
+}
 $stmt->execute();
 
 $sql2 = "UPDATE user_register_client SET valid = 1 WHERE user_id = :uid AND client_id = :client_id";
