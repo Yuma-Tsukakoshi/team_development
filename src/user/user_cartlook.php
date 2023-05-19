@@ -39,6 +39,8 @@ if(isset($_SESSION['clients'])){
       <div class="second-box">申し込みフォーム</div>
       <div class="border-line"></div>
       <div class="third-box">申し込み確認</div>
+      <div class="border-line"></div>
+      <div class="fourth-box">完了</div>
 
     </div>
     <div class="cart-content">

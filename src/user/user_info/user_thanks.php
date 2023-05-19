@@ -7,6 +7,7 @@
   <title>申し込み完了</title>
     <!-- スタイルシート読み込み -->
     <link rel="stylesheet" href="./user/assets/styles/common.css">
+    <link rel="stylesheet" href="../assets/styles/cart.css">
   <!-- Google Fonts読み込み -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,16 @@
   <script type="text/javascript" src="./../assets/js/jquery.zip2addr.js"></script>
 </head>
 <body>
+   <div class="phase-image">
+      <div class="first-box">カート一覧</div>
+      <div class="border-line"></div>
+      <div class="second-box">申し込みフォーム</div>
+      <div class="border-line"></div>
+      <div class="third-box">申し込み確認</div>
+      <div class="border-line"></div>
+      <div class="fourth-box">完了</div>
+
+    </div>
   <h1>申し込みが完了しました。</h1>
 
 
@@ -74,4 +85,12 @@ send_email($to_admin, $subject_admin, $message_admin, $headers);
 
 <a href="../assets/index.html"><p>トップに戻る</p></a>
 </body>
+<script>
+  $('.first-box').css('background-color','#dcdcdc')
+  $('.fourth-box').css('background-color','#ffff66')
+  $('.fourth-box').toggleClass('active')
+
+
+</script>
+
 </html>

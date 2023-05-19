@@ -6,6 +6,10 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
+  $clients=$_SESSION['clients'];
+  foreach($clients as $client){
+    print_r($client);
+  }
 }
 
 $pdo = Database::get();
@@ -27,10 +31,11 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
-  <link rel="stylesheet" href="../user/assets/styles/search.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
   <link rel="stylesheet" href="../user/assets/styles/modal.css
   ">
+  <link rel="stylesheet" href="../user/assets/styles/badge.css">
+  <link rel="stylesheet" href="../user/assets/styles/search.css">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
@@ -45,34 +50,25 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       <span class="search-title-jpn">-エージェント検索-</span>
       <div class="search-title-border"></div>
     </div>
-    <div class="cart">
-      <div class="cart-num">
-        <?php if (isset($count)) { ?>
-          <?= $count ?>
-        <?php } ?>
+    <div class="cart relative">
+      <? foreach($clients as $client){ ?>
+        <input type="hidden" class="input" name="agents[]" value="<?=$client['agent']?>">
+      <? } ?>
+      <div class="notifier new">
+        <div class="cart-badge badge num ">
+          <?php if (isset($count)) { ?>
+            <?=$count?>
+          <?php } ?>
+        </div>
       </div>
-      <a href="./user_cartlook.php">
-        <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
-      </a>
-      <div class="search-title-cart-border"></div>
+      <div class="search-title-cart-border">
+        <a href="./user_cartlook.php">
+          <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
+        </a>
+      </div>
     </div>
   </section>
-  <div class="overlay" id="js-overlay"></div>
-
-  <div id="modal-content" class="modal-content">
-    <div class="check-message">
-      <div class="check-circle">
-        <div class="check"></div>
-      </div>
-      <div class="message">商品をかごに追加しました</div>
-    </div>
-    <div class="modal-link">
-      <a href="./user_info/user_insert.php">
-        <p class="link-message">申し込みはこちら→</p>
-      </a>
-    </div>
-  </div>
-
+  
   <main class="grid grid-cols-2">
     <form method="post" action="" class="m-8 w-3">
       <div class="major">
@@ -145,7 +141,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                   <?php foreach ($agent_labels as $agent_label) { ?>
                     <?php if ($agent_label["client_id"] == $agent["client_id"]) { ?>
                       <span class="label-major">
-                        ・<?= $agent_label["label_name"] ?>
+                        <?= $agent_label["label_name"] ?>
                       </span>
                       &nbsp;
                     <?php } ?>
@@ -157,8 +153,8 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                 </div>
               </div>
             </div>
+          <?php } ?>
         </div>
-      <?php } ?>
       </div>
     </div>
     </div>
@@ -166,6 +162,14 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
   <script>
     $(function() {
+      //ボタン灰色
+      const inputs = $('.input').each(function(index, element){
+        $index=element.value
+        $('.add-button').eq($index-1).prop("disabled", true);
+        $('.add-button').eq($index-1).removeClass("cyan");
+        $('.add-button').eq($index-1).css('background-color', 'gray');
+          
+        })
       //スクロールすると上部に固定させるための設定を関数でまとめる
       function FixedAnime() {
         var headerH = $('.search').outerHeight(true);
@@ -214,8 +218,10 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
             }
           });
 
-          $('.cart-num').text(data)
+          $('.cart-badge').text(data)
           $('.add-button').eq($index).prop("disabled", true);
+          $('.add-button').eq($index).removeClass("cyan");
+          $('.add-button').eq($index).css('background-color', 'gray');
           //背景グレーとか調整する
 
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -224,6 +230,6 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       })
     })
   </script>
+  
 </body>
-
 </html>

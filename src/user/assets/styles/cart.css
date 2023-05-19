@@ -1,25 +1,25 @@
-.first-box,.second-box,.third-box{
+.first-box,.second-box,.third-box,.fourth-box{
   width: 150px;
   height: auto;
   background-color: #dcdcdc;
   border-radius: 5px;
   padding: 5px;
 }
-.third-box{
+.fourth-box{
   position: relative;
 }
 .first-box{
   background-color: #ffff66;
 }
-.third-box:before,
-.third-box:after{
+.fourth-box:before,
+.fourth-box:after{
   content: "";
   position: absolute;
   width: 0;
   height: 0;
   margin: auto;
 }
-.third-box:before{
+.fourth-box:before{
   top:-15px;
   right:-1em;
   border-style: solid;
@@ -27,7 +27,7 @@
   border-width: 24px 0 24px 1em;
   z-index: 10;
 }
-.third-box:after{
+.fourth-box:after{
   top:-1px;
   right:-.8em;
   border-style: solid;
