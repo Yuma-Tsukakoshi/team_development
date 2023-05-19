@@ -2,12 +2,13 @@
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 require_once(dirname(__FILE__) . '/invalid_count.php');
+require_once(dirname(__FILE__) . '/invalid_exam_count.php');
 
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
 }
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users WHERE user_valid=0 ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
 
 
 // 削除成功時のメッセージ
@@ -55,7 +56,10 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
             </a>
           </li>
           <li class="relative px-6 py-3">
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <div class="notifier new">
+              <div class="badge num"><?= $exam[0]['COUNT(*)'] ?></div>
+            </div>
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/admin/boozer_agent_exam.php">
               <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
@@ -115,41 +119,41 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
                 </thead>
                 <tbody class="bg-white divide-y" id="student">
 
-                <?php foreach ($users as $key => $user) {
-                      if (isset($user['id'])) { ?>
-                    <tr class="text-gray-700" ><?php if (isset($user['deleted'])) echo 'data-deleted'; ?>
-                      <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
-                      </td>
-                      <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["hurigana"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-sm hidden">
-                        <?= mb_convert_kana($user["hurigana"], "c"); ?>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["college"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["faculty"] ?>
-                      </td>
-                      <td class="px-4 py-3 text-sm">
-                        <?= $user["grad_year"] ?>
-                      </td>
-                      <td class="px-4 py-3">
-                        <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
-                            <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
-                          </button>
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
-                            <a href="http://localhost:8080/user/user_info/delete_user.php?id=<?= $user["id"] ?>">削除</a>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
+                  <?php foreach ($users as $key => $user) {
+                    if (isset($user['id'])) { ?>
+                      <tr class="text-gray-700"><?php if (isset($user['deleted'])) echo 'data-deleted'; ?>
+                        <td class="px-4 py-3">
+                          <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
+                        </td>
+                        <td class="px-4 py-3">
+                          <p class="font-semibold items-center text-sm"><?= $user["name"] ?></p>
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                          <?= $user["hurigana"] ?>
+                        </td>
+                        <td class="px-4 py-3 text-sm hidden">
+                          <?= mb_convert_kana($user["hurigana"], "c"); ?>
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                          <?= $user["college"] ?>
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                          <?= $user["faculty"] ?>
+                        </td>
+                        <td class="px-4 py-3 text-sm">
+                          <?= $user["grad_year"] ?>
+                        </td>
+                        <td class="px-4 py-3">
+                          <div class="flex items-center space-x-4 text-sm">
+                            <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["id"] ?>>
+                              <a href="http://localhost:8080/user/user_info/user_disp.php?id=<?= $user["id"] ?>">詳細</a>
+                            </button>
+                            <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
+                              <a href="http://localhost:8080/user/user_info/delete_user.php?id=<?= $user["id"] ?>">削除</a>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
 
                   <?php }
                   } ?>
@@ -192,29 +196,32 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
       </main>
     </div>
   </div>
-  </body>
+</body>
 
-  </body>
+</body>
 
 <script>
-function hideUser(button) {
-  const tr = $(button).closest('tr');
-  const id = tr.attr('data-id');
-  
-  if (confirm('本当に削除しますか？')) {
-    tr.addClass('hidden');
-    $.ajax({
-      url: 'http://localhost:8080/user/user_info/delete_user.php',
-      type: 'POST',
-      data: { id: id },
-      success: function(data) {
-        console.log(data);
-      },
-      error: function(xhr) {
-        console.error(xhr);
-      }
-    });
+  function hideUser(button) {
+    const tr = $(button).closest('tr');
+    const id = tr.attr('data-id');
+
+    if (confirm('本当に削除しますか？')) {
+      tr.addClass('hidden');
+      $.ajax({
+        url: 'http://localhost:8080/user/user_info/delete_user.php',
+        type: 'POST',
+        data: {
+          id: id
+        },
+        success: function(data) {
+          console.log(data);
+        },
+        error: function(xhr) {
+          console.error(xhr);
+        }
+      });
+    }
   }
-}
 </script>
+
 </html>

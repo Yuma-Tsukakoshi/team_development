@@ -1,0 +1,50 @@
+.check-form{
+  margin: 20px auto 0;
+  background-color: aliceblue;
+  padding:8% 25%;
+}
+.user-form{
+  margin: 20px auto 0;
+  background-color: aliceblue;
+  padding:8% 25%;
+  
+}
+.form-controll{
+  display: block;
+  width: 100%;
+  
+}
+.double-input{
+  display: block;
+  width: 40%;
+}
+.radio-field{
+  align-items: center;
+}
+.radio-input{
+  margin-right: 50px;
+}
+.radio-button{
+  margin-right: 10px;
+}
+.check-form input[type="text"],.check-form input[type="tel"]{
+  width: 80%;
+  margin-right: 5%;
+  
+}
+.user-form input[type="text"],.user-form input[type="tel"],.user-form input[type="email"]{
+  width: 100%;
+  background-color: white;
+
+}
+.edit-button{
+  background-color: #dcdcdc;
+  border: 1px solid black;
+  height: 80%;
+  margin: 10px;
+  text-align: center;
+  padding: 0 3px;
+}
+.button-mg{
+  margin-top: 43px;
+}

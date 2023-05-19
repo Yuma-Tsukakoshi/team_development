@@ -26,79 +26,109 @@ if (isset($agentsAll)) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="./../../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="../assets/styles/header.css">
+  <link rel="stylesheet" href="../assets/styles/form.css">
+  <link rel="stylesheet" href="../assets/styles/cart.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <header>
-
-  </header>
+  <?php include(dirname(__FILE__) . '/../../components/header.php'); ?>
   <main>
-    <h1>申し込みフォーム</h1>
-    <form method="post" action="http://localhost:8080/user/user_info/user_insert.check.php">
-      <div class="form-controll">
-        <label for="name" class="form-label">名前:</label>
-        <input type="text" name="name" id="name" class="form-control" required />
-      </div>
-      <div class="form-controll">
-        <label for="hurigana" class="form-label">ふりがな:</label>
-        <input type="text" name="hurigana" id="hurigana" class="form-control" required />
-      </div>
-      <div class="form-controll">
-        <label for="email" class="form-label">メールアドレス:</label>
-        <input type="email" name="email" id="email" class="form-control" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" required />
-      </div>
-      <div class="form-controll">
-        <label for="phone" class="form-label">電話番号:</label>
-        <input type="tel" name="phone" id="phone" class="form-control" pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。" required />
-      </div>
-      <div class="form-controll">
-        <label for="sex" class="form-label">性別:</label>
-        <input type="radio" name="sex" id="sex" value="女" class="form-control" required />女性
-        <input type="radio" name="sex" id="sex" value="男" class="form-control" required />男性
-        <input type="radio" name="sex" id="sex" value="その他" class="form-control" required />その他
-      </div>
-      <div class="form-controll">
-        <label for="birthday" class="form-label">生年月日:</label>
-        <input type="date" name="birthday" id="birthday" class="form-control" required />
-      </div>
-      <div class="form-controll">
-        <!--都道府県に変更
-        <label for="address" class="form-label">郵便番号:</label>
-        <input type="text" id="address" class='form-control'name="address" onKeyUp="$('#address').zip2addr('#address_detail');"  required><br/>
-        <label for="address_detail" class="form-label" required>住所:</label>
-        <input type="text"class='form-control'name="address_detail" id="address_detail" >-->
-        <label for="prefecture" class="form-label">住まいの都道府県:</label>
-        <input type="text" name="prefecture" id="prefecture" class="form-control" required />
-      </div>
-      <div class="form-controll">
-        <label for="college" class="form-label">大学名:</label>
-        <input type="text" name="college" id="college" class="form-control" required />
-      </div>
-      <div class="form-controll">
-        <label for="faculty" class="form-label">学部:</label>
-        <input type="text" name="faculty" id="faculty" class="form-control" required />
-        <label for="department" class="form-label">学科:</label>
-        <input type="text" name="department" id="department" class="form-control" required />
-        <label for="division" class="form-label">文理:</label>
-        <input type="radio" value="文系" name="division" id="division" class="form-control" required />文系
-        <input type="radio" value="理系" name="division" id="division" class="form-control" required />理系
+    <div class="phase-image">
+      <div class="first-box">カート一覧</div>
+      <div class="border-line"></div>
+      <div class="second-box">申し込みフォーム</div>
+      <div class="border-line"></div>
+      <div class="third-box">申し込み確認</div>
 
-        <label for="grad_year" class="form-label">卒業年度:</label>
-        <input type="text" name="grad_year" id="grad_year" class="form-control" required />
-
+    </div>
+    <form method="post" action="http://localhost:8080/user/user_info/user_insert.check.php"class="bg-white rounded-lg overflow-hidden shadow-lg user-form">
+      <div class="px-8 py-6">
+        <div class="text-2xl text-gray-800 font-bold mb-6">お申し込みフォーム</div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="name">名前</label>
+          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name"id="name" type="text" placeholder="山田 太郎" required>
+        </div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="hurigana">ふりがな</label>
+          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="hurigana"id="hurigana" type="text" placeholder="やまだ たろう" required>
+        </div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="email">メールアドレス</label>
+          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"name="email" id="email" type="email" placeholder="aaaa@gmail.com"pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" required>
+        </div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="phone">電話番号</label>
+          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="phone"id="phone" type="tel" placeholder="000-0000-0000" required pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。">
+        </div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="sex">性別</label>
+          <div class="flex">
+            <div class="radio-input">
+              <input type="radio" name="sex" id="sex" value="女" class="radio-button" required />女性
+            </div>
+            <div class="radio-input">
+              <input type="radio" name="sex" id="sex" value="男" class="radio-button" required />男性
+            </div>
+            <div class="radio-input">
+              <input type="radio" name="sex" id="sex" value="その他" class="radio-button" required />その他
+            </div>
+          </div>
+         
+        </div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="birthday">生年月日</label>
+          <input type="date" name="birthday" id="birthday" class="form-control" required />
+        </div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="prefecture">住まいの都道府県</label>
+          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="prefecture"id="prefecuture" type="text" placeholder="東京都" required>
+        </div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="college">大学名</label>
+          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="college"id="college" type="text" placeholder="慶應義塾大学" required>
+        </div>
+        <div class="mb-4 flex">
+          <div class="form-controll double-input">
+            <label class="block text-gray-700 font-bold mb-2" for="faculty">学部</label>
+            <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " name="faculty"id="faculty" type="text" placeholder="法学部" required>
+          </div>
+          <div class="form-controll double-input">
+            <label class="block text-gray-700 font-bold mb-2" for="department">学科</label>
+            <input class="appearance-none border rounded  py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="department"id="department" type="text" placeholder="法律学科" required>
+          </div>
+        </div>
+        <div class="mb-4 ">
+            <label class="block text-gray-700 font-bold mb-2" for="division">文理</label>
+            <div class="flex">
+              <div class="radio-input">
+                <input type="radio" value="文系" name="division" id="division" class="radio-button" required />文系
+              </div>
+              <div class="radio-input">
+                <input type="radio" value="理系" name="division" id="division" class="radio-button" required />理系
+              </div>
+            </div>
+        </div>
+        <div class="mb-4 ">
+          <label class="block text-gray-700 font-bold mb-2" for="grad_year">卒業年度</label>
+          <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="grad_year"id="grad_year" type="text" placeholder="2025" required>
+        </div>
       </div>
-      <div class="form-control">
-        <h2>申し込み企業一覧</h2>
+      <div class="mb-4">
+      <label class="block text-gray-700 font-bold mb-2" for="company">申し込み企業一覧</label>
         <?php if ($idList != null) {
           foreach ($idList as $agent) { ?>
-            <input type="text" name="company[]" class="form-control" value="<?= $agent ?>" required>
+            <input name="company[]"  class="appearance-none border rounded  py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="<?= $agent ?>" required>
         <?php }
         } ?>
       </div>
-      <input type="submit" id="submit-button" value="送信">
-
+      <div class="flex items-center justify-center">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline" type="submit">
+            送信する
+        </button>
+      </div>
     </form>
 
     <!-- <form class="bg-white rounded-lg overflow-hidden shadow-lg">
@@ -124,6 +154,13 @@ if (isset($agentsAll)) {
       </div>
     </form> -->
   </main>
+  <script>
+    $(function(){
+      $('.first-box').css('background-color','#dcdcdc')
+      $('.second-box').css('background-color','#ffff66')
+
+    })
+  </script>
 
 </body>
 

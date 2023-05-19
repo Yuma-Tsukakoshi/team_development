@@ -2,6 +2,7 @@
 session_start();
 require_once(dirname(__FILE__) . '/../../dbconnect.php');
 require_once(dirname(__FILE__) . '/../../admin/invalid_count.php');
+require_once(dirname(__FILE__) . '/../../admin/invalid_exam_count.php');
 
 $_SESSION["uid"] = $_GET["id"];
 
@@ -57,6 +58,9 @@ $invalid_agents = $stmt3->fetchAll();
             </a>
           </li>
           <li class="relative px-6 py-3">
+            <div class="notifier new">
+              <div class="badge num"><?= $exam[0]['COUNT(*)'] ?></div>
+            </div>
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">企業申請一覧</span>
             </a>
