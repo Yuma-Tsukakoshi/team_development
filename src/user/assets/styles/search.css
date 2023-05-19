@@ -230,8 +230,8 @@ img{
 .results{
     display: flex;
     position: relative;
-    top: 40px;
-    left: -150px;
+    top: -2%;
+    left: -40%;
 }
 
 .results-img{
@@ -468,4 +468,16 @@ label{
 
 .labels{
     gap: 10px;
+}
+
+/* .cyan{
+    font-weight: 1000;
+--tw-gradient-from: red var(--tw-gradient-from-position);
+--tw-gradient-to: #e9915a var(--tw-gradient-to-position);
+} */
+
+.blue{
+        --tw-gradient-from: white;
+        --tw-gradient-to: white ;
+        color: black;
 }

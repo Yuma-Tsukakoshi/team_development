@@ -2,7 +2,7 @@
 
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-// require_once(dirname(__FILE__) . '/user_agent_filter.php');
+require_once(dirname(__FILE__) . '/user_agent_filter.php');
 
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
@@ -100,24 +100,27 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         </div>
       </div>
       <div class="area">
-      <div class="area-container">
-        <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
-        <h2 class="area-txt"> エリア </h2>
-      </div>
+        <div class="area-container">
+          <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
+          <h2 class="area-txt"> エリア </h2>
+        </div>
         <?php for ($i = 6; $i <= 9; $i++) { ?>
           <input type="checkbox" id="area<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
           <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label>
         <?php } ?>
       </div>
     </form>
-    <div class="results-wrapper">
-      <div class="results">
-        <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
-        <p class="results-txt"><span class="results-number"><?= count($agents) ?></span>件ヒット</p>
-      </div>
-      <div>
-        <div class="my-16 ">
-          <?php foreach ($agents as $key => $agent) { ?>
+    <div class="my-16 ">
+
+    <div class="results">
+      <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
+      <p class="results-txt"><span class="results-number"><?= count($agents) ?></span>件ヒット</p>
+    </div>
+    <div>
+
+        <?php foreach ($agents as $key => $agent) { ?>
+          <div class="results-wrapper">
+
             <div class="agent-item" data-options="<?php foreach ($agent_labels as $agent_label) {
                                                     if ($agent_label['client_id'] == $agent['client_id']) {
                                                       echo htmlspecialchars($agent_label['label_id']) . ' ';
@@ -157,13 +160,14 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                 </div>
               </div>
             </div>
-        </div>
-      <?php } ?>
+          </div>
+        <?php } ?>
+
       </div>
     </div>
-    </div>
+
   </main>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(function() {
       //スクロールすると上部に固定させるための設定を関数でまとめる
