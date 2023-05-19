@@ -2,7 +2,7 @@
 
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-// require_once(dirname(__FILE__) . '/user_agent_filter.php');
+require_once(dirname(__FILE__) . '/user_agent_filter.php');
 
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);

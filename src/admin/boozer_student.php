@@ -44,6 +44,11 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
           SideBanner
         </a>
         <ul class="mt-6">
+        <li class="relative px-6 py-3">
+            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../agent/agent_auth/agent_logout.php">
+              <span class="ml-4">ログアウト</span>
+            </a>
+          </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_index.php">
               <span class="ml-4">企業一覧</span>
