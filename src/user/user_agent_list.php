@@ -100,10 +100,10 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         </div>
       </div>
       <div class="area">
-      <div class="area-container">
-        <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
-        <h2 class="area-txt"> エリア </h2>
-      </div>
+        <div class="area-container">
+          <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
+          <h2 class="area-txt"> エリア </h2>
+        </div>
         <?php for ($i = 6; $i <= 9; $i++) { ?>
           <input type="checkbox" id="area<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
           <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label>
@@ -153,7 +153,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                 </div>
                 <div class="block">
                   <button class="btn-big cyan add-button" id="cart<?= $key + 1 ?>" value="<?= $key ?>">カートに追加する</button>
-                  <button class="btn-big blue see-details" id="agent<?= $key + 1 ?>">詳細を見る→</button>
+                  <button class="btn-big blue see-details" id="agent<?= $key + 1 ?>"><a href="http://localhost:8080/user/user_agent_list_disp.php?id=<?= $agent["client_id"] ?>">詳細を見る→</a></button>
                 </div>
               </div>
             </div>
@@ -163,7 +163,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
     </div>
     </div>
   </main>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(function() {
       //スクロールすると上部に固定させるための設定を関数でまとめる
