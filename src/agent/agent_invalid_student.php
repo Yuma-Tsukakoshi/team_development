@@ -25,6 +25,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
+  <link rel="stylesheet" href="../user/assets/styles/boozer.css">
   <script src="../user/assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
@@ -42,6 +43,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
           SideBanner
         </a>
         <ul class="mt-6">
+        <li class="relative px-6 py-3">
+            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../agent/agent_auth/agent_logout.php">
+              <span class="ml-4">ログアウト</span>
+            </a>
+          </li>
+
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/agent/agent_boozer.php">
               <span class="ml-4">学生一覧</span>
