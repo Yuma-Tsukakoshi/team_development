@@ -1,3 +1,4 @@
+
 body {
     overflow-x: hidden;
     padding-top: 0px;
@@ -10,44 +11,41 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(128, 128, 128, 0.8);
-    /* 透明な灰色の背景色に変更 */
+    background-color: rgba(128, 128, 128, 0.8); /* 透明な灰色の背景色に変更 */
     font-size: 20px;
     padding: 10px 20px;
     position: fixed;
     z-index: 1000;
     color: aliceblue;
-}
-
-.header-button {
+  }
+  
+  .header-button {
     padding-left: 20px;
     margin-left: 0px;
     cursor: pointer;
-}
-
-.header-button:hover {
+  }
+  
+  .header-button:hover {
     color: #e3cf32;
     text-decoration: underline;
-}
-
-.header-img {
+  }
+  
+  .header-img {
     width: auto;
     height: 50px;
     margin-left: auto;
-}
-
-
+  }
+  
+ 
 
 
 /* ここからヒーロー */
 /* ここから流れ星 */
-opacity: 1;
-}
-
-*/ */
+    opacity: 1;
+} */ */
 
 /* これヒーロー用 */
-@keyframes {
+@keyframes  {
     0% {
         height: 0;
         opacity: 50%;
@@ -202,7 +200,7 @@ opacity: 1;
     background-color: #e3cf32;
     margin-bottom: 80px;
     margin-top: -15px;
-
+    
 
 }
 
@@ -234,7 +232,7 @@ opacity: 1;
     height: 500px;
 }
 
-.how-to {
+.how-to{
     margin-bottom: 50px;
     margin-left: 0px;
     height: 0px;
@@ -245,7 +243,7 @@ opacity: 1;
     text-decoration-color: #e3cf32;
 }
 
-.howto-title {
+.howto-title{
     margin-top: 100px;
     text-align: center;
     color: #0071bc;
@@ -254,26 +252,25 @@ opacity: 1;
     opacity: 0;
 }
 
-.fadeUp {
-    animation-name: fadeUpAnime;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-    opacity: 0;
-}
+.fadeUp{
+    animation-name:fadeUpAnime;
+    animation-duration:0.5s;
+    animation-fill-mode:forwards;
+    opacity:0;
+    }
 
-@keyframes fadeUpAnime {
+@keyframes fadeUpAnime{
     from {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-
+    opacity: 0;
+    transform: translateY(100px);
+}
     to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    opacity: 1;
+    transform: translateY(0);
+}
 }
 
-.bold {
+.bold{
     font-weight: bold;
 }
 
@@ -308,13 +305,13 @@ opacity: 1;
     margin-bottom: 7px;
 }
 
-.howto-search-img {
+.howto-search-img{
     height: 200px;
     width: 160px;
 }
 
 .howto-agent-img,
-.howto-apply-img {
+.howto-apply-img{
     height: 200px;
     width: 200px;
 }
@@ -330,7 +327,7 @@ opacity: 1;
     overflow: hidden;
 }
 
-.handling-discription {
+.handling-discription{
     margin-left: 100px;
 }
 
@@ -384,7 +381,8 @@ opacity: 1;
     opacity: 0;
 }
 
-.handling-jpn {
+.handling-jpn 
+{
     margin-left: 100px;
     height: 100px;
     font-size: 20px;
@@ -426,7 +424,8 @@ opacity: 1;
     opacity: 0;
 }
 
-.voices-title-jpn {
+.voices-title-jpn
+{
     font-size: 20px;
     color: #0071bc;
     letter-spacing: 2px;
@@ -640,13 +639,13 @@ ul {
     display: flex;
 }
 
-.about-left {
+.about-left{
     margin-left: 150px;
     margin-top: 100px;
     width: 50%;
 }
 
-.about-right {
+.about-right{
     margin-left: 100px;
     margin-top: 50px;
     width: 50%;
@@ -778,14 +777,13 @@ ul {
     text-decoration-color: #e3cf32;
 }
 
-.footer {
+.footer{
     height: 300px;
 }
-
 .footer-content {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     margin-top: 100px;
 }
 
