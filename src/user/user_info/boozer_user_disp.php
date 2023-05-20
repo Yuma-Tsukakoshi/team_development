@@ -29,23 +29,40 @@ $valid = $stmt2->fetch();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../assets/styles/badge.css">
+  <link rel="stylesheet" href="../assets/styles/boozer.css">
   <link rel="stylesheet" href="_user_disp.css">
+  <script src="../assets/js/other_text.js" defer></script>
+  <script src="../assets/js/jquery-3.6.1.min.js"></script>
   <title>エージェント学生情報詳細</title>
 </head>
 
 <body>
   <!-- modalの処理 -->
-  <form action="http://localhost:8080/agent/agent_insert_reason.php?id=<?=$_GET["id"]?>" method="POST">
+  <form action="http://localhost:8080/agent/agent_insert_reason.php?id=<?= $_GET["id"] ?>" method="POST">
     <div class="popup" id="js-popup">
       <div class="popup-inner">
         <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
         <div class="Form">
           <div class="Form-Item">
-            <p class="Form-Item-Label isMsg">理由</p>
-            <input class="Form-Item-Input" name="reason"></input>
+            <h2 class="block text-gray-700 font-bold mb-2 Form-Item-Label isMsg" for="reason">申請理由</h2>
+            <div class="">
+              <label class="radio-input" for="reason1">
+                <input type="radio" name="reason" id="reason1" value="メールアドレスがエラー" class="radio-button" required />メールアドレスがエラー
+              </label>
+              <label class="radio-input" for="reason2">
+                <input type="radio" name="reason" id="reason2" value="登録内容に不備あり" class="radio-button" required />登録内容に不備あり
+              </label>
+              <label class="radio-input" for="reason3">
+                <input type="radio" name="reason" id="reason3" value="同じ学生が重複している" class="radio-button" required />同じ学生が重複している
+              </label>
+              <label class="radio-input" for="reason4">
+                <input type="radio" name="reason" id="reason4" value="other" class="radio-button" required />その他
+              </label>
+              <input type="text" name="reason_text" id="otherInput">
+            </div>
           </div>
           <input type="submit" class="Form-Btn" value="送信する">
-          <input type="hidden" name="client_id" value="<?=$_SESSION["id"]?>">
+          <input type="hidden" name="client_id" value="<?= $_SESSION["id"] ?>">
         </div>
       </div>
       <div class="black-background" id="js-black-bg"></div>
@@ -61,6 +78,11 @@ $valid = $stmt2->fetch();
           SideBanner
         </a>
         <ul class="mt-6">
+        <li class="relative px-6 py-3">
+            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../../agent/agent_auth/agent_logout.php">
+              <span class="ml-4">ログアウト</span>
+            </a>
+          </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/agent/agent_boozer.php">
               <span class="ml-4">学生一覧</span>
@@ -282,8 +304,11 @@ $valid = $stmt2->fetch();
 
           </button>
         </div>
-        <button class="form-open" id="js-show-popup">無効申請する</button>
-
+        <?php 
+        if($valid[0] == 0){
+          echo '<button class="form-open" id="js-show-popup">無効申請する</button>';
+        }
+        ?>
       </main>
     </div>
   </div>

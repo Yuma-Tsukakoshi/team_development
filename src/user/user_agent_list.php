@@ -2,7 +2,7 @@
 
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-// require_once(dirname(__FILE__) . '/user_agent_filter.php');
+require_once(dirname(__FILE__) . '/user_agent_filter.php');
 
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
@@ -65,6 +65,21 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       </div>
     </div>
   </section>
+  <div class="overlay" id="js-overlay"></div>
+
+  <div id="modal-content" class="modal-content">
+    <div class="check-message">
+      <div class="check-circle">
+        <div class="check"></div>
+      </div>
+      <div class="message">商品をかごに追加しました</div>
+    </div>
+    <div class="modal-link">
+      <a href="./user_info/user_insert.php">
+        <p class="link-message">申し込みはこちら→</p>
+      </a>
+    </div>
+  </div>
   
   <main class="grid grid-cols-2">
     <form method="post" action="" class="m-8 w-3">
