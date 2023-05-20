@@ -108,7 +108,7 @@ $manager = $stmt3->fetch();
                     if ($agent["exist"] == 0) {
                       echo '<div class="flex  justify-between">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">企業申請 : <p id="valid_exam_btn" class="edit_btn" data="1" client=' . (string)$agent["client_id"] . '>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">企業申請 : <p id="valid_exam_btn" class="edit_btn" data="1" client=' . (string)$agent["client_id"] . '> <a href="http://localhost:8080/agent/agent_insert_mail.php"></a>承認</p></p>
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_exam_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>拒否</p></p>
         </div>';
                     } elseif ($agent["exist"] == 1) {
