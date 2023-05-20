@@ -2,7 +2,7 @@
 
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-require_once(dirname(__FILE__) . '/user_agent_filter.php');
+//require_once(dirname(__FILE__) . '/user_agent_filter.php');
 
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
@@ -29,6 +29,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
+  <link rel="stylesheet" href="../user/assets/styles/form.css">
   <link rel="stylesheet" href="../user/assets/styles/modal.css
   ">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
@@ -48,14 +49,16 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       <div class="search-title-border"></div>
     </div>
     <div class="cart relative">
-      <? foreach($clients as $client){ ?>
+      <? if(isset($clients)){foreach($clients as $client){ ?>
         <input type="hidden" class="input" name="agents[]" value="<?=$client['agent']?>">
-      <? } ?>
+      <? } }?>
       <div class="notifier new">
         <div class="cart-badge badge num ">
           <?php if (isset($count)) { ?>
             <?=$count?>
-          <?php } ?>
+          <?php }else{ ?>
+            0
+          <? } ?>
         </div>
       </div>
       <div class="search-title-cart-border">
@@ -74,10 +77,8 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       </div>
       <div class="message">商品をかごに追加しました</div>
     </div>
-    <div class="modal-link">
-      <a href="./user_info/user_insert.php">
-        <p class="link-message">申し込みはこちら→</p>
-      </a>
+    <div class="return-link modal-button">
+      <a href="./user_info/user_insert.php">申し込みはこちら→</a>
     </div>
   </div>
   
