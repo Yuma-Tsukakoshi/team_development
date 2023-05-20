@@ -36,9 +36,11 @@ if(isset($_SESSION['clients'])){
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
-      <div class="second-box">申し込みフォーム</div>
+      <div class="second-box">申し込み<span>フォーム</span></div>
       <div class="border-line"></div>
-      <div class="third-box">申し込み確認</div>
+      <div class="third-box">申し込み<span>確認</span></div>
+      <div class="border-line"></div>
+      <div class="fourth-box">完了</div>
 
     </div>
     <div class="cart-content">
@@ -52,12 +54,12 @@ if(isset($_SESSION['clients'])){
             <?=$clients[$i]['agent_name']?>
           </p>
           
-          <button class="btn-big blue delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" >削除</button>
+          <button class="btn-big blue delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" onclick="return confirm('削除してもよろしいですか?')" >削除</button>
         </li>
         <?php }}?>
       </ul>
       <div class="contact-link">
-        <a href="./user_info/user_insert.php">申し込みフォームはこちら</a>
+        <a href="./user_info/user_insert.php"><p>申し込みフォームは<span>こちら</span></p></a>
       </div>
     </div>
     

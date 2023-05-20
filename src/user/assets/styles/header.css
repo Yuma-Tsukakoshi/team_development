@@ -106,3 +106,14 @@ li{
   background-color: rgb(104, 104, 225);
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  header{
+    background-color: #0071bc;
+  }
+  .nav_list{
+    overflow: hidden;
+  }
+
+  
+}
