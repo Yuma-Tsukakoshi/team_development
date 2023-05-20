@@ -8,7 +8,7 @@ if (isset($_SESSION['agent_sort'])) {
 }
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id ORDER BY updated_at DESC";
+$sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id  ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_SESSION["id"]);
 $stmt->execute();
@@ -202,6 +202,29 @@ $name = $_SESSION['name'];
       </main>
     </div>
 
+    <script>
+  function hideUser(button) {
+    const tr = $(button).closest('tr');
+    const id = tr.attr('data-id');
+
+    if (confirm('本当に削除しますか？')) {
+      tr.addClass('hidden');
+      $.ajax({
+        url: 'http://localhost:8080/user/user_info/delete_user.php',
+        type: 'POST',
+        data: {
+          id: id
+        },
+        success: function(data) {
+          console.log(data);
+        },
+        error: function(xhr) {
+          console.error(xhr);
+        }
+      });
+    }
+  }
+</script>
 
   </div>
 </body>
