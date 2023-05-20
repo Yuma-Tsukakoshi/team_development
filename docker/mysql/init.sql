@@ -51,11 +51,10 @@ CREATE TABLE users (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   hidden TINYINT(1) NOT NULL DEFAULT 0,
-  is_valid boolean default true,
-  agent_is_valid boolean default true
+  is_valid boolean default true
 ) CHARSET=utf8;
 
-insert into users (id, name, hurigana, sex, birthday, college, faculty, department, division, grad_year, prefecture, mail, phone,created_at,is_valid,  agent_is_valid) values 
+insert into users (id, name, hurigana, sex, birthday, college, faculty, department, division, grad_year, prefecture, mail, phone,created_at,is_valid) values 
 (1,"神野豪気","カンノゴウキ","男","2003-09-12","慶應義塾大学","法学部","政治学科","文系","2026","神奈川県","go@gmail.com","010-2929-3150","2023-05-26 18:47:08",true),
 (2,"塚越雄真","ツカコシユウマ","男","2002-09-10","慶應義塾大学","理工学部","情報工学科","理系","2025","埼玉県","yuma@gmail.com","012-2348-2389",'2023-05-19 21:45:08',true),
 (3,"小野ひなの","オノヒナノ","女","2002-09-10","慶應義塾大学","理工学部","管理工学科","理系","2026","岡山県","hinanu@gmail.com","543-4326-6426","2023-05-12 8:27:18",true),
