@@ -146,9 +146,6 @@ $name = $_SESSION['name'];
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?>>
                             <a href="http://localhost:8080/user/user_info/boozer_user_disp.php?id=<?= $user["user_id"] ?>">詳細</a>
                           </button>
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" onclick="hideUser(this)">
-                            <a href="http://localhost:8080/agent/agent_student_delete.php?id=<?= $user["id"] ?>">削除</a>
-                          </button>
                         </div>
                       </td>
                     </tr>
