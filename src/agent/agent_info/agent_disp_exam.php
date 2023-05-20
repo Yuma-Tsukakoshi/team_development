@@ -106,17 +106,25 @@ $manager = $stmt3->fetch();
                   <div class="text-ms font-medium text-gray-900">
                     <?php
                     if ($agent["exist"] == 0) {
-                      echo '<div class="flex  justify-between">
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">企業申請 : <p id="valid_exam_btn" class="edit_btn" data="1" client=' . (string)$agent["client_id"] . '> <a href="http://localhost:8080/agent/agent_insert_mail.php"></a>承認</p></p>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_exam_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>拒否</p></p>
-        </div>';
-                    } elseif ($agent["exist"] == 1) {
+                    ?>
+                    <div class="flex  justify-between">
+                        <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center">申請中</p>
+                        <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center">企業申請:
+                          <form id="emailForm" action="mail.php" method="post">
+                            <input type="hidden" name="mail" value="<?= $manager["mail"] ?>">
+                            <span id="valid_exam_btn" class="edit_btn" data="1" client="<?= (string)$agent["client_id"] ?>">
+                              <a href="../agent_insert_mail.php" onclick="document.getElementById('emailForm').submit();">承認</a>
+                            </span> 
+                          </form>
+                        </p>
+                        <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_exam_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>拒否</p>
+                      </div>
+                    <?php }
+                    elseif ($agent["exist"] == 1) {
                       print_r("申請承認");
                     } elseif ($agent["exist"] == 2) {
                       print_r("申請拒否");
-                    }
-                    ?>
+                    } ?>
                   </div>
                 </td>
               </tr>
@@ -280,10 +288,14 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <?= $manager["mail"] ?>
+
+                      <?= $manager["mail"] ?>
+                      <button type="submit" class="text-blue-500 underline">メールを送る</button>
+
                   </div>
                 </td>
               </tr>
+
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">

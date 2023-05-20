@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>承認完了</title>
+  <title>申し込み完了</title>
     <!-- スタイルシート読み込み -->
     <link rel="stylesheet" href="./user/assets/styles/common.css">
   <!-- Google Fonts読み込み -->
@@ -17,35 +17,43 @@
   <script type="text/javascript" src="./../assets/js/jquery.zip2addr.js"></script>
 </head>
 <body>
-  <h1>承認完了</h1>
+  <h1>新規登録企業にメールが送信されました。</h1>
+    <a href="http://localhost:8080/admin/boozer_agent_exam.php">企業申請一覧に戻る</a>
 
+  <?php
+// データベースに接続する
+require_once(dirname(__FILE__) . '/../dbconnect.php');
+$pdo = Database::get();
 
-<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-// 送信元のメールアドレス
-$from = "craft@mail.com";
+  $mail = $_POST["mail"];
+  var_dump($mail);
+  $stmt1 = $pdo->prepare($mail);
+  $stmt1->execute();
+  $result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-// 追加ヘッダー情報
-$headers = "From:" . $from;
-
-// 宛先と件名、メッセージをそれぞれ設定してメール送信関数を呼び出す
+  // 宛先と件名、メッセージをそれぞれ設定してメール送信関数を呼び出す
 function send_email($to, $subject, $message, $headers) {
-  if (mail($to, $subject, $message, $headers)) {
-  } else {
-    echo "メールの送信に失敗しました。\n";
-    echo "エラー情報: " . error_get_last()['message'];
-  }
+    if (mail($to, $subject, $message, $headers)) {
+    } else {
+        echo "メールの送信に失敗しました。\n";
+        echo "エラー情報: " . error_get_last()['message'];
+    }
+    }
+  
+  // user@mail.comへのメール
+  $to_client = "$mail";
+  $subject_client = "【株式会社boozer】お申し込みありがとうございます";
+  $subject_client = "【株式会社boozer】お申し込みありがとうございます";
+  $message_client = "※このメールはシステムからの自動返信です\n\n";
+  $message_client .= "お世話になっております。\n";
+  $message_client .= "株式会社boozerへのお問い合わせありがとうございました。\n\n";
+  $message_client .= "お手数ですがお間違いないかご確認ください。\n\n";
+  $message_client .= "●営業日以内に、担当者よりご連絡いたしますので\n";
+  $message_client .= "今しばらくお待ちくださいませ。\n\n";
+  
+  send_email($to_client, $subject_client, $message_client, $headers);
 }
 
-// admin@mail.comへのメール
-$to_admin = "admin@mail.com";
-$subject_admin = "【株式会社boozer】学生登録のお知らせ";
-$message_admin = "学生が登録をしました。";
-
-send_email($to_admin, $subject_admin, $message_admin, $headers);
-
 ?>
-
-<a href="http://localhost:8080/agent/agent_info/agent_disp_exam.php?id=9"><p>トップに戻る</p></a>
-</body>
-</html>
