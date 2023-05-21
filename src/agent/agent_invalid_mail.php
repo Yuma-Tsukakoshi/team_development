@@ -27,11 +27,9 @@ $pdo = Database::get();
 
 // メール送信
 $to = $_POST['mail'];
-$subject = "新規企業登録ありがとうございます";
-$message = "ご登録いただきありがとうございます。\n";
-$message .= "審査の結果、企業掲載を承認させていただきます。\n";
-$message .= "こちらのログイン画面URLから御社に申請された学生の一覧をご確認ください。\n";
-$message .= "http://localhost:8080/agent/boozer_agent_login.php'";
+$subject = "新規企業登録拒否のお知らせ";
+$message = "申請ありがとうございました。";
+$message = "審査の結果、掲載を拒否させていただきます。";
 $headers = "From: admin@mail.com";
 
 $result = mail($to, $subject, $message, $headers);

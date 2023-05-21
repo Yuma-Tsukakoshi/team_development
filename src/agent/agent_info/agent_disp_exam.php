@@ -117,7 +117,11 @@ $manager = $stmt3->fetch();
                           </form>
                         </p>
                         <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : 
-                          <p id="invalid_exam_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>拒否</p>
+                          <form action="../agent_invalid_mail.php" method="post">
+                            <input type="hidden" name="mail" value="<?= $manager["mail"] ?>">
+                            <button type="submit" name="approval" value="1" id="invalid_exam_btn" class="edit_btn"
+                                data="2" client="<?= $agent["client_id"] ?>">拒否</button>
+                          </form>
                         </p>
                       </div>
                     <?php }
