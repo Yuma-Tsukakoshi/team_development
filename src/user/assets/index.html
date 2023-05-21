@@ -5,8 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/index.css">
-
+  <!-- 動くwevデザイン帳 -->
   <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+  <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-2-1/css/5-2-1.css">
   <!--Google Fonts読み込み-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -21,15 +22,36 @@
 
 <body>
   <header class="header">
-      <div class="header-button" data-target="#What">就活エージェント比較サイトとは？</div>
-      <div class="header-button" data-target="#howto-section">使い方</div>
-      <div class="header-button" data-target="#handling-section">取扱い会社</div>
-      <div class="header-button" data-target="#voices-section">利用者の声</div>
-      <div class="header-button" data-target="#about-section">私たちについて</div>
-      <img class="header-img" src="../assets/img/boozer_logo_white.png" alt="">
+    <nav class="gnavi__pc-style">
+      <div class="header-buttons">
+        <div class="header-button" data-target="#What"><a href="#">就活エージェント比較サイトとは？</a></div>
+        <div class="header-button" data-target="#howto-section"><a href="#" class="header-a">使い方</a></div>
+        <div class="header-button" data-target="#handling-section"><a href="#" class="header-a">取扱い会社</a></div>
+        <div class="header-button" data-target="#voices-section"><a href="#" class="header-a">利用者の声</a></div>
+        <div class="header-button" data-target="#about-section"><a href="#" class="header-a"> 私たちについて</a></div>
+      </div>
+        <a href="#"><img class="header-img" src="../assets/img/boozer_logo_white.png" alt=""></a>
+    </nav>
+
+        <!-- ハンバーガーメニュー -->
+  <div class="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="gnavi__sp-style">
+    <ul>
+      <li><a href="#">就活エージェント比較サイトとは？</a></li>
+      <li><a href="#">使い方</a></li>
+      <li><a href="#">取扱い会社</a></li>
+      <li><a href="#">使い方</a></li>
+      <li><a href="#">私たちについて</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <!-- なっちゃん担当 トップページ -->
+
   <div class="hero">
     <div class="hero-overlay">
       <!-- 意図した全角だから消さないでね -->
@@ -231,6 +253,7 @@
   </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 動くwevデザイン帳js -->
 <script src="../assets/js/index.js"></script>
 <script src="../assets/js/freshman.js"></script>
 

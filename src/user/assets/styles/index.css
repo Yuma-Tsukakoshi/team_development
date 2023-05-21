@@ -7,17 +7,45 @@ body {
 
 .header {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: rgba(128, 128, 128, 0.8);
     /* 透明な灰色の背景色に変更 */
+
+}
+
+.gnavi__pc-style{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    /* 透明な灰色の背景色に変更 */
+    background-color: rgba(128, 128, 128, 0.8);
+    align-items: center;
     font-size: 20px;
     padding: 10px 20px;
     position: fixed;
     z-index: 1000;
-    color: aliceblue;
+
 }
+.gnavi__pc-style .header-buttons {
+    display: flex;
+    margin-right: auto;
+  }
+  
+
+.gnavi__pc-style a {
+    color: aliceblue;
+  }
+
+.gnavi__sp-style{
+    display: none;
+}
+.gnavi__pc-style .header-buttons .header-button {
+    margin-right: 10px;
+}
+
+.gnavi__pc-style .header-img {
+    margin-left: auto; /* イラストを右寄せにする */
+}
+
 
 .header-button {
     padding-left: 20px;
@@ -25,16 +53,13 @@ body {
     cursor: pointer;
 }
 
-.header-button:hover {
+
+.header-button:hover a {
     color: #e3cf32;
     text-decoration: underline;
+    text-decoration-color:#e3cf32 ;
 }
 
-.header-img {
-    width: auto;
-    height: 50px;
-    margin-left: auto;
-}
 
 
 
@@ -44,7 +69,7 @@ body {
 
 
 /* これヒーロー用 */
-@keyframes {
+/* @keyframes {
     0% {
         height: 0;
         opacity: 50%;
@@ -59,7 +84,7 @@ body {
         height: 700px;
         opacity: 0;
     }
-}
+} */
 
 
 .hero {
@@ -854,111 +879,232 @@ ul {
 }
 
 
-/* レスポンシブ用 */
-@media screen and (max-width: 480px){
 
-    .body{
-        width: 480px;
+
+/* レスポンシブ用 */
+@media screen and (max-width: 480px) {
+
+
+    .body {
+        max-width: 480px;
     }
-/* ヘッダー */
-    .header{
+
+    /* ヘッダー */
+    .header {
         height: 100px;
         align-items: center;
     }
-/* なんかいいデザイン思いつかない */
-    .header-button{
-        font-size: 1px;
-        width: 300px;
-        height: 100px;
-        padding-top: 15px;
-        padding-left: 5px;
-    }
 
-    .header-img{
-        width: 20%;
-        height: 20%;
-    }
+    /* ハンバーガーメニュー */
+    /*ここから下がハンバーガーメニューのスタイル*/
 
-    .seach-btn{
-        position: fixed;
-        bottom: 20px;
-        right: 10px;
-    }
-/* ヒーロー */
-    .hero{
+        .gnavi__pc-style {
+            display: none;
+        }
+
+        .gnavi__sp-style {
+            display: block;
+            position: fixed;
+            z-index: 1000;
+        }
+
+        /*メニューボタン　展開前*/
+        .menu-btn {
+            display: block;
+            position: fixed;
+            z-index: 3;
+            right: 30px;
+            top: 20px;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .menu-btn span {
+            display: block;
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            left: 6px;
+            background: #555;
+            -webkit-transition: 0.3s ease-in-out;
+            -moz-transition: 0.3s ease-in-out;
+            transition: 0.3s ease-in-out;
+        }
+
+        .menu-btn span:nth-of-type(1) {
+            top: 10px;
+        }
+
+        .menu-btn span:nth-of-type(2) {
+            top: 20px;
+        }
+
+        .menu-btn span:nth-of-type(3) {
+            top: 30px;
+        }
+
+        /*メニューボタン　展開後*/
+        .menu-btn.active span:nth-child(1) {
+            top: 16px;
+            left: 6px;
+            background: #fff;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .menu-btn.active span:nth-child(2),
+        .menu-btn.active span:nth-child(3) {
+            top: 16px;
+            background: #fff;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        /*スマホ用のメニュー*/
+        .gnavi__sp-style {
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            width: 100%;
+            height: 100vh;
+            opacity: 0;
+            transition: opacity .6s ease, visibility .6s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .gnavi__sp-style ul {
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+        }
+
+        .gnavi__sp-style ul li {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            transition: .4s all;
+        }
+
+        .gnavi__sp-style ul li:last-of-type {
+            padding-bottom: 0;
+        }
+
+        .gnavi__sp-style ul li:hover {
+            background: #ddd;
+        }
+
+        .gnavi__sp-style ul li a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .gnavi__sp-style.active {
+            opacity: 1;
+        }
+    
+
+
+    /* ヒーロー */
+    .hero {
         background-size: contain;
+        margin-top: 0px;
     }
 
-    .hero-title-jpn{
+    .hero-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .hero-title-jpn {
         width: 400px;
         height: 100px;
         font-size: 20px;
         left: 0;
     }
-/* 就活とは？？欄 */
-    .shukatsu{
+
+    /* 就活とは？？欄 */
+    .shukatsu {
         height: 500px;
     }
 
-    .shukatsu-title, .shukatu-title-jpn, .shukatsu-txt-description-title-jpn{
+    .shukatsu-title,
+    .shukatu-title-jpn,
+    .shukatsu-txt-description-title-jpn {
         text-align: center;
         font-size: 15px;
     }
-    .shukatsu-title{
+
+    .shukatsu-title {
         font-size: 20px;
         margin: 0 20px;
     }
 
-    .shukatsu-title-jpn{
+    .shukatsu-title-jpn {
         font-size: 15px;
     }
 
-    .shukatsu-title-border{
+    .shukatsu-title-border {
         width: 60%;
     }
-    .shukatsu-txt-description-title-jpn{
+
+    .shukatsu-txt-description-title-jpn {
         margin: 0 20px;
     }
 
     .shukatsu-txt-desc
-/* how to  */
-    .howto{
+
+    /* how to  */
+    .howto {
         height: 2500px;
-        margin:0 auto;
+        margin: 0 auto;
     }
-    .howto-steps{
-        display:flex;
+
+    .howto-steps {
+        display: flex;
         flex-flow: column;
         margin-top: 15px;
         margin-left: -150px;
     }
-/* 取扱企業 */
-/* 縦並びにならない！ */
-    .handling{
-        display:flex;
+
+    /* 取扱企業 */
+    /* 縦並びにならない！ */
+    .handling {
+        display: flex;
         flex-flow: column;
         height: 1500px;
     }
 
-    .handling-logos{
+    .handling-logos {
         position: absolute;
         top: 2800px;
         left: 100px;
-        }
+    }
 
-    .handling-title{
+    .handling-title {
         width: 460px;
         margin: 0 auto;
         padding-top: 700px;
     }
 
-    .handling-jpn{
+    .handling-jpn {
         width: 460px;
         height: 50px;
         margin: 0 auto;
     }
 
-    .handling-txt{
+    .handling-txt {
         width: 460px;
         text-align: center;
         margin-left: -90px;
@@ -966,118 +1112,124 @@ ul {
     }
 
 
-/* 利用者の声 */
+    /* 利用者の声 */
 
-    .voices{
+    .voices {
         height: 1000px;
         margin-top: 100px;
-}
-    .voices-container{
-        display:flex;
+    }
+
+    .voices-container {
+        display: flex;
         flex-flow: column;
         margin-top: 20px;
         margin-left: -70px;
     }
 
-    .voices-contents-box-sub,.voices-contents-box{
+    .voices-contents-box-sub,
+    .voices-contents-box {
         width: 300px;
     }
 
-    .voices-contents-txt{
+    .voices-contents-txt {
         width: 290px;
     }
-/* わたしたちについて */
-.about{
+
+    /* わたしたちについて */
+    .about {
         height: 1100px;
-        display:flex;
+        display: flex;
         flex-flow: column;
-}
+    }
 
-.about-title{
-    font-size: 20px;
-    width: 330px;
-    margin-left: -50px;
-}
+    .about-title {
+        font-size: 20px;
+        width: 330px;
+        margin-left: -50px;
+    }
 
-.about-philosophy{
-    font-size: 15px;
-    margin-left:20%;
-}
+    .about-philosophy {
+        font-size: 15px;
+        margin-left: 20%;
+    }
 
-.about-txt-motto{
-    width:400px;
-    margin-left: -75px;
-    margin-top: 10px;
+    .about-txt-motto {
+        width: 400px;
+        margin-left: -75px;
+        margin-top: 10px;
 
-}
+    }
 
-.about-txt-motto-span{
-    font-size: 30px;
-}
-.about-txt-description-title{
-    width: 400px;
-    margin-top: 80px;
-    margin-left:-25px;
-}
+    .about-txt-motto-span {
+        font-size: 30px;
+    }
 
-.about-txt-description-title-jpn{
-    width: 400px;
-    margin-top: 350px;
-    margin-left: -55px;
-}
+    .about-txt-description-title {
+        width: 400px;
+        margin-top: 80px;
+        margin-left: -25px;
+    }
 
-/* 制作者紹介*/
+    .about-txt-description-title-jpn {
+        width: 400px;
+        margin-top: 350px;
+        margin-left: -55px;
+    }
 
-.creator{
-    height: 800px;
-}
+    /* 制作者紹介*/
 
-.creator-content{
-    height: 800px;
-}
-.creator-img-container{
-    display: grid;
-    grid-template-columns: 150px 150px;
-    width: 480px;
-}
+    .creator {
+        height: 800px;
+    }
 
-.creator-img{
-    margin: 40px;
-}
+    .creator-content {
+        height: 800px;
+    }
 
-.creator-img-5{
-    margin-left: 120px;
-    margin-top: 10px;
-}
+    .creator-img-container {
+        display: grid;
+        grid-template-columns: 150px 150px;
+        width: 480px;
+    }
 
-.creator-img-under1{
-   display: none;
-}
-   
-.creator-img-under2{
-    display: none;
-}
+    .creator-img {
+        margin: 40px;
+    }
 
-.creator-img-under-3{
-    display: none;
-}
+    .creator-img-5 {
+        margin-left: 120px;
+        margin-top: 10px;
+    }
 
-.creator-img-under-4{
-    display: none;
-}
+    .creator-img-under1 {
+        display: none;
+    }
 
-.creator-img-under-5{
-    display: none;
-}
+    .creator-img-under2 {
+        display: none;
+    }
+
+    .creator-img-under-3 {
+        display: none;
+    }
+
+    .creator-img-under-4 {
+        display: none;
+    }
+
+    .creator-img-under-5 {
+        display: none;
+    }
 
 
-/* フッター */
+    /* フッター */
 
-.footer{
-    height: 200px;
-}
-.footer-img{
-    margin-left: 10%;
-}
+    .footer {
+        height: 200px;
+    }
+
+    .footer-img {
+        margin-left: 10%;
+    }
 
 }
