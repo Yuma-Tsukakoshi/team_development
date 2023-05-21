@@ -58,5 +58,21 @@ $(function() {
   });
 });
 
+// ハンバーガーメニューのリンクのジャンプ
+$(document).ready(function() {
+  $('.gnavi__sp-style a').click(function(e) {
+    e.preventDefault(); // リンクのデフォルトのクリック動作を無効化
+
+    var target = $(this).data('target'); // data-target属性の値を取得
+    $('.modal').hide(); // モーダルを非表示にする
+
+    // 対象のセクションにスクロールしてジャンプする
+    $('html, body').animate({
+      scrollTop: $(target).offset().top
+    }, 500);
+  });
+});
+
+
 
 
