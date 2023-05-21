@@ -34,13 +34,14 @@ $manager = $stmt3->fetch();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="./assets/styles/header.css">
   <link rel="stylesheet" href="./assets/styles/search.css">
   <link rel="stylesheet" href="assets/styles/searchdetail.css">
   <title>エージェント詳細一覧</title>
 </head>
 
 <body>
-  <!-- <?php include(dirname(__FILE__) . '/../components/header.php'); ?> -->
+  <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
   <section class="search">
     <div>
       <h1 class="search-title">DETAIL</h1>
