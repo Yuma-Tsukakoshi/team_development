@@ -71,12 +71,12 @@ $manager = $stmt3->fetch();
             <div class="company-info">
               <img class="company-info-building-img" src="./assets/img/1225.png" alt="株式会社っぽい写真">
               <h2 class="company-info-name"><?=$agent["service_name"]?></h2>
-              <p class="company-info-company-number">掲載数:<span>1000社</span></p>
+              <p class="company-info-company-number">掲載数:<span><?=$agent["publication_num"]?>社</span></p>
               <!-- <p>キャッチコピー: <span>面接対策しっかりやってます</span></p> -->
               <!-- ここのキャッチコピーとは？？ -->
               <p class="company-info-assignee">担当者: <span><?=$manager["manager"]?></span></p>
               <a href="#">
-                <p class="company-info-hp">ホームぺージ：<br><span class="company-info-hp-link">https://shinsotsu.mynavi-agent.jp/</span></p>
+                <p class="company-info-hp">ホームぺージ：<br><a href="<?=$agent["homepage"]?>" target="_blank" class="company-info-hp-link">リンクはこちらから</a></p>
               </a>
               <div class="company-info-hp-link-bar"></div>
             </div>
