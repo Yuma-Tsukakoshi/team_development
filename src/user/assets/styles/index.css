@@ -994,6 +994,15 @@ ul {
             transition: .4s all;
         }
 
+        .gnavi__sp-style ul li:hover  {
+            text-decoration: underline;
+            text-decoration-color:#e3cf32 ;
+        }
+
+        .gnavi__sp-style ul li a:hover  {
+            color: #bcaa1d;
+        }
+
         .gnavi__sp-style ul li:last-of-type {
             padding-bottom: 0;
         }
