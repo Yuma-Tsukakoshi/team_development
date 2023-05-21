@@ -39,18 +39,13 @@ section{
     text-align: center;
 }
 .company-logo{
-    width: 600px;
-    height:75px ;
-    margin: 0 auto;
-    position: relative;
-    top: 30px;
+    /* height: 80%; */
+    margin-top: 165px;
+    
 }
 
-/* これあんまり活かせていない気がする */
 .grid-cols-2{
     background-color: white;
-    display: flex;
-
 }
 
 .company-info{
@@ -113,32 +108,27 @@ section{
     cursor: pointer;
 }
 
-.company-info-hp-link-bar{
-    width:300px ;
-    height: 2px;
-    position: relative;
-    top: 10px;
-    left: 170px;
-    background-color: black;
-}
-
 .company-info-hp-link-bar:hover{
     cursor: pointer;
 }
 
-.labels{
+.label{
     display:flex;
-    flex-flow: column;
+    frex-direction: row;
+    flex-wrap: wrap;
 }
 .label-content{
     width: 200px;
-    height: 60px;
     border-radius:50px ;
     background-color: rgb(227, 224, 224);
     position: relative;
     top:150px;
     left: 170px;
-    margin-bottom: 20px;
+}
+.label-content:before{
+    content: '●';
+    color: white;
+    margin-right: 8px;
 }
 
 
@@ -168,8 +158,8 @@ ul {
 .recommend-wrapper{
     width:600px ;
     height:400px ;
-    border-radius: 40px;
-    border-width: 4px;
+    border-radius: 75px;
+    border-width: 10px;
     border-color: #0071bc;
     position: relative;
     top: 160px;
@@ -177,8 +167,8 @@ ul {
     margin: 0;
 }
 .cyan{
-    width:350px ;
-    height: 50px;
+    width:380px ;
+    height: 70px;
     position: relative;
     top: 260px;
     left: 330px;
@@ -205,21 +195,23 @@ ul {
 }
 
 .opinion-img{
-    width: 200px;
+    width: 260px;
     height:200px ;
     position: relative;
-    top: 650px;
+    top: 670px;
     left: 150px;
 }
 
 .opinion-bubble{
     width: 500px;
-    height:400px ;
+    height:415px ;
     background-color: rgb(195, 233, 249);
-    border-radius: 120px;
+    border-radius: 90px;
     position: relative;
-    top:180px ;
+    top:170px ;
     left:400px;
+    font-weight:bold;
+    font-size: 19px;
 }
 
 .opinion-bubble-triangle{
@@ -229,7 +221,7 @@ ul {
     border-top: 50px solid  rgb(195, 233, 249);
   /* 配置する */
     position: absolute;
-    top: 1700px;
+    top: 1690px;
     left: 355px;
     transform: translateX(-75%);
     transform: rotate(63deg);
@@ -263,8 +255,8 @@ ul {
     left: 50px;
 }
 .blue{
-    width:180px ;
-    height:50px ;
+    width:220px ;
+    height:80px ;
     position: relative;
     top:230px ;
     left:700px;

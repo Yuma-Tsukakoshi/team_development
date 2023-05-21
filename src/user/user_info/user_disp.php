@@ -49,7 +49,7 @@ $agents = $stmt2->fetchAll();
             <div class="notifier new">
               <div class="badge num"><?= $exam[0]['COUNT(*)'] ?></div>
             </div>
-            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
+            <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/admin/boozer_agent_exam.php">
               <span class="ml-4">企業申請一覧</span>
             </a>
           </li>
@@ -73,7 +73,7 @@ $agents = $stmt2->fetchAll();
     <div class="flex flex-col flex-1 w-full">
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center">学生情報詳細 <?= $user["name"] ?> 様</h1>
-        <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  ">学生情報 : <a href="http://localhost:8080/user/user_info/user_edit.php?id=<?= $user["id"] ?>" class="edit_btn">編集</a></p>
+        <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center  "><span class="head-title">学生情報 : </span><a href="http://localhost:8080/user/user_info/user_edit.php?id=<?= $user["id"] ?>" class="edit_btn">編集</a></p>
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">
             <thead class="bg-blue-500 text-white">
