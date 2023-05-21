@@ -25,35 +25,19 @@
 require_once(dirname(__FILE__) . '/../dbconnect.php');
 $pdo = Database::get();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// メール送信
+$to = $_POST['mail'];
+$subject = "新規企業登録ありがとうございます";
+$message = "ご登録いただきありがとうございます。";
+$headers = "From: admin@mail.com";
 
-  $mail = $_POST["mail"];
-  var_dump($mail);
-  $stmt1 = $pdo->prepare($mail);
-  $stmt1->execute();
-  $result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+$result = mail($to, $subject, $message, $headers);
 
-  // 宛先と件名、メッセージをそれぞれ設定してメール送信関数を呼び出す
-function send_email($to, $subject, $message, $headers) {
-    if (mail($to, $subject, $message, $headers)) {
-    } else {
-        echo "メールの送信に失敗しました。\n";
-        echo "エラー情報: " . error_get_last()['message'];
-    }
-    }
-  
-  // user@mail.comへのメール
-  $to_client = "$mail";
-  $subject_client = "【株式会社boozer】お申し込みありがとうございます";
-  $subject_client = "【株式会社boozer】お申し込みありがとうございます";
-  $message_client = "※このメールはシステムからの自動返信です\n\n";
-  $message_client .= "お世話になっております。\n";
-  $message_client .= "株式会社boozerへのお問い合わせありがとうございました。\n\n";
-  $message_client .= "お手数ですがお間違いないかご確認ください。\n\n";
-  $message_client .= "●営業日以内に、担当者よりご連絡いたしますので\n";
-  $message_client .= "今しばらくお待ちくださいませ。\n\n";
-  
-  send_email($to_client, $subject_client, $message_client, $headers);
+if ($result) {
+    echo "メールが送信されました";
+} else {
+    echo "メールの送信に失敗しました";
 }
+
 
 ?>
