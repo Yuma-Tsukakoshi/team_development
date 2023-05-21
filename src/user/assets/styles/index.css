@@ -244,6 +244,11 @@ body {
     text-align: center;
 }
 
+.sp_br {
+    display: none; 
+}
+
+
 
 
 
@@ -523,7 +528,6 @@ body {
 .voices-img {
     width: 150px;
     height: 150px;
-    z-index: 20;
 }
 
 
@@ -884,16 +888,44 @@ ul {
 /* レスポンシブ用 */
 @media screen and (max-width: 480px) {
 
-
-    .body {
-        max-width: 480px;
+    .header{
+        top: 0px;
+        width: 100%;
+        position: fixed;
+        height: 60px;
+        background-color: rgba(242, 242, 242, 0.668);
+        z-index: 1000;
     }
 
-    /* ヘッダー */
-    .header {
-        height: 100px;
-        align-items: center;
+    /* 比較してみるボタン */
+    .search-btn {
+        /* right: 60px; */
+        width: 95%;
+        height: 60px;
+        bottom: 0px;
+        left: 0px;
+        
+
+        background-color: #e3cf32;
+        color: white;
+        font-size: 23px;
+        border-radius: 15px;
+        border-color: transparent;
+        z-index: 50;
+        position: fixed;
+
+        border-color: white;
+        border-width: 3px;
+        box-shadow: 3px 3px rgb(192, 186, 186);
+        z-index: 1000;
     }
+    
+    .search-btn:hover {
+        background-color: #bcaa1d;
+        cursor: pointer;
+    }
+
+
 
     /* ハンバーガーメニュー */
     /*ここから下がハンバーガーメニューのスタイル*/
@@ -971,7 +1003,7 @@ ul {
             top: 0;
             left: 0;
             color: #fff;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(128, 128, 128, 0.6);
             text-align: center;
             width: 100%;
             height: 100vh;
@@ -981,15 +1013,15 @@ ul {
             align-items: center;
         }
 
-        .gnavi__sp-style ul {
-            margin: 0 auto;
+        .sp-header-ul {
+            margin: auto;
             padding: 0;
             width: 100%;
         }
 
-        .gnavi__sp-style ul li {
+        .sp-header-li {
             list-style-type: none;
-            padding: 10px;
+            padding-top: 10px;
             width: 100%;
             transition: .4s all;
         }
@@ -1015,16 +1047,191 @@ ul {
             display: block;
             color: #fff;
             text-decoration: none;
+            font-size: large;
         }
 
         .gnavi__sp-style.active {
             opacity: 1;
         }
     
+        /* hero */
+        .hero {
+            background-size: contain;
+            margin-top: 8px;
+            height: 350px;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 350px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+
+        .hero-title-jpn {
+            font-size: 38px;
+            left: 0;
+            top: 30px;
+        }
+
+        .sp_br {
+            display: block; 
+        }
+
+        /* 円 */
+        .hero-circle{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e3cf32;
+            position: absolute;
+            top: 270px;
+            left: 280px;
+    }
+
+        .hero-circle-2 {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: #e8ee49;
+            position: relative;
+            top: 310px;
+            left: 200px;
+            z-index: 5;
+        }
+        
+/* 就活エージェントって？ */
+        .shukatsu{
+            margin-top:80px;
+            height: 650px;
+        }
+
+        .shukatsu-title{
+            text-align: center;
+            font-size: 30px;
+            margin-top: 0px;
+        }
+
+        .shukatsu-title-jpn{
+            font-size: 12px;
+        }
+
+        .shukatsu-txt-description-title-jpn {
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* 使い方 */
+        .howto{
+            margin-top: 40px;
+            height: 500px;
+        }
+
+        .howto-title{
+            text-align: center;
+            font-size: 40px;
+            margin-top: 100px;
+        }
+
+        .how-to-title-jpn{
+            font-size: 10px;
+        }
+
+        .howto-steps{
+            margin-top: 70px;
+            font-size: 15px;
+            display:flex ;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .howto-search-txt{
+            font-size: 18px;  
+        }
+
+        /* 取扱会社 */
+        .handling{
+            margin-top: 950px;
+            height: 700px;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+
+        .handling-logos{
+            width: 100%;
+        }
+
+        .handling-txt{
+            font-size: 13px;
+        }
+        
+        .handling-title{
+            position: absolute;
+            top: 2500px;
+            margin-left: 0px;
+            left: 15%;
+        }
+
+        .handling-jpn{
+            position: absolute;
+            top: 2600px;
+            margin-left: 0px;
+            left: 15%;
+        }
+
+        .handling-discription{
+            margin-left: 0px;
+
+        }
+
+        .logos-discription {
+            font-size: 15px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        /* 利用者の声 */
+        .voices-container {
+            flex-direction: column;
+            display: block;
+            left: 0px;
+        }
+        .voices-img{
+            width: 20%;
+            height: 20%;
+        }
+        .voices-contents-box{
+            width:80%;
+            height: 100px;
+        }
+        .voices-contents-box-sub{
+            width:100%;
+            height: 100px;
+        }
+        .voices-contents-stars-title{
+            font-size: 12px;
+        }
+        .voices-contents-txt{
+            font-size: 12px;
+        }
+
+        .voices-contents-name{
+            font-size: 12px;
+        }
+
+
+
+        
 
 
     /* ヒーロー */
-    .hero {
+    /* .hero {
         background-size: contain;
         margin-top: 0px;
     }
@@ -1044,7 +1251,7 @@ ul {
     }
 
     /* 就活とは？？欄 */
-    .shukatsu {
+    /* .shukatsu {
         height: 500px;
     }
 
@@ -1072,10 +1279,10 @@ ul {
         margin: 0 20px;
     }
 
-    .shukatsu-txt-desc
+    .shukatsu-txt-desc */
 
     /* how to  */
-    .howto {
+    /* .howto {
         height: 2500px;
         margin: 0 auto;
     }
@@ -1089,7 +1296,7 @@ ul {
 
     /* 取扱企業 */
     /* 縦並びにならない！ */
-    .handling {
+    /* .handling {
         display: flex;
         flex-flow: column;
         height: 1500px;
@@ -1118,12 +1325,12 @@ ul {
         text-align: center;
         margin-left: -90px;
         margin-top: 0;
-    }
+    }  */
 
 
     /* 利用者の声 */
 
-    .voices {
+    /* .voices {
         height: 1000px;
         margin-top: 100px;
     }
@@ -1142,10 +1349,10 @@ ul {
 
     .voices-contents-txt {
         width: 290px;
-    }
+    } */
 
     /* わたしたちについて */
-    .about {
+    /* .about {
         height: 1100px;
         display: flex;
         flex-flow: column;
@@ -1183,11 +1390,11 @@ ul {
         width: 400px;
         margin-top: 350px;
         margin-left: -55px;
-    }
+    } */
 
     /* 制作者紹介*/
 
-    .creator {
+    /* .creator {
         height: 800px;
     }
 
@@ -1228,17 +1435,17 @@ ul {
 
     .creator-img-under-5 {
         display: none;
-    }
+    } */
 
 
     /* フッター */
 
-    .footer {
+    /* .footer {
         height: 200px;
     }
 
     .footer-img {
         margin-left: 10%;
-    }
+    } */
 
-}
+} 

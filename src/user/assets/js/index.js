@@ -52,9 +52,11 @@ $(function() {
 
       if ($(this).hasClass('active')) {
           $('.gnavi__sp-style').addClass('active');
+          // $('.sp-header-li').addClass('active');
       } else {
           $('.gnavi__sp-style').removeClass('active');
-      }
+          // $('.sp-header-li').removeClass('active');
+      } 
   });
 });
 
