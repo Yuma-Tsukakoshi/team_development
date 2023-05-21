@@ -885,11 +885,15 @@ ul {
         right: 10px;
     }
 /* ヒーロー */
+    .hero{
+        background-size: contain;
+    }
 
     .hero-title-jpn{
         width: 400px;
         height: 100px;
         font-size: 20px;
+        left: 0;
     }
 /* 就活とは？？欄 */
     .shukatsu{
