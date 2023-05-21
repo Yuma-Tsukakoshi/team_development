@@ -134,6 +134,8 @@ CREATE TABLE clients(
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   is_valid boolean default true,
   exist int default false
+  publication_num INT,
+  homepage VARCHAR(255)
 ) CHARSET=utf8;
 
 

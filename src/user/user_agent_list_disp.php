@@ -53,7 +53,9 @@ $manager = $stmt3->fetch();
     </div>
   </section>
 
-  <!-- 掲載数、キャッチコピー、ホームページ、活動写真、 -->
+  <!-- DBダミー入れる＜掲載数、キャッチコピー、ホームページ、活動写真⇒無し＞、口コミは同じでも良い -->
+  <!--publication_num ,homepage , active_img で追加してある-->
+  <!-- TODO　PC:CSS直す : レスポンシブ この２つ & 管理者のCSSで気になるところ-->
 
   <main>
     <section>
