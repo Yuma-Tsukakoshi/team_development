@@ -40,7 +40,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
 <body>
   <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
   <section class="search">
-    <div>
+    <div class="title-wrapper">
       <h1 class="search-title">SEARCH</h1>
       <span class="search-title-jpn">-エージェント検索-</span>
       <div class="search-title-border"></div>
@@ -94,7 +94,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         <div class="contact-checkbox">
           <?php for ($i = 3; $i <= 5; $i++) { ?>
             <input type="checkbox" id="contact<?= $i ?>" class="check-label contact-checkbox" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
-            <label for="contact<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?> </label>
+            <label for="contact<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?> </label><br>
           <?php } ?>
           <div class="contact-border"></div>
         </div>
@@ -104,10 +104,14 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
           <h2 class="area-txt"> エリア </h2>
         </div>
+        <div class="area-container">
         <?php for ($i = 6; $i <= 9; $i++) { ?>
           <input type="checkbox" id="area<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
-          <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label>
+          <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label><br>
         <?php } ?>
+        </div>
+        <div class="contact-border"></div>
+
       </div>
     </form>
     <div class="my-16 ">
@@ -129,7 +133,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
               <input type="hidden" value="<?= $agent['client_id'] ?> " class="client_id">
               <div class="top agent-list">
                 <img class="agent-img" src="<?= $agent["logo_img"] ?>" alt="エージェント画像">
-                <div>
+                <div class="list-right">
                   <h2 class="top-title"><?= $agent["service_name"] ?></h2>
                   <div class="top-title-border"></div>
                   <div class="top-description">
