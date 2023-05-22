@@ -28,7 +28,7 @@ section{
 }
 
 .wrapper{
-    width: 1000px;
+    width: 940px;
     height: 1800px;
     background-color:white;
     border-radius: 40px;
@@ -77,7 +77,7 @@ section{
 
 
 .company-info-company-number{
-    font-size: 20px;
+    font-size: 30px;
     position: relative;
     top: 0px;
     left: 170px;
@@ -87,7 +87,7 @@ section{
 }
 
 .company-info-assignee{
-    font-size: 20px;
+    font-size: 30px;
     position: relative;
     top:10px ;
     left: 170px;
@@ -96,7 +96,7 @@ section{
 }
 
 .company-info-hp{
-    font-size: 20px;
+    font-size: 30px;
     position: relative;
     top: 20px;
     left: 170px;
@@ -121,10 +121,9 @@ section{
 
 .label{
     display:flex;
-    frex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
-    width: 50%;
+    width: 70%;
 }
 .label-content{
     width: 110px ;
@@ -293,4 +292,155 @@ ul {
 .transition-link a:hover {
     background: #fff;
     color: #228bc8;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper{
+        /* width: 640px; */
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    /* section{
+        height: 2000px;
+    } */
+    .search-head{
+        font-size: 18px;
+    }
+    .search-title{
+        font-size: 42px;
+        letter-spacing: 2px;
+    }
+    /* .search-title-jpn{
+        font-size: 15px;
+        letter-spacing: 2px;
+        left: 90px;
+    }
+
+    .search-title-cart{
+        right: 0px;
+        top: 0px;
+    } */
+    .wrapper{
+        width: 100%;
+        height: 1900px;
+        margin: 0 auto;
+    }
+
+    .grid{
+        display: block;
+    }
+
+    .grid-cols-2{
+        width: 100%;
+        padding-top: 0px;
+    }
+
+    .company-info-building-img{
+        width: 120px;
+        height:120px ;
+        position: relative;
+        left: 50px;
+    }
+
+    .company-info{
+        top: 60px;
+    }
+
+    .company-info-name{
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .company-info-company-number{
+        left: 40px;
+        letter-spacing: 2px;
+        margin:12px;
+        font-size: 20px;
+    }
+    .company-info-assignee{
+        left: 40px;
+        letter-spacing: 2px;
+        margin:12px;
+        font-size: 20px;
+    }
+    .company-info-hp{
+        left: 40px;
+        letter-spacing: 2px;
+        margin:12px;
+        font-size: 20px;
+    }
+
+    .company-logo{
+        margin-top: 60px;
+    }
+    
+    .label-content{
+        border-radius:50px ;
+        padding: 10px;
+        top: 100px;
+        left: 100px;
+    }
+
+    .recommend-wrapper{
+        position: static;
+        width: 100%;
+        margin-top: 110px;
+    }
+    .merit{
+        font-size: 18px;
+        width: 80%;
+    }
+
+    .cyan{
+        top:0;
+        left: 5%;
+        margin-top: 25px;
+    }
+    .inner-bottom-line{
+        top: 25px;
+
+    }
+
+    .opinion-title{
+        font-size: 30px;
+        left: 80px;
+        top: 110px;
+    }
+
+    .opinion-bubble{
+        width: 100%;
+        /* height: 100%; */
+        position: static;
+        top: 0px;
+        left: 0px;
+    }
+    .opinion-bubble-triangle{
+        display: none;
+    }
+
+    .opinion-img{
+        width: 50%;
+        height: 50%;
+        top: 0px;
+        left: 50%;  
+    }
+
+    .opinion-bubble-text1{
+        font-size: 18px;
+    }
+    .opinion-bubble-text2{
+        font-size: 16px;
+        margin-top: 30px;
+    }
+    .opinion-bubble-text3{
+        font-size: 16px;
+        margin-top: 30px;
+    }
+
+    .blue{
+        top: 30px;
+        left: 25%;
+    }
 }

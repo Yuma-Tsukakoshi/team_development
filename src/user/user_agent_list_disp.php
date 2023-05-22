@@ -54,10 +54,6 @@ $manager = $stmt3->fetch();
     </div>
   </section>
 
-  <!-- DBダミー入れる＜掲載数、キャッチコピー、ホームページ、口コミは同じでも良い -->
-  <!--publication_num ,homepage で追加してある-->
-  <!-- TODOPC:CSS直す : レスポンシブ-->
-
   <main>
     <section>
       <div class="wrapper">
@@ -101,9 +97,9 @@ $manager = $stmt3->fetch();
           <h2 class="opinion-title">口コミ</h2>
           <img class="opinion-img" src="./assets/img/278.png" alt="口コミの画像">
           <div class="opinion-bubble">
-            <p class="opinion-bubble-text1">手厚いサポートのおかけで内定が決まりました。 (2023年春卒 女性)</p>
-            <p class="opinion-bubble-text2">目指したい業種があまり明確でない人におすすめのエージェント会社だと思います。 (2022年卒男性)</p>
-            <p class="opinion-bubble-text3">コロナ禍に対応したサポートにより、例年の就活と大きく変わることなく就活に取り組むことができました。(2023卒男性)</p>
+            <p class="opinion-bubble-text1">手厚いサポートのおかけで内定が決まりました。<br> (2023年春卒 女性)</p>
+            <p class="opinion-bubble-text2">目指したい業種があまり明確でない人におすすめのエージェント会社だと思います。<br> (2022年卒男性)</p>
+            <p class="opinion-bubble-text3">コロナ禍に対応したサポートにより、例年の就活と大きく変わることなく就活に取り組むことができました。<br> (2023卒男性)</p>
           </div>
           <div class="opinion-bubble-triangle"></div>
           <button class="btn-big blue"><a href="http://localhost:8080/user/user_agent_list.php">検索画面に戻る</a></button>
