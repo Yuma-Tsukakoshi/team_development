@@ -1,25 +1,25 @@
-.first-box,.second-box,.third-box{
+.first-box,.second-box,.third-box,.fourth-box{
   width: 150px;
   height: auto;
   background-color: #dcdcdc;
   border-radius: 5px;
   padding: 5px;
 }
-.third-box{
+.fourth-box{
   position: relative;
 }
 .first-box{
   background-color: #ffff66;
 }
-.third-box:before,
-.third-box:after{
+.fourth-box:before,
+.fourth-box:after{
   content: "";
   position: absolute;
   width: 0;
   height: 0;
   margin: auto;
 }
-.third-box:before{
+.fourth-box:before{
   top:-15px;
   right:-1em;
   border-style: solid;
@@ -27,7 +27,7 @@
   border-width: 24px 0 24px 1em;
   z-index: 10;
 }
-.third-box:after{
+.fourth-box:after{
   top:-1px;
   right:-.8em;
   border-style: solid;
@@ -53,10 +53,9 @@
   background-color: #dcdcdc;
 }
 .agent-list{
-  display: flex;
-  justify-content: center;
-  gap: 20%;
-  margin-bottom: 30px;
+  margin: 10px 15%;
+  display: grid;
+  grid-template-columns: 4fr  1fr auto;
 }
 .cart-content{
   width: 100%;
@@ -69,6 +68,7 @@
 .agent-name{
   font-size: 30px;
   font-weight: 400;
+  text-align: left;
 }
 .contact-link{
   margin-top: 10%;
@@ -83,7 +83,8 @@
   display: flex;
 	justify-content: center;
 	align-items: center;
-	position: relative;
+	position: absolute;
+  right: 30px;
 	width: 300px;
 	height: 60px;
 	color: #333;
@@ -93,7 +94,7 @@
 	font-weight: 700;
 	text-decoration: none;
 	transition: 0.3s;
-  margin-left: 80%;
+  
 }
 .contact-link a::after {
 	content: '';
@@ -111,4 +112,47 @@
 .contact-link a:hover {
 	background-color: #dcdcdc;
 	border: 1px solid #333;
+}
+
+@media screen and (max-width: 768px) {
+  .first-box,.second-box,.third-box,.fourth-box{
+    height: 100%;
+  }
+  .fourth-box{
+    width: 100px;
+  }
+  .phase-image span{
+    display: block;
+  }
+  .phase-image{
+    padding: 0 3.5%;
+  }
+  .contact-link{
+   
+  }
+ 
+  .agent-list{
+    margin: 10px 5%;
+    grid-template-columns: 3.5fr 1fr auto;
+  }
+  .agent-name{
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 480px){
+  .contact-link a{
+    display: block;
+    padding: 0 4%;
+    font-size: 14px;
+    width: 180px;
+    text-align: left;
+  }
+  .contact-link a p{
+    position: absolute;
+    top: 20%;
+  }
+  .contact-link a span{
+    display: block;
+  }
+
 }

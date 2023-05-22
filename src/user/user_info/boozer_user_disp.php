@@ -29,6 +29,7 @@ $valid = $stmt2->fetch();
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../assets/styles/badge.css">
+  <link rel="stylesheet" href="../assets/styles/boozer.css">
   <link rel="stylesheet" href="_user_disp.css">
   <script src="../assets/js/other_text.js" defer></script>
   <script src="../assets/js/jquery-3.6.1.min.js"></script>
@@ -77,6 +78,11 @@ $valid = $stmt2->fetch();
           SideBanner
         </a>
         <ul class="mt-6">
+        <li class="relative px-6 py-3">
+            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../../agent/agent_auth/agent_logout.php">
+              <span class="ml-4">ログアウト</span>
+            </a>
+          </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="http://localhost:8080/agent/agent_boozer.php">
               <span class="ml-4">学生一覧</span>

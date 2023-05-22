@@ -31,9 +31,11 @@
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
-      <div class="second-box">申し込みフォーム</div>
+      <div class="second-box">申し込み<span>フォーム</span></div>
       <div class="border-line"></div>
-      <div class="third-box">申し込み確認</div>
+      <div class="third-box">申し込み<span>確認</span></div>
+      <div class="border-line"></div>
+      <div class="fourth-box">完了</div>
 
     </div>
     <div class="check-form" >
@@ -108,11 +110,11 @@
         <div class="form-control flex">
         <div class="double-input">
           <label class="block text-gray-700 font-bold mb-2 " for="faculty">学部</label>
-          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline double-content " name="faculty"id="faculty" type="text" value="<?=$_POST['faculty']?>" disabled >
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " name="faculty"id="faculty" type="text" value="<?=$_POST['faculty']?>" disabled >
         </div>
         <div class="double-input">
           <label class="block text-gray-700 font-bold mb-2" for="department">学科</label>
-          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  double-content " name="department"id="department" type="text" disabled value="<?=$_POST['department']?>" >
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="department"id="department" type="text" disabled value="<?=$_POST['department']?>" >
         </div>
         <button class="edit-button button-mg" type="button"  data-type="double">編集</button>
         </div>
@@ -157,8 +159,7 @@
     $(function(){
       $('.first-box').css('background-color','#dcdcdc')
       $('.third-box').css('background-color','#ffff66')
-      $('.third-box').toggleClass('active')
-
+    
     })
    $(function(){
       $('.edit-button').click(function(){

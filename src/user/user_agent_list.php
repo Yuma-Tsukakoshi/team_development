@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -51,10 +52,11 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           <?= $count ?>
         <?php } ?>
       </div>
-      <a href="./user_cartlook.php">
-        <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
-      </a>
-      <div class="search-title-cart-border"></div>
+    <div class="search-title-cart-border">
+        <a href="./user_cartlook.php">
+          <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
+        </a>
+      </div>
     </div>
   </section>
   <div class="overlay" id="js-overlay"></div>
@@ -174,6 +176,13 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(function() {
+      //ボタン灰色
+      const inputs = $('.input').each(function(index, element) {
+        $index = element.value
+        $('.add-button').eq($index - 1).prop("disabled", true);
+        $('.add-button').eq($index - 1).removeClass("cyan");
+        $('.add-button').eq($index - 1).css('background-color', 'gray');
+      })
       //スクロールすると上部に固定させるための設定を関数でまとめる
       function FixedAnime() {
         var headerH = $('.search').outerHeight(true);
@@ -188,15 +197,12 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       $(window).scroll(function() {
         FixedAnime(); /* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
       });
-
       // ページが読み込まれたらすぐに動かしたい場合の記述
       $(window).on('load', function() {
         FixedAnime(); /* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
       });
-
       $('.add-button').on('click', function(event) {
         $index = this.value
-
         console.log($index)
         $.ajax({
           type: "POST",
@@ -204,7 +210,6 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           data: {
             id: $index,
             client_id: $('.client_id').eq($index).val(),
-
           },
           dataType: "json",
           scriptCharset: 'utf-8'
@@ -212,7 +217,6 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           console.log(data);
           $('.modal-content').fadeIn();
           $('.overlay').fadeIn();
-
           // クリックイベント全てに対しての処理
           $(document).on('click touchend', function(event) {
             // 表示したポップアップ以外の部分をクリックしたとき
@@ -221,11 +225,11 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
               $('.overlay').fadeOut();
             }
           });
-
-          $('.cart-num').text(data)
+          $('.cart-badge').text(data)
           $('.add-button').eq($index).prop("disabled", true);
+          $('.add-button').eq($index).removeClass("cyan");
+          $('.add-button').eq($index).css('background-color', 'gray');
           //背景グレーとか調整する
-
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
           alert(errorThrown);
         });
@@ -235,3 +239,4 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
 </body>
 
 </html>
+

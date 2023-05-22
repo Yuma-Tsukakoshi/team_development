@@ -133,21 +133,23 @@ CREATE TABLE clients(
   logo_img VARCHAR(255) NOT NULL,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   is_valid boolean default true,
-  exist int default false
+  exist int default false,
+  publication_num INT,
+  homepage VARCHAR(255)
 ) CHARSET=utf8;
 
 
-insert into clients(client_id, agent_name, service_name, catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at ,ended_at,logo_img,is_valid,exist) values
-(1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","パーソルとベネッセの合弁会社","取引企業数は常時5,500社以上と豊富","2022年は14万人の就活生に利用される",'2023-02-01', '2023-08-12',"https://doda-student.jp/assets/img/header_logo_01.svg",true,1),
-(2,'株式会社マイナビ', 'マイナビ新卒紹介',"丁寧なES添削指導","新卒情報サイトNo.1のマイナビ","大手企業の補欠枠から中小企業がメイン","学歴によって紹介企業を切り分けている",'2023-05-13', '2023-08-19',"https://転職サイト比較ナビ.com/wp-content/uploads/2017/07/d56de24e779423b861e32052727d7fc8.jpg",true,1),
-(3,'NaS株式会社', 'DiG UP CAREER',"スピード内定","LINEやビデオ通話などを利用した手軽で密なコミュニケーションが取れる","オンラインで企業とのマッチングイベントが開催されており地方学生でも参加できる","特に自己分析のサポートに力を入れている",'2023-04-03', '2023-07-01',"https://nas-inc.co.jp/lp/digupcareer/assets/img/logo.svg",true,1),
-(4,'Jobspirng株式会社', 'JobSpring',"適性検査実施","学生の価値観や適性に合う求人のみを紹介","適性検査を活かしたマッチング","内定承諾率は70%",'2023-04-23', '2023-06-10',"https://jobspring.jp/assets/img/lp/05/JobSpring_logo_v2-min.png?1653983874",true,1),
-(5,"Goodfind","Goodfindエージェントサービス","顧客に寄り添う","ややハイスペ学生向け","外資系企業やメガベンチャー企業メイン","優秀な学生には特別選考ルートを案内",'2023-05-02', '2023-07-29',"https://img.goodfind.jp/company/logo/company_1.jpg",true,1),
-(6,"株式会社アカリク","アカリク就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-06-01', '2023-07-28',"https://expo.nikkeibp.co.jp/xtech/online/static/assets/images/sponsor/logo_booth_8573.png",true,1),
-(7,"株式会社リクナビ","リクナビ就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-04-21',"https://www.hiryu.co.jp/wp/wp-content/uploads/2021/07/unnamed.jpg",true,1),
-(8,"株式会社キャリアチケット","キャリアチケット","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-06-21',"https://img.my-best.com/product_images/d9a40ba15d8c2d37b5772ef566d35de4.png?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=770263a3b6acbe9836faf71ef16fd26e",true,2),
-(9,"株式会社キャリセン","キャリセン就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-06-21',"https://img.my-best.com/product_images/c2a9349fe5835a278d684596be47095f.jpg?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=674ddb02e2edaddb60165966264c7384",true,0),
-(10,"株式会社irodas","irodas就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-07-21',"https://img.my-best.com/product_images/aff6dd81c415b9d5e56e036fb8f62c59?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=cf4b97edc186c7aa3b8c34094d151289",true,0);
+insert into clients(client_id, agent_name, service_name, catchphrase,recommend_point1,recommend_point2,recommend_point3,started_at ,ended_at,logo_img,is_valid,exist,publication_num,homepage) values
+(1,"doda株式会社","doda新卒エージェント","豊富な掲載企業","パーソルとベネッセの合弁会社","取引企業数は常時5,500社以上と豊富","2022年は14万人の就活生に利用される",'2023-02-01', '2023-08-12',"https://doda-student.jp/assets/img/header_logo_01.svg",true,1,1000,"https://doda-student.jp/"),
+(2,'株式会社マイナビ', 'マイナビ新卒紹介',"丁寧なES添削指導","新卒情報サイトNo.1のマイナビ","大手企業の補欠枠から中小企業がメイン","学歴によって紹介企業を切り分けている",'2023-05-13', '2023-08-19',"https://転職サイト比較ナビ.com/wp-content/uploads/2017/07/d56de24e779423b861e32052727d7fc8.jpg",true,1,900,"https://shinsotsu.mynavi-agent.jp/"),
+(3,'NaS株式会社', 'DiG UP CAREER',"スピード内定","LINEやビデオ通話などを利用した手軽で密なコミュニケーションが取れる","オンラインで企業とのマッチングイベントが開催されており地方学生でも参加できる","特に自己分析のサポートに力を入れている",'2023-04-03', '2023-07-01',"https://nas-inc.co.jp/lp/digupcareer/assets/img/logo.svg",true,1,1000,"https://nas-inc.co.jp/lp/digupcareer/presco.html?presco_sid=5866.1869.60.s6IP9A8xd0597698#page-top"),
+(4,'Jobspirng株式会社', 'JobSpring',"適性検査実施","学生の価値観や適性に合う求人のみを紹介","適性検査を活かしたマッチング","内定承諾率は70%",'2023-04-23', '2023-06-10',"https://jobspring.jp/assets/img/lp/05/JobSpring_logo_v2-min.png?1653983874",true,1,800,"https://jobspring.jp/lp/05/180?a8=beNiAe2kaQWh-dOe3csTKGWdlGGzWQWT2cseUGq_nnMkaQNe3QwmPBwk-BGHFHwW.nL_q8Nj.eNips00000019112001"),
+(5,"Goodfind","Goodfindエージェントサービス","顧客に寄り添う","ややハイスペ学生向け","外資系企業やメガベンチャー企業メイン","優秀な学生には特別選考ルートを案内",'2023-05-02', '2023-07-29',"https://renn-ai.com/wp-content/uploads/2020/02/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2020-02-17-21.00.17.png",true,1,700,"https://www.goodfind.jp/"),
+(6,"株式会社アカリク","アカリク就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-06-01', '2023-07-28',"https://expo.nikkeibp.co.jp/xtech/online/static/assets/images/sponsor/logo_booth_8573.png",true,1,700,"https://acaric.jp/"),
+(7,"株式会社リクナビ","リクナビ就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-04-21',"https://www.hiryu.co.jp/wp/wp-content/uploads/2021/07/unnamed.jpg",true,1,800,"https://job.rikunabi.com/agent/"),
+(8,"株式会社キャリアチケット","キャリアチケット","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-06-21',"https://img.my-best.com/product_images/d9a40ba15d8c2d37b5772ef566d35de4.png?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=770263a3b6acbe9836faf71ef16fd26e",true,2,500,"https://careerticket.jp/lp/340aa/00/00/00/?a=TY1AL6RE37LA55&utm_campaign=careerticket&yclid=YSS.1001097183.EAIaIQobChMIo6eM96iG_wIVwmZgCh1pAg38EAAYASAAEgLGv_D_BwE"),
+(9,"株式会社キャリセン","キャリセン就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-06-21',"https://img.my-best.com/product_images/c2a9349fe5835a278d684596be47095f.jpg?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=674ddb02e2edaddb60165966264c7384",true,0,800,"https://careecen-shukatsu-agent.com/lp/mendan/?utm_campaign=af_rentracks&_rt_ck=2696.230400432084"),
+(10,"株式会社irodas","irodas就活エージェント","手厚いサポート受け放題","修士・博士・ポスドクに特化した求人紹介を受けられる","大学院在籍経験のあるアドバイザーが多数在籍している","利用者の選考突破率が8割",'2023-02-01', '2023-07-21',"https://img.my-best.com/product_images/aff6dd81c415b9d5e56e036fb8f62c59?ixlib=rails-4.3.1&q=70&lossless=0&w=640&h=640&fit=clip&s=cf4b97edc186c7aa3b8c34094d151289",true,0,600,"https://irodas.com/");
 
 DROP TABLE IF EXISTS managers;
 CREATE TABLE managers(
