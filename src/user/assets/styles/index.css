@@ -1072,9 +1072,9 @@ ul {
         
 
         .hero-title-jpn {
-            font-size: 38px;
+            font-size: 8vw;
             left: 0;
-            top: 30px;
+            top: 50px;
         }
 
         .sp_br {
@@ -1168,7 +1168,7 @@ ul {
         }
 
         .handling-txt{
-            font-size: 13px;
+            font-size: 14px;
         }
         
         .handling-title{
@@ -1187,6 +1187,7 @@ ul {
 
         .handling-discription{
             margin-left: 0px;
+            line-height: 0px;
 
         }
 
@@ -1225,6 +1226,57 @@ ul {
             font-size: 12px;
         }
 
+        /* 私たちについて */
+
+        .about{
+            margin-top: 100px;
+            height: 700px;
+        }
+
+        .about-left{
+            margin-left: 0px;
+            margin-top: 0px;
+        }
+
+        .about-title{
+            text-align: left;
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        .about-title-letters{
+            font-size: 20px;
+        }
+
+        .about-title-jpn-letters{
+            font-size: 10px;
+        }
+
+        .about-philosophy-letters{
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .about-txt-motto-span{
+            font-size: 15px;
+        }
+
+        .about-txt-motto{
+            font-size: 15px;
+        }
+
+        .about-right{
+            margin-left: 0px;
+            margin-top: 0px;
+        }
+
+        .about-txt-description-title{
+            font-size: 2rem;
+        }
+
+
+
+        
 
 
         
@@ -1394,7 +1446,7 @@ ul {
 
     /* 制作者紹介*/
 
-    /* .creator {
+    .creator {
         height: 800px;
     }
 
@@ -1435,7 +1487,7 @@ ul {
 
     .creator-img-under-5 {
         display: none;
-    } */
+    }
 
 
     /* フッター */
