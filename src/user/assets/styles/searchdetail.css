@@ -1,13 +1,15 @@
+.search-head{
+    padding-left: 20px;
+}
+
 .search-title-jpn{
     font-size: 20px;
     letter-spacing: 2px;
-    position: relative;
     left: 90px;
 }
 
 .search-title-border{
     width: 230px;
-    position: relative;
     left: 75px;
 }
 
@@ -27,7 +29,7 @@ section{
 
 .wrapper{
     width: 1000px;
-    height: 2000px;
+    height: 1800px;
     background-color:white;
     border-radius: 40px;
     box-shadow: 5px 5px rgb(180, 178, 178);
@@ -39,19 +41,21 @@ section{
     text-align: center;
 }
 .company-logo{
-    /* height: 80%; */
-    margin-top: 165px;
-    
+    /* margin-top: 45%; */
 }
 
 .grid-cols-2{
     background-color: white;
+    position: relative;
+    top: 60px;
+    padding: 30px 30px 0 30px;
 }
 
 .company-info{
     background-color: white;
-    position: relative;
+    /* position: relative; */
     top: 100px;
+    font-weight: bold;
 }
 
 .company-info-building-img{
@@ -78,7 +82,8 @@ section{
     top: 0px;
     left: 170px;
     margin-bottom: 0;
-    letter-spacing: 2px
+    letter-spacing: 2px;
+    margin:12px;
 }
 
 .company-info-assignee{
@@ -87,6 +92,7 @@ section{
     top:10px ;
     left: 170px;
     letter-spacing: 2px;
+    margin:12px;
 }
 
 .company-info-hp{
@@ -95,6 +101,7 @@ section{
     top: 20px;
     left: 170px;
     letter-spacing: 2px;
+    margin:12px;
 }
 
 .company-info-hp-link{
@@ -116,10 +123,13 @@ section{
     display:flex;
     frex-direction: row;
     flex-wrap: wrap;
+    gap: 5px;
+    width: 50%;
 }
 .label-content{
-    width: 200px;
+    width: 110px ;
     border-radius:50px ;
+    padding: 10px;
     background-color: rgb(227, 224, 224);
     position: relative;
     top:150px;
@@ -143,8 +153,8 @@ section{
 .merit{
     word-wrap: break-word;
     width:550px ;
-    height: 50px;
-    padding: 30px;
+    height: 40px;
+    padding: 25px;
     font-size: 20px;
     margin-bottom: 20px;
 }
@@ -157,7 +167,7 @@ ul {
 
 .recommend-wrapper{
     width:600px ;
-    height:400px ;
+    height:260px ;
     border-radius: 75px;
     border-width: 10px;
     border-color: #0071bc;
@@ -165,6 +175,7 @@ ul {
     top: 160px;
     left: 200px;
     margin: 0;
+    margin-top: 35px;
 }
 .cyan{
     width:380px ;
@@ -198,8 +209,8 @@ ul {
     width: 260px;
     height:200px ;
     position: relative;
-    top: 670px;
-    left: 150px;
+    top: 740px;
+    left: 90px;
 }
 
 .opinion-bubble{
@@ -208,8 +219,8 @@ ul {
     background-color: rgb(195, 233, 249);
     border-radius: 90px;
     position: relative;
-    top:170px ;
-    left:400px;
+    top:203px ;
+    left:380px;
     font-weight:bold;
     font-size: 19px;
 }
@@ -218,11 +229,11 @@ ul {
     content: "";
   /* borderで三角形を作る */
     border: 30px solid transparent;
-    border-top: 50px solid  rgb(195, 233, 249);
+    border-top: 100px solid  rgb(195, 233, 249);
   /* 配置する */
     position: absolute;
-    top: 1690px;
-    left: 355px;
+    top: 1505px;
+    left: 330px;
     transform: translateX(-75%);
     transform: rotate(63deg);
 }
@@ -231,7 +242,7 @@ ul {
     word-wrap: break-word;
     width: 400px;
     position: relative;
-    top:80px ;
+    top:60px ;
     left: 50px;
 
 }
@@ -241,7 +252,7 @@ ul {
     width:400px;
     margin-top: 50px;
     position: relative;
-    top: 80px;
+    top: 60px;
     left: 50px;
 
 }
@@ -251,7 +262,7 @@ ul {
     width:400px;
     margin-top: 50px;
     position: relative;
-    top: 80px;
+    top: 60px;
     left: 50px;
 }
 .blue{
@@ -261,4 +272,25 @@ ul {
     top:230px ;
     left:700px;
     font-size: 25px;
+}
+
+.transition-link a{
+    position: relative;
+    background: #0071bc;
+    border: 1px solid #0071bc;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 12px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+    text-align: left;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+
+.transition-link a:hover {
+    background: #fff;
+    color: #228bc8;
 }

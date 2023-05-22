@@ -43,7 +43,7 @@ $manager = $stmt3->fetch();
 <body>
   <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
   <section class="search">
-    <div>
+    <div class="search-head">
       <h1 class="search-title">DETAIL</h1>
       <span class="search-title-jpn">-エージェント詳細-</span>
       <div class="search-title-border"></div>
@@ -54,9 +54,9 @@ $manager = $stmt3->fetch();
     </div>
   </section>
 
-  <!-- DBダミー入れる＜掲載数、キャッチコピー、ホームページ、活動写真⇒無し＞、口コミは同じでも良い -->
-  <!--publication_num ,homepage , active_img で追加してある-->
-  <!-- TODOPC:CSS直す : レスポンシブ この２つ & 管理者のCSSで気になるところ-->
+  <!-- DBダミー入れる＜掲載数、キャッチコピー、ホームページ、口コミは同じでも良い -->
+  <!--publication_num ,homepage で追加してある-->
+  <!-- TODOPC:CSS直す : レスポンシブ-->
 
   <main>
     <section>
@@ -70,17 +70,14 @@ $manager = $stmt3->fetch();
               <!-- <p>キャッチコピー: <span>面接対策しっかりやってます</span></p> -->
               <!-- ここのキャッチコピーとは？？ -->
               <p class="company-info-assignee">担当者: <span><?= $manager["manager"] ?></span></p>
-              <a href="#">
-                <p class="company-info-hp">ホームぺージ：<br><a href="<?= $agent["homepage"] ?>" target="_blank" class="company-info-hp-link">リンクはこちらから</a></p>
-              </a>
-              <div class="company-info-hp-link-bar"></div>
+              <p class="company-info-hp transition-link">ホームぺージ：<a href="<?= $agent["homepage"] ?>" target="_blank" class="company-info-hp-link">リンクはこちらから</a></p>
             </div>
-            <div>
-              <img class="company-logo" src="<?= $agent["logo_img"] ?>" alt="企業ロゴ">
+            <div class="company-logo">
+              <img src="<?= $agent["logo_img"] ?>" alt="企業ロゴ">
             </div>
           </div>
 
-          <div class="label">
+          <div class="label ">
             <?php foreach ($labels as $label) { ?>
               <span class="label-content">
                 <?= $label["label_name"] ?>
@@ -89,7 +86,6 @@ $manager = $stmt3->fetch();
             <?php } ?>
           </div>
           <div class="recommend-wrapper">
-            <h2 class="">一押しポイント</h2>
             <div class="recommend-content">
               <ul>
                 <li class="merit"><?= $agent["recommend_point1"] ?></li>
