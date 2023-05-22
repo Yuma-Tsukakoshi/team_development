@@ -73,7 +73,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       <a href="./user_info/user_insert.php">申し込みはこちら→</a>
     </div>
   </div>
-  
+
   <main class="grid grid-cols-2">
     <form method="post" action="" class="m-8 w-3">
       <div class="major">
