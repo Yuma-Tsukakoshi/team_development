@@ -37,8 +37,10 @@ function send_email($to, $subject, $message, $headers) {
   }
 }
 
+$user_mail = $_POST["email"];
+
 // user@mail.comへのメール
-$to_user = "user@mail.com";
+$to_user = $user_mail;
 $subject_user = "【株式会社boozer】お申し込みありがとうございます";
 $subject_user = "【株式会社boozer】お申し込みありがとうございます";
 $message_user = "※このメールはシステムからの自動返信です\n\n";
