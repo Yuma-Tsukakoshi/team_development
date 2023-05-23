@@ -56,11 +56,10 @@ $mail = $stmt->fetchColumn();
 }
 
 // メール機能
-// 送信元のメールアドレス
-$from = "craft@mail.com";
 
-// 追加ヘッダー情報
-$headers = "From:" . $from;
+$headers = 'From: admin@mail' . "\r\n" .
+'Reply-To: admin@mail' . "\r\n" .
+'X-Mailer: PHP/' . phpversion();
 
 // 宛先と件名、メッセージをそれぞれ設定してメール送信関数を呼び出す
 function send_email($to, $subject, $message, $headers) {
