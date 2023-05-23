@@ -6,6 +6,7 @@ require_once(dirname(__FILE__) . '/user_agent_filter.php');
 
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
+  $clients = $_SESSION['clients'];
 }
 
 $pdo = Database::get();
@@ -57,6 +58,11 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       <div class="search-title-border"></div>
     </div>
     <div class="cart relative">
+      <? if (isset($clients)) {
+        foreach ($clients as $client) { ?>
+          <input type="hidden" class="input" name="agents[]" value="<?= $client['agent'] ?>">
+        <? }
+      } ?>
       <div class="notifier new">
         <div class="cart-badge badge num">
           <?php if (isset($count)) { ?>
@@ -82,7 +88,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
     </div>
     <div class="modal-cart">
       <div class="return-link modal-button">
-        <a href="./user_info/user_cartlook.php">
+        <a href="./user_cartlook.php">
           <p class="link-message">カート一覧へ</p>
         </a>
       </div>
