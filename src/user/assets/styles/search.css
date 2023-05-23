@@ -1,16 +1,20 @@
-html{
+body{
     overflow-x: hidden;
 }
+
 
 img{
     max-width: 100%;
     height: auto;
 }
 
+
+
 .search{
     width:100% ;
     height:150px ;
     background-color: white;
+
 }
 
 .move{
@@ -23,14 +27,14 @@ img{
     color: #0071bc;
     font-weight: bold;
     font-size: 60px;
-    /* position: ; */
+    position: ;
     top: 10px;
     left: 70px;
     letter-spacing: 10px;
 }
 
 .search-title-jpn{
-    margin-left: 20px;
+    position: ;
     left: 130px;
     font-size: 20px;
 }
@@ -45,30 +49,22 @@ img{
 }
 
 .search-title-cart{
+<<<<<<< HEAD
+=======
+    width: 100px;
+    height: 100px;
+    position: ;
+    /* top:-80px;
+    left:1200px; */
+>>>>>>> a104da6656c1647f50e47411bf9b827e3fa07533
 }
 
 /* カートの周りの丸い枠 */
 .search-title-cart-border{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid #0071bc;
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.49);
+    
 }
-.search-title-cart-border:hover{
-    box-shadow: none;
-}
-.cart{
-    gap: 20px;
-}
-.cart-badge{
-    width: 40px;
-    height: 40px;
-    left: -30px;
-    background-color: #0071bc;
-    padding-left: 13px;
-    padding-top: 8px;
-}
+
+
 /* 以下絞り込み機能 */
 .grid-cols-2{
     background-color: aliceblue;
@@ -104,13 +100,11 @@ img{
 } */
 
 .check-label{
-    position: relative;
     left: 20px;
     top: 30px;
 }
 
 .label-hover{
-    position: relative;
     left: 20px;
     top: 30px;
 }
@@ -237,8 +231,8 @@ img{
 .results{
     display: flex;
     position: relative;
-    top: 40px;
-    left: -150px;
+    top: -2%;
+    left: -40%;
 }
 
 .results-img{
@@ -285,6 +279,7 @@ img{
     box-shadow: 7px 7px #ffe600;
     margin: 10px;
     object-fit: contain;
+    background-color: white;
 }
 
 .top-title{
@@ -333,6 +328,8 @@ img{
     width: 240px;
     height: 180px;
     background-color: rgba(201, 201, 201, 0.6);
+    position: ;
+
 }
 
 .label-contact{
@@ -366,12 +363,11 @@ img{
 .search{
     display: flex;
     justify-content: space-between;
-    padding: 0 0 0 6%;
+    margin: 0 10%;
 }
 .cart{
     display: flex;
-    margin-top: 2%;
-    margin-right: 5%;
+    margin-right: 15%;
 }
 .cart-num{
     position: ;
@@ -407,13 +403,13 @@ img{
 
 .bottom{
     display: flex;
-    top: 10px;
+        top: 10px;
     right: 70px;
     width: 80%;
     height: 20%;
     gap: 20px;
     justify-content: space-between;
-    margin: 10px auto 10px 40px;
+    margin: 10px auto;
 
 }
 
@@ -423,15 +419,8 @@ img{
 }
 
 .label-major{
-    border-radius: 20px;
-    padding: 2px 4px;
-    margin-bottom: 30px;
+border-radius: 20px;
 }
-.label-major:before {
-    content: '●';
-    color: white;
-    margin-right: 8px;
-  }
 
 .block{
     display: grid;
@@ -440,7 +429,7 @@ img{
 }
 
 .major{
-    margin: 10px 30px 30px 30px;    
+    margin: 30px;    
 }
 
 
@@ -453,7 +442,7 @@ img{
 }
 
 .area-container{
-    display: flex;
+    /* display: flex; */
 }
 
 .contact{
@@ -471,7 +460,7 @@ label{
 }
 
 .area{
-    border-bottom: 1.5px solid #e5e7eb
+    /* border-bottom: 1.5px solid #e5e7eb */
 }
 
 .detail-wrapper{
@@ -480,6 +469,133 @@ label{
 }
 
 .labels{
-    width: 250px;
     gap: 10px;
+}
+
+/* .cyan{
+    font-weight: 1000;
+--tw-gradient-from: red var(--tw-gradient-from-position);
+--tw-gradient-to: #e9915a var(--tw-gradient-to-position);
+} */
+
+.blue{
+        --tw-gradient-from: white;
+        --tw-gradient-to: white ;
+        color: black;
+}
+
+.list-right{
+    width: 100%;
+}
+
+.contact-checkbox{
+
+}
+
+@media screen and (max-width: 480px) {
+ /* 480px以下に適用されるCSS（スマホ用） */
+
+.grid-cols-2{
+    display: block;
+    padding-top: 150px;
+}
+
+.m-8{
+    width: auto;
+    height: auto;
+}
+
+.contact-checkbox{
+    display: inline-flex;
+}
+
+.contact-border{
+    display: none;
+}
+
+.label-hover{
+    margin-right: 10px;
+}
+
+.major-border{
+    display: none;
+}
+
+.area-container{
+    display: flex;
+}
+
+.my-16{
+    width: 100%;
+}
+
+.results-wrapper{
+    position: initial;
+    margin: 0 auto;
+}
+
+.results{
+    position: initial;
+}
+
+.agent-list{
+    padding: 5px;
+    gap: 10px;
+}
+
+.top-title{
+    font-size: 25px;
+}
+
+.top-description-title{
+    font-size: 18px;
+
+}
+
+header{
+display: none;
+}
+
+.search{
+    margin: auto;
+position: fixed;
+z-index: 50000;
+
+}
+
+.top-description{
+    font-size: 14px;
+}
+
+.agent-img{
+    width: 35%;
+}
+
+
+.cyan{
+    margin-bottom: 5px;
+    width: 152.53px;
+}
+
+.block{
+    /* display: inline; */
+}
+
+.labels{
+    max-width: 210px;
+}
+
+
+.title-wrapper{
+    margin: auto;
+}
+
+.cart{
+    margin-right: 30px;
+}
+
+
+
+
+
 }

@@ -11,7 +11,7 @@ if($inputVal == "ascending"){
 }else{
   $sort = "updated_at DESC";
 }
-$sql = "SELECT * FROM users ORDER BY $sort";
+$sql = "SELECT * FROM users WHERE is_valid=true ORDER BY $sort";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
