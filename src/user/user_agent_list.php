@@ -182,8 +182,8 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                   <?php } ?>
                 </div>
                 <div class="block">
-                  <button class="btn-big cyan add-button" id="cart<?= $key + 1 ?>" value="<?= $key ?>">カートに追加する</button>
-                  <button class="btn-big blue see-details" id="agent<?= $key + 1 ?>">詳細を見る→</button>
+                  <button class="btn-big red add-button" id="cart<?= $key + 1 ?>" value="<?= $key ?>">カートに追加する</button>
+                  <button class="btn-big blue see-details" id="agent<?= $key + 1 ?>"><a href="http://localhost:8080/user/user_agent_list_disp.php?id=<?= $agent["client_id"] ?>">詳細を見る→</a></button>
                 </div>
               </div>
             </div>

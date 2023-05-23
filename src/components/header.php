@@ -10,7 +10,7 @@
         <ul class="nav_list">
           <li class=""><a href="#">ABOUT US</a></li>
           <li class=""><a href="#">How to use</a></li>
-          <li class=""><a href="#">HANDING COMPANY</a></li>
+          <li class=""><a href="#">HANDLING COMPANY</a></li>
           <li class=""><a href="#">VOICES</a></li>
           <li class=""><a href="#">CREATOR</a></li>
           <li class=""><a href="#">CONTACT</a></li>
