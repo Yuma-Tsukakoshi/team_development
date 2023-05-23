@@ -371,11 +371,12 @@ img{
 .search{
     display: flex;
     justify-content: space-between;
-    margin: 2% 10% 0%;
+    padding-left: 5%;
 }
 .cart{
     display: flex;
-    margin-right: 15%;
+    margin-right: 10%;
+    margin-top: 1.5%
 }
 .cart-num{
     position: ;
