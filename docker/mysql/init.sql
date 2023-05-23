@@ -162,16 +162,16 @@ CREATE TABLE managers(
 );
 
 insert into managers(client_id, manager_id, manager, depart, mail, phone) values
-(1,1,"担当者太郎","営業部","tatata@gmail.com","555-5555-5555"),
-(2,2,"担当者次郎","営業部","jijiji@gmail.com","234-4323-5432"),
-(3,3,"担当者三郎","営業部","sansan@gmail.com","542-7654-7335"),
-(4,4,"担当者四郎","営業部","sisi@gmail.com","765-9206-2775"),
-(5,5,"担当者五郎","営業部","gogo@gmail.com","976-2852-6326"),
-(6,6,"担当者六郎","営業部","rokku@gmail.com","224-5437-5437"),
-(7,7,"担当者七郎","営業部","nanana@gmail.com","224-5567-5997"),
-(8,8,"担当者八郎","営業部","hatti@gmail.com","224-5437-5437"),
-(9,9,"担当者九郎","営業部","kyuu@gmail.com","224-5437-5437"),
-(10,10,"担当者十郎","営業部","tenten@gmail.com","224-5437-5437");
+(1,1,"山田太郎","営業部","tatata@gmail.com","555-5555-5555"),
+(2,2,"山田次郎","営業部","jijiji@gmail.com","234-4323-5432"),
+(3,3,"山田三郎","営業部","sansan@gmail.com","542-7654-7335"),
+(4,4,"山田四郎","営業部","sisi@gmail.com","765-9206-2775"),
+(5,5,"山田五郎","営業部","gogo@gmail.com","976-2852-6326"),
+(6,6,"山田六郎","営業部","rokku@gmail.com","224-5437-5437"),
+(7,7,"山田七郎","営業部","nanana@gmail.com","224-5567-5997"),
+(8,8,"山田八郎","営業部","hatti@gmail.com","224-5437-5437"),
+(9,9,"山田九郎","営業部","kyuu@gmail.com","224-5437-5437"),
+(10,10,"山田十郎","営業部","tenten@gmail.com","224-5437-5437");
 
 
 DROP TABLE IF EXISTS client_login;
@@ -224,7 +224,17 @@ CREATE TABLE boozer_register_client(
 );
 
 insert into boozer_register_client(id, name, password, mail) values
-(1,"管理者太郎","password","kakaka@gmail.com");
+(1,"山田太郎","password","kakaka@gmail.com"),
+(2,"山田次郎","password","kakaka@gmail.com"),
+(3,"山田三郎","password","kakaka@gmail.com"),
+(4,"山田四郎","password","kakaka@gmail.com"),
+(5,"山田五郎","password","kakaka@gmail.com"),
+(6,"山田六郎","password","kakaka@gmail.com"),
+(7,"山田七郎","password","kakaka@gmail.com"),
+(8,"山田八郎","password","kakaka@gmail.com"),
+(9,"山田九郎","password","kakaka@gmail.com"),
+(10,"山田十郎","password","kakaka@gmail.com");
+
 
 DROP TABLE IF EXISTS invalid_reason;
 CREATE TABLE invalid_reason(
