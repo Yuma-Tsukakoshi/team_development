@@ -27,6 +27,8 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="../user/assets/styles/badge.css
+  ">
   <link rel="stylesheet" href="../user/assets/styles/search.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
   <link rel="stylesheet" href="../user/assets/styles/modal.css
@@ -45,16 +47,19 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       <span class="search-title-jpn">-エージェント検索-</span>
       <div class="search-title-border"></div>
     </div>
-    <div class="cart">
-      <div class="cart-num">
-        <?php if (isset($count)) { ?>
-          <?= $count ?>
-        <?php } ?>
+    <div class="cart relative">
+      <div class="notifier new">
+        <div class="cart-badge badge num">
+          <?php if (isset($count)) { ?>
+            <?= $count ?>
+          <?php } ?>
+        </div>
+        <div class="search-title-cart-border">
+          <a href="./user_cartlook.php">
+            <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
+          </a>
+        </div>
       </div>
-      <a href="./user_cartlook.php">
-        <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
-      </a>
-      <div class="search-title-cart-border"></div>
     </div>
   </section>
   <div class="overlay" id="js-overlay"></div>
