@@ -51,7 +51,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           <?= $count ?>
         <?php } ?>
       </div>
-      <a href="./user_cartlook.php">
+      <a href="./user_cartlook.php" class="cart-wrapper">
         <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
       </a>
       <div class="search-title-cart-border"></div>
@@ -100,7 +100,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         </div>
       </div>
       <div class="area">
-        <div class="area-container">
+        <div class="area-wrapper">
           <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
           <h2 class="area-txt"> エリア </h2>
         </div>
@@ -142,7 +142,6 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                     <p><?= $agent["recommend_point2"] ?></p>
                     <p><?= $agent["recommend_point3"] ?></p>
                   </div>
-                  <div class="top-description-border"></div>
                 </div>
               </div>
               <div class="top-description-border"></div>
