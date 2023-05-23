@@ -8,10 +8,10 @@ if (isset($_SESSION['agent_sort'])) {
 }
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id  ORDER BY updated_at DESC";
-
+$sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id AND r.is_valid=1 ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_SESSION["id"]);
+
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -154,9 +154,11 @@ $name = $_SESSION['name'];
                             <a href="http://localhost:8080/user/user_info/boozer_user_disp.php?id=<?= $user["user_id"] ?>">詳細</a>
                           </button>
                         </div>
+                      </td>
+                      <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?>>
-                          <a href="http://localhost:8080/user/user_info/agent_delete_user.php?id=<?= $user["user_id"] ?>&client_id=<?= $user["client_id"] ?>">削除</a>
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?> >
+                            <a href="http://localhost:8080/user/user_info/agent_delete_user.php?user_id=<?= $user["user_id"] ?>&client_id=<?= $user["client_id"] ?>">削除</a>
                           </button>
                         </div>
                       </td>
@@ -209,27 +211,19 @@ $name = $_SESSION['name'];
     </div>
 
     <script>
-  function hideUser(button) {
-    const tr = $(button).closest('tr');
-    const id = tr.attr('data-id');
-
-    if (confirm('本当に削除しますか？')) {
-      tr.addClass('hidden');
-      $.ajax({
-        url: 'http://localhost:8080/user/user_info/delete_user.php',
-        type: 'POST',
-        data: {
-          id: id
-        },
-        success: function(data) {
-          console.log(data);
-        },
-        error: function(xhr) {
-          console.error(xhr);
-        }
-      });
+$(document).ready(function() {
+  $('.delete-link').click(function(e) {
+    e.preventDefault();
+    var userId = $(this).parent().data('userid');
+    var clientId = $(this).parent().data('clientid');
+    var confirmation = confirm("本当に削除しますか？");
+    
+    if (confirmation) {
+      var deleteUrl = "http://localhost:8080/user/user_info/agent_delete_user.php?user_id=" + userId + "&client_id=" + clientId;
+      window.location.href = deleteUrl;
     }
-  }
+  });
+});
 </script>
 
   </div>
