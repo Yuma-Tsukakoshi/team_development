@@ -1,5 +1,5 @@
 <?php
- require_once(dirname(__FILE__) . './../dbconnect.php');
+require_once(dirname(__FILE__) . './../dbconnect.php');
 
 session_start();
 $pdo=Database::get();
@@ -60,7 +60,6 @@ if(isset($_SESSION['clients'])){
           <p class="agent-name">
             <?=$clients[$i]['agent_name']?>
           </p>
-          
           <button class="btn-big blue delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" onclick="return confirm('削除してもよろしいですか?')" >削除</button>
         </li>
         <?php }}?>
