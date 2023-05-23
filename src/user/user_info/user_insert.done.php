@@ -34,6 +34,13 @@ try {
       "client_id" => $result['client_id'],
     ]);
   }
+// client_idが一致するmailをとってくる
+$client_id = $result['client_id'];
+$stmt = $pdo->prepare("SELECT mail FROM managers WHERE client_id = :client_id");
+$stmt->bindParam(':client_id', $client_id);
+$stmt->execute();
+$mail = $stmt->fetchColumn();
+
   //session消去
   unset($_SESSION['clients']);
   $pdo->commit();
@@ -48,6 +55,7 @@ try {
   exit($e->getMessage());
 }
 
+// メール機能
 // 送信元のメールアドレス
 $from = "craft@mail.com";
 
@@ -64,21 +72,18 @@ function send_email($to, $subject, $message, $headers) {
 }
 
 // user@mail.comへのメール
-$to_user = "user@mail.com";
+$to_user = $_POST["email"];
 $subject_user = "【株式会社boozer】お申し込みありがとうございます";
 $subject_user = "【株式会社boozer】お申し込みありがとうございます";
 $message_user = "※このメールはシステムからの自動返信です\n\n";
-$message_user .= "お世話になっております。\n";
-$message_user .= "株式会社boozerへのお問い合わせありがとうございました。\n\n";
-$message_user .= "以下の内容でお問い合わせを受け付けいたしました。\n";
-$message_user .= "お手数ですがお間違いないかご確認ください。\n\n";
-$message_user .= "●営業日以内に、担当者よりご連絡いたしますので\n";
+$message_user .= "株式会社boozerでの新規登録ありがとうございました。\n\n";
+$message_user .= "お申し込みいただいた企業から担当者よりご連絡いたしますので\n";
 $message_user .= "今しばらくお待ちくださいませ。\n\n";
 
 send_email($to_user, $subject_user, $message_user, $headers);
 
 // client@mail.comへのメール
-$to_client = "client@mail.com";
+$to_client =$mail;
 $subject_client = "【株式会社boozer】学生登録のお知らせ";
 $message_client = "お世話になっております。\n";
 $message_client .= "株式会社boozerでございます。\n\n";
