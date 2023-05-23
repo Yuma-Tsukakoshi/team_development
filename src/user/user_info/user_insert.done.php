@@ -36,7 +36,6 @@ try {
   }
   //session消去
   unset($_SESSION['clients']);
-    
   $pdo->commit();
 
   header('Content-type:application/json; charset=utf8');
