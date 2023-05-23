@@ -6,9 +6,16 @@ require_once(dirname(__FILE__) . '/invalid_exam_count.php');
 
 if (isset($_SESSION['sort'])) {
   $users = $_SESSION['sort'];
+  unset($_SESSION['sort']);
 }
+elseif(isset($_SESSION['month'])) {
+  $users = $_SESSION['month'];
+  unset($_SESSION['month']);
+}
+else{
 $pdo = Database::get();
-$users = $pdo->query("SELECT * FROM users ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT * FROM users WHERE is_valid=true ORDER BY updated_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+}
 
 
 // 削除成功時のメッセージ
@@ -16,6 +23,20 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
   $message = "削除しました。";
 }
 
+//月ごとの絞り込み
+$year='<option value=""></option>';
+$month='<option value=""></option>';
+$now=date('Y');
+for ($i=2022; $i <= $now; $i++) {
+  $year .= '<option value="'.$i.'">'.$i.'年</option>';
+}
+for ($j=1; $j <= 12; $j++) {
+  if($j<10){
+    $month .= '<option value="'.'0'.$j.'">'.$j.'月</option>';
+  }else{
+    $month .= '<option value="'.$j.'">'.$j.'月</option>';
+  }
+}
 ?>
 
 
@@ -28,11 +49,14 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
+  <link rel="stylesheet" href="../user/assets/styles/boozer.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/student_filter.js" defer></script>
   <script src="../user/assets/js/student_sort.js" defer></script>
+  <script src="../user/assets/js/student_month_search.js" defer></script>  
+  
   <title>boozer学生一覧</title>
 </head>
 
@@ -45,6 +69,11 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
           SideBanner
         </a>
         <ul class="mt-6">
+        <li class="relative px-6 py-3">
+            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../admin/boozer_auth/boozer_logout.php">
+              <span class="ml-4">ログアウト</span>
+            </a>
+          </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="./boozer_index.php">
               <span class="ml-4">企業一覧</span>
@@ -81,10 +110,18 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">学生一覧</h2>
 
           <div class="flex justify-end  w-full">
+          <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2" for="cleint">月ごと:</label>
+            
+              <select id="year" name="year" class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><?=$year?></select>
+              <select id="month" name="month" class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><?=$month?></select>
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2" id="search_btn">検索</button>
+            </div>
             <div class="mb-4">
               <label class="block text-gray-700 font-bold mb-2" for="name">絞り込み検索 :</label>
               <input class="appearance-none border rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="keyword" type="text" placeholder="名前を入力してください">
             </div>
+           
             <div>
               <label for="sort-by" class=" block text-gray-700 font-bold mb-2 mr-2">学生の並び替え：</label>
               <div class="relative inline-flex">
@@ -149,7 +186,6 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
                           </div>
                         </td>
                       </tr>
-
                   <?php }
                   } ?>
                 </tbody>
@@ -191,11 +227,7 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
       </main>
     </div>
   </div>
-</body>
-
-</body>
-
-<script>
+  <script>
   function hideUser(button) {
     const tr = $(button).closest('tr');
     const id = tr.attr('data-id');
@@ -217,6 +249,10 @@ if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
       });
     }
   }
-</script>
+  </script>
+</body>
+
+
+
 
 </html>

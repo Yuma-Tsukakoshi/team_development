@@ -1,0 +1,31 @@
+.inline-flex {
+  display: inline-flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.text-sm {
+  font-size: small;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.transition-colors {
+  transition-property: color;
+  transition-duration: 150ms;
+}
+
+
+.logout{
+  color: rgb(214, 45, 45);
+  font-weight: bold;
+  font-size: large;
+}

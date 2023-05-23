@@ -36,6 +36,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
   <link rel="stylesheet" href="../../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../../admin/admin.css">
   <link rel="stylesheet" href="../../user/assets/styles/badge.css">
+  <link rel="stylesheet" href="../../user/assets/styles/boozer.css">
   <title>boozer企業詳細</title>
 </head>
 
@@ -48,6 +49,12 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
           SideBanner
         </a>
         <ul class="mt-6">
+          <li class="relative px-6 py-3">
+            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../admin/boozer_auth/boozer_logout.php">
+              <span class="ml-4">ログアウト</span>
+            </a>
+          </li>
+
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="../../admin/boozer_index.php">
               <span class="ml-4">企業一覧</span>
@@ -83,7 +90,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
       <main class="h-full pb-16 overflow-y-auto">
         <h1 class="my-6 text-2xl font-semibold text-gray-700 text-center"><?= $agent["service_name"] ?> 企業詳細</h1>
         <div class="flex justify-center top-title">
-          <p class="my-6 text-3xl font-semibold text-gray-700">掲載状況 :
+          <p class="my-6 text-3xl font-semibold text-gray-700 head-title">掲載状況 :
             <?php
             if ($_GET["exist"] == 0) {
               print_r("掲載終了");
@@ -93,7 +100,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
               print_r("掲載拒否");
             }
             ?>
-          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 ">企業情報 : <a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>&exist=<?= $_GET["exist"] ?>" class="edit_btn">編集</a></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 "><span class="head-title">企業情報 :</spanb><a href="http://localhost:8080/agent/agent_info/agent_edit.php?id=<?= $agent["client_id"] ?>&exist=<?= $_GET["exist"] ?>" class="edit_btn">編集</a></p>
         </div>
         <!-- 編集に対してボタン色付ける -->
         <div class="flex justify-center">

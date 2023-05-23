@@ -2,7 +2,7 @@
 
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-// require_once(dirname(__FILE__) . '/user_agent_filter.php');
+require_once(dirname(__FILE__) . '/user_agent_filter.php');
 
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
@@ -40,7 +40,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
 <body>
   <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
   <section class="search">
-    <div>
+    <div class="title-wrapper">
       <h1 class="search-title">SEARCH</h1>
       <span class="search-title-jpn">-エージェント検索-</span>
       <div class="search-title-border"></div>
@@ -94,30 +94,37 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         <div class="contact-checkbox">
           <?php for ($i = 3; $i <= 5; $i++) { ?>
             <input type="checkbox" id="contact<?= $i ?>" class="check-label contact-checkbox" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
-            <label for="contact<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?> </label>
+            <label for="contact<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?> </label><br>
           <?php } ?>
           <div class="contact-border"></div>
         </div>
       </div>
       <div class="area">
-      <div class="area-container">
-        <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
-        <h2 class="area-txt"> エリア </h2>
-      </div>
+        <div class="area-container">
+          <img class="area-point-img" src="../user/assets/img/686.png" alt="ピンの写真">
+          <h2 class="area-txt"> エリア </h2>
+        </div>
+        <div class="area-container">
         <?php for ($i = 6; $i <= 9; $i++) { ?>
           <input type="checkbox" id="area<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
-          <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label>
+          <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label><br>
         <?php } ?>
+        </div>
+        <div class="contact-border"></div>
+
       </div>
     </form>
-    <div class="results-wrapper">
-      <div class="results">
-        <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
-        <p class="results-txt"><span class="results-number"><?= count($agents) ?></span>件ヒット</p>
-      </div>
-      <div>
-        <div class="my-16 ">
-          <?php foreach ($agents as $key => $agent) { ?>
+    <div class="my-16 ">
+
+    <div class="results">
+      <img class="results-img" src="./assets/img/629.png" alt="虫眼鏡の画像">
+      <p class="results-txt"><span class="results-number"><?= count($agents) ?></span>件ヒット</p>
+    </div>
+    <div>
+
+        <?php foreach ($agents as $key => $agent) { ?>
+          <div class="results-wrapper">
+
             <div class="agent-item" data-options="<?php foreach ($agent_labels as $agent_label) {
                                                     if ($agent_label['client_id'] == $agent['client_id']) {
                                                       echo htmlspecialchars($agent_label['label_id']) . ' ';
@@ -126,7 +133,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
               <input type="hidden" value="<?= $agent['client_id'] ?> " class="client_id">
               <div class="top agent-list">
                 <img class="agent-img" src="<?= $agent["logo_img"] ?>" alt="エージェント画像">
-                <div>
+                <div class="list-right">
                   <h2 class="top-title"><?= $agent["service_name"] ?></h2>
                   <div class="top-title-border"></div>
                   <div class="top-description">
@@ -157,13 +164,14 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                 </div>
               </div>
             </div>
-        </div>
-      <?php } ?>
+          </div>
+        <?php } ?>
+
       </div>
     </div>
-    </div>
+
   </main>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(function() {
       //スクロールすると上部に固定させるための設定を関数でまとめる

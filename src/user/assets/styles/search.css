@@ -97,13 +97,11 @@ img{
 } */
 
 .check-label{
-    position: relative;
     left: 20px;
     top: 30px;
 }
 
 .label-hover{
-    position: relative;
     left: 20px;
     top: 30px;
 }
@@ -230,8 +228,8 @@ img{
 .results{
     display: flex;
     position: relative;
-    top: 40px;
-    left: -150px;
+    top: -2%;
+    left: -40%;
 }
 
 .results-img{
@@ -278,6 +276,7 @@ img{
     box-shadow: 7px 7px #ffe600;
     margin: 10px;
     object-fit: contain;
+    background-color: white;
 }
 
 .top-title{
@@ -427,7 +426,7 @@ border-radius: 20px;
 }
 
 .major{
-    margin: 10px 30px 30px 30px;    
+    margin: 30px;    
 }
 
 
@@ -440,7 +439,7 @@ border-radius: 20px;
 }
 
 .area-container{
-    display: flex;
+    /* display: flex; */
 }
 
 .contact{
@@ -458,7 +457,7 @@ label{
 }
 
 .area{
-    border-bottom: 1.5px solid #e5e7eb
+    /* border-bottom: 1.5px solid #e5e7eb */
 }
 
 .detail-wrapper{
@@ -468,4 +467,132 @@ label{
 
 .labels{
     gap: 10px;
+}
+
+/* .cyan{
+    font-weight: 1000;
+--tw-gradient-from: red var(--tw-gradient-from-position);
+--tw-gradient-to: #e9915a var(--tw-gradient-to-position);
+} */
+
+.blue{
+        --tw-gradient-from: white;
+        --tw-gradient-to: white ;
+        color: black;
+}
+
+.list-right{
+    width: 100%;
+}
+
+.contact-checkbox{
+
+}
+
+@media screen and (max-width: 480px) {
+ /* 480px以下に適用されるCSS（スマホ用） */
+
+.grid-cols-2{
+    display: block;
+    padding-top: 150px;
+}
+
+.m-8{
+    width: auto;
+    height: auto;
+}
+
+.contact-checkbox{
+    display: inline-flex;
+}
+
+.contact-border{
+    display: none;
+}
+
+.label-hover{
+    margin-right: 10px;
+}
+
+.major-border{
+    display: none;
+}
+
+.area-container{
+    display: flex;
+}
+
+.my-16{
+    width: 100%;
+}
+
+.results-wrapper{
+    position: initial;
+    margin: 0 auto;
+}
+
+.results{
+    position: initial;
+}
+
+.agent-list{
+    padding: 5px;
+    gap: 10px;
+}
+
+.top-title{
+    font-size: 25px;
+}
+
+.top-description-title{
+    font-size: 18px;
+
+}
+
+header{
+display: none;
+}
+
+.search{
+    margin: auto;
+position: fixed;
+z-index: 50000;
+
+}
+
+.top-description{
+    font-size: 14px;
+}
+
+.agent-img{
+    width: 35%;
+}
+
+
+.cyan{
+    margin-bottom: 5px;
+    width: 152.53px;
+}
+
+.block{
+    /* display: inline; */
+}
+
+.labels{
+    max-width: 210px;
+}
+
+
+.title-wrapper{
+    margin: auto;
+}
+
+.cart{
+    margin-right: 30px;
+}
+
+
+
+
+
 }

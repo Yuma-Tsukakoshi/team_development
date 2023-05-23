@@ -20,6 +20,13 @@ input:focus {
   margin:16px;
 }
 
+.head-title{
+  display:block;
+  margin-right: 50px;
+  line-height: 60px;
+  font-size:18px;
+}
+
 .edit_btn{
   cursor:pointer;
   --tw-bg-opacity: 1;
@@ -32,6 +39,8 @@ input:focus {
   padding-bottom: 0.5rem/* 8px */;
   padding-left: 1rem/* 16px */;
   padding-right: 1rem/* 16px */;
+  height: 65px;
+  line-height: 45px;
 }
 
 .edit_btn:hover{

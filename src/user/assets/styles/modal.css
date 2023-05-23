@@ -87,9 +87,8 @@
   right: 50px;
   color: #0071bc;
 }
-.link-message{
-  
+.modal-button{
+  position: absolute;
+  top: 300px;
 }
-
-
 

@@ -8,7 +8,7 @@ if (isset($_SESSION['agent_sort'])) {
 }
 
 $pdo = Database::get();
-$sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id ORDER BY updated_at DESC";
+$sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id  ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_SESSION["id"]);
 $stmt->execute();
@@ -27,6 +27,7 @@ $name = $_SESSION['name'];
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./../vendor/tailwind/tailwind.output.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
+  <link rel="stylesheet" href="../user/assets/styles/boozer.css">
   <script src="../user/assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/gh/DeuxHuitHuit/quicksearch/dist/jquery.quicksearch.min.js" defer></script>
   <script src="../user/assets/js/jquery.quicksearch.min.js" defer></script>
@@ -43,6 +44,11 @@ $name = $_SESSION['name'];
           SideBanner
         </a>
         <ul class="mt-6">
+        <li class="relative px-6 py-3">
+            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../agent/agent_auth/agent_logout.php">
+              <span class="ml-4">ログアウト</span>
+            </a>
+          </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">学生一覧</span>
@@ -196,6 +202,29 @@ $name = $_SESSION['name'];
       </main>
     </div>
 
+    <script>
+  function hideUser(button) {
+    const tr = $(button).closest('tr');
+    const id = tr.attr('data-id');
+
+    if (confirm('本当に削除しますか？')) {
+      tr.addClass('hidden');
+      $.ajax({
+        url: 'http://localhost:8080/user/user_info/delete_user.php',
+        type: 'POST',
+        data: {
+          id: id
+        },
+        success: function(data) {
+          console.log(data);
+        },
+        error: function(xhr) {
+          console.error(xhr);
+        }
+      });
+    }
+  }
+</script>
 
   </div>
 </body>
