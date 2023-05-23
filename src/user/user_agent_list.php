@@ -27,9 +27,13 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
+  <link rel="stylesheet" href="../user/assets/styles/badge.css
+  ">
   <link rel="stylesheet" href="../user/assets/styles/search.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
   <link rel="stylesheet" href="../user/assets/styles/modal.css
+  ">
+  <link rel="stylesheet" href="../user/assets/styles/form.css
   ">
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
@@ -38,23 +42,33 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
 </head>
 
 <body>
-  <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_upper">
+        <div class="craft_logo">CRAFT</div>
+        <div class="boozer_logo"><img src="../user/assets/img/boozer_logo_white.png" alt="boozer Inc."></div>
+      </div>
+  </header>
+
   <section class="search">
     <div class="title-wrapper">
       <h1 class="search-title">SEARCH</h1>
       <span class="search-title-jpn">-エージェント検索-</span>
       <div class="search-title-border"></div>
     </div>
-    <div class="cart">
-      <div class="cart-num">
-        <?php if (isset($count)) { ?>
-          <?= $count ?>
-        <?php } ?>
+    <div class="cart relative">
+      <div class="notifier new">
+        <div class="cart-badge badge num">
+          <?php if (isset($count)) { ?>
+            <?= $count ?>
+          <?php } ?>
+        </div>
+        <div class="search-title-cart-border">
+          <a href="./user_cartlook.php">
+            <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
+          </a>
+        </div>
       </div>
-      <a href="./user_cartlook.php">
-        <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
-      </a>
-      <div class="search-title-cart-border"></div>
     </div>
   </section>
   <div class="overlay" id="js-overlay"></div>
@@ -64,12 +78,21 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       <div class="check-circle">
         <div class="check"></div>
       </div>
-      <div class="message">商品をかごに追加しました</div>
+      <div class="message">カートに追加しました</div>
     </div>
-    <div class="modal-link">
-      <a href="./user_info/user_insert.php">
-        <p class="link-message">申し込みはこちら→</p>
-      </a>
+    <div class="modal-cart">
+      <div class="return-link modal-button">
+        <a href="./user_info/user_cartlook.php">
+          <p class="link-message">カート一覧へ</p>
+        </a>
+      </div>
+      <div class="maru">
+        <span>
+          <?php if (isset($count)) { ?>
+            <?= $count ?>
+          <?php } ?>
+        </span>
+      </div>
     </div>
   </div>
 
@@ -174,6 +197,13 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     $(function() {
+      //ボタン灰色
+      const inputs = $('.input').each(function(index, element) {
+        $index = element.value
+        $('.add-button').eq($index - 1).prop("disabled", true);
+        $('.add-button').eq($index - 1).removeClass("cyan");
+        $('.add-button').eq($index - 1).css('background-color', 'gray');
+      })
       //スクロールすると上部に固定させるための設定を関数でまとめる
       function FixedAnime() {
         var headerH = $('.search').outerHeight(true);
@@ -188,15 +218,12 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       $(window).scroll(function() {
         FixedAnime(); /* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
       });
-
       // ページが読み込まれたらすぐに動かしたい場合の記述
       $(window).on('load', function() {
         FixedAnime(); /* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
       });
-
       $('.add-button').on('click', function(event) {
         $index = this.value
-
         console.log($index)
         $.ajax({
           type: "POST",
@@ -204,7 +231,6 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           data: {
             id: $index,
             client_id: $('.client_id').eq($index).val(),
-
           },
           dataType: "json",
           scriptCharset: 'utf-8'
@@ -212,7 +238,6 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           console.log(data);
           $('.modal-content').fadeIn();
           $('.overlay').fadeIn();
-
           // クリックイベント全てに対しての処理
           $(document).on('click touchend', function(event) {
             // 表示したポップアップ以外の部分をクリックしたとき
@@ -221,17 +246,18 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
               $('.overlay').fadeOut();
             }
           });
-
-          $('.cart-num').text(data)
+          $('.cart-badge').text(data)
           $('.add-button').eq($index).prop("disabled", true);
+          $('.add-button').eq($index).removeClass("cyan");
+          $('.add-button').eq($index).css('background-color', 'gray');
           //背景グレーとか調整する
-
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
           alert(errorThrown);
         });
       })
     })
   </script>
+
 </body>
 
 </html>

@@ -40,8 +40,8 @@
   content: '';
   width: 55px;
   height: 30px;
-  border-left: 5px solid white;
-  border-bottom: 5px solid white;
+  border-left: 7px solid white;
+  border-bottom: 7px solid white;
   transform: rotate(-45deg);
 }
 .message{
@@ -92,3 +92,18 @@
   top: 300px;
 }
 
+.maru {
+  height:35px;
+  width:35px;
+  border-radius:50%;
+  line-height:35px;
+  text-align:center;
+  background:#ffe600;
+  color: white;
+  font-weight: 600;
+  font-size: 25px;
+  position: absolute;
+  top: 280px;
+  right: 30px;
+ }
+ 
