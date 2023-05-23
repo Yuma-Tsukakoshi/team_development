@@ -84,13 +84,16 @@ $manager = $stmt3->fetch();
           <div class="recommend-wrapper">
             <div class="recommend-content">
               <ul>
-                <li class="merit"><?= $agent["recommend_point1"] ?></li>
-                <li class="merit"><?= $agent["recommend_point2"] ?></li>
-                <li class="merit"><?= $agent["recommend_point3"] ?></li>
+                <?php for ($i = 1; $i <= 3; $i++) { ?>
+                  <div class="recommend-sec">
+                    <img class="ic-fire" src="./assets/img/ic050.png" alt="fire">
+                    <li class="merit"><?= $agent["recommend_point$i"] ?></li>
+                  </div>
+                <?php } ?>
               </ul>
             </div>
           </div>
-          <button class="btn-big cyan">カートに追加する</button>
+          <button class="btn-big cyan orange">カートに追加する</button>
         </div>
         <div class="inner-bottom-line"></div>
         <div class="inner-bottom">
