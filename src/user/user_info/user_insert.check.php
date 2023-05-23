@@ -196,9 +196,10 @@
     const inputs = $('input[name="company[]"]').each(function(index, element){
         $company.push(element.value)
         })
-    console.log($company)
+    
     $("#submit-button").on('click', function(event){
                 //event.preventDefault();
+                //console.log($('input[name="sex"]:checked').val());
 
                 $.ajax({
                     type: "POST",
@@ -208,7 +209,7 @@
                       hurigana: $('#hurigana').val(),
                       email:$('#email').val(),
                       phone:$('#phone').val(),
-                      sex:$('input[name="sex"]').val(),
+                      sex:$('input[name="sex"]:checked').val(),
                       birthday:$('#birthday').val(),
                       college:$('#college').val(),
                       faculty:$('#faculty').val(),
