@@ -182,7 +182,17 @@ CREATE TABLE client_login(
 );
 
 insert into client_login(id, client_id, password) values
-(1,1,"password");
+(1,1,"password"),
+(2,2,"password"),
+(3,3,"password"),
+(4,4,"password"),
+(5,5,"password"),
+(6,6,"password"),
+(7,7,"password"),
+(8,8,"password"),
+(9,9,"password"),
+(10,10,"password");
+
 
 DROP TABLE IF EXISTS user_register_client;
 CREATE TABLE user_register_client(
@@ -224,16 +234,7 @@ CREATE TABLE boozer_register_client(
 );
 
 insert into boozer_register_client(id, name, password, mail) values
-(1,"山田太郎","password","kakaka@gmail.com"),
-(2,"山田次郎","password","kakaka@gmail.com"),
-(3,"山田三郎","password","kakaka@gmail.com"),
-(4,"山田四郎","password","kakaka@gmail.com"),
-(5,"山田五郎","password","kakaka@gmail.com"),
-(6,"山田六郎","password","kakaka@gmail.com"),
-(7,"山田七郎","password","kakaka@gmail.com"),
-(8,"山田八郎","password","kakaka@gmail.com"),
-(9,"山田九郎","password","kakaka@gmail.com"),
-(10,"山田十郎","password","kakaka@gmail.com");
+(1,"山田太郎","password","kakaka@gmail.com");
 
 
 DROP TABLE IF EXISTS invalid_reason;
@@ -245,13 +246,13 @@ CREATE TABLE invalid_reason(
 );
 
 insert into invalid_reason(id, user_id, client_id, reason) values
-(1,6,1,"メールで連絡つかない"),
-(2,6,4,"電話で連絡つかない"),
-(3,7,1,"電話で連絡つかない"),
-(4,8,1,"所属大学が不明で連絡つかない"),
-(5,9,2,"メールで連絡つかない"),
-(6,9,3,"メールで連絡つかない"),
-(7,10,6,"電話で連絡つかない"),
-(8,11,3,"メールで連絡つかない"),
-(9,12,2,"連絡がつかない");
+(1,6,1,"メールアドレスがエラー"),
+(2,6,4,"内容に不備あり"),
+(3,7,1,"内容に不備あり"),
+(4,8,1,"内容に不備あり"),
+(5,9,2,"メールアドレスがエラー"),
+(6,9,3,"メールアドレスがエラー"),
+(7,10,6,"内容に不備あり"),
+(8,11,3,"メールアドレスがエラー"),
+(9,12,2,"内容に不備あり");
 

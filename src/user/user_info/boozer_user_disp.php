@@ -61,7 +61,8 @@ $valid = $stmt2->fetch();
               <input type="text" name="reason_text" id="otherInput">
             </div>
           </div>
-          <input type="submit" class="Form-Btn" value="送信する">
+          <input type="submit" class="btn-big cyan" value="送信する">
+          <!-- Form-Btn -->
           <input type="hidden" name="client_id" value="<?= $_SESSION["id"] ?>">
         </div>
       </div>
@@ -78,7 +79,7 @@ $valid = $stmt2->fetch();
           SideBanner
         </a>
         <ul class="mt-6">
-        <li class="relative px-6 py-3">
+          <li class="relative px-6 py-3">
             <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../../agent/agent_auth/agent_logout.php">
               <span class="ml-4">ログアウト</span>
             </a>
@@ -304,8 +305,8 @@ $valid = $stmt2->fetch();
 
           </button>
         </div>
-        <?php 
-        if($valid[0] == 0){
+        <?php
+        if ($valid[0] == 0) {
           echo '<button class="form-open" id="js-show-popup">無効申請する</button>';
         }
         ?>

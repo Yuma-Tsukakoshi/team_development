@@ -189,7 +189,8 @@ ul {
     margin-top: 35px;
 }
 .cyan{
-    width:380px ;
+    /* width:380px ; */
+    width: 70%;
     height: 70px;
     position: relative;
     top: 260px;

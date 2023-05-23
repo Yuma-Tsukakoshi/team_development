@@ -70,3 +70,22 @@ input:focus {
   background-color: rgb(0 100 0 / var(--tw-bg-opacity));
 }
 
+.cyan{
+  background-image: linear-gradient(to bottom right, #3b82f6, #22d3ee);
+}
+
+.btn-big{
+  border-radius: 9999px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
