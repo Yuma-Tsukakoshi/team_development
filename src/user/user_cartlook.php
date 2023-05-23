@@ -1,5 +1,5 @@
 <?php
- require_once(dirname(__FILE__) . './../dbconnect.php');
+require_once(dirname(__FILE__) . './../dbconnect.php');
 
 session_start();
 $pdo=Database::get();
@@ -19,7 +19,7 @@ if(isset($_SESSION['clients'])){
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-ebquiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
@@ -60,7 +60,6 @@ if(isset($_SESSION['clients'])){
           <p class="agent-name">
             <?=$clients[$i]['agent_name']?>
           </p>
-          
           <button class="btn-big blue delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" onclick="return confirm('削除してもよろしいですか?')" >削除</button>
         </li>
         <?php }}?>

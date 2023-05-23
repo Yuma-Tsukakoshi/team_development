@@ -5,8 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/index.css">
-
+  <!-- 動くwevデザイン帳 -->
   <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+  <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-2-1/css/5-2-1.css">
   <!--Google Fonts読み込み-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -15,28 +16,46 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+  <meta name=”viewport” content=”width=device-width, initial-scale=1”>
   <!-- <script src="../assets/js/freshman.js" defer></script> -->
   <title>トップページ</title>
 
 <body>
   <header class="header">
-      <div class="header-button" data-target="#What">就活エージェント比較サイトとは？</div>
-      <div class="header-button" data-target="#howto-section">使い方</div>
-      <div class="header-button" data-target="#handling-section">取扱い会社</div>
-      <div class="header-button" data-target="#voices-section">利用者の声</div>
-      <div class="header-button" data-target="#about-section">私たちについて</div>
-      <img class="header-img" src="../assets/img/boozer_logo_white.png" alt="">
+    <nav class="gnavi__pc-style">
+      <div class="header-buttons">
+        <div class="header-button" data-target="#What"><a href="#">就活エージェント比較サイトとは？</a></div>
+        <div class="header-button" data-target="#howto-section"><a href="#" class="header-a">使い方</a></div>
+        <div class="header-button" data-target="#handling-section"><a href="#" class="header-a">取扱い会社</a></div>
+        <div class="header-button" data-target="#voices-section"><a href="#" class="header-a">利用者の声</a></div>
+        <div class="header-button" data-target="#about-section"><a href="#" class="header-a"> 私たちについて</a></div>
+      </div>
+        <a href="#"><img class="header-img" src="../assets/img/boozer_logo_white.png" alt=""></a>
+    </nav>
+
+        <!-- ハンバーガーメニュー -->
+  <div class="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="gnavi__sp-style">
+    <ul class="sp-header-ul">
+      <li class="sp-header-li"><a href="#"  data-target="#What">就活エージェント比較サイトとは？</a></li>
+      <li class="sp-header-li"><a href="#" data-target="#howto-section">使い方</a></li>
+      <li class="sp-header-li"><a href="#" data-target="#handling-section">取扱い会社</a></li>
+      <li class="sp-header-li"> <a href="#" data-target="#voices-section">使い方</a></li>
+      <li class="sp-header-li"><a href="#" data-target="#about-section">私たちについて</a></li>
+    </ul>
+  </nav>
   </header>
 
-  <!-- なっちゃん担当 トップページ -->
-  <div class="hero">
-    <!-- <div class="star-box">
-      <div class="star1"></div>
-    </div> -->
 
+  <div class="hero">
     <div class="hero-overlay">
       <!-- 意図した全角だから消さないでね -->
-      <h1 class="hero-title-jpn">「学生の学生による<br>　学生のための就活エージェント比較サイト」</h1>
+      <h1 class="hero-title-jpn">学生の<br class="sp_br">学生による<br>学生のための<br class="sp_br">就活エージェント<br class="sp_br">比較サイト</h1>
       <div class="hero-circle"></div>
       <div class="hero-circle-2"></div>
       <div class="hero-circle-3"></div>
@@ -44,24 +63,19 @@
     </div>
   </div>
   <button class="search-btn">
-    検索はこちらから▶︎
+    比較してみる！
   </button>
   <div class="shukatsu" id="What">
-    <!-- <div class="star-box2">
-      <div class="star"></div>
-    <div class="star-box3">
-        <div class="star"></div> -->
-    <div ><h2 class="shukatsu-title">就活エージェント比較サイトとは？</h2></div>
+    <div ><h2 class="shukatsu-title">就活エージェント<br class="sp_br">比較サイトとは？</h2></div>
       <h3 class="shukatsu-title-jpn">ーAbout this websiteー</h3>
-      <div class="shukatsu-title-border"></div>
+      <!-- <div class="shukatsu-title-border"></div> -->
       <div class="description">
-        <p class="shukatsu-txt-description-title-jpn">就活エージェントとは？：就活のプロと対話しながらそれぞれの学生に合った企業を探すサービスのこと</p>
-        <p class="shukatsu-txt-description-title-jpn compare">比較サイトとは？：エージェントを絞り込み検索で比較するサイト</p>
+        <p class="shukatsu-txt-description-title-jpn">就活エージェントとは？：<br class="sp_br">就活のプロと対話しながら<br class="sp_br">それぞれの学生に合った企業を<br class="sp_br">探すサービスのこと</p>
+        <p class="shukatsu-txt-description-title-jpn compare">比較サイトとは？：<br class="sp_br">エージェントを絞り込み検索で<br class="sp_br">比較するサイト</p>
         <br>
-        <p class="shukatsu-txt-description-title-jpn">このサイトでは、数あるエージェントの中からあなたに合ったエージェント選びをサポートします。</p>
+        <p class="shukatsu-txt-description-title-jpn">このサイトでは、<br class="sp_br">数あるエージェントの中から<br class="sp_br">あなたに合ったエージェント選びを<br class="sp_br">サポートします。</p>
         </div>
   </div>
-
   </div>
 
   <div class="howto" id="howto-section">
@@ -180,10 +194,9 @@
       <div class="star"></div>
     </div> -->
       <div class="about-left">
-        <div class="about-title"><h2 >わたしたちについて</h2></div>
-        <div class="about-title-jpn"><h3 >ーABOUT USー</h3></div>
-        <div class="about-title-border"></div>
-        <div class="about-philosophy"><h3 >Philosophy</h3></div>
+        <div class="about-title"><h2 class=about-title-letters>わたしたちについて</h2></div>
+        <div class="about-title-jpn"><h3 class="about-title-jpn-letters">ーABOUT USー</h3></div>
+        <div class="about-philosophy"><h3 class="about-philosophy-letters">Philosophy</h3></div>
         <p class="about-txt-motto">「<span class="about-txt-motto-span">学生に寄り添う</span>」<br>を追求した<br>エージェント比較サイト。</p>
       </div>
       <div class="about-right">
@@ -212,7 +225,7 @@
         <div class="creator-img-under4"></div>
         <img class="creator-img" src="./img/creator-img.jpg" alt="自己紹介の写真">
         <div class="creator-img-under5"></div>
-        <img class="creator-img" src="./img/creator-img.jpg" alt="自己紹介の写真">
+        <img class="creator-img creator-img-5" src="./img/creator-img.jpg" alt="自己紹介の写真">
       </div>
     </div>
     <div>
@@ -221,22 +234,12 @@
 <footer class="footer">
   <div>
     <div class="footer-content">
+      <div class="footer-border"></div>
       <img class="footer-img" src="../assets/img/boozer_logo-1.png" alt="life consulting designのロゴ">
-      <div class="footer-row-1">
-        <p class="footer-about">就活エージェント比較サイトとは？</p>
-        <p class="footer-howto">使い方</p>
-      </div>
-      <div class="footer-row-2">
-        <p class="footer-handling">取り扱い会社</p>
-        <p class="footer-creator">利用者の声</p>
-      </div>
-      <div class="footer-row-3">
-        <p class="footer-news">私たちについて</p>
-        <p class="footer-company"></p>
-    </div>
   </div>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 動くwevデザイン帳js -->
 <script src="../assets/js/index.js"></script>
 <script src="../assets/js/freshman.js"></script>
 
