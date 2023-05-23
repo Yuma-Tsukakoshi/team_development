@@ -9,6 +9,7 @@ if (isset($_SESSION['agent_sort'])) {
 
 $pdo = Database::get();
 $sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id  ORDER BY updated_at DESC";
+
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_SESSION["id"]);
 $stmt->execute();
@@ -151,6 +152,11 @@ $name = $_SESSION['name'];
                         <div class="flex items-center space-x-4 text-sm">
                           <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?>>
                             <a href="http://localhost:8080/user/user_info/boozer_user_disp.php?id=<?= $user["user_id"] ?>">詳細</a>
+                          </button>
+                        </div>
+                        <div class="flex items-center space-x-4 text-sm">
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?>>
+                          <a href="http://localhost:8080/user/user_info/agent_delete_user.php?id=<?= $user["user_id"] ?>&client_id=<?= $user["client_id"] ?>">削除</a>
                           </button>
                         </div>
                       </td>
