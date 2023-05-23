@@ -31,7 +31,14 @@ if(isset($_SESSION['clients'])){
 </head>
 
 <body>
-  <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_upper">
+        <div class="craft_logo">CRAFT</div>
+        <div class="boozer_logo"><img src="../user/assets/img/boozer_logo_white.png" alt="boozer Inc."></div>
+      </div>
+  </header>
+
   <main>
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
@@ -44,7 +51,7 @@ if(isset($_SESSION['clients'])){
 
     </div>
     <div class="cart-content">
-      <ul>
+      <ul class="cart-agent">
         <?php 
         if($clients != null){
         for($i=0; $i<count($clients); $i++){?>
