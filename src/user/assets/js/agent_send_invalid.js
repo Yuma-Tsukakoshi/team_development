@@ -1,3 +1,4 @@
+// 申請拒否
 $(document).ready(function() {
   $('#invalid_btn').click(function() {
     var inputVal = $(this).attr('data');

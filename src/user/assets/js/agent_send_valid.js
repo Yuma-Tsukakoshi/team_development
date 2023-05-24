@@ -1,3 +1,4 @@
+// 申請承認
 $(document).ready(function() {
   $('#valid_btn').click(function() {
     var inputVal = $(this).attr('data'); 
@@ -5,7 +6,7 @@ $(document).ready(function() {
     console.log(inputVal);
     console.log(inputId);
     $.ajax({
-      url: 'http://localhost:8080/user/user_info/boozer_update_invalid.php', // 送信先のPHPファイルのパス
+      url: 'http://localhost:8080/user/user_info/boozer_update_valid.php', // 送信先のPHPファイルのパス
       type: 'POST',
       data: {
         input: inputVal,
