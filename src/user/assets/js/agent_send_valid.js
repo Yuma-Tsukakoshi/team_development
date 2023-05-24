@@ -1,17 +1,17 @@
 // 申請承認
 $(document).ready(function() {
   $('#valid_btn').click(function() {
-    var inputVal = $(this).attr('data'); 
-    var inputId = $(this).attr('client'); 
-    console.log(inputVal);
-    console.log(inputId);
+    var data = $(this).attr('data'); 
+    var clientId = $(this).attr('client'); 
+    console.log(data);
+    console.log(clientId);
     $.ajax({
       url: 'http://localhost:8080/user/user_info/boozer_update_valid.php', // 送信先のPHPファイルのパス
       type: 'POST',
       data: {
-        input: inputVal,
-        inputId: inputId
-      }, // 送信するデータ。キーは'inputVal'、値はinputVの値
+        input: data,
+        clientId: clientId
+      }, // 送信するデータ。キーは'data'、値はinputVの値
       success: function(data) {
         // 送信が成功した場合の処理
         console.log(data); // レスポンスデータをコンソに表示
