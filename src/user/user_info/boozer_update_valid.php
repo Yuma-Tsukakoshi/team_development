@@ -7,8 +7,6 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $data = $_POST['data'];
 $clientId = $_POST['clientId'];
-// var_dump($data);
-// var_dump($clientId);
 
 // $data = isset($_POST['data']) ? $_POST['data'] : null;
 // $clientId = isset($_POST['clientId']) ? $_POST['clientId'] : null;
@@ -40,6 +38,13 @@ $stmt2->bindValue(":uid", $_SESSION["uid"]);
 $stmt2->execute();
 $user = $stmt2->fetch(PDO::FETCH_ASSOC);
 
+// 企業へのメールアドレスを取得
+$sql3 = "SELECT mail FROM managers WHERE client_id = :client_id";
+$stmt3 = $pdo->prepare($sql3);
+$stmt3->bindValue(":client_id", $clientId);
+$stmt3->execute();
+$manager = $stmt3->fetch(PDO::FETCH_ASSOC);
+
 $headers = 'From: admin@mail' . "\r\n" .
     'Reply-To: admin@mail' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
@@ -52,6 +57,15 @@ $message_user .= "株式会社boozerでの新規登録ありがとうござい�
 $message_user .= $fetchedData["reason"] . "に不備があるため、申請を拒否させていただきました。\n";
 $message_user .= "ご不明点があればご連絡ください\n\n";
 
+// 企業宛のメール
+$to_manager = $manager["mail"];
+$subject_manager = "【株式会社boozer】申請承認のお知らせ";
+$message_manager = "※このメールはシステムからの自動返信です\n\n";
+$message_manager .= "株式会社boozerでの新規登録ありがとうございました。\n\n";
+$message_manager .= "無効申請を承認させていただきました。\n";
+$message_manager .= "詳しくはCRAFTのページをご覧ください\n\n";
+$message_manager .= "ご不明点あれば連絡ください\n\n";
+
 // 宛先と件名、メッセージをそれぞれ設定してメール送信関数を呼び出す
 function send_email($to, $subject, $message, $headers) {
     if (mail($to, $subject, $message, $headers)) {
@@ -62,5 +76,6 @@ function send_email($to, $subject, $message, $headers) {
 }
 
 send_email($to_user, $subject_user, $message_user, $headers);
+send_email($to_manager, $subject_manager, $message_manager, $headers);
 
 ?>
