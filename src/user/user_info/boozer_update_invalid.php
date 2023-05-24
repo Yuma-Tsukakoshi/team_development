@@ -46,7 +46,6 @@ function send_email($to, $subject, $message, $headers) {
 // user宛のメール
 $to_user= $user["mail"];
 $subject_user = "【株式会社boozer】申請拒否のお知らせ";
-$subject_user = "【株式会社boozer】お申し込みありがとうございました";
 $message_user = "※このメールはシステムからの自動返信です\n\n";
 $message_user .= "株式会社boozerでの新規登録ありがとうございました。\n\n";
 $message_user .= "入力の不備のため、申請を拒否させていただきました。\n";
