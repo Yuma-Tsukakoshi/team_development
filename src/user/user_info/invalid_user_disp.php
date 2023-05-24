@@ -123,7 +123,7 @@ $invalid_agents = $stmt3->fetchAll();
                       } elseif ($agent["valid"] == 1) {
                         echo '<div class="flex  justify-between">
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">申請中</p>
-<p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>承認</p></p>
+          <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="valid_btn" class="edit_btn" data="2" client=' . (string)$agent["client_id"] . '>承認</p></p>
           <p class="my-6 mx-8 text-3xl font-semibold text-gray-700 flex justify-center ">無効申請 : <p id="invalid_btn" class="edit_btn" data="3" client=' . (string)$agent["client_id"] . '>拒否</p></p>
         </div>';
                       } elseif ($agent["valid"] == 2) {
