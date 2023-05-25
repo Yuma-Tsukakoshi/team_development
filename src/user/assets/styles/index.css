@@ -1023,8 +1023,8 @@ ul {
         }
 
         .sp-header-ul {
-            margin-top: 250px;
-            margin-bottom: 300px;
+            margin-top: 220px;
+            margin-bottom: 310px;
             padding: 0;
             width: 100%;
             gap: 20px;
@@ -1070,7 +1070,7 @@ ul {
         /* hero */
         .hero {
             background-size: contain;
-            margin-top: 8px;
+            margin-top: 115px;
             height: 350px;
         }
         
