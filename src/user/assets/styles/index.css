@@ -578,7 +578,7 @@ body {
 
 .creator-img-container {
     display: flex;
-    position: relative;
+    /* position: relative; */
     left: 80px;
     top: 50px;
 }
@@ -1230,18 +1230,24 @@ ul {
 
         .about{
             margin-top: 100px;
-            height: 700px;
+            height: 500px;
+            flex-direction: column;
         }
 
         .about-left{
-            margin-left: 0px;
+            margin-left: 15px;
             margin-top: 0px;
+            width: 100%;
         }
 
         .about-title{
             text-align: left;
             font-size: 40px;
-            margin-top: 10px;
+            margin-top: 0px;
+        }
+
+        .about-title-jpn{
+            margin-bottom: 0px;
         }
 
         .about-title-letters{
@@ -1254,7 +1260,7 @@ ul {
 
         .about-philosophy-letters{
             font-size: 15px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .about-txt-motto-span{
@@ -1263,16 +1269,140 @@ ul {
 
         .about-txt-motto{
             font-size: 15px;
+            height: 100px;
         }
 
         .about-right{
             margin-left: 0px;
             margin-top: 0px;
+            display: flex;
+            width: 100%;
         }
 
         .about-txt-description-title{
             font-size: 2rem;
         }
+
+        .about-txt-description-title{
+            font-size: 20px;
+            width: 50%;
+            margin-left: 1rem;
+        }
+
+        .about-txt-description-title-jpn{
+            font-size: 14px;
+            margin-top: 0rem;
+            width: 50%;
+        }
+
+        /* 制作者 */
+        .creators{
+            height: 400px;
+        }
+
+        .creator-title{
+            font-size: 30px;
+            margin-top: 200px;
+            text-align: center;
+            opacity: 1;
+        }
+
+        .creator-title-jpn{
+            font-size: 10px;
+            opacity: 1;
+        }
+
+
+        .creator-img{
+            width: 70px;
+            height: 70px;
+            margin: 0%;
+            
+        }
+        .creator-img-under{
+            display: none;
+        }
+
+        .creator-container{
+            display: flex;
+            margin-top: 1.5rem;
+        }
+
+        .creator{
+            display: inline-block;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .creator-name{
+            color: #0071bc;
+            font-size: 13px;
+        }
+
+        /* footer */
+        .footer-img{
+            width: 50%;
+            height: 50%;
+        }
+
+        .footer-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            margin-bottom: 0px;
+        }
+
+        /* .name-container{
+            display: flex;
+            gap: 30px;
+        }
+
+        .creator_name{
+            font-size: 10px;
+            margin-left: 10px;
+            color: #0071bc;
+        } */
+
+    /* .creator {
+        height: 800px;
+    }
+
+    .creator-content {
+        height: 800px;
+    }
+
+
+
+    .creator-img {
+        margin: 40px;
+    }
+
+    .creator-img-5 {
+        margin-left: 120px;
+        margin-top: 10px;
+    }
+
+    .creator-img-under1 {
+        display: none;
+    }
+
+    .creator-img-under2 {
+        display: none;
+    }
+
+    .creator-img-under-3 {
+        display: none;
+    }
+
+    .creator-img-under-4 {
+        display: none;
+    }
+
+    .creator-img-under-5 {
+        display: none;
+    } */
+
 
 
 
@@ -1446,7 +1576,7 @@ ul {
 
     /* 制作者紹介*/
 
-    .creator {
+    /* .creator {
         height: 800px;
     }
 
@@ -1487,7 +1617,7 @@ ul {
 
     .creator-img-under-5 {
         display: none;
-    }
+    } */
 
 
     /* フッター */
