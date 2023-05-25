@@ -419,9 +419,9 @@ body {
     font-weight: bold;
     color: #0071bc;
     letter-spacing: 10px;
-    margin-left: 100px;
     margin-top: 50px;
     opacity: 0;
+    text-align: center;
 }
 
 .handling-jpn {
@@ -432,6 +432,7 @@ body {
     letter-spacing: 2px;
     text-decoration: underline;
     text-decoration-color: #e3cf32;
+    text-align: center;
 }
 
 
@@ -1175,7 +1176,7 @@ ul {
         /* 取扱会社 */
         .handling{
             margin-top: 650px;
-            height: 700px;
+            height: 780px;
             flex-direction: column;
             align-items: center;
             
@@ -1184,6 +1185,7 @@ ul {
         .handling-logos{
             width: 100%;
             height: 30px;
+            margin-top: 0;
         }
 
         .handling-txt{
@@ -1200,29 +1202,45 @@ ul {
         .handling-jpn{
             margin-left: 0px;
             left: 15%;
-            margin-bottom: 30px;
+            margin-bottom: 0px;
+            height: 50px;
         }
 
         .slider{
             background-color: #fff;
-            margin-top: 20px;
+            margin-top: -30px;
         }
 
         .handling-discription{
             margin-left: 0px;
-            margin-bottom: 100px;
+            margin-top: -250px;
             font-size: 15px;
         }
 
         .handling-txt {
             margin-top: 250px;
             text-align: left;
+            margin-left: 20px;
+        }
 
+        .handling-comapny-sub{
+            margin-top: 20px;
+            margin-left: 10px;
+            width: 90%;
+            font-size: 14px;
+            font-style: normal;
+            line-height: 20px;
+            color: #0071bc;
         }
 
         .handling-company{
-            margin-left: 0px;
-            font-size: 15px;
+            margin-top: 10px;
+            margin-left: 20px;
+            width: 90%;
+            font-size: 14px;
+            font-style: normal;
+            line-height: 20px;
+            color: rgb(87, 86, 86);
         }
 
 
