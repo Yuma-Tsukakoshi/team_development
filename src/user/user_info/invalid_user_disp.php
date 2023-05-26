@@ -25,6 +25,9 @@ $stmt3->bindValue(":id", $_REQUEST["id"]);
 $stmt3->bindValue(":uid", $_REQUEST["id"]);
 $stmt3->execute();
 $invalid_agents = $stmt3->fetchAll();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -135,6 +138,7 @@ $invalid_agents = $stmt3->fetchAll();
               <?php } ?>
             </tbody>
           </table>
+
         </div>
         <div class="my-8 flex justify-center">
           <table class="w-full mx-8 max-w-4xl bg-white shadow-md rounded-lg overflow-hidden">

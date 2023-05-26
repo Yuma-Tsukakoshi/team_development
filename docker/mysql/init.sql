@@ -245,3 +245,6 @@ insert into invalid_reason(id, user_id, client_id, reason) values
 (8,11,3,"メールで連絡つかない"),
 (9,12,2,"連絡がつかない");
 
+
+
+
