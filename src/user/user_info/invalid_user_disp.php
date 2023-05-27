@@ -19,7 +19,7 @@ $stmt2->bindValue(":id", $_REQUEST["id"]);
 $stmt2->execute();
 $agents = $stmt2->fetchAll();
 
-$sql3 = "SELECT sub.service_name, reason.reason ,reason.user_id FROM invalid_reason as reason  RIGHT JOIN (SELECT clients.service_name , clients.client_id , relation.user_id FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE relation.user_id = :id ) AS sub ON sub.client_id = reason.client_id WHERE reason.user_id = :uid";
+$sql3 = "SELECT sub.service_name, reason.reason ,reason.user_id FROM invalid_reason as reason RIGHT JOIN (SELECT clients.service_name , clients.client_id , relation.user_id FROM user_register_client as relation INNER JOIN clients ON relation.client_id = clients.client_id WHERE relation.user_id = :id ) AS sub ON sub.client_id = reason.client_id WHERE reason.user_id = :uid";
 $stmt3 = $pdo->prepare($sql3);
 $stmt3->bindValue(":id", $_REQUEST["id"]);
 $stmt3->bindValue(":uid", $_REQUEST["id"]);
