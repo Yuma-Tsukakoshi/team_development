@@ -121,20 +121,30 @@
 }
 
 @media screen and (max-width: 768px) {
-  .first-box,.second-box,.third-box,.fourth-box{
-   
+  .first-box,.fourth-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .fourth-box::before{
-    
+  .first-box,.fourth-box,.second-box,.third-box{
+    width: 100px;
+  }
+  .fourth-box::after{
+    right: -1em;
+    top: 4px;
+    border-width: 25px 0 25px 1em;
   }
   .fourth-box{
-    width: 100px;
+    width: 80px;
+  }
+  .border-line{
+    margin-top: 25px;
   }
   .phase-image span{
     display: block;
   }
   .phase-image{
-    padding: 0 3.5%;
+    padding: 0 4.5% 0 3%;
   }
   .contact-link{
    
@@ -149,6 +159,21 @@
   }
 }
 @media screen and (max-width: 480px){
+  .first-box,.fourth-box,.second-box,.third-box{
+    width: 80px;
+    font-size: 13px;
+  }
+  .fourth-box::after{
+    right: -0.9em;
+    top: 0.5px;
+    border-width: 24px 0 24px 1em;
+  }
+  .fourth-box{
+    width: 70px;
+  }
+  .border-line{
+    margin-top: 23px;
+  }
   .contact-link a{
     display: block;
     padding: 0 4%;

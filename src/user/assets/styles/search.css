@@ -509,13 +509,56 @@ label{
 .contact-checkbox{
 
 }
-
+@media screen and (max-width: 784px) {
+.cart{
+    margin-right:5%;
+    margin-top: 3%;
+}
+.search-title-cart-border{
+    width: 90px;
+    height: 90px;
+}
+.search-title-cart{
+    width:90px;
+    height:90px;
+}
+.search-title{
+    font-size: 50px;
+}
+.search-title-border{
+    width: 180px;
+}
+}   
 @media screen and (max-width: 480px) {
  /* 480px以下に適用されるCSS（スマホ用） */
-
+ .cart{
+    margin-right:5%;
+    margin-top: 5%;
+}
+.search-title-cart-border{
+    width: 80px;
+    height: 80px;
+}
+.search-title-cart{
+    width:80px;
+    height:80px;
+}
+.search-title-border{
+    width: 150px;
+}
+.cart-badge{
+    width: 30px;
+    height: 30px;
+    padding-left:8px;
+    padding-top:3px;
+}
+.badge{
+    top:0px;
+    margin-left: 15px;
+}
 .grid-cols-2{
     display: block;
-    padding-top: 150px;
+    padding-top: 50px;
 }
 
 .m-8{
@@ -573,13 +616,8 @@ label{
 
 }
 
-header{
-display: none;
-}
 
 .search{
-    margin: auto;
-position: fixed;
 z-index: 50000;
 height: 120px;
 
@@ -613,7 +651,7 @@ height: 120px;
 
 
 .title-wrapper{
-    margin: auto;
+    margin-top: 10px;
 }
 
 .cart{
@@ -650,20 +688,13 @@ label{
 }
 
 .search-title{
-    font-size: 33px;
+    font-size: 35px;
 }
 
 .search-title-jpn{
-    font-size: 18px;
+    font-size: 16px;
 }
 
-.search-title-border{
-    width: auto;
-}
-
-.cart-wrapper{
-
-}
 
 .search-title-cart{
     height: 80px;
