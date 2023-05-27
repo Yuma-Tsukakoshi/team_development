@@ -379,7 +379,7 @@ img{
 
 .cart{
     display: flex;
-    margin-right: 10%;
+    /* margin-right: 10%; */
     margin-top: 1.5%
 }
 .cart-num{
@@ -432,7 +432,6 @@ img{
     background-color: white;
     border-radius: 20px;
     margin-bottom: 40px;
-    padding: 10px;
     box-shadow: 5px 5px rgb(180, 179, 179);
 }
 
@@ -508,6 +507,10 @@ label{
 
 .contact-checkbox{
 
+}
+
+.agent-item{
+    padding: 10px;
 }
 
 @media screen and (max-width: 480px) {
@@ -666,12 +669,32 @@ label{
 }
 
 .search-title-cart{
-    height: 80px;
+    height: 70px;
 }
 
 
 .cart-num{
     margin-left: 30px;
+}
+
+.cart{
+    margin-top: 20px;
+}
+
+
+.search-title-cart-border{
+    height: 70px;
+    width: 70px;
+}
+
+.cart-badge{
+    font-size: 18px;
+    width: 25px;
+    height: 25px;
+    left: -14px;
+    background-color: #0071bc;
+    padding-left: 7px;
+    padding-top: 1px;
 }
 
 }
