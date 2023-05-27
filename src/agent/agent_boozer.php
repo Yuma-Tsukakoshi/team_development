@@ -169,20 +169,20 @@ $name = $_SESSION['name'];
     </div>
 
     <script>
-$(document).ready(function() {
-  $('.delete-link').click(function(e) {
-    e.preventDefault();
-    var userId = $(this).parent().data('userid');
-    var clientId = $(this).parent().data('clientid');
-    var confirmation = confirm("本当に削除しますか？");
-    
-    if (confirmation) {
-      var deleteUrl = "http://localhost:8080/user/user_info/agent_delete_user.php?user_id=" + userId + "&client_id=" + clientId;
-      window.location.href = deleteUrl;
-    }
-  });
-});
-</script>
+      $(document).ready(function() {
+        $('.delete-link').click(function(e) {
+          e.preventDefault();
+          var userId = $(this).parent().data('userid');
+          var clientId = $(this).parent().data('clientid');
+          var confirmation = confirm("本当に削除しますか？");
+
+          if (confirmation) {
+            var deleteUrl = "http://localhost:8080/user/user_info/agent_delete_user.php?user_id=" + userId + "&client_id=" + clientId;
+            window.location.href = deleteUrl;
+          }
+        });
+      });
+    </script>
 
   </div>
 </body>

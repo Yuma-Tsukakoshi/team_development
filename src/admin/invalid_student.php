@@ -8,7 +8,7 @@ if (isset($_SESSION['invalid'])) {
   $users = $_SESSION['invalid'];
 }
 $pdo = Database::get();
-$users = $pdo->query("SELECT id, updated_at, name, hurigana, college, faculty, grad_year FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE relation.valid = 1 GROUP BY id")->fetchAll(PDO::FETCH_ASSOC);
+$users = $pdo->query("SELECT id, updated_at, name, hurigana, college, faculty, grad_year FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE relation.valid = 1 AND users.is_valid = true GROUP BY id")->fetchAll(PDO::FETCH_ASSOC);
 
 
 ?>
