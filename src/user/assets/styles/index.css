@@ -318,7 +318,6 @@ body {
     color: #0071bc;
     top: 100px;
     text-align: center;
-    width: 800px;
     font-size: 20px;
 }
 
@@ -482,10 +481,9 @@ body {
 }
 
 .voices-title {
-    margin-top: 50px;
+    margin-top: 100px;
     font-size: 40px;
     color: #0071bc;
-    position: relative;
     text-align: center;
     font-weight: bold;
     opacity: 0;
@@ -557,7 +555,6 @@ body {
 }
 
 .voices-contents-stars-title {
-    width: 100px;
     height: 20px;
     margin-bottom: 0;
     font-size: 16px;
@@ -590,7 +587,7 @@ body {
 .creator-title{
     text-align: center;
     opacity: 1;
-    margin-top: 40px;
+    margin-top: 100px;
     text-align: center;
     margin-bottom: 0;
     font-size: 40px;
@@ -717,7 +714,7 @@ ul {
     height: 600px;
     /* position: relative; */
     background-color: #0071bc;
-    margin-top: 0;
+    margin-top: 80px;
     display: flex;
 }
 
@@ -1160,6 +1157,21 @@ ul {
             left: 200px;
             z-index: 5;
         }
+
+        .hero-circle-3 {
+            display: none;
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background-color: #e8ee49;
+            position: relative;
+            top: 30px;
+            left: 800px;
+        }
+        
+        .hero-circle-4 {
+            display: none;
+        }
         
 /* 就活エージェントって？ */
         .shukatsu{
@@ -1193,7 +1205,7 @@ ul {
         .howto-title{
             text-align: center;
             font-size: 40px;
-            margin-top: 100px;
+            margin-top: 0px;
         }
 
         .how-to-title-jpn{
@@ -1240,8 +1252,8 @@ ul {
 
         /* 取扱会社 */
         .handling{
-            margin-top: 650px;
-            height: 850px;
+            margin-top: 550px;
+            height: 1000px;
             flex-direction: column;
             align-items: center;
             
@@ -1249,20 +1261,20 @@ ul {
 
         .handling-logos{
             width: 100%;
-            height: 30px;
+            height: 60px;
             margin-top: 0;
         }
 
         .handling-txt{
             font-size: 14px;
-            margin-top: 250px;
             margin-left: 0px;
+            margin-bottom: 30px;
         }
         
         .handling-title{
             margin-left: 0px;
             left: 15%;
-            font-size: 40px;
+            font-size: 35px;
         }
 
         .handling-jpn{
@@ -1274,34 +1286,39 @@ ul {
 
         .slider{
             background-color: #fff;
-            margin-top: -30px;
         }
+
+        .slider img{
+                width: 100px;
+                /* 画像を親要素に合わせてリサイズ */
+                height: 100px;
+                /* アスペクト比を維持 */
+                object-fit: contain;
+                /* 画像のアスペクト比を保ったまま表示 */
+                margin-right: 10px;
+                gap: 10px;
+            }
+
 
         .handling-discription{
             margin-left: 0px;
-            margin-top: -250px;
             font-size: 15px;
-        }
-
-        .handling-txt {
-            margin-top: 250px;
-            text-align: left;
-            margin-left: 20px;
         }
 
         .handling-comapny-sub{
             margin-top: 20px;
-            margin-left: 10px;
+            margin-left: 40px;
             width: 90%;
             font-size: 14px;
             font-style: normal;
             line-height: 20px;
             color: #0071bc;
+            font-weight: bolder;
         }
 
         .handling-company{
             margin-top: 10px;
-            margin-left: 20px;
+            margin-left: 60px;
             width: 90%;
             font-size: 14px;
             font-style: normal;
@@ -1312,11 +1329,16 @@ ul {
 
 
         /* 利用者の声 */
+        .voices-title {
+            margin-top: 0px;
+        }
+
         .voices-container {
             flex-direction: column;
             display: block;
             left: 0px;
             margin-top: 40px;
+            margin-left: 0px;
         }
         .voices-img{
             width: 20%;
@@ -1351,9 +1373,6 @@ ul {
             padding-top: 5px;
         }
 
-        .stars{
-            margin-top: -20px;
-        }
 
         /* 私たちについて */
 
