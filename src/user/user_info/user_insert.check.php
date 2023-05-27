@@ -57,10 +57,8 @@
       <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="email">メールアドレス</label>
         <div class="flex">
-          <form action="user_thanks.php" method="post">
             <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="email" id="email" type="text" value="<?=$_POST['email']?>" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" disabled>
             <button class="edit-button" data-value="3">編集</button>
-          </form>
         </div>
       </div>
       <div class="mb-4">
