@@ -7,7 +7,7 @@ if (isset($_SESSION['invalid_agent_sort'])) {
   $users = $_SESSION['invalid_agent_sort'];
 }
 $pdo = Database::get();
-$sql = "SELECT * FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE relation.valid = 1 AND relation.client_id = :id ORDER BY updated_at DESC";
+$sql = "SELECT * FROM users INNER JOIN user_register_client AS relation ON users.id = relation.user_id WHERE relation.valid = 1 AND relation.client_id = :id AND relation.is_valid = true ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_SESSION["id"]);
 $stmt->execute();
