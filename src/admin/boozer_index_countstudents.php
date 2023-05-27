@@ -27,13 +27,13 @@ $pdo = Database::get();
 // 現在の月を取得する
 $current_month = date('n');
 
-// managersテーブルのクエリを実行して結果を取得する
+// managers.mailを取得する
 $sql1 = "SELECT mail FROM managers";
 $stmt1 = $pdo->prepare($sql1);
 $stmt1->execute();
 $result1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-// user_register_clientテーブルのクエリを実行して結果を取得する
+// user_register_clientテーブルと結合し、学生の数を数える
 $sql2 = "SELECT managers.mail, COUNT(user_register_client.user_id) AS count
         FROM managers
         JOIN user_register_client ON managers.client_id = user_register_client.client_id
@@ -45,7 +45,7 @@ $stmt2->execute();
 $result2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 // メール送信処理
-if (!empty($result1) && !empty($result2)) {
+if (!empty($result1)) {
   // メール送信の設定
   $subject = '【今月の申し込み人数】';
   $headers = 'From: admin@mail' . "\r\n" .
@@ -57,10 +57,15 @@ if (!empty($result1) && !empty($result2)) {
     $mail = $data1['mail'];
     $message = "お世話になっております。\n\n";
     $message .=   "今月の申込人数は" . "\n";
+    $count_found = false;
     foreach ($result2 as $data2) {
       if ($mail === $data2['mail']) {
         $message .=  $data2['count'] . "人" . "\n";
+        $count_found = true;
       }
+    }
+    if (!$count_found) {
+      $message .= "0人\n";  // データが見つからなかった場合は0を表示
     }
     $message .= "です。\n以上です。よろしくお願いいたします。\n";
     $subject_with_date = str_replace('◻︎', $current_month, $subject);
