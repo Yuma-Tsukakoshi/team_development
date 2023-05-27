@@ -152,7 +152,6 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         <?php } ?>
         </div>
         <!-- <div class="contact-border"></div> -->
-
       </div>
     </form>
     <div class="my-16 ">
@@ -162,10 +161,8 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       <p class="results-txt"><span class="results-number"><?= count($agents) ?></span>件ヒット</p>
     </div>
     <div>
-
         <?php foreach ($agents as $key => $agent) { ?>
           <div class="results-wrapper">
-
             <div class="agent-item" data-options="<?php foreach ($agent_labels as $agent_label) {
                                                     if ($agent_label['client_id'] == $agent['client_id']) {
                                                       echo htmlspecialchars($agent_label['label_id']) . ' ';
@@ -186,13 +183,12 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                 </div>
               </div>
               <div class="top-description-border"></div>
-
               <div class="bottom">
                 <div class="labels">
                   <?php foreach ($agent_labels as $agent_label) { ?>
                     <?php if ($agent_label["client_id"] == $agent["client_id"]) { ?>
                       <span class="label-major">
-                        ・<?= $agent_label["label_name"] ?>
+                        <?= $agent_label["label_name"] ?>
                       </span>
                       &nbsp;
                     <?php } ?>
@@ -206,9 +202,8 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
             </div>
           </div>
         <?php } ?>
-
       </div>
-    </div>
+  </div>
 
   </main>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
