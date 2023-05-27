@@ -43,18 +43,18 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
 </head>
 
 <body>
-  <header>
+  <!-- <header>
     <div class="header_wrapper">
       <div class="header_upper">
         <div class="craft_logo">CRAFT</div>
         <div class="boozer_logo"><img src="../user/assets/img/boozer_logo_white.png" alt="boozer Inc."></div>
       </div>
-  </header>
+  </header> -->
 
   <section class="search">
     <div class="title-wrapper">
-      <h1 class="search-title">SEARCH</h1>
-      <span class="search-title-jpn">-エージェント検索-</span>
+      <h1 class="search-title">エージェント検索</h1>
+      <span class="search-title-jpn">-SEARCH-</span>
       <div class="search-title-border"></div>
     </div>
     <div class="cart relative">
@@ -106,6 +106,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
     </div>
   </div>
 
+
   <main class="grid grid-cols-2">
     <form method="post" action="" class="m-8 w-3">
       <div class="major">
@@ -114,10 +115,13 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           <h2 class="major-txt">専攻</h2>
         </div>
         <?php for ($i = 1; $i <= 2; $i++) { ?>
-          <input type="checkbox" id="major<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
-          <label for="major<?= $i ?>" class="label-hover<?= $i ?>"><?= $labels[$i - 1]["label_name"] ?> </label>
+          <div class="checkbox-item">
+            <input type="checkbox" id="major<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
+            <!-- <label for="major<?= $i ?>" class="label-hover<?= $i ?>"><?= $labels[$i - 1]["label_name"] ?> </label> -->
+            <label for="major<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?> </label>
+          </div>
         <?php } ?>
-        <div class="major-border"></div>
+        <!-- <div class="major-border"></div> -->
       </div>
       <div class="contact">
         <div class="contact-container">
@@ -126,10 +130,12 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         </div>
         <div class="contact-checkbox">
           <?php for ($i = 3; $i <= 5; $i++) { ?>
-            <input type="checkbox" id="contact<?= $i ?>" class="check-label contact-checkbox" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
-            <label for="contact<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?> </label><br>
+            <div class="checkbox-item">
+              <input type="checkbox" id="contact<?= $i ?>" class="check-label contact-checkbox" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
+              <label for="contact<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?> </label><br>
+            </div>
           <?php } ?>
-          <div class="contact-border"></div>
+          <!-- <div class="contact-border"></div> -->
         </div>
       </div>
       <div class="area">
@@ -139,11 +145,13 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         </div>
         <div class="area-container">
         <?php for ($i = 6; $i <= 9; $i++) { ?>
-          <input type="checkbox" id="area<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
-          <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label><br>
+          <div class="checkbox-item">
+            <input type="checkbox" id="area<?= $i ?>" class="check-label" name="filter" value="<?= $labels[$i - 1]["label_id"] ?>">
+            <label for="area<?= $i ?>" class="label-hover"><?= $labels[$i - 1]["label_name"] ?></label><br>
+          </div>
         <?php } ?>
         </div>
-        <div class="contact-border"></div>
+        <!-- <div class="contact-border"></div> -->
 
       </div>
     </form>
