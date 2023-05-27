@@ -54,14 +54,15 @@
 }
 .cart-agent{
   margin: 0% 10%;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
+  /*padding: 20px;*/
 }
 .agent-list{
-  margin: 10px 5%;
+  margin: 10px 10%;
+  padding: 15px 5%;
   display: grid;
   grid-template-columns: 4fr  1fr auto;
+  background-color: #fff;
+  border-radius: 10px;
 }
 .cart-content{
   width: 100%;
@@ -70,6 +71,13 @@
   background-color: aliceblue;
   padding-bottom: 50px;
   
+}
+.cart-agent p {
+  font-size: 24px;
+}
+.cart-mess{
+  margin-top: 20px;
+  text-align: center;
 }
 .agent-name{
   font-size: 30px;
@@ -119,22 +127,43 @@
 	background-color: #dcdcdc;
 	border: 1px solid #333;
 }
+.delete-btn{
+  background-color: #dcdcdc;
+  border-radius: 20px;
+  width: 80%;
+  font-weight: 200;
+
+}
+.delete-btn:hover{
+  background-color: #fff;
+  border: 2px solid #dcdcdc;
+}
 
 @media screen and (max-width: 768px) {
-  .first-box,.second-box,.third-box,.fourth-box{
-   
+  .first-box,.fourth-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .fourth-box::before{
-    
+  .first-box,.fourth-box,.second-box,.third-box{
+    width: 100px;
+  }
+  .fourth-box::after{
+    right: -1em;
+    top: 4px;
+    border-width: 25px 0 25px 1em;
   }
   .fourth-box{
-    width: 100px;
+    width: 80px;
+  }
+  .border-line{
+    margin-top: 25px;
   }
   .phase-image span{
     display: block;
   }
   .phase-image{
-    padding: 0 3.5%;
+    padding: 0 4.5% 0 3%;
   }
   .contact-link{
    
@@ -149,6 +178,27 @@
   }
 }
 @media screen and (max-width: 480px){
+  .first-box,.fourth-box,.second-box,.third-box{
+    width: 80px;
+    font-size: 13px;
+  }
+  .fourth-box::after{
+    right: -0.9em;
+    top: 0.5px;
+    border-width: 24px 0 24px 1em;
+  }
+  .fourth-box{
+    width: 70px;
+  }
+  .border-line{
+    margin-top: 23px;
+  }
+  .cart-agent p{
+    font-size: 18px;
+  }
+  .cart-content{
+    padding-top:50px;
+  }
   .contact-link a{
     display: block;
     padding: 0 4%;

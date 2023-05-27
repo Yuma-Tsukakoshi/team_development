@@ -40,7 +40,7 @@ img{
 }
 
 .search-title-border{
-    width: 220px;
+    width: 180px;
     height:3px;
     position: ;
     left: 110px;
@@ -374,12 +374,12 @@ img{
 .search{
     display: flex;
     justify-content: space-between;
-    padding: 0 10%;
+    padding: 0 0 0 10%;
 }
 
 .cart{
     display: flex;
-    margin-right: 10%;
+    /* margin-right: 10%; */
     margin-top: 1.5%
 }
 .cart-num{
@@ -432,7 +432,6 @@ img{
     background-color: white;
     border-radius: 20px;
     margin-bottom: 40px;
-    padding: 10px;
     box-shadow: 5px 5px rgb(180, 179, 179);
 }
 
@@ -510,12 +509,57 @@ label{
 
 }
 
+@media screen and (max-width: 784px) {
+.cart{
+    margin-right:5%;
+    margin-top: 3%;
+}
+.search-title-cart-border{
+    width: 90px;
+    height: 90px;
+}
+.search-title-cart{
+    width:90px;
+    height:90px;
+}
+.search-title{
+    font-size: 50px;
+}
+.search-title-border{
+    width: 180px;
+}
+}   
+
 @media screen and (max-width: 480px) {
  /* 480px以下に適用されるCSS（スマホ用） */
-
+ .cart{
+    margin-right:5%;
+    margin-top: 5%;
+}
+.search-title-cart-border{
+    width: 80px;
+    height: 80px;
+}
+.search-title-cart{
+    width:80px;
+    height:80px;
+}
+.search-title-border{
+    width: 150px;
+}
+.cart-badge{
+    width: 30px;
+    height: 30px;
+    padding-left:8px;
+    padding-top:3px;
+}
+.badge{
+    top:0px;
+    margin-left: 15px;
+}
 .grid-cols-2{
     display: block;
-    padding-top: 150px;
+    padding-top: 50px;
 }
 
 .m-8{
@@ -573,13 +617,8 @@ label{
 
 }
 
-header{
-display: none;
-}
 
 .search{
-    margin: auto;
-position: fixed;
 z-index: 50000;
 height: 120px;
 
@@ -613,7 +652,7 @@ height: 120px;
 
 
 .title-wrapper{
-    margin: auto;
+    margin-top: 10px;
 }
 
 .cart{
@@ -650,28 +689,41 @@ label{
 }
 
 .search-title{
-    font-size: 33px;
+    font-size: 40px;
 }
 
 .search-title-jpn{
-    font-size: 18px;
+    font-size: 16px;
 }
 
-.search-title-border{
-    width: auto;
-}
-
-.cart-wrapper{
-
-}
 
 .search-title-cart{
-    height: 80px;
+    height: 70px;
 }
 
 
 .cart-num{
     margin-left: 30px;
+}
+
+.cart{
+    margin-top: 20px;
+}
+
+
+.search-title-cart-border{
+    height: 70px;
+    width: 70px;
+}
+
+.cart-badge{
+    font-size: 18px;
+    width: 25px;
+    height: 25px;
+    left: -14px;
+    background-color: #0071bc;
+    padding-left: 7px;
+    padding-top: 1px;
 }
 
 }

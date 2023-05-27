@@ -192,7 +192,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                 </div>
                 <div class="block">
                   <button class="btn-big red add-button" id="cart<?= $key + 1 ?>" value="<?= $key ?>">カートに追加する</button>
-                  <button class="btn-big blue see-details" id="agent<?= $key + 1 ?>"><a href="http://localhost:8080/user/user_agent_list_disp.php?id=<?= $agent["client_id"] ?>">詳細を見る→</a></button>
+                  <button class="btn-big blue see-details" id="agent<?= $key + 1 ?>"><a href="http://localhost:8080/user/user_agent_list_disp.php?id=<?= $agent["client_id"] ?>&&client_id=<?=$key?>">詳細を見る→</a></button>
                 </div>
               </div>
             </div>
@@ -217,7 +217,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       function FixedAnime() {
         var headerH = $('.search').outerHeight(true);
         var scroll = $(window).scrollTop();
-        if (scroll + 30 >= headerH) { //headerの高さ以上になったら
+        if (scroll + 73 >= headerH) { //headerの高さ以上になったら
           $('.search').addClass('move'); //fixedというクラス名を付与
         } else { //それ以外は
           $('.search').removeClass('move'); //fixedというクラス名を除去

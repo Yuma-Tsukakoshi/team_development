@@ -3,9 +3,6 @@
 
  session_start();
  $pdo=Database::get();
-//unset($_SESSION['clients']);
-
- //print_r($_SESSION['clients']);
 
  $agent = isset($_POST['client_id'])? htmlspecialchars($_POST['client_id'], ENT_QUOTES, 'utf-8') : '';
  $id=$_POST['id'];
