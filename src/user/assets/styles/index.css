@@ -310,6 +310,8 @@ body {
 
 .howto-steps {
     display: flex;
+    justify-content:center;
+    gap: 50px;
 }
 
 .howto-search,
@@ -328,14 +330,10 @@ body {
     font-size: 30px;
 }
 
-.howto-agent-txt-small {
-    font-size: 13px;
-    margin-top: 0;
-}
 
 .howto-agent-txt {
     margin-bottom: 7px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .howto-search-img {
@@ -357,10 +355,6 @@ body {
     
 }
 
-.howto-agent-txt {
-    margin-bottom: 7px;
-    font-size: 10px;
-}
 
 
 
@@ -543,15 +537,20 @@ body {
 .voices-contents-stars-title {
     font-size: 15px;
     word-break: break-all;
-    left: 10px;
-    top: 0px;
+
 }
 
 .voices-contents-txt {
-    margin: 0;
+    margin-bottom: 0px;
     padding: 0;
-    width: 320px;
+}
 
+.voices-contents-name{
+    padding: 0;
+    font-size: 15px;
+    top: 40px;
+    left: 20px;
+    position: relative;
 }
 
 .voices-contents-stars-title {
@@ -563,8 +562,8 @@ body {
 }
 
 .voices-img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 }
 
 
