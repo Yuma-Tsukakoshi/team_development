@@ -300,9 +300,7 @@ $manager = $stmt3->fetch();
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-ms font-medium text-gray-900">
-                    <!-- mailの値をagent_insert_mail.phpに送る -->
                       <?= $manager["mail"] ?>
-                      <button type="submit" class="text-blue-500 underline">メールを送る</button>
                   </div>
                 </td>
               </tr>

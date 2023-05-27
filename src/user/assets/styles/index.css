@@ -1,3 +1,4 @@
+
 html, header {
     width: 100%;
     }
@@ -364,6 +365,7 @@ body {
     width: 100%;
     height: 820px;
     margin-top: 80px;
+
     overflow: hidden;
 }
 
@@ -492,10 +494,12 @@ body {
     font-weight: bold;
     text-align: center;
     opacity: 0;
+    margin-bottom:60px;
 }
 
 .voices-contents {
     display: flex;
+    margin: 0 auto;
 }
 
 .voices-container {
@@ -537,7 +541,6 @@ body {
 .voices-contents-stars-title {
     font-size: 15px;
     word-break: break-all;
-
 }
 
 .voices-contents-txt {
@@ -546,18 +549,21 @@ body {
 }
 
 .voices-contents-name{
+    margin-left: 15px;
+    top: 0px;
+}
+
+.voices-contents-txt {
+    margin-left: 10px;
     padding: 0;
-    font-size: 15px;
-    top: 40px;
-    left: 20px;
-    position: relative;
+    width: 320px;
 }
 
 .voices-contents-stars-title {
     height: 20px;
     margin-bottom: 0;
     font-size: 16px;
-    top: 23px;
+    padding-top: 20px;
     font-weight: bold;
 }
 
@@ -569,7 +575,7 @@ body {
 
 .stars {
     margin-left: 50px;
-    padding: 0;
+    padding-top: -15px;
     position: relative;
     top: -6px;
     left: 25px;
@@ -788,16 +794,17 @@ ul {
 
 
 .about-txt-description-title {
-    /* width: 700px; */
     height: 50px;
     font-size: 50px;
-    margin: 0;
-    /* position: relative; */
-    /* top: -200px;
-    left: 950px; */
     color: white;
     font-weight: bold;
     text-align: left;
+    /* width: 700px; */
+    /* margin: 0; */
+    /* position: relative; */
+    /* top: -200px;
+    left: 950px; */
+
 }
 
 .about-txt-description-title-jpn {
@@ -1464,19 +1471,20 @@ ul {
             width: 70px;
             height: 70px;
             margin: 0%;
-            
         }
         .creator-img-under{
             display: none;
         }
 
         .creator-container{
-            display: flex;
-            margin-top: 1.5rem;
+        width: 1400px;
+        height: 400px;
+        margin-top: 1.5rem;
         }
 
         .creator{
             display: inline-block;
+            overflow: hidden;
             text-align: center;
             justify-content: center;
         }
