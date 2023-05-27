@@ -62,7 +62,7 @@ function putCsv($data,$month,$client) {
 
 
 /*ログインしているクライアントかつ今月申請かつ無効申請されていない学生取得*/
-$sql = "SELECT users.name,users.hurigana,users.sex,users.birthday,users.college,users.faculty,users.department,users.division,users.grad_year,users.prefecture,users.mail,users.phone FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id && users.is_valid = 1 && DATE_FORMAT(users.updated_at, '%Y%m') = DATE_FORMAT(NOW(), '%Y%m')  ORDER BY updated_at DESC";
+$sql = "SELECT users.name,users.hurigana,users.sex,users.birthday,users.college,users.faculty,users.department,users.division,users.grad_year,users.prefecture,users.mail,users.phone FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id && r.is_valid = 1 && (r.valid=0 || r.valid=2) && DATE_FORMAT(users.updated_at, '%Y%m') = DATE_FORMAT(NOW(), '%Y%m')  ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":id", $_SESSION["id"]);
 $stmt->execute();
