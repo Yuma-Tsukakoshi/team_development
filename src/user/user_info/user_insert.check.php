@@ -202,7 +202,7 @@
     
     $("#submit-button").on('click', function(event){
                 //event.preventDefault();
-                //console.log($('input[name="sex"]:checked').val());
+                console.log($('input[name="sex"]:checked').val());
 
                 $.ajax({
                     type: "POST",
