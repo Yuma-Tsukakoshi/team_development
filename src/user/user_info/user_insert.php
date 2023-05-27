@@ -51,11 +51,10 @@ if (isset($agentsAll)) {
       <div class="third-box">申し込み<span>確認</span></div>
       <div class="border-line"></div>
       <div class="fourth-box">完了</div>
-
     </div>
     <form method="post" action="http://localhost:8080/user/user_info/user_insert.check.php"class="bg-white rounded-lg overflow-hidden shadow-lg user-form">
-      <div class="px-8 py-6">
-        <div class="text-2xl text-gray-800 font-bold mb-6">お申し込みフォーム</div>
+     
+        <div class="text-2xl text-gray-800 font-bold mb-6">申し込みフォーム</div>
         <div class="mb-4 ">
           <label class="block text-gray-700 font-bold mb-2" for="name">名前</label>
           <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name"id="name" type="text" placeholder="山田 太郎" required>
@@ -69,7 +68,7 @@ if (isset($agentsAll)) {
           <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"name="email" id="email" type="email" placeholder="aaaa@gmail.com"pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" required>
         </div>
         <div class="mb-4 ">
-          <label class="block text-gray-700 font-bold mb-2" for="phone">電話番号</label>
+          <label class="block text-gray-700 font-bold mb-2" for="phone">電話番号(ハイフンあり)</label>
           <input class="appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="phone"id="phone" type="tel" placeholder="000-0000-0000" required pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。">
         </div>
         <div class="mb-4 ">

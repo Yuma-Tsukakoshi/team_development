@@ -39,7 +39,7 @@
 
     </div>
     <div class="check-form" >
-      <div class="text-2xl text-gray-800 font-bold mb-6">お申し込み確認フォーム</div>
+      <div class="text-2xl text-gray-800 font-bold mb-6">申し込み確認フォーム</div>
       <div class="mb-4 ">
         <label class="block text-gray-700 font-bold mb-2" for="name">名前</label>
         <div class="flex">
@@ -65,7 +65,7 @@
 </div>
       </div>
       <div class="mb-4">
-        <label class="block text-gray-700 font-bold mb-2" for="phone">電話番号</label>
+        <label class="block text-gray-700 font-bold mb-2" for="phone">電話番号(ハイフンあり)</label>
         <div class="flex">
           <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="phone"id="phone" type="tel" value="<?=$_POST['phone']?>"pattern="\d{1,5}-\d{1,4}-\d{4,5}" title="電話番号は、市外局番からハイフン（-）を入れて記入してください。" disabled>
           <button class="edit-button" data-value="4">編集</button>
