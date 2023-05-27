@@ -1,6 +1,12 @@
-body {
-    overflow-x: hidden;
 
+html, header {
+    width: 100%;
+    }
+
+body {
+    width: 100%;
+    padding: 0px 0px;
+    /* outline: 2px red solid; */
 }
 
 .header {
@@ -109,11 +115,11 @@ body {
 .hero-title-jpn {
     position: absolute;
     top: 250px;
-    left: 250px;
+    left: 150px;
     border-right: 0px;
     z-index: 10;
     letter-spacing: 8px;
-    font-size: 40px;
+    font-size: 55px;
     text-align: left;
 }
 
@@ -165,20 +171,21 @@ body {
 /* ここから「検索はこちらから」ボタン */
 .search-btn {
     right: 60px;
-    width: 250px;
+    bottom: 180px;
+    width: 400px;
     height: 100px;
     background-color: #e3cf32;
     color: white;
-    font-size: 23px;
+    font-size: 30px;
     border-radius: 15px;
     border-color: transparent;
-    z-index: 50;
     position: fixed;
-    top: 650px;
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
-    z-index: 100px;
+    z-index: 1000;
+    font-weight: bold;
+    letter-spacing: 4px;
 }
 
 .search-btn:hover {
@@ -275,7 +282,7 @@ body {
     text-align: center;
     color: #0071bc;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 50px;
     opacity: 0;
 }
 
@@ -304,6 +311,8 @@ body {
 
 .howto-steps {
     display: flex;
+    justify-content:center;
+    gap: 50px;
 }
 
 .howto-search,
@@ -312,7 +321,6 @@ body {
     color: #0071bc;
     top: 100px;
     text-align: center;
-    width: 800px;
     font-size: 20px;
 }
 
@@ -323,14 +331,10 @@ body {
     font-size: 30px;
 }
 
-.howto-agent-txt-small {
-    font-size: 13px;
-    margin-top: 0;
-}
 
 .howto-agent-txt {
     margin-bottom: 7px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .howto-search-img {
@@ -352,10 +356,6 @@ body {
     
 }
 
-.howto-agent-txt {
-    margin-bottom: 7px;
-    font-size: 10px;
-}
 
 
 
@@ -363,8 +363,9 @@ body {
 
 .handling {
     width: 100%;
-    height: 600px;
-    margin-top: 250px;
+    height: 820px;
+    margin-top: 80px;
+
     overflow: hidden;
 }
 
@@ -381,17 +382,17 @@ body {
 }
 
 .handling-logos {
-    width: 50%;
+    width: 100%;
     background-color: #B7DDFF;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 30px;
+    height: 30px;
 }
 
 .slider {
     display: flex;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 0px;
     background-color: #fff;
 }
 
@@ -417,35 +418,55 @@ body {
     font-weight: bold;
     color: #0071bc;
     letter-spacing: 10px;
-    margin-top: 50px;
+    margin-top: 200px;
     opacity: 0;
     text-align: center;
 }
 
 .handling-jpn {
-    margin-left: 100px;
-    height: 100px;
     font-size: 20px;
     color: #0071bc;
     letter-spacing: 2px;
     text-decoration: underline;
     text-decoration-color: #e3cf32;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 
 
 .handling-txt {
-    margin-top: 10px;
-    margin-left: 50px;
+    text-align: center;
+    justify-content: center;
     /* height: 300px; */
     width: 100%;
     font-size: 18px;
     font-style: normal;
     line-height: 50px;
     color: rgb(87, 86, 86);
+    margin-bottom: 30px;
 }
 
+.handling-comapny-sub{
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 90%;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 20px;
+    color: #0071bc;
+}
+
+
+.handling-company{
+    margin-top: 10px;
+    margin-left: 30px;
+    width: 95%;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 20px;
+    color: rgb(87, 86, 86);
+}
 
 
 /* ここからvoices利用者の声 */
@@ -456,10 +477,9 @@ body {
 }
 
 .voices-title {
-    margin-top: 50px;
+    margin-top: 100px;
     font-size: 40px;
     color: #0071bc;
-    position: relative;
     text-align: center;
     font-weight: bold;
     opacity: 0;
@@ -485,8 +505,13 @@ body {
 .voices-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    top: 30px;
+    grid-gap: 20px;
+    margin-top: 50px;
     left: 60px;
+    margin: auto;
+    margin-left: 120px;
+    margin-top: 50px;
+    width: 85%;
 }
 
 .voices-contents-box {
@@ -516,6 +541,14 @@ body {
 .voices-contents-stars-title {
     font-size: 15px;
     word-break: break-all;
+}
+
+.voices-contents-txt {
+    margin-bottom: 0px;
+    padding: 0;
+}
+
+.voices-contents-name{
     margin-left: 15px;
     top: 0px;
 }
@@ -524,11 +557,9 @@ body {
     margin-left: 10px;
     padding: 0;
     width: 320px;
-    
 }
 
 .voices-contents-stars-title {
-    width: 100px;
     height: 20px;
     margin-bottom: 0;
     font-size: 16px;
@@ -537,8 +568,8 @@ body {
 }
 
 .voices-img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
 }
 
 
@@ -553,24 +584,24 @@ body {
 
 
 /* ここからcreator */
-.creator {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
+
+.creators{
+    height: 400px;
 }
 
-.creator-title {
-    margin-top: 40px;
+.creator-title{
+    text-align: center;
+    opacity: 1;
+    margin-top: 100px;
     text-align: center;
     margin-bottom: 0;
     font-size: 40px;
     font-style: bold;
     color: #0071bc;
     opacity: 0;
-
 }
 
-.creator-title-jpn {
+.creator-title-jpn{
     text-align: center;
     font-size: 20px;
     font-style: normal;
@@ -581,10 +612,33 @@ body {
 }
 
 
-.creator-content {
-    width: 100%;
-    height: 300px;
+.creator-img{
+    width: 150px;
+    height: 150px;
+    z-index: 10;
 }
+.creator-img-under{
+    display: none;
+}
+
+.creator-container{
+    display: flex;
+    margin-top: 1.5rem;
+}
+
+.creator{
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.creator-name{
+    color: #0071bc;
+    font-size: 21px;
+}
+
+
 
 .creator-img-container {
     display: flex;
@@ -593,13 +647,6 @@ body {
     top: 50px;
 }
 
-.creator-img {
-    width: 100px;
-    height: 150px;
-    margin-right: 80px;
-    margin-left: 80px;
-    z-index: 10;
-}
 
 .creator-img-under1 {
     width: 100px;
@@ -672,7 +719,7 @@ ul {
     height: 600px;
     /* position: relative; */
     background-color: #0071bc;
-    margin-top: 0;
+    margin-top: 80px;
     display: flex;
 }
 
@@ -816,7 +863,7 @@ ul {
 }
 
 .footer {
-    height: 300px;
+    height: 200px;
 }
 
 .footer-content {
@@ -1116,6 +1163,21 @@ ul {
             left: 200px;
             z-index: 5;
         }
+
+        .hero-circle-3 {
+            display: none;
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            background-color: #e8ee49;
+            position: relative;
+            top: 30px;
+            left: 800px;
+        }
+        
+        .hero-circle-4 {
+            display: none;
+        }
         
 /* 就活エージェントって？ */
         .shukatsu{
@@ -1149,7 +1211,7 @@ ul {
         .howto-title{
             text-align: center;
             font-size: 40px;
-            margin-top: 100px;
+            margin-top: 0px;
         }
 
         .how-to-title-jpn{
@@ -1196,8 +1258,8 @@ ul {
 
         /* 取扱会社 */
         .handling{
-            margin-top: 650px;
-            height: 850px;
+            margin-top: 550px;
+            height: 1000px;
             flex-direction: column;
             align-items: center;
             
@@ -1205,20 +1267,20 @@ ul {
 
         .handling-logos{
             width: 100%;
-            height: 30px;
+            height: 60px;
             margin-top: 0;
         }
 
         .handling-txt{
             font-size: 14px;
-            margin-top: 250px;
             margin-left: 0px;
+            margin-bottom: 30px;
         }
         
         .handling-title{
             margin-left: 0px;
             left: 15%;
-            font-size: 40px;
+            font-size: 35px;
         }
 
         .handling-jpn{
@@ -1230,34 +1292,39 @@ ul {
 
         .slider{
             background-color: #fff;
-            margin-top: -30px;
         }
+
+        .slider img{
+                width: 100px;
+                /* 画像を親要素に合わせてリサイズ */
+                height: 100px;
+                /* アスペクト比を維持 */
+                object-fit: contain;
+                /* 画像のアスペクト比を保ったまま表示 */
+                margin-right: 10px;
+                gap: 10px;
+            }
+
 
         .handling-discription{
             margin-left: 0px;
-            margin-top: -250px;
             font-size: 15px;
-        }
-
-        .handling-txt {
-            margin-top: 250px;
-            text-align: left;
-            margin-left: 20px;
         }
 
         .handling-comapny-sub{
             margin-top: 20px;
-            margin-left: 10px;
+            margin-left: 40px;
             width: 90%;
             font-size: 14px;
             font-style: normal;
             line-height: 20px;
             color: #0071bc;
+            font-weight: bolder;
         }
 
         .handling-company{
             margin-top: 10px;
-            margin-left: 20px;
+            margin-left: 60px;
             width: 90%;
             font-size: 14px;
             font-style: normal;
@@ -1268,11 +1335,16 @@ ul {
 
 
         /* 利用者の声 */
+        .voices-title {
+            margin-top: 0px;
+        }
+
         .voices-container {
             flex-direction: column;
             display: block;
             left: 0px;
             margin-top: 40px;
+            margin-left: 0px;
         }
         .voices-img{
             width: 20%;
@@ -1307,9 +1379,6 @@ ul {
             padding-top: 5px;
         }
 
-        .stars{
-            margin-top: -20px;
-        }
 
         /* 私たちについて */
 
