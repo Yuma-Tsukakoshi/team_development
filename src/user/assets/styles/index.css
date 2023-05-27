@@ -1,4 +1,3 @@
-
 html, header {
     width: 100%;
     }
@@ -32,12 +31,12 @@ body {
 .gnavi__pc-style .header-buttons {
     display: flex;
     margin-right: auto;
-  }
-  
+}
+
 
 .gnavi__pc-style a {
     color: aliceblue;
-  }
+}
 
 .gnavi__sp-style{
     display: none;
@@ -283,7 +282,6 @@ body {
     color: #0071bc;
     font-weight: bold;
     font-size: 50px;
-    opacity: 0;
 }
 
 .fadeUp {
@@ -419,7 +417,6 @@ body {
     color: #0071bc;
     letter-spacing: 10px;
     margin-top: 200px;
-    opacity: 0;
     text-align: center;
 }
 
@@ -442,7 +439,7 @@ body {
     width: 100%;
     font-size: 18px;
     font-style: normal;
-    line-height: 50px;
+    /* line-height: 50px; */
     color: rgb(87, 86, 86);
     margin-bottom: 30px;
 }
@@ -482,7 +479,6 @@ body {
     color: #0071bc;
     text-align: center;
     font-weight: bold;
-    opacity: 0;
 }
 
 .voices-title-jpn {
@@ -493,7 +489,6 @@ body {
     text-decoration-color: #e3cf32;
     font-weight: bold;
     text-align: center;
-    opacity: 0;
     margin-bottom:60px;
 }
 
@@ -591,14 +586,12 @@ body {
 
 .creator-title{
     text-align: center;
-    opacity: 1;
     margin-top: 100px;
     text-align: center;
     margin-bottom: 0;
     font-size: 40px;
     font-style: bold;
     color: #0071bc;
-    opacity: 0;
 }
 
 .creator-title-jpn{
@@ -608,9 +601,7 @@ body {
     color: #0071bc;
     text-decoration: underline;
     text-decoration-color: #e3cf32;
-    opacity: 0;
 }
-
 
 .creator-img{
     width: 150px;
@@ -743,7 +734,6 @@ ul {
     font-weight: bold;
     letter-spacing: 4px;
     font-size: 40px;
-    opacity: 0;
 }
 
 .about-title-jpn {
@@ -757,7 +747,6 @@ ul {
     text-decoration: underline;
     text-decoration-color: #e3cf32;
     margin-bottom: 50px;
-    opacity: 0;
 }
 
 /* .about-title-border {
@@ -1166,13 +1155,6 @@ ul {
 
         .hero-circle-3 {
             display: none;
-            height: 150px;
-            width: 150px;
-            border-radius: 50%;
-            background-color: #e8ee49;
-            position: relative;
-            top: 30px;
-            left: 800px;
         }
         
         .hero-circle-4 {
@@ -1281,6 +1263,7 @@ ul {
             margin-left: 0px;
             left: 15%;
             font-size: 35px;
+            margin-top: 300px;
         }
 
         .handling-jpn{
@@ -1458,12 +1441,10 @@ ul {
             font-size: 30px;
             margin-top: 50px;
             text-align: center;
-            opacity: 1;
         }
 
         .creator-title-jpn{
             font-size: 10px;
-            opacity: 1;
         }
 
 
@@ -1477,8 +1458,6 @@ ul {
         }
 
         .creator-container{
-        width: 1400px;
-        height: 400px;
         margin-top: 1.5rem;
         }
 
