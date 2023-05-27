@@ -1154,25 +1154,10 @@ ul {
     }
 
         .hero-circle-2 {
-            height: 100px;
-            width: 100px;
-            border-radius: 50%;
-            background-color: #e8ee49;
-            position: relative;
-            top: 310px;
-            left: 200px;
-            z-index: 5;
         }
 
         .hero-circle-3 {
             display: none;
-            height: 150px;
-            width: 150px;
-            border-radius: 50%;
-            background-color: #e8ee49;
-            position: relative;
-            top: 30px;
-            left: 800px;
         }
         
         .hero-circle-4 {
