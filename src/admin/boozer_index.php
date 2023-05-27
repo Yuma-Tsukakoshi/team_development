@@ -7,7 +7,7 @@ require_once(dirname(__FILE__) . '/invalid_exam_count.php');
 
 $pdo = Database::get();
 
-// 削除成功時のメッセージ
+// 削除成功時 のメッセージ
 if (isset($_GET['message']) && $_GET['message'] === 'deleted') {
   $message = "削除しました。";
 }
