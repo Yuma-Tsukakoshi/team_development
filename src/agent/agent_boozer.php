@@ -97,9 +97,6 @@ $name = $_SESSION['name'];
                 <tbody class="bg-white divide-y" id="student">
                   <?php foreach ($users as $key => $user) { ?>
                     <tr class="text-gray-700">
-                      <!-- <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $user["user_id"] ?></p>
-                      </td> -->
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
                       </td>
