@@ -111,11 +111,11 @@ body {
 .hero-title-jpn {
     position: absolute;
     top: 250px;
-    left: 250px;
+    left: 150px;
     border-right: 0px;
     z-index: 10;
     letter-spacing: 8px;
-    font-size: 40px;
+    font-size: 55px;
     text-align: left;
 }
 
@@ -167,20 +167,21 @@ body {
 /* ここから「検索はこちらから」ボタン */
 .search-btn {
     right: 60px;
-    width: 250px;
+    bottom: 180px;
+    width: 400px;
     height: 100px;
     background-color: #e3cf32;
     color: white;
-    font-size: 23px;
+    font-size: 30px;
     border-radius: 15px;
     border-color: transparent;
-    z-index: 50;
     position: fixed;
-    top: 650px;
     border-color: white;
     border-width: 3px;
     box-shadow: 3px 3px rgb(192, 186, 186);
-    z-index: 100px;
+    z-index: 1000;
+    font-weight: bold;
+    letter-spacing: 4px;
 }
 
 .search-btn:hover {
@@ -277,7 +278,7 @@ body {
     text-align: center;
     color: #0071bc;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 50px;
     opacity: 0;
 }
 
@@ -425,7 +426,6 @@ body {
 }
 
 .handling-jpn {
-    margin-left: 100px;
     font-size: 20px;
     color: #0071bc;
     letter-spacing: 2px;
@@ -857,7 +857,7 @@ ul {
 }
 
 .footer {
-    height: 300px;
+    height: 200px;
 }
 
 .footer-content {
