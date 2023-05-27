@@ -67,7 +67,9 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         <div class="cart-badge badge num">
           <?php if (isset($count)) { ?>
             <?= $count ?>
-          <?php } ?>
+          <?php } else{?>
+            0
+          <?php }?>
         </div>
         <div class="search-title-cart-border">
           <a href="./user_cartlook.php">
@@ -93,10 +95,12 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
         </a>
       </div>
       <div class="maru">
-        <span>
+        <span class="maru-num">
           <?php if (isset($count)) { ?>
             <?= $count ?>
-          <?php } ?>
+          <?php }else{ ?>
+            0
+          <?php }?>
         </span>
       </div>
     </div>
@@ -207,7 +211,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       const inputs = $('.input').each(function(index, element) {
         $index = element.value
         $('.add-button').eq($index - 1).prop("disabled", true);
-        $('.add-button').eq($index - 1).removeClass("cyan");
+        $('.add-button').eq($index - 1).removeClass("red");
         $('.add-button').eq($index - 1).css('background-color', 'gray');
       })
       //スクロールすると上部に固定させるための設定を関数でまとめる
@@ -254,8 +258,9 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
           });
           $('.cart-badge').text(data)
           $('.add-button').eq($index).prop("disabled", true);
-          $('.add-button').eq($index).removeClass("cyan");
+          $('.add-button').eq($index).removeClass("red");
           $('.add-button').eq($index).css('background-color', 'gray');
+          $('.maru-num').text(data)
           //背景グレーとか調整する
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
           alert(errorThrown);

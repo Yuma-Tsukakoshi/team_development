@@ -122,7 +122,10 @@
 
 @media screen and (max-width: 768px) {
   .first-box,.second-box,.third-box,.fourth-box{
-    height: 100%;
+   
+  }
+  .fourth-box::before{
+    
   }
   .fourth-box{
     width: 100px;

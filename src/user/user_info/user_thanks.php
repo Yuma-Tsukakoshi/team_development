@@ -43,7 +43,7 @@
     <div class="thanks-area">
       <div class="thanks-message">
         <div class="message-content">申し込みが完了<span>しました。</span></div>
-        <div class="return-link">
+        <div class="return-link thanks-link">
           <a href="../assets/index.html">トップに戻る</a>
         </div>
       </div>
