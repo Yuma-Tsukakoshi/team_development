@@ -39,5 +39,6 @@ if (!$member || !$pass || !password_verify($pass, $member['password'])) {
     }
 ?>
 
+<!-- cssつけてもよい -->
 <h1><?php echo $msg; ?></h1>
 <?php echo $link; ?>
