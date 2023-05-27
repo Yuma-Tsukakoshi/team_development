@@ -54,14 +54,15 @@
 }
 .cart-agent{
   margin: 0% 10%;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
+  /*padding: 20px;*/
 }
 .agent-list{
-  margin: 10px 5%;
+  margin: 10px 10%;
+  padding: 15px 5%;
   display: grid;
   grid-template-columns: 4fr  1fr auto;
+  background-color: #fff;
+  border-radius: 10px;
 }
 .cart-content{
   width: 100%;
@@ -70,6 +71,13 @@
   background-color: aliceblue;
   padding-bottom: 50px;
   
+}
+.cart-agent p {
+  font-size: 24px;
+}
+.cart-mess{
+  margin-top: 20px;
+  text-align: center;
 }
 .agent-name{
   font-size: 30px;
@@ -118,6 +126,17 @@
 .contact-link a:hover {
 	background-color: #dcdcdc;
 	border: 1px solid #333;
+}
+.delete-btn{
+  background-color: #dcdcdc;
+  border-radius: 20px;
+  width: 80%;
+  font-weight: 200;
+
+}
+.delete-btn:hover{
+  background-color: #fff;
+  border: 2px solid #dcdcdc;
 }
 
 @media screen and (max-width: 768px) {
@@ -173,6 +192,12 @@
   }
   .border-line{
     margin-top: 23px;
+  }
+  .cart-agent p{
+    font-size: 18px;
+  }
+  .cart-content{
+    padding-top:50px;
   }
   .contact-link a{
     display: block;

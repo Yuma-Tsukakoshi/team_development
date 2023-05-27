@@ -185,7 +185,7 @@ $manager = $stmt3->fetch();
      function FixedAnime() {
         var headerH = $('.search').outerHeight(true);
         var scroll = $(window).scrollTop();
-        if (scroll + 30 >= headerH) { //headerの高さ以上になったら
+        if (scroll + 73 >= headerH) { //headerの高さ以上になったら
           $('.search').addClass('move'); //fixedというクラス名を付与
         } else { //それ以外は
           $('.search').removeClass('move'); //fixedというクラス名を除去

@@ -60,9 +60,11 @@ if(isset($_SESSION['clients'])){
           <p class="agent-name">
             <?=$clients[$i]['agent_name']?>
           </p>
-          <button class="btn-big blue delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" onclick="return confirm('削除してもよろしいですか?')" >削除</button>
+          <button class="delete-btn" type="button" value="<?= $clients[$i]['client_id']?>" onclick="return confirm('削除してもよろしいですか?')" >削除</button>
         </li>
-        <?php }}?>
+        <?php }}else{?>
+          <p class="cart-mess">カートに追加されていません<p>
+        <?php }?>
       </ul>
       <div class="contact-link">
         <a href="./user_info/user_insert.php"><p>申し込みフォームは<span>こちら</span></p></a>
