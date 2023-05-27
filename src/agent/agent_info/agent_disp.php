@@ -50,7 +50,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
         </a>
         <ul class="mt-6">
           <li class="relative px-6 py-3">
-            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../admin/boozer_auth/boozer_logout.php">
+            <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../../admin/boozer_auth/boozer_logout.php">
               <span class="ml-4">ログアウト</span>
             </a>
           </li>

@@ -40,10 +40,12 @@ if (!$member || !$pass || !password_verify($pass, $member['password'])) {
     $link = '<a href="http://localhost:8080/agent/agent_auth/agent_login.php">戻る</a>';
     } else {
   // 認証に成功した場合は、セッションにユーザー情報を保存する
+  
     $_SESSION['id'] = $member['id'];
     $_SESSION['name'] = $member['service_name'];
-    $msg = 'ログインしました。';
-    $link = '<a href="http://localhost:8080/agent/agent_boozer.php">学生一覧ページ</a>';
+    header('Location: http://localhost:8080/agent/agent_boozer.php');
+    exit();
+  
     }
 ?>
 

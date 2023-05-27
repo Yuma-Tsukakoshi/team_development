@@ -18,7 +18,7 @@
 </head>
 <body>
   <h1>申し込みが完了しました。</h1>
-
+<a href="http://localhost:8080/user/assets/index.html">トップページへ</a>
 <?php
 require_once(dirname(__FILE__) . './../../dbconnect.php');
 
