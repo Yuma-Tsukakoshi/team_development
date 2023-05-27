@@ -4,7 +4,7 @@ $pdo = Database::get();
 $id = $_GET['id'];
 
 // 削除処理を実行
-$sql = "UPDATE users SET is_valid=false WHERE id = :id";
+$sql = "UPDATE users SET is_valid=false WHERE id = :id" ;
 $stmt = $pdo->prepare($sql);
 $stmt->execute(["id" => $id]);
 

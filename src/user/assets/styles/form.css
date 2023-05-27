@@ -70,8 +70,7 @@
 .return-link{
   font-size: 18px;
   position: absolute;
-  top: 150px;
-  right: 25px;
+  right: 45px;
 }
 
 .return-link a {

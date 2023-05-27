@@ -52,8 +52,14 @@
   margin-top: 15px;
   background-color: #dcdcdc;
 }
+.cart-agent{
+  margin: 0% 10%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
 .agent-list{
-  margin: 10px 15%;
+  margin: 10px 5%;
   display: grid;
   grid-template-columns: 4fr  1fr auto;
 }

@@ -25,4 +25,10 @@
     .cyan {
       @apply bg-gradient-to-br from-blue-500 to-cyan-500 ;
     }
+    .red {
+      @apply bg-gradient-to-br from-orange-300 to-red-700 ;
+    }
+    .orange {
+      @apply bg-gradient-to-br from-red-500 to-orange-500 ;
+    }
 }
