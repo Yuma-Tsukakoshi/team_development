@@ -114,7 +114,9 @@
   border-top: 2px solid #228bc8;
   border-right: 2px solid #228bc8;
 }
-
+.thanks-link{
+  top: 160px;
+}
 
 @media screen and (max-width: 480px) {
   .user-form{

@@ -256,3 +256,6 @@ insert into invalid_reason(id, user_id, client_id, reason) values
 (8,11,3,"メールアドレスがエラー"),
 (9,12,2,"内容に不備あり");
 
+
+
+
