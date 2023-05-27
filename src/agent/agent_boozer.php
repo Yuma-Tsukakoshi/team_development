@@ -77,17 +77,6 @@ $name = $_SESSION['name'];
               <label class="block text-gray-700 font-bold mb-2" for="name">絞り込み検索 :</label>
               <input class="appearance-none border rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="keyword" type="text" placeholder="名前を入力してください">
             </div>
-            <div>
-              <label for="sort-by" class=" block text-gray-700 font-bold mb-2 mr-2">学生の並び替え：</label>
-              <div class="relative inline-flex">
-                <select id="sort-by" name="sort-by" class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                  <option value=""></option>
-                  <option value="ascending">ア行から</option>
-                  <option value="descending">ワ行から</option>
-                </select>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" id="sort_btn">並び替え</button>
-              </div>
-            </div>
           </div>
 
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
@@ -108,9 +97,6 @@ $name = $_SESSION['name'];
                 <tbody class="bg-white divide-y" id="student">
                   <?php foreach ($users as $key => $user) { ?>
                     <tr class="text-gray-700">
-                      <!-- <td class="px-4 py-3">
-                        <p class="font-semibold items-center text-sm"><?= $user["user_id"] ?></p>
-                      </td> -->
                       <td class="px-4 py-3">
                         <p class="font-semibold items-center text-sm"><?= $user["updated_at"] ?></p>
                       </td>
@@ -157,7 +143,7 @@ $name = $_SESSION['name'];
                       </td>
                       <td class="px-4 py-3">
                         <div class="flex items-center space-x-4 text-sm">
-                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?> >
+                          <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-gray-500 rounded-lg focus:outline-none focus:shadow-outline-gray" aria-label="Edit" data=<?= $user["user_id"] ?> >
                             <a href="http://localhost:8080/user/user_info/agent_delete_user.php?user_id=<?= $user["user_id"] ?>&client_id=<?= $user["client_id"] ?>">削除</a>
                           </button>
                         </div>
@@ -166,37 +152,6 @@ $name = $_SESSION['name'];
                   <?php } ?>
                 </tbody>
               </table>
-            </div>
-            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t sm:grid-cols-9">
-              <span class="flex items-center col-span-3">
-                Showing 1-10 of 50
-              </span>
-              <span class="col-span-2"></span>
-              <!-- Pagination -->
-              <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-                <nav aria-label="Table navigation">
-                  <ul class="inline-flex items-center">
-                    <li>
-                      <button class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple" aria-label="Previous">
-                        <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                          <path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                        </svg>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">1 <!-- ■１ ■２ ■3 ... みたいな -->
-                      </button>
-                    </li>
-                    <li>
-                      <button class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple" aria-label="Next">
-                        <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
-                          <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                        </svg>
-                      </button>
-                    </li>
-                  </ul>
-                </nav>
-              </span>
             </div>
           </div>
 
@@ -211,20 +166,20 @@ $name = $_SESSION['name'];
     </div>
 
     <script>
-$(document).ready(function() {
-  $('.delete-link').click(function(e) {
-    e.preventDefault();
-    var userId = $(this).parent().data('userid');
-    var clientId = $(this).parent().data('clientid');
-    var confirmation = confirm("本当に削除しますか？");
-    
-    if (confirmation) {
-      var deleteUrl = "http://localhost:8080/user/user_info/agent_delete_user.php?user_id=" + userId + "&client_id=" + clientId;
-      window.location.href = deleteUrl;
-    }
-  });
-});
-</script>
+      $(document).ready(function() {
+        $('.delete-link').click(function(e) {
+          e.preventDefault();
+          var userId = $(this).parent().data('userid');
+          var clientId = $(this).parent().data('clientid');
+          var confirmation = confirm("本当に削除しますか？");
+
+          if (confirmation) {
+            var deleteUrl = "http://localhost:8080/user/user_info/agent_delete_user.php?user_id=" + userId + "&client_id=" + clientId;
+            window.location.href = deleteUrl;
+          }
+        });
+      });
+    </script>
 
   </div>
 </body>

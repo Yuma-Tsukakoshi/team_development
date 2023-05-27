@@ -17,6 +17,12 @@ $stmt2->bindValue(":client_id", $_SESSION["id"]);
 $stmt2->execute();
 $valid = $stmt2->fetch();
 
+$sql3 = "SELECT service_name , reason.reason FROM clients INNER JOIN invalid_reason AS reason ON reason.client_id = clients.client_id WHERE clients.client_id=:id AND reason.user_id=:ui";
+$stmt3 = $pdo->prepare($sql3);
+$stmt3->bindValue(":ui", $_REQUEST["id"]);
+$stmt3->bindValue(":id", $_SESSION["id"]);
+$stmt3->execute();
+$invalid_agents = $stmt3->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -126,6 +132,26 @@ $valid = $stmt2->fetch();
                 </th>
               </tr>
             </thead>
+            <?php
+            if ($valid[0] != 0) {
+            ?>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      無効申請理由
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-ms font-medium text-gray-900">
+                      <?= $invalid_agents['reason'] ?>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            <?php
+            }
+            ?>
           </table>
         </div>
         <div class="flex justify-center">

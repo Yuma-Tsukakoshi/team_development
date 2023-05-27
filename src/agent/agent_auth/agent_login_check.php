@@ -35,23 +35,18 @@ $stmt->execute();
 $member = $stmt->fetch();
 
 // パスワードの比較時にnullが渡されないように、$passがnullの場合は認証エラーとする
-// if (!$member || !$pass || !password_verify($pass, $member['password'])) {
-//     $msg = 'メールアドレスもしくはパスワードが間違っています。';
-//     $link = '<a href="http://localhost:8080/agent/agent_auth/agent_login.php">戻る</a>';
-//     } else {
-//   // 認証に成功した場合は、セッションにユーザー情報を保存する
-//     $_SESSION['id'] = $member['id'];
-//     $_SESSION['name'] = $member['service_name'];
-//     $msg = 'ログインしました。';
-//     $link = '<a href="http://localhost:8080/agent/agent_boozer.php">学生一覧ページ</a>';
-//     }
-
-/*idじゃなくてどのクライアントがログインしたかのほうが良さげ？*/
-$_SESSION['id'] = $member['client_id'];
-$_SESSION['name'] = $member['service_name'];
-$msg = 'ログインしました。';
-$link = '<a href="http://localhost:8080/agent/agent_boozer.php">学生一覧ページ</a>';
+if (!$member || !$pass || !password_verify($pass, $member['password'])) {
+    $msg = 'メールアドレスもしくはパスワードが間違っています。';
+    $link = '<a href="http://localhost:8080/agent/agent_auth/agent_login.php">戻る</a>';
+    } else {
+  // 認証に成功した場合は、セッションにユーザー情報を保存する
+    $_SESSION['id'] = $member['id'];
+    $_SESSION['name'] = $member['service_name'];
+    $msg = 'ログインしました。';
+    $link = '<a href="http://localhost:8080/agent/agent_boozer.php">学生一覧ページ</a>';
+    }
 ?>
 
+<!-- cssつけてもよい -->
 <h1><?php echo $msg; ?></h1>
 <?php echo $link; ?>

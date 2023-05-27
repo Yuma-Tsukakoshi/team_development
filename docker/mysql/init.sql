@@ -182,16 +182,16 @@ CREATE TABLE client_login(
 );
 
 insert into client_login(id, client_id, password) values
-(1,1,"password"),
-(2,2,"password"),
-(3,3,"password"),
-(4,4,"password"),
-(5,5,"password"),
-(6,6,"password"),
-(7,7,"password"),
-(8,8,"password"),
-(9,9,"password"),
-(10,10,"password");
+(1,1,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(2,2,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(3,3,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(4,4,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(5,5,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(6,6,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(7,7,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(8,8,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(9,9,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS"),
+(10,10,"$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS");
 
 
 DROP TABLE IF EXISTS user_register_client;
@@ -234,7 +234,7 @@ CREATE TABLE boozer_register_client(
 );
 
 insert into boozer_register_client(id, name, password, mail) values
-(1,"山田太郎","password","kakaka@gmail.com");
+(1,"山田太郎","$2a$12$byHvyvLQINYVC32wSk7INu6vUHsfUre.OWG9IIvNALuDEDVYxvgPS","kakaka@gmail.com");
 
 
 DROP TABLE IF EXISTS invalid_reason;
