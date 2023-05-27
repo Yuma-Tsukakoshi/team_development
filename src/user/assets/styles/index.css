@@ -35,7 +35,7 @@ body {
 
 .gnavi__pc-style a {
     color: aliceblue;
-    font-weight: bolder;
+    font-size: 18px;
 }
 
 .gnavi__sp-style{
@@ -66,9 +66,7 @@ body {
 
 
 .gnavi__pc-style .header-buttons .header-button .company-a{
-    color: aliceblue;
-    font-weight: bolder;
-    margin-left: 200px;
+    margin-left: 100px;
 }
 
 .gnavi__pc-style .header-buttons .header-button .company-a:hover{
