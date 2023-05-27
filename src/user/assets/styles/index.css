@@ -22,7 +22,6 @@ body {
     /* 透明な灰色の背景色に変更 */
     background-color: rgba(128, 128, 128, 0.8);
     align-items: center;
-    font-size: 20px;
     padding: 10px 20px;
     position: fixed;
     z-index: 1000;
@@ -36,6 +35,7 @@ body {
 
 .gnavi__pc-style a {
     color: aliceblue;
+    font-weight: bolder;
 }
 
 .gnavi__sp-style{
@@ -47,6 +47,7 @@ body {
 
 .gnavi__pc-style .header-img {
     margin-left: auto; /* イラストを右寄せにする */
+    width: 250px;
 }
 
 
@@ -57,12 +58,24 @@ body {
 }
 
 
-.header-button:hover a {
+.header-button:hover a:not(.company-a) {
     color: #e3cf32;
     text-decoration: underline;
     text-decoration-color:#e3cf32 ;
 }
 
+
+.gnavi__pc-style .header-buttons .header-button .company-a{
+    color: aliceblue;
+    font-weight: bolder;
+    margin-left: 200px;
+}
+
+.gnavi__pc-style .header-buttons .header-button .company-a:hover{
+    color: #0071bc;
+    text-decoration: underline;
+    text-decoration-color:#0071bc ;
+}
 
 
 
@@ -185,6 +198,14 @@ body {
     z-index: 1000;
     font-weight: bold;
     letter-spacing: 4px;
+}
+
+.search-btn-a{
+    color: white;
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-size: 30px;
+    text-decoration: none;
 }
 
 .search-btn:hover {
