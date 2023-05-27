@@ -564,10 +564,11 @@ body {
 
 .voices-contents-name{
     margin-left: 15px;
-    top: 0px;
+    margin-bottom: 10px;
 }
 
 .voices-contents-txt {
+    margin-top: 6px;
     margin-left: 10px;
     padding: 0;
     width: 320px;
@@ -575,9 +576,10 @@ body {
 
 .voices-contents-stars-title {
     height: 20px;
-    margin-bottom: 0;
-    font-size: 16px;
-    padding-top: 20px;
+    padding-bottom:30px;
+    padding-top: 15px;
+    padding-left: 15px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -586,7 +588,9 @@ body {
     height: 200px;
 }
 
-
+.name-bottom{
+    margin-top: 25px;
+}
 .stars {
     margin-left: 50px;
     padding-top: -15px;
@@ -708,6 +712,11 @@ body {
     top: -10px;
 }
 
+.creator-uni{
+    color: #0071bc;
+    font-size: 14px;
+}
+
 ul {
     display: inline-block;
 }
@@ -793,7 +802,7 @@ ul {
     height: 150px;
     font-size: 36px;
     /* position: relative; */
-    top: 180px;
+    top: 190px;
     left: 150px;
     color: white;
     font-style: bold;
@@ -818,6 +827,7 @@ ul {
 .about-txt-description-title-jpn {
     /* height: 50px; */
     margin-top: 350px;
+    margin-right: 30px;
     font-size: 25px;
     color: white;
 }
@@ -1362,6 +1372,7 @@ ul {
         }
         .voices-contents-stars-title{
             font-size: 12px;
+            /* padding-top: 30px; */
         }
         .voices-contents-txt{
             font-size: 12px;
@@ -1424,6 +1435,7 @@ ul {
         }
 
         .about-txt-motto{
+            margin-top: 15px;
             font-size: 15px;
             height: 100px;
         }
