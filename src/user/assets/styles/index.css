@@ -1,7 +1,10 @@
-body {
-    overflow-x: hidden;
-    padding-top: 0px;
+html, header {
+    width: 100%;
+    }
 
+body {
+    padding-top: 0px;
+    width: 100%;
     /* outline: 2px red solid; */
 }
 
