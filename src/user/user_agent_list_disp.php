@@ -5,7 +5,9 @@ require_once(dirname(__FILE__) . '/../dbconnect.php');
 
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
+  $clients = $_SESSION['clients'];
 }
+
 
 $pdo = Database::get();
 $sql_1 = "SELECT * FROM clients WHERE client_id = :id ";
@@ -34,25 +36,78 @@ $manager = $stmt3->fetch();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
-  <link rel="stylesheet" href="./assets/styles/header.css">
+  <link rel="stylesheet" href="../user/assets/styles/badge.css
+  ">
   <link rel="stylesheet" href="./assets/styles/search.css">
+  <link rel="stylesheet" href="./assets/styles/header.css">
+  <link rel="stylesheet" href="./assets/styles/modal.css">
+  <link rel="stylesheet" href="./assets/styles/form.css">
   <link rel="stylesheet" href="assets/styles/searchdetail.css">
   <title>エージェント詳細一覧</title>
 </head>
 
 <body>
-  <?php include(dirname(__FILE__) . '/../components/header.php'); ?>
+  <header>
+    <div class="header_wrapper">
+      <div class="header_upper">
+        <div class="craft_logo">CRAFT</div>
+        <div class="boozer_logo"><img src="../user/assets/img/boozer_logo_white.png" alt="boozer Inc."></div>
+      </div>
+  </header>
   <section class="search">
-    <div class="search-head">
-      <h1 class="search-title">DETAIL</h1>
-      <span class="search-title-jpn">-エージェント詳細-</span>
+    <div class="title-wrapper">
+      <h1 class="search-title">SEARCH</h1>
+      <span class="search-title-jpn">-エージェント検索-</span>
       <div class="search-title-border"></div>
     </div>
-    <div>
-      <img class="search-title-cart" src="./assets/img/728.png" alt="shopping_cart">
-      <div class="search-title-cart-border"></div>
+    <div class="cart relative">
+      <? if (isset($clients)) {
+        foreach ($clients as $client) { ?>
+          <input type="hidden" class="input" name="agents[]" value="<?= $client['agent'] ?>">
+        <? }
+      } ?>
+      <div class="notifier new">
+        <div class="cart-badge badge num">
+          <?php if (isset($count)) { ?>
+            <?= $count ?>
+          <?php } else{?>
+            0
+          <?php }?>
+        </div>
+        <div class="search-title-cart-border">
+          <a href="./user_cartlook.php">
+            <img class="search-title-cart" src="../user/assets/img/728.png" alt="shopping_cart">
+          </a>
+        </div>
+      </div>
     </div>
   </section>
+  <div class="overlay" id="js-overlay"></div>
+
+  <div id="modal-content" class="modal-content">
+    <div class="check-message">
+      <div class="check-circle">
+        <div class="check"></div>
+      </div>
+      <div class="message">カートに追加しました</div>
+    </div>
+    <div class="modal-cart">
+      <div class="return-link modal-button">
+        <a href="./user_cartlook.php">
+          <p class="link-message">カート一覧へ</p>
+        </a>
+      </div>
+      <div class="maru">
+        <span class="maru-num">
+          <?php if (isset($count)) { ?>
+            <?= $count ?>
+          <?php }else{ ?>
+            0
+          <?php }?>
+        </span>
+      </div>
+    </div>
+  </div>
 
   <main>
     <section>
@@ -93,7 +148,8 @@ $manager = $stmt3->fetch();
               </ul>
             </div>
           </div>
-          <button class="btn-big cyan orange">カートに追加する</button>
+          <input type="hidden" value="<?= $_REQUEST['client_id'] ?> " class="client_id">
+          <button class="btn-big cyan orange add-button" value="<?=$_REQUEST['id']?>">カートに追加する</button>
         </div>
         <div class="inner-bottom-line"></div>
         <div class="inner-bottom">
@@ -111,6 +167,77 @@ $manager = $stmt3->fetch();
       </div>
     </section>
   </main>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(function() {
+      //ボタン灰色
+      const inputs = $('.input').each(function(index, element) {
+        $index = element.value
+        $id=$('.add-button').val()
+        if(Number($index)==Number($id)){
+          $('.add-button').prop("disabled", true);
+          $('.add-button').removeClass("orange");
+          $('.add-button').removeClass("cyan");
+          $('.add-button').css('background-color', 'gray');
+        }
+      })
+     //スクロールすると上部に固定させるための設定を関数でまとめる
+     function FixedAnime() {
+        var headerH = $('.search').outerHeight(true);
+        var scroll = $(window).scrollTop();
+        if (scroll + 73 >= headerH) { //headerの高さ以上になったら
+          $('.search').addClass('move'); //fixedというクラス名を付与
+        } else { //それ以外は
+          $('.search').removeClass('move'); //fixedというクラス名を除去
+        }
+      }
+      // 画面をスクロールをしたら動かしたい場合の記述
+      $(window).scroll(function() {
+        FixedAnime(); /* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
+      });
+      // ページが読み込まれたらすぐに動かしたい場合の記述
+      $(window).on('load', function() {
+        FixedAnime(); /* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
+      });
+
+     $('.add-button').on('click', function(event) {
+        $index = this.value
+        console.log($index)
+        $.ajax({
+          type: "POST",
+          url: "./user_cartin.php",
+          data: {
+            id: $('.client_id').val(),
+            client_id: $index,
+          },
+          dataType: "json",
+          scriptCharset: 'utf-8'
+        }).done(function(data) {
+          $('.modal-content').fadeIn();
+          $('.overlay').fadeIn();
+          // クリックイベント全てに対しての処理
+          $(document).on('click touchend', function(event) {
+            // 表示したポップアップ以外の部分をクリックしたとき
+            if (!$(event.target).closest('.modal-content').length) {
+              $('.modal-content').fadeOut();
+              $('.overlay').fadeOut();
+            }
+          });
+          console.log(data);
+  
+          $('.cart-badge').text(data)
+          $('.add-button').prop("disabled", true);
+          $('.add-button').removeClass("orange");
+          $('.add-button').removeClass("cyan");
+          $('.add-button').css('background-color', 'gray');
+          $('.maru-num').text(data)
+          //背景グレーとか調整する
+        }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+          alert(errorThrown);
+        });
+      })
+    })
+  </script>
 </body>
 
 </html>
