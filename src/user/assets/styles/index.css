@@ -207,7 +207,6 @@ body {
     font-size: 40px;
     padding-top: 20px;
     margin-bottom: 20px;
-
 }
 
 .shukatsu-title-jpn {
@@ -215,7 +214,8 @@ body {
     color: white;
     letter-spacing: 4px;
     margin-bottom: 10px;
-
+    text-decoration: underline;
+    text-decoration-color: #e3cf32 ;
 }
 
 .shukatsu-title-border {
@@ -258,7 +258,7 @@ body {
 .howto {
     margin-top: 0;
     width: 100%;
-    height: 500px;
+    height: 300px;
 }
 
 .how-to {
@@ -315,7 +315,6 @@ body {
     top: 100px;
     text-align: center;
     width: 800px;
-    height: 400px;
     font-size: 20px;
 }
 
@@ -333,27 +332,41 @@ body {
 
 .howto-agent-txt {
     margin-bottom: 7px;
+    font-size: 15px;
 }
 
 .howto-search-img {
     height: 230px;
     width: 160px;
+    margin-top: 10px;
 }
 
 .howto-agent-img,
 .howto-apply-img {
     height: 200px;
     width: 200px;
+    margin-top: 50px;
+}
+
+.bold {
+    text-decoration: underline;
+    text-decoration-color: #e3cf32;
+    
+}
+
+.howto-agent-txt {
+    margin-bottom: 7px;
+    font-size: 10px;
 }
 
 
 
 /* ここからhandling company*/
+
 .handling {
     width: 100%;
     height: 600px;
     margin-top: 80px;
-    display: flex;
     overflow: hidden;
 }
 
@@ -406,9 +419,9 @@ body {
     font-weight: bold;
     color: #0071bc;
     letter-spacing: 10px;
-    margin-left: 100px;
     margin-top: 50px;
     opacity: 0;
+    text-align: center;
 }
 
 .handling-jpn {
@@ -419,6 +432,7 @@ body {
     letter-spacing: 2px;
     text-decoration: underline;
     text-decoration-color: #e3cf32;
+    text-align: center;
 }
 
 
@@ -471,7 +485,6 @@ body {
 .voices-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    position: relative;
     top: 30px;
     left: 60px;
 }
@@ -489,7 +502,6 @@ body {
 .voices-contents-box-sub {
     width: 340px;
     height: 160px;
-    position: relative;
     z-index: 5;
     background-color: #B7DDFF;
     position: relative;
@@ -504,7 +516,6 @@ body {
 .voices-contents-stars-title {
     font-size: 15px;
     word-break: break-all;
-    position: relative;
     left: 10px;
     top: 0px;
 }
@@ -550,7 +561,6 @@ body {
 
 .creator-title {
     margin-top: 40px;
-    position: relative;
     text-align: center;
     margin-bottom: 0;
     font-size: 40px;
@@ -578,7 +588,7 @@ body {
 
 .creator-img-container {
     display: flex;
-    position: relative;
+    /* position: relative; */
     left: 80px;
     top: 50px;
 }
@@ -790,7 +800,7 @@ ul {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    position: relative;
+    /* position: relative; */
     letter-spacing: 3px;
 }
 
@@ -900,15 +910,14 @@ ul {
     /* 比較してみるボタン */
     .search-btn {
         /* right: 60px; */
+        top: 790px;
         width: 95%;
-        height: 60px;
-        bottom: 0px;
+        height: 80px;
         left: 0px;
-        
-
+        bottom: 2px;
         background-color: #e3cf32;
         color: white;
-        font-size: 23px;
+        font-size: 30px;
         border-radius: 15px;
         border-color: transparent;
         z-index: 50;
@@ -1003,7 +1012,7 @@ ul {
             top: 0;
             left: 0;
             color: #fff;
-            background-color: rgba(128, 128, 128, 0.6);
+            background-color: rgba(100, 100, 100, 0.8);
             text-align: center;
             width: 100%;
             height: 100vh;
@@ -1014,14 +1023,16 @@ ul {
         }
 
         .sp-header-ul {
-            margin: auto;
+            margin-top: 220px;
+            margin-bottom: 310px;
             padding: 0;
             width: 100%;
+            gap: 20px;
         }
 
         .sp-header-li {
             list-style-type: none;
-            padding-top: 10px;
+            padding-top: 0px;
             width: 100%;
             transition: .4s all;
         }
@@ -1047,7 +1058,9 @@ ul {
             display: block;
             color: #fff;
             text-decoration: none;
-            font-size: large;
+            font-size: 20px;
+            font-weight: bold; /* これを追加します */
+            margin-top: 30px;
         }
 
         .gnavi__sp-style.active {
@@ -1057,7 +1070,7 @@ ul {
         /* hero */
         .hero {
             background-size: contain;
-            margin-top: 8px;
+            margin-top: 115px;
             height: 350px;
         }
         
@@ -1150,14 +1163,40 @@ ul {
             align-items: center;
         }
 
+        .howto-agent-txt {
+            font-size: 17px;
+            margin-top: 0;
+        }
+
+        .howto-agent-txt-small {
+            font-size: 15px;
+            margin-top: 0;
+        }
+
         .howto-search-txt{
             font-size: 18px;  
         }
 
+        .howto-search-img {
+            height: 170px;
+            width: 140px;
+        }
+        
+        .howto-agent-img,
+        .howto-apply-img {
+            height: 200px;
+            width: 220px;
+        }
+
+        .howto-agent-txt-small {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
         /* 取扱会社 */
         .handling{
-            margin-top: 950px;
-            height: 700px;
+            margin-top: 650px;
+            height: 850px;
             flex-direction: column;
             align-items: center;
             
@@ -1165,43 +1204,74 @@ ul {
 
         .handling-logos{
             width: 100%;
+            height: 30px;
+            margin-top: 0;
         }
 
         .handling-txt{
             font-size: 14px;
+            margin-top: 250px;
+            margin-left: 0px;
         }
         
         .handling-title{
-            position: absolute;
-            top: 2500px;
             margin-left: 0px;
             left: 15%;
+            font-size: 40px;
         }
 
         .handling-jpn{
-            position: absolute;
-            top: 2600px;
             margin-left: 0px;
             left: 15%;
+            margin-bottom: 0px;
+            height: 50px;
+        }
+
+        .slider{
+            background-color: #fff;
+            margin-top: -30px;
         }
 
         .handling-discription{
             margin-left: 0px;
-            line-height: 0px;
-
-        }
-
-        .logos-discription {
+            margin-top: -250px;
             font-size: 15px;
-            margin-top: 30px;
-            text-align: left;
         }
+
+        .handling-txt {
+            margin-top: 250px;
+            text-align: left;
+            margin-left: 20px;
+        }
+
+        .handling-comapny-sub{
+            margin-top: 20px;
+            margin-left: 10px;
+            width: 90%;
+            font-size: 14px;
+            font-style: normal;
+            line-height: 20px;
+            color: #0071bc;
+        }
+
+        .handling-company{
+            margin-top: 10px;
+            margin-left: 20px;
+            width: 90%;
+            font-size: 14px;
+            font-style: normal;
+            line-height: 20px;
+            color: rgb(87, 86, 86);
+        }
+
+
 
         /* 利用者の声 */
         .voices-container {
             flex-direction: column;
             display: block;
             left: 0px;
+            margin-top: 40px;
         }
         .voices-img{
             width: 20%;
@@ -1209,39 +1279,59 @@ ul {
         }
         .voices-contents-box{
             width:80%;
-            height: 100px;
+            height: 120px;
         }
         .voices-contents-box-sub{
             width:100%;
-            height: 100px;
+            height: 120px;
         }
         .voices-contents-stars-title{
             font-size: 12px;
         }
         .voices-contents-txt{
             font-size: 12px;
+            width: 90%;
+            margin: auto;
         }
 
         .voices-contents-name{
             font-size: 12px;
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+
+        .voices-contents-stars-title{
+            font-size: 12px;
+            margin-left: 20px;
+            padding-top: 5px;
+        }
+
+        .stars{
+            margin-top: -20px;
         }
 
         /* 私たちについて */
 
         .about{
-            margin-top: 100px;
-            height: 700px;
+            margin-top: 150px;
+            height: 400px;
+            flex-direction: column;
         }
 
         .about-left{
-            margin-left: 0px;
+            margin-left: 15px;
             margin-top: 0px;
+            width: 100%;
         }
 
         .about-title{
             text-align: left;
             font-size: 40px;
-            margin-top: 10px;
+            margin-top: 23px;
+        }
+
+        .about-title-jpn{
+            margin-bottom: 0px;
         }
 
         .about-title-letters{
@@ -1254,7 +1344,7 @@ ul {
 
         .about-philosophy-letters{
             font-size: 15px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .about-txt-motto-span{
@@ -1263,241 +1353,91 @@ ul {
 
         .about-txt-motto{
             font-size: 15px;
+            height: 100px;
         }
 
         .about-right{
             margin-left: 0px;
             margin-top: 0px;
+            display: flex;
+            width: 100%;
         }
 
         .about-txt-description-title{
             font-size: 2rem;
         }
 
+        .about-txt-description-title{
+            font-size: 20px;
+            width: 50%;
+            margin-left: 1rem;
+        }
+
+        .about-txt-description-title-jpn{
+            font-size: 14px;
+            margin-top: 0rem;
+            width: 50%;
+        }
+
+        /* 制作者 */
+        .creators{
+            height: 400px;
+        }
+
+        .creator-title{
+            font-size: 30px;
+            margin-top: 50px;
+            text-align: center;
+            opacity: 1;
+        }
+
+        .creator-title-jpn{
+            font-size: 10px;
+            opacity: 1;
+        }
 
 
-        
+        .creator-img{
+            width: 70px;
+            height: 70px;
+            margin: 0%;
+            
+        }
+        .creator-img-under{
+            display: none;
+        }
 
+        .creator-container{
+            display: flex;
+            margin-top: 1.5rem;
+        }
 
-        
+        .creator{
+            display: inline-block;
+            text-align: center;
+            justify-content: center;
+        }
 
+        .creator-name{
+            color: #0071bc;
+            font-size: 13px;
+        }
 
-    /* ヒーロー */
-    /* .hero {
-        background-size: contain;
-        margin-top: 0px;
+        /* footer */
+        .footer{
+            height: 300px;
+        }
+
+        .footer-img{
+            width: 50%;
+            height: 20%;
+        }
+
+        .footer-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
     }
-
-    .hero-overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .hero-title-jpn {
-        width: 400px;
-        height: 100px;
-        font-size: 20px;
-        left: 0;
-    }
-
-    /* 就活とは？？欄 */
-    /* .shukatsu {
-        height: 500px;
-    }
-
-    .shukatsu-title,
-    .shukatu-title-jpn,
-    .shukatsu-txt-description-title-jpn {
-        text-align: center;
-        font-size: 15px;
-    }
-
-    .shukatsu-title {
-        font-size: 20px;
-        margin: 0 20px;
-    }
-
-    .shukatsu-title-jpn {
-        font-size: 15px;
-    }
-
-    .shukatsu-title-border {
-        width: 60%;
-    }
-
-    .shukatsu-txt-description-title-jpn {
-        margin: 0 20px;
-    }
-
-    .shukatsu-txt-desc */
-
-    /* how to  */
-    /* .howto {
-        height: 2500px;
-        margin: 0 auto;
-    }
-
-    .howto-steps {
-        display: flex;
-        flex-flow: column;
-        margin-top: 15px;
-        margin-left: -150px;
-    }
-
-    /* 取扱企業 */
-    /* 縦並びにならない！ */
-    /* .handling {
-        display: flex;
-        flex-flow: column;
-        height: 1500px;
-    }
-
-    .handling-logos {
-        position: absolute;
-        top: 2800px;
-        left: 100px;
-    }
-
-    .handling-title {
-        width: 460px;
-        margin: 0 auto;
-        padding-top: 700px;
-    }
-
-    .handling-jpn {
-        width: 460px;
-        height: 50px;
-        margin: 0 auto;
-    }
-
-    .handling-txt {
-        width: 460px;
-        text-align: center;
-        margin-left: -90px;
-        margin-top: 0;
-    }  */
-
-
-    /* 利用者の声 */
-
-    /* .voices {
-        height: 1000px;
-        margin-top: 100px;
-    }
-
-    .voices-container {
-        display: flex;
-        flex-flow: column;
-        margin-top: 20px;
-        margin-left: -70px;
-    }
-
-    .voices-contents-box-sub,
-    .voices-contents-box {
-        width: 300px;
-    }
-
-    .voices-contents-txt {
-        width: 290px;
-    } */
-
-    /* わたしたちについて */
-    /* .about {
-        height: 1100px;
-        display: flex;
-        flex-flow: column;
-    }
-
-    .about-title {
-        font-size: 20px;
-        width: 330px;
-        margin-left: -50px;
-    }
-
-    .about-philosophy {
-        font-size: 15px;
-        margin-left: 20%;
-    }
-
-    .about-txt-motto {
-        width: 400px;
-        margin-left: -75px;
-        margin-top: 10px;
-
-    }
-
-    .about-txt-motto-span {
-        font-size: 30px;
-    }
-
-    .about-txt-description-title {
-        width: 400px;
-        margin-top: 80px;
-        margin-left: -25px;
-    }
-
-    .about-txt-description-title-jpn {
-        width: 400px;
-        margin-top: 350px;
-        margin-left: -55px;
-    } */
-
-    /* 制作者紹介*/
-
-    .creator {
-        height: 800px;
-    }
-
-    .creator-content {
-        height: 800px;
-    }
-
-    .creator-img-container {
-        display: grid;
-        grid-template-columns: 150px 150px;
-        width: 480px;
-    }
-
-    .creator-img {
-        margin: 40px;
-    }
-
-    .creator-img-5 {
-        margin-left: 120px;
-        margin-top: 10px;
-    }
-
-    .creator-img-under1 {
-        display: none;
-    }
-
-    .creator-img-under2 {
-        display: none;
-    }
-
-    .creator-img-under-3 {
-        display: none;
-    }
-
-    .creator-img-under-4 {
-        display: none;
-    }
-
-    .creator-img-under-5 {
-        display: none;
-    }
-
-
-    /* フッター */
-
-    /* .footer {
-        height: 200px;
-    }
-
-    .footer-img {
-        margin-left: 10%;
-    } */
-
-} 
