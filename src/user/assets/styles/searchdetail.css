@@ -13,10 +13,11 @@
     left: 75px;
 }
 
-.search-title-cart{
-    position: relative;
-    right: 100px;
-    top: 30px;
+img{
+    height: auto;
+}
+.boozer_logo img{
+    height: 100%;
 }
 
 /* ここから企業詳細情報 */
@@ -188,7 +189,7 @@ ul {
     margin: 0;
     margin-top: 35px;
 }
-.cyan{
+.add-button{
     /* width:380px ; */
     width: 70%;
     height: 70px;

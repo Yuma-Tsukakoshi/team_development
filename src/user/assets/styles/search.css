@@ -374,7 +374,7 @@ img{
 .search{
     display: flex;
     justify-content: space-between;
-    padding: 0 10%;
+    padding: 0 0 0 10%;
 }
 
 .cart{
