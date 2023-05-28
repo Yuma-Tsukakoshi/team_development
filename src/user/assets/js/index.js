@@ -1,19 +1,5 @@
 "use strict"
 
-// //可視範囲にきたら星流れる
-// $(window).scroll(function() {
-//   var scrollPosition = $(window).scrollTop();
-//   var windowHeight = $(window).height();
-
-//   $('.star-box4').each(function() {
-//     var offsetTop = $(this).offset().top;
-
-//     if (scrollPosition > offsetTop - windowHeight + 200) {
-//       $(this).addClass('appear');
-//     }
-//   });
-// });
-
 // ↓これできてる！タイトルがふわっと出てくるやつ
 // 動きのきっかけとなるアニメーションの名前を定義
 function fadeAnime(){
