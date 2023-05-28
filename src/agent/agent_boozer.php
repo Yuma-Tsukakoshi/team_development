@@ -7,6 +7,11 @@ if (isset($_SESSION['agent_sort'])) {
   $users = $_SESSION['agent_sort'];
 }
 
+if (!isset($_SESSION["id"]) || !isset($_SESSION["name"])) {
+  header("Location: http://localhost:8080/agent/agent_auth/agent_login.php");
+  exit;
+}
+
 $pdo = Database::get();
 $sql = "SELECT * FROM users INNER JOIN user_register_client AS r ON users.id = r.user_id WHERE r.client_id = :id AND r.is_valid=1 ORDER BY updated_at DESC";
 $stmt = $pdo->prepare($sql);
@@ -16,6 +21,8 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $name = $_SESSION['name'];
+
+// ログアウト後にページに入れないようにする
 
 ?>
 
@@ -49,7 +56,7 @@ $name = $_SESSION['name'];
             <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../agent/agent_auth/agent_logout.php">
               <span class="ml-4">ログアウト</span>
             </a>
-          </li>
+        </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">学生一覧</span>
