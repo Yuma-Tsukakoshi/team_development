@@ -123,7 +123,7 @@ $manager = $stmt3->fetch();
               <p class="company-info-hp ">ホームぺージ：<a href="<?= $agent["homepage"] ?>" target="_blank" class="company-info-hp-link">リンクはこちらから</a></p>
             </div>
             <div class="company-logo">
-              <img src="<?= $agent["logo_img"] ?>" alt="企業ロゴ">
+              <img  class="company-logo-img" src="<?= $agent["logo_img"] ?>" alt="企業ロゴ">
             </div>
           </div>
 

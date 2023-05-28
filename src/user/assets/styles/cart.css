@@ -1,3 +1,9 @@
+body{
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #fff;
+}
+
+
 .first-box,.second-box,.third-box,.fourth-box{
   width: 150px;
   height: auto;
@@ -9,7 +15,7 @@
   position: relative;
 }
 .first-box{
-  background-color: #ffff66;
+  background-color:  #e3cf32;
 }
 .fourth-box:before,
 .fourth-box:after{
@@ -36,7 +42,7 @@
   z-index: 10;
 }
 .active:after{
-  border-color: transparent transparent transparent #ffff66;
+  border-color: transparent transparent transparent #e3cf32;
 }
 
 .phase-image{
@@ -68,7 +74,7 @@
   width: 100%;
   padding-top: 70px;
   min-height: 100vh;
-  background-color: aliceblue;
+  background-color:#0071bc;
   padding-bottom: 50px;
   
 }
@@ -84,49 +90,37 @@
   font-weight: 400;
   text-align: left;
 }
-.contact-link{
-  margin-top: 10%;
-  margin-right: 20%;
-  font-size: 20px;
-  text-align: right;
-}
-.contact-adjust{
-  margin-right: 120px;
-}
-.contact-link a{
-  display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-  right: 30px;
-	width: 300px;
-	height: 60px;
-	color: #333;
-  background-color: #ffff66;
-  
-	font-size: 18px;
-	font-weight: 700;
-	text-decoration: none;
-	transition: 0.3s;
-  
-}
-.contact-link a::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	right: 10px;
-	transform: translateY(-50%);
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 5px 0 5px 8px;
-	border-color: transparent transparent transparent #333;
 
+.contact-link{
+  margin:auto;
+  margin-top: 50px;
+  width: 450px;
+  height: 50px;
+  background-color: #e3cf32;
+  border-radius: 15px;
+  border-color: transparent;
+  border-color: white;
+  border-width: 1px;
+  box-shadow: 1px 1px rgb(192, 186, 186);
+  font-weight: bold;
+  letter-spacing: 4px;
 }
-.contact-link a:hover {
-	background-color: #dcdcdc;
-	border: 1px solid #333;
+
+.contact-link:hover{
+  background-color: #bcaa1d;
+  cursor: pointer;
 }
+
+.contact-link a{
+  color: white;
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-size: 25px;
+  text-decoration: none;
+  text-align: center;
+}
+
+
 .delete-btn{
   background-color: #dcdcdc;
   border-radius: 20px;

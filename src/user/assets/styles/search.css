@@ -1,11 +1,9 @@
 body{
     overflow-x: hidden;
     font-family: 'Noto Sans JP', sans-serif;
+    background-color: white
 }
 
-.grid-cols-2{
-    background-color:  white;
-}
 
 /* 上部分 */
 img{
@@ -76,11 +74,11 @@ img{
     width:250px;
     height:600px ;
     border-radius: 20px;
-    background-color: #B7DDFF;;
-    box-shadow: 5px 5px  rgb(180, 179, 179);
+    background-color: #B7DDFF;
     margin: 20px 10%;
     margin-left: 150px;
     gap: 50px;
+    box-shadow: 0px 0px 10px 5px gainsboro; 
 }
 
 .contact-checkbox{
@@ -168,7 +166,7 @@ img{
     background-color: white;
     border-radius: 20px;
     margin-bottom: 40px;
-    box-shadow:5px 5px  5px 5px rgb(180, 179, 179);
+    box-shadow: 0px 0px 10px 5px gainsboro;   
 }
 
 .agent-list {
@@ -182,7 +180,7 @@ img{
     width: 40%;
     height: 185px;
     padding: 8px;
-    box-shadow: 7px 7px #ffe600;
+    box-shadow: 3px 3px #ffe600;
     margin: 10px;
     object-fit: contain;
     background-color: white;
