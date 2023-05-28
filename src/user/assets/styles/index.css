@@ -331,7 +331,7 @@ body {
 .howto-steps {
     display: flex;
     justify-content:center;
-    gap: 50px;
+    gap: 70px;
 }
 
 .howto-search,
@@ -591,7 +591,11 @@ body {
 }
 
 .name-bottom{
-    margin-top: 25px;
+    margin-top: 20px;
+}
+
+.name-bottom2{
+    margin-top: 12px;
 }
 .stars {
     margin-left: 50px;
