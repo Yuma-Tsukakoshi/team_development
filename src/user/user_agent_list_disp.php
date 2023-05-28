@@ -120,7 +120,7 @@ $manager = $stmt3->fetch();
               <!-- <p>キャッチコピー: <span>面接対策しっかりやってます</span></p> -->
               <!-- ここのキャッチコピーとは？？ -->
               <p class="company-info-assignee">担当者: <span><?= $manager["manager"] ?></span></p>
-              <p class="company-info-hp ">ホームぺージ：<a href="<?= $agent["homepage"] ?>" target="_blank" class="company-info-hp-link">リンクはこちらから</a></p>
+              <p class="company-info-hp ">ホームぺージ：<a href="<?= $agent["homepage"] ?>" target="_blank" class="company-info-hp-link">リンクはこちら</a></p>
             </div>
             <div class="company-logo">
               <img class="company-logo-img" src="<?= $agent["logo_img"] ?>" alt="企業ロゴ">
