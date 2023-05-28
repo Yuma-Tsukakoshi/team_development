@@ -32,7 +32,6 @@ try {
     $stmt->execute([
       "user_id" => $id,
       "client_id" => $result['client_id'],
-      var_dump($result['client_id'])
     ]);
   }
 // client_idが一致するmailをとってくる

@@ -200,7 +200,7 @@
     
     $("#submit-button").on('click', function(event){
                 //event.preventDefault();
-                console.log($('input[name="sex"]:checked').val());
+                console.log($('input[name="division"]:checked').val());
 
                 $.ajax({
                     type: "POST",
@@ -215,7 +215,7 @@
                       college:$('#college').val(),
                       faculty:$('#faculty').val(),
                       department:$('#department').val(),
-                      division:$('input[name="division"]').val(),
+                      division:$('input[name="division"]:checked').val(),
                       grad_year:$('#grad_year').val(),
                       prefecture:$('#prefecture').val(),
                       company:$company
