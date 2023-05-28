@@ -55,7 +55,7 @@ $manager = $stmt3->fetch();
 <body>
   <section class="search">
     <div class="title-wrapper">
-      <h1 class="search-title">エージェント詳細一覧</h1>
+      <h1 class="search-title">エージェント詳細</h1>
       <span class="search-title-jpn">SEARCH</span>
       <div class="search-title-border"></div>
     </div>
@@ -162,6 +162,7 @@ $manager = $stmt3->fetch();
             <p class="opinion-bubble-text3">コロナ禍に対応したサポートにより、例年の就活と大きく変わることなく就活に取り組むことができました。<br> (2023卒男性)</p>
           </div>
           <div class="opinion-bubble-triangle"></div>
+        <img class="opinion-img res" src="./assets/img/625.png" alt="口コミの画像">
         <div class="opinion-buttons">
           <input type="hidden" value="<?= $_REQUEST['client_id'] ?> " class="client_id">
           <button class="btn-big blue opinion-cart-btn" value="<?=$_REQUEST['id']?>">カートに追加する</button>
