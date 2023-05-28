@@ -95,7 +95,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
       <div class="message">カートに追加しました</div>
     </div>
     <div class="modal-cart">
-      <div class="return-link modal-button">
+      <div class="cart-link modal-button">
         <a href="./user_cartlook.php">
           <p class="link-message">カート一覧へ</p>
         </a>

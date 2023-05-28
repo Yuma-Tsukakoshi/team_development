@@ -100,7 +100,7 @@
       <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="college">大学名</label>
         <div class="flex">
-          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="college" id="college" type="text" value="<?= $_POST['college'] ?>" disabled>
+          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control " name="college" id="college" type="text" value="<?= $_POST['college'] ?>" disabled>
           <button class="edit-button" data-value="7">編集</button>
         </div>
       </div>
@@ -108,11 +108,11 @@
         <div class="form-control flex">
           <div class="double-input">
             <label class="block text-gray-700 font-bold mb-2 " for="faculty">学部</label>
-            <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " name="faculty" id="faculty" type="text" value="<?= $_POST['faculty'] ?>" disabled>
+            <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline double-content " name="faculty" id="faculty" type="text" value="<?= $_POST['faculty'] ?>" disabled>
           </div>
           <div class="double-input">
             <label class="block text-gray-700 font-bold mb-2" for="department">学科</label>
-            <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="department" id="department" type="text" disabled value="<?= $_POST['department'] ?>">
+            <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline double-content" name="department" id="department" type="text" disabled value="<?= $_POST['department'] ?>">
           </div>
           <button class="edit-button button-mg" type="button" data-type="double">編集</button>
         </div>
