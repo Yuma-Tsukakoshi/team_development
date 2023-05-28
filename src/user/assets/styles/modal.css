@@ -1,6 +1,6 @@
 .modal-content{
   width: 55%;
-  height: 60%;
+  height: 390px;
   border-radius: 30px;
   border: none;
   padding: 5% 10%;
@@ -83,18 +83,19 @@
   right: 0;
 }
 .modal-link{
-  position: absolute;
-  right: 50px;
+  width: 80%;
   color: #0071bc;
 }
 .modal-button{
-  position: absolute;
-  top: 240px;
-  right: 40px;
+  width: 80%;
+  text-align: center;
 }
 .link-message{
   font-weight: bold;
   font-size: 20px;
+}
+.modal-cart{
+  display: flex;
 }
 .maru {
   height:35px;
@@ -106,14 +107,16 @@
   color: white;
   font-weight: 600;
   font-size: 25px;
-  position: absolute;
+  margin-left: -5%;
+  z-index: 100;
+  margin-top: -4%;
+  /*position: absolute;
   top: 280px;
-  right: 30px;
+  right: 160px;*/
  }
  .cart-link{
   font-size: 18px;
-  width: 50%;
-  margin: 50px auto;
+  margin: 0 0px 0px 10%;
 }
 
 .cart-link a {
@@ -160,7 +163,8 @@
  @media screen and (max-width: 480px) {
   .modal-content{
     padding: 5% 4%;
-    height: 370px;
+    width: 80%;
+    height: 300px;
   }
   .check-circle{
     width: 65px;
@@ -175,16 +179,18 @@
     border-left: 6px solid white;
   }
   .message{
+    font-size: 25px;
     margin: 30px 0 0 0;
   }
   .link-message{
     font-size: 15px;
   }
   .modal-button{
-    margin-right: -15px;
+    margin-top: 35px;
     width: 80%;
   }
   .maru{
-    right: 12px;
+    margin-top: 8%;
+    
   }
  }

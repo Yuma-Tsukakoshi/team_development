@@ -318,6 +318,12 @@ ul {
     height:80px ;
     font-size: 25px;
 }
+.add-button2{
+    width:220px ;
+    height:80px ;
+    font-size: 25px;
+}
+
 
 .opinion-buttons{
     display: flex; 
