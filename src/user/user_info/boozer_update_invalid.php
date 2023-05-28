@@ -28,11 +28,10 @@ $headers = 'From: admin@mail' . "\r\n" .
 
 // 企業宛のメール
 $to_manager = $manager["mail"];
-$subject_manager = "【株式会社boozer】申請承認のお知らせ";
+$subject_manager = "【株式会社boozer】無効申請拒否のお知らせ";
 $message_manager = "※このメールはシステムからの自動返信です\n\n";
-$message_manager .= "株式会社boozerでの新規登録ありがとうございました。\n\n";
-$message_manager .= "無効申請を承認させていただきました。\n";
-$message_manager .= "詳しくはCRAFTのページをご覧ください\n\n";
+$message_manager .= "株式会社boozerのご利用ありがとうございます。\n\n";
+$message_manager .= "理由が十分でないため、無効申請を拒否させていただきました。\n";
 $message_manager .= "ご不明点あれば連絡ください\n\n";
 
 // 宛先と件名、メッセージをそれぞれ設定してメール送信関数を呼び出す
