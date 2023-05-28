@@ -1,15 +1,16 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-require_once(dirname(__FILE__) . '/agent_invalid_count.php');
-
-if (isset($_SESSION['agent_sort'])) {
-  $users = $_SESSION['agent_sort'];
-}
 
 if (!isset($_SESSION["id"]) || !isset($_SESSION["name"])) {
   header("Location: http://localhost:8080/agent/agent_auth/agent_login.php");
   exit;
+}
+
+require_once(dirname(__FILE__) . '/agent_invalid_count.php');
+
+if (isset($_SESSION['agent_sort'])) {
+  $users = $_SESSION['agent_sort'];
 }
 
 $pdo = Database::get();
@@ -22,7 +23,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $name = $_SESSION['name'];
 
-// ログアウト後にページに入れないようにする
 
 ?>
 
