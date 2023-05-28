@@ -55,8 +55,8 @@ $manager = $stmt3->fetch();
 <body>
   <section class="search">
     <div class="title-wrapper">
-      <h1 class="search-title">SEARCH</h1>
-      <span class="search-title-jpn">-エージェント検索-</span>
+      <h1 class="search-title">エージェント詳細一覧</h1>
+      <span class="search-title-jpn">SEARCH</span>
       <div class="search-title-border"></div>
     </div>
     <div class="cart relative">
