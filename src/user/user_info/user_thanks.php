@@ -15,7 +15,6 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./../../vendor/tailwind/tailwind.css">
-  <link rel="stylesheet" href="../assets/styles/header.css">
   <link rel="stylesheet" href="../assets/styles/form.css">
   <link rel="stylesheet" href="../assets/styles/cart.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
