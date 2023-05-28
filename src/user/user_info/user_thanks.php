@@ -22,14 +22,15 @@
 </head>
 <body>
   <header>
-    <div class="header_wrapper">
+    <!-- <div class="header_wrapper">
       <div class="header_upper">
         <div class="craft_logo">CRAFT</div>
         <div class="boozer_logo"><img src="../user/assets/img/boozer_logo_white.png" alt="boozer Inc."></div>
       </div>
     </div>
-  </header>
+  </header> -->
   <main>
+  <div class="shadow-wrapper">
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
@@ -38,13 +39,15 @@
       <div class="third-box">申し込み<span>確認</span></div>
       <div class="border-line"></div>
       <div class="fourth-box">完了</div>
-
+      </div>
     </div>
     <div class="thanks-area">
+      <div class="thanks-message-area">
       <div class="thanks-message">
-        <div class="message-content">申し込みが完了<span>しました。</span></div>
+        <div class="message-content m">申し込み<span>ありがとうございました！</span></div>
+        <div class="message-content">確認のため、メールをご確認ください。</div>
         <div class="return-link thanks-link">
-          <a href="../assets/index.html">トップに戻る</a>
+          <a href="http://localhost:8080/user/user_agent_list.php">検索ページに戻る</a>
         </div>
       </div>
     </div>
@@ -52,12 +55,10 @@
 
 
 
-
-
 </body>
 <script>
   $('.first-box').css('background-color','#dcdcdc')
-  $('.fourth-box').css('background-color','#ffff66')
+  $('.fourth-box').css('background-color','#0071bc')
   $('.fourth-box').toggleClass('active')
 
 

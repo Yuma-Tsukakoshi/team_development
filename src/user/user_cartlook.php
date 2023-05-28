@@ -21,6 +21,11 @@ if(isset($_SESSION['clients'])){
   <meta charset="UTF-8">
   <meta http-ebquiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Google Fonts読み込み-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.css">
   <link rel="stylesheet" href="../user/assets/styles/header.css">
   <link rel="stylesheet" href="../user/assets/styles/cart.css">
@@ -31,15 +36,16 @@ if(isset($_SESSION['clients'])){
 </head>
 
 <body>
-  <header>
+  <!-- <header>
     <div class="header_wrapper">
       <div class="header_upper">
         <div class="craft_logo">CRAFT</div>
         <div class="boozer_logo"><img src="../user/assets/img/boozer_logo_white.png" alt="boozer Inc."></div>
       </div>
-  </header>
+  </header> -->
 
   <main>
+  <div class="shadow-wrapper">
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
@@ -48,7 +54,7 @@ if(isset($_SESSION['clients'])){
       <div class="third-box">申し込み<span>確認</span></div>
       <div class="border-line"></div>
       <div class="fourth-box">完了</div>
-
+    </div>
     </div>
     <div class="cart-content">
       <ul class="cart-agent">
@@ -67,9 +73,14 @@ if(isset($_SESSION['clients'])){
         <?php }?>
       </ul>
       <div class="contact-link">
-        <a href="./user_info/user_insert.php"><p>申し込みフォームは<span>こちら</span></p></a>
+        <a href="./user_info/user_insert.php"><p>申し込みフォームは<span>こちら▼</span></p></a>
       </div>
     </div>
+    <!-- <button class="search-btn">
+    <a  class="search-btn-a" href="http://localhost:8080/user/user_agent_list.php">
+    比較してみる！▼
+    </a>
+  </button> -->
     
   </main>
   <script>
