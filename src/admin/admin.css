@@ -18,6 +18,10 @@ input{
   margin-right: 0px;
 }
 
+.invalid-label{
+  margin-left: 150px;
+}
+
 input:focus {
     border: blue 2px solid;
     outline: none;
