@@ -50,7 +50,7 @@ CREATE TABLE users (
   phone VARCHAR(255) NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  hidden TINYINT(1) NOT NULL DEFAULT 0,
+  -- hidden TINYINT(1) NOT NULL DEFAULT 0,
   is_valid boolean default true
 ) CHARSET=utf8;
 
@@ -198,7 +198,7 @@ DROP TABLE IF EXISTS user_register_client;
 CREATE TABLE user_register_client(
   user_id INT NOT NULL,
   client_id VARCHAR(255) NOT NULL,
-  valid int NOT NULL default false,
+  valid int default false,
   is_valid boolean default true
 );
 
