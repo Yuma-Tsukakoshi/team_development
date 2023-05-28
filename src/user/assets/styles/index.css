@@ -183,7 +183,7 @@ body {
 /* ここから「検索はこちらから」ボタン */
 .search-btn {
     right: 60px;
-    bottom: 150px;
+    bottom: 100px;
     width: 400px;
     height: 100px;
     background-color: #e3cf32;
@@ -591,7 +591,7 @@ body {
 }
 
 .name-bottom{
-    margin-top: 25px;
+    margin-top: 10px;
 }
 .stars {
     margin-left: 50px;
@@ -600,6 +600,9 @@ body {
     top: -6px;
     left: 25px;
     font-size: x-large;
+}
+.name-bottoms{
+    margin-top: 28px;
 }
 
 
@@ -1030,49 +1033,70 @@ ul {
     left: 150px;
 }
 
-.star3{
-    height: 365px;
+.star-box3,.star-box4,.star-box5,.star-box6{
+    height: 1px;
+    width: 1px;
+    position: absolute;
+}
+
+.star-box3{
+    top:840px;
+    left: 0px;
+    transform: rotateZ(270deg);
+}
+
+.star-box4{
+    top:840px;
+    right: 0px;
+    transform: rotateZ(90deg);
+}
+
+.star-box5{
+    top:3830px;
+    left: 0px;
+    transform: rotateZ(-110deg);
+}
+
+.star-box6{
+    top:3230px;
+    right: 0px;
+    transform: rotateZ(-290deg);
+}
+
+.star3,.star4,.star5,.star6{
     width: 3px;
     background-color:#e3cf32 ;
-    animation-name: shooting3;
-    animation-duration:3.0s;
-    animation-timing-function: linear;
+    animation: none;  
     z-index: 100;
-    animation-iteration-count: 1;
+    display: none;  
+}
+
+.star3{
+    height: 365px;
+}
+
+.star4{
+    height: 365px;
+}
+
+.star5{
+    height: 300px;
+}
+
+.star6{
+    height: 230px;
 }
 
 @keyframes shooting3 {
     0% {
         height: 0;
-
     }
     50% {
         height: 200px;
     }
     100% {
         height: 365px;
-
     }
-}
-
-.star-box3{
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(270deg);
-    position: absolute;
-    top:740px;
-    left: 0px;
-}
-
-.star4{
-    height: 370px;
-    width: 3px;
-    background-color:#e3cf32 ;
-    animation-name: shooting4;
-    animation-duration:3.0s;
-    animation-timing-function: linear;
-    z-index: 10000;
-    animation-iteration-count: 1;
 }
 
 @keyframes shooting4{
@@ -1084,27 +1108,7 @@ ul {
     }
     100% {
         height: 370px;
-
     }
-}
-
-.star-box4{
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(90deg);
-    position: absolute;
-    top:840px;
-    right: 0px;
-}
-
-.star5{
-    height: 300px;
-    width: 3px;
-    background-color:#e3cf32 ;
-    animation-name: shooting5;
-    animation-duration:3.0s;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
 }
 
 @keyframes shooting5{
@@ -1116,27 +1120,7 @@ ul {
     }
     100% {
         height: 300px;
-
     }
-}
-
-.star-box5{
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(-110deg);
-    position: absolute;
-    top:3700px;
-    left: -50px;
-}
-
-.star6{
-    height: 230px;
-    width: 3px;
-    background-color:#e3cf32 ;
-    animation-name: shooting6;
-    animation-duration:3.0s;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
 }
 
 @keyframes shooting6{
@@ -1148,18 +1132,32 @@ ul {
     }
     100% {
         height: 230px;
-
     }
 }
 
-.star-box6{
-    height: 100px;
-    width: 100px;
-    transform: rotateZ(-290deg);
-    position: absolute;
-    top:3250px;
-    right: -20px;
+.active {
+    animation-duration:3.0s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    display: block;
 }
+
+.active.star3 {
+    animation-name: shooting3;
+}
+
+.active.star4 {
+    animation-name: shooting4;
+}
+
+.active.star5 {
+    animation-name: shooting5;
+}
+
+.active.star6 {
+    animation-name: shooting6;
+}
+
 
 
 
