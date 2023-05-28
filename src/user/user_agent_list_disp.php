@@ -2,7 +2,6 @@
 
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
-
 if (isset($_SESSION['clients'])) {
   $count = count($_SESSION['clients']);
   $clients = $_SESSION['clients'];
@@ -164,7 +163,7 @@ $manager = $stmt3->fetch();
           <div class="opinion-bubble-triangle"></div>
           <img class="opinion-img res" src="./assets/img/625.png" alt="口コミの画像">
           <input type="hidden" value="<?= $_REQUEST['client_id'] ?> " class="client_id">
-          <button class="btn-big blue opinion-cart-btn" value="<?= $_REQUEST['id'] ?>">カートに追加する</button>
+          <button class="btn-big blue opinion-cart-btn add-button2" value="<?= $_REQUEST['id'] ?>">カートに追加する</button>
           <button class="btn-big blue search-btn"><a href="http://localhost:8080/user/user_agent_list.php">検索画面に戻る</a></button>
         </div>
     </section>
@@ -181,6 +180,9 @@ $manager = $stmt3->fetch();
           $('.add-button').removeClass("orange");
           $('.add-button').removeClass("cyan");
           $('.add-button').css('background-color', 'gray');
+          $('.add-button2').prop("disabled", true);
+          $('.add-button2').removeClass("blue");
+          $('.add-button2').css('background-color', 'gray');
         }
       })
       //スクロールすると上部に固定させるための設定を関数でまとめる
@@ -232,6 +234,46 @@ $manager = $stmt3->fetch();
           $('.add-button').removeClass("orange");
           $('.add-button').removeClass("cyan");
           $('.add-button').css('background-color', 'gray');
+          $('.add-button2').prop("disabled", true);
+          $('.add-button2').removeClass("blue");
+          $('.add-button2').css('background-color', 'gray');
+          $('.maru-num').text(data)
+          //背景グレーとか調整する
+        }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
+          alert(errorThrown);
+        });
+      })
+      $('.add-button2').on('click', function(event) {
+        $index = this.value
+        $.ajax({
+          type: "POST",
+          url: "./user_cartin.php",
+          data: {
+            id: $('.client_id').val(),
+            client_id: $index,
+          },
+          dataType: "json",
+          scriptCharset: 'utf-8'
+        }).done(function(data) {
+          $('.modal-content').fadeIn();
+          $('.overlay').fadeIn();
+          // クリックイベント全てに対しての処理
+          $(document).on('click touchend', function(event) {
+            // 表示したポップアップ以外の部分をクリックしたとき
+            if (!$(event.target).closest('.modal-content').length) {
+              $('.modal-content').fadeOut();
+              $('.overlay').fadeOut();
+            }
+          });
+
+          $('.cart-badge').text(data)
+          $('.add-button').prop("disabled", true);
+          $('.add-button').removeClass("orange");
+          $('.add-button').removeClass("cyan");
+          $('.add-button').css('background-color', 'gray');
+          $('.add-button2').prop("disabled", true);
+          $('.add-button2').removeClass("blue");
+          $('.add-button2').css('background-color', 'gray');
           $('.maru-num').text(data)
           //背景グレーとか調整する
         }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
