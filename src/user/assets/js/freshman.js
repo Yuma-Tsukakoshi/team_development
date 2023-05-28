@@ -35,3 +35,41 @@ $(document).ready(function() {
         });
     });
   });
+  $(function(){
+    var star1 = $('.star1');
+    var star2 = $('.star2');
+    star1.on('animationend', function() {
+        star2.css({
+            'display': 'block',
+            'animation': 'shooting2 3.0s linear'
+        });
+    });
+});
+$(function() {
+  var star7 = $('.star7');
+  var star8 = $('.star8');
+  var star9 = $('.star9');
+  var star10 = $('.star10');
+  var star11 = $('.star11');
+
+  star7.on('animationend', function() {
+      star8.show().css('animation', 'shooting4 0.5s linear forwards');
+  });
+
+  star8.on('animationend', function() {
+      star9.show().css('animation', 'shooting5 0.6s linear forwards');
+  });
+
+  star9.on('animationend', function() {
+      star10.show().css('animation', 'shooting6 0.8s linear forwards');
+  });
+
+  star10.on('animationend', function() {
+      star11.show().css('animation', 'shooting7 0.5s linear forwards');
+  });
+});
+
+
+
+
+

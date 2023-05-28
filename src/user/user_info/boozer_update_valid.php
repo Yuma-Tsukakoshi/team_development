@@ -8,9 +8,6 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $data = $_POST['data'];
 $clientId = $_POST['clientId'];
 
-// $data = isset($_POST['data']) ? $_POST['data'] : null;
-// $clientId = isset($_POST['clientId']) ? $_POST['clientId'] : null;
-
 $sql = "UPDATE user_register_client SET valid = :valid WHERE user_id = :uid AND client_id = :client_id;";
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(":valid", $data);
@@ -25,9 +22,6 @@ $stmt1->bindValue(":uid", $_SESSION["uid"]);
 $stmt1->bindValue(":client_id", $clientId);
 $stmt1->execute();
 $fetchedData = $stmt1->fetch(PDO::FETCH_ASSOC);
-// var_dump($data);
-// var_dump($_SESSION["uid"]); 
-// var_dump($clientId);
 $stmt1->errorInfo();
 
 
@@ -45,16 +39,22 @@ $stmt3->bindValue(":client_id", $clientId);
 $stmt3->execute();
 $manager = $stmt3->fetch(PDO::FETCH_ASSOC);
 
+// 会社名取得
+$sql4 = "SELECT service_name FROM clients WHERE client_id = :client_id";
+$stmt4 = $pdo->prepare($sql4);
+$stmt4->bindValue(":client_id", $clientId);
+$stmt4->execute();
+$client = $stmt4->fetch(PDO::FETCH_ASSOC);
+
 $headers = 'From: admin@mail' . "\r\n" .
     'Reply-To: admin@mail' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
 // user宛のメール
 $to_user= $user["mail"];
-$subject_user = "【株式会社boozer】申請拒否のお知らせ";
+$subject_user = "【株式会社boozer】企業への申請拒否のお知らせ";
 $message_user = "※このメールはシステムからの自動返信です\n\n";
-$message_user .= "株式会社boozerでの新規登録ありがとうございました。\n\n";
-$message_user .= $fetchedData["reason"] . "に不備があるため、申請を拒否させていただきました。\n";
+$message_user .= $fetchedData["reason"] . "のため、" . $client["service_name"] . "への申請を拒否させていただきました。\n";
 $message_user .= "ご不明点があればご連絡ください\n\n";
 
 // 企業宛のメール
