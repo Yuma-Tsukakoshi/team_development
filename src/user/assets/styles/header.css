@@ -1,0 +1,136 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+img{
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+header{
+  background-color: #0071bc;
+
+}
+
+.header_upper{
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+    background-color: rgba(255, 255, 255,0.5);
+
+}
+
+.craft_logo{
+  color: white;
+  font-weight: bold;
+  font-size: 50px;
+  margin: auto;
+}
+
+.boozer_logo{
+  position: absolute;
+  width: auto;
+  height: 30px;
+  top: 20px;
+  right: 10px;
+}
+
+.header_lower{
+  display: flex;
+  margin: 0 auto;
+}
+
+.nav_list{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.nav_list a{
+  position: relative; /*アンダーラインの位置を決めるための基準 */
+  text-decoration: none;
+  color: inherit;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: white;
+  
+}
+
+.nav_list a::after {
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: black;
+  bottom: -1px;
+  transform: scale(0, 1);
+  transform-origin: center top; /*変形（アンダーラインの伸長）の原点がaタグ（各メニュー）の右端*/
+  transition: transform 0.3s;   /*変形の時間*/
+}
+
+.nav_list a:hover{
+  color: black;
+}
+
+.nav_list a:hover::after {
+  transform: scale(1, 1); /*ホバー後、x軸方向に1（相対値）伸長*/
+}
+
+ul{
+  padding-left: 0;
+}
+
+li{
+  list-style: none;
+  font-weight: bold;
+}
+
+.search_button{
+  background-color: aliceblue;
+  cursor: pointer;
+  font-size: 20px;
+  margin: auto;
+  margin-bottom: 5px;
+  font-weight: bold;
+  border: 1px solid;
+
+
+}
+
+.search_button:hover{
+  background-color: rgb(104, 104, 225);
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  header{
+    background-color: #0071bc;
+  }
+  .nav_list{
+    overflow: hidden;
+  }
+  .craft_logo{
+    font-size: 40px;
+  }
+  .boozer_logo{
+    height: 25px;
+    top: 25px;
+  }
+
+  
+}
+@media screen and (max-width: 480px) {
+  
+  .craft_logo{
+
+  }
+  .boozer_logo{
+    display: none;
+  }
+  
+}

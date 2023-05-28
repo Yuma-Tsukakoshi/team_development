@@ -12,11 +12,23 @@
   .label-hover{
     @apply inline-block pl-[0.15rem] hover:cursor-pointer;
   }
+  .input-text{
+    @apply block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0;
+  }
 
 }
 
 @layer utilities {
     .blue {
-      @apply bg-gradient-to-tr from-green-300 to-blue-600;
+      @apply bg-gradient-to-br from-cyan-300 to-blue-700 ;
+    }
+    .cyan {
+      @apply bg-gradient-to-br from-blue-500 to-cyan-500 ;
+    }
+    .red {
+      @apply bg-gradient-to-br from-orange-300 to-red-700 ;
+    }
+    .orange {
+      @apply bg-gradient-to-br from-red-500 to-orange-500 ;
     }
 }
