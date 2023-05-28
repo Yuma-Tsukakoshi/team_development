@@ -44,8 +44,8 @@ $manager = $stmt3->fetch();
   <link rel="stylesheet" href="./assets/styles/form.css">
   <link rel="stylesheet" href="assets/styles/searchdetail.css">
 
-    <!--Google Fonts読み込み-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!--Google Fonts読み込み-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
 
@@ -55,7 +55,7 @@ $manager = $stmt3->fetch();
 <body>
   <section class="search">
     <div class="title-wrapper">
-      <h1 class="search-title">エージェント詳細一覧</h1>
+      <h1 class="search-title">エージェント詳細</h1>
       <span class="search-title-jpn">SEARCH</span>
       <div class="search-title-border"></div>
     </div>
@@ -63,15 +63,15 @@ $manager = $stmt3->fetch();
       <? if (isset($clients)) {
         foreach ($clients as $client) { ?>
           <input type="hidden" class="input" name="agents[]" value="<?= $client['agent'] ?>">
-        <? }
+      <? }
       } ?>
       <div class="notifier new">
         <div class="cart-badge badge num">
           <?php if (isset($count)) { ?>
             <?= $count ?>
-          <?php } else{?>
+          <?php } else { ?>
             0
-          <?php }?>
+          <?php } ?>
         </div>
         <div class="search-title-cart-border">
           <a href="./user_cartlook.php">
@@ -100,9 +100,9 @@ $manager = $stmt3->fetch();
         <span class="maru-num">
           <?php if (isset($count)) { ?>
             <?= $count ?>
-          <?php }else{ ?>
+          <?php } else { ?>
             0
-          <?php }?>
+          <?php } ?>
         </span>
       </div>
     </div>
@@ -123,7 +123,7 @@ $manager = $stmt3->fetch();
               <p class="company-info-hp ">ホームぺージ：<a href="<?= $agent["homepage"] ?>" target="_blank" class="company-info-hp-link">リンクはこちらから</a></p>
             </div>
             <div class="company-logo">
-              <img  class="company-logo-img" src="<?= $agent["logo_img"] ?>" alt="企業ロゴ">
+              <img class="company-logo-img" src="<?= $agent["logo_img"] ?>" alt="企業ロゴ">
             </div>
           </div>
 
@@ -137,7 +137,7 @@ $manager = $stmt3->fetch();
           </div>
 
           <div class="recommend-wrapper">
-          <div class="recommend-title">会社の特徴</div>
+            <div class="recommend-title">会社の特徴</div>
             <div class="recommend-content">
               <ul>
                 <?php for ($i = 1; $i <= 3; $i++) { ?>
@@ -150,7 +150,7 @@ $manager = $stmt3->fetch();
             </div>
           </div>
           <input type="hidden" value="<?= $_REQUEST['client_id'] ?> " class="client_id">
-          <button class="btn-big cyan orange add-button" value="<?=$_REQUEST['id']?>">カートに追加する</button>
+          <button class="btn-big cyan orange add-button" value="<?= $_REQUEST['id'] ?>">カートに追加する</button>
         </div>
         <div class="inner-bottom-line"></div>
         <div class="inner-bottom">
@@ -162,14 +162,11 @@ $manager = $stmt3->fetch();
             <p class="opinion-bubble-text3">コロナ禍に対応したサポートにより、例年の就活と大きく変わることなく就活に取り組むことができました。<br> (2023卒男性)</p>
           </div>
           <div class="opinion-bubble-triangle"></div>
-        <div class="opinion-buttons">
+          <img class="opinion-img res" src="./assets/img/625.png" alt="口コミの画像">
           <input type="hidden" value="<?= $_REQUEST['client_id'] ?> " class="client_id">
-          <button class="btn-big blue opinion-cart-btn" value="<?=$_REQUEST['id']?>">カートに追加する</button>
-          <button class="btn-big blue"><a href="http://localhost:8080/user/user_agent_list.php">検索画面に戻る</a></button>
-          </div> 
+          <button class="btn-big blue opinion-cart-btn" value="<?= $_REQUEST['id'] ?>">カートに追加する</button>
+          <button class="btn-big blue search-btn"><a href="http://localhost:8080/user/user_agent_list.php">検索画面に戻る</a></button>
         </div>
-
-      </div>
     </section>
   </main>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -178,16 +175,16 @@ $manager = $stmt3->fetch();
       //ボタン灰色
       const inputs = $('.input').each(function(index, element) {
         $index = element.value
-        $id=$('.add-button').val()
-        if(Number($index)==Number($id)){
+        $id = $('.add-button').val()
+        if (Number($index) == Number($id)) {
           $('.add-button').prop("disabled", true);
           $('.add-button').removeClass("orange");
           $('.add-button').removeClass("cyan");
           $('.add-button').css('background-color', 'gray');
         }
       })
-     //スクロールすると上部に固定させるための設定を関数でまとめる
-     function FixedAnime() {
+      //スクロールすると上部に固定させるための設定を関数でまとめる
+      function FixedAnime() {
         var headerH = $('.search').outerHeight(true);
         var scroll = $(window).scrollTop();
         if (scroll + 73 >= headerH) { //headerの高さ以上になったら
@@ -205,7 +202,7 @@ $manager = $stmt3->fetch();
         FixedAnime(); /* スクロール途中からヘッダーを出現させる関数を呼ぶ*/
       });
 
-     $('.add-button').on('click', function(event) {
+      $('.add-button').on('click', function(event) {
         $index = this.value
         console.log($index)
         $.ajax({
@@ -229,7 +226,7 @@ $manager = $stmt3->fetch();
             }
           });
           console.log(data);
-  
+
           $('.cart-badge').text(data)
           $('.add-button').prop("disabled", true);
           $('.add-button').removeClass("orange");

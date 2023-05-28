@@ -332,6 +332,9 @@ ul {
     top: 350px;
     left: 90px;
 }
+.opinion-img.res{
+    display: none;
+}
 
 
 .opinion-cart-btn{
@@ -384,8 +387,8 @@ ul {
     }
 
     .company-info-building-img{
-        width: 120px;
-        height:120px ;
+        width: 45px;
+        height:90px ;
         position: relative;
         left: 20px;
     }
@@ -397,9 +400,9 @@ ul {
     .company-info-name{
         font-size: 20px;
         letter-spacing: 2px;
-        top: -80px;
-        left: 140px;
-        width: 60%;
+        top: -60px;
+        left: 80px;
+        width: 85%;
     }
 
     .company-info-company-number{
@@ -453,7 +456,8 @@ ul {
         width: 100%;
     }
     .recommend-sec{
-        padding-left: 0px;
+        padding-left: 15px;
+        padding-right: 20px;
     }
 
 
@@ -490,6 +494,12 @@ ul {
         height: 50%;
         top: 0px;
         left: 50%;  
+        display: none;
+    }
+
+    .opinion-img.res{
+        display: block;
+        left: 0;
     }
 
     .opinion-bubble-text1{
