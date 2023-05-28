@@ -50,3 +50,11 @@
     transform: scale3d(1, 1, 1);
   }
 }
+
+@media screen and (max-width: 600px){
+
+  .notifier{
+    margin-right: 0;
+  }
+  
+  }
