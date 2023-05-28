@@ -1,6 +1,12 @@
 <?php
 session_start();
 require_once(dirname(__FILE__) . '/../dbconnect.php');
+
+if (!isset($_SESSION["id"]) || !isset($_SESSION["name"])) {
+  header("Location: http://localhost:8080/agent/agent_auth/agent_login.php");
+  exit;
+}
+
 require_once(dirname(__FILE__) . '/agent_invalid_count.php');
 
 if (isset($_SESSION['agent_sort'])) {
@@ -16,6 +22,7 @@ $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $name = $_SESSION['name'];
+
 
 ?>
 
@@ -49,7 +56,7 @@ $name = $_SESSION['name'];
             <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../agent/agent_auth/agent_logout.php">
               <span class="ml-4">ログアウト</span>
             </a>
-          </li>
+        </li>
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800" href="#">
               <span class="ml-4">学生一覧</span>
