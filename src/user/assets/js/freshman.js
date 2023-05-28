@@ -25,16 +25,29 @@ $(document).ready(function() {
   
   $(function(){
     $(window).scroll(function (){
-        $('.star-fadein').each(function(){
+        $('.star3, .star4').each(function(){
             var position = $(this).offset().top;
             var scroll = $(window).scrollTop();
             var windowHeight = $(window).height();
             if (scroll > position - windowHeight + 200){
-              $(this).addClass('active');
+                $(this).addClass('active');  // activeクラスを追加
             }
         });
     });
-  });
+});
+  $(function(){
+    $(window).scroll(function (){
+        $(' .star5,.star6').each(function(){
+            var position = $(this).offset().top;
+            var scroll = $(window).scrollTop();
+            var windowHeight = $(window).height();
+            if (scroll > position - windowHeight + 1000){
+                $(this).addClass('active');  // activeクラスを追加
+            }
+        });
+    });
+});
+
   $(function(){
     var star1 = $('.star1');
     var star2 = $('.star2');
