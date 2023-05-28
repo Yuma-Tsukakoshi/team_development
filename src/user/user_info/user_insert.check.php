@@ -26,8 +26,8 @@
 </head>
 
 <body>
-  <?php include(dirname(__FILE__) . './../../components/header.php'); ?>
   <main>
+  <div class="shadow-wrapper">
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
@@ -36,7 +36,7 @@
       <div class="third-box">申し込み<span>確認</span></div>
       <div class="border-line"></div>
       <div class="fourth-box">完了</div>
-
+      </div>
     </div>
     <div class="check-form" >
       <div class="text-2xl text-gray-800 font-bold mb-6">申し込み確認フォーム</div>
@@ -57,10 +57,8 @@
       <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="email">メールアドレス</label>
         <div class="flex">
-          <form action="user_thanks.php" method="post">
-            <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="email" id="email" type="text" value="<?=$_POST['email']?>" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" disabled>
+            <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control mailINput" name="email" id="email" type="text" value="<?=$_POST['email']?>" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" disabled>
             <button class="edit-button" data-value="3">編集</button>
-          </form>
         </div>
       </div>
       <div class="mb-4">
@@ -161,7 +159,7 @@
   <script>
     $(function(){
       $('.first-box').css('background-color','#dcdcdc')
-      $('.third-box').css('background-color','#ffff66')
+      $('.third-box').css('background-color','#0071bc')
     
     })
    $(function(){

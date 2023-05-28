@@ -34,23 +34,25 @@ if (isset($agentsAll)) {
 </head>
 
 <body>
-  <header>
+  <!-- <header>
     <div class="header_wrapper">
       <div class="header_upper">
         <div class="craft_logo">CRAFT</div>
         <div class="boozer_logo"><img src="../user/assets/img/boozer_logo_white.png" alt="boozer Inc."></div>
       </div>
     </div>
-  </header>
+  </header> -->
   <main>
+  <div class="shadow-wrapper">
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
-      <div class="second-box">申し込み<span>フォーム</span></div>
+      <div class="second-box">申し込み<span>フォーム</span> </div>
       <div class="border-line"></div>
       <div class="third-box">申し込み<span>確認</span></div>
       <div class="border-line"></div>
       <div class="fourth-box">完了</div>
+    </div>
     </div>
     <form method="post" action="http://localhost:8080/user/user_info/user_insert.check.php"class="bg-white rounded-lg overflow-hidden shadow-lg user-form">
      
@@ -165,7 +167,7 @@ if (isset($agentsAll)) {
   <script>
     $(function(){
       $('.first-box').css('background-color','#dcdcdc')
-      $('.second-box').css('background-color','#ffff66')
+      $('.second-box').css('background-color','#0071bc')
 
     })
   </script>

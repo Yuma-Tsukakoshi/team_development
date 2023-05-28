@@ -45,6 +45,7 @@ if(isset($_SESSION['clients'])){
   </header> -->
 
   <main>
+  <div class="shadow-wrapper">
     <div class="phase-image">
       <div class="first-box">カート一覧</div>
       <div class="border-line"></div>
@@ -53,7 +54,7 @@ if(isset($_SESSION['clients'])){
       <div class="third-box">申し込み<span>確認</span></div>
       <div class="border-line"></div>
       <div class="fourth-box">完了</div>
-
+    </div>
     </div>
     <div class="cart-content">
       <ul class="cart-agent">
