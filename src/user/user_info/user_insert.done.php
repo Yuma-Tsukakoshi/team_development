@@ -34,12 +34,14 @@ try {
       "client_id" => $result['client_id'],
     ]);
   }
-// client_idが一致するmailをとってくる
-$client_id = $result['client_id'];
-$stmt = $pdo->prepare("SELECT mail FROM managers WHERE client_id = :client_id");
-$stmt->bindParam(':client_id', $client_id);
-$stmt->execute();
-$mail = $stmt->fetchColumn();
+
+  // client_idが一致するmailをとってくる
+  $client_id = $result['client_id'];
+  $stmt = $pdo->prepare("SELECT mail FROM managers WHERE client_id = :client_id");
+  $stmt->bindParam(':client_id', $client_id);
+  $stmt->execute();
+  $emails = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
 
   //session消去
   unset($_SESSION['clients']);
@@ -82,7 +84,11 @@ $message_user .= "今しばらくお待ちくださいませ。\n\n";
 send_email($to_user, $subject_user, $message_user, $headers);
 
 // client@mail.comへのメール
-$to_client =$mail;
+foreach ($emails as $email) {
+  send_email($email, $subject_client, $message_client, $headers);
+}
+
+$to_client =$email;
 $subject_client = "【株式会社boozer】学生登録のお知らせ";
 $message_client = "お世話になっております。\n";
 $message_client .= "株式会社boozerでございます。\n\n";
@@ -99,5 +105,6 @@ $subject_admin = "【株式会社boozer】学生登録のお知らせ";
 $message_admin = "学生が登録をしました。";
 
 send_email($to_admin, $subject_admin, $message_admin, $headers);
+
 
 ?>
