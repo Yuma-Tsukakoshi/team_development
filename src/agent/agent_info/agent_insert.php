@@ -286,9 +286,9 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="text-ms font-medium text-gray-900">
-                        <input type="radio" name="subject[]" id="label" value="1" class="form-control" required />理系
-                        <input type="radio" name="subject[]" id="label" value="2" class="form-control" required />文系
-                        <input type="radio" name="subject[]" id="label" value="0" class="form-control" required />どちらも
+                        <input type="radio" name="subject[]" id="label" value="1" class="form-control student-label" required />理系　
+                        <input type="radio" name="subject[]" id="label" value="2" class="form-control student-label" required />文系　
+                        <input type="radio" name="subject[]" id="label" value="0" class="form-control student-label" required />どちらも　
                       </div>
                     </td>
                   </tr>
@@ -298,11 +298,11 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
                         面談方法
                       </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-ms font-medium text-gray-900">
-                        <input type="checkbox" name="contact[]" id="label" value="3" class="form-control" />メール
-                        <input type="checkbox" name="contact[]" id="label" value="4" class="form-control" />電話
-                        <input type="checkbox" name="contact[]" id="label" value="5" class="form-control"  />オフライン
+                    <td class="px-6 py-4 whitespace-nowrap ">
+                      <div class="text-ms font-medium text-gray-900 student-labels">
+                        <input type="checkbox" name="contact[]" id="label" value="3" class="form-control student-label" />メール　
+                        <input type="checkbox" name="contact[]" id="label" value="4" class="form-control student-label" />電話　
+                        <input type="checkbox" name="contact[]" id="label" value="5" class="form-control student-label"  />オフライン　
                       </div>
                     </td>
                   </tr>
@@ -313,11 +313,11 @@ require_once(dirname(__FILE__) . '/../../dbconnect.php');
                       </div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-ms font-medium text-gray-900">
-                        <input type="checkbox" name="place[]" id="label" value="6" class="form-control"  />東京
-                        <input type="checkbox" name="place[]" id="label" value="7" class="form-control"  />大阪
-                        <input type="checkbox" name="place[]" id="label" value="8" class="form-control"  />名古屋
-                        <input type="checkbox" name="place[]" id="label" value="9" class="form-control"  />福岡
+                      <div class="text-ms font-medium text-gray-900 student-labels">
+                        <input type="checkbox" name="place[]" id="label" value="6" class="form-control student-label"  />東京　
+                        <input type="checkbox" name="place[]" id="label" value="7" class="form-control student-label"  />大阪　
+                        <input type="checkbox" name="place[]" id="label" value="8" class="form-control student-label"  />名古屋　
+                        <input type="checkbox" name="place[]" id="label" value="9" class="form-control student-label"  />福岡　
                       </div>
                     </td>
                   </tr>

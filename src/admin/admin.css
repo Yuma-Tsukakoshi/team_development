@@ -4,10 +4,18 @@ input{
   border-radius: 10px;
   padding: 5px;
   width: 300px;
+
 }
 
-input.input-img{
-  width: 500px;
+.py-4{
+  padding-right: 100px;
+}
+
+.student-label{
+  width: 20px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 0px;
 }
 
 input:focus {
