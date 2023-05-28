@@ -219,7 +219,7 @@
                 }).fail(function(XMLHttpRequest, textStatus, errorThrown){
                     console.log(errorThrown);
                 });
-            });
+            // });
 
         $.ajax({
           type: "POST",
@@ -249,7 +249,6 @@
           console.log(errorThrown);
         });
       });
-
     })
   </script>
 </body>

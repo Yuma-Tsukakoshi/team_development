@@ -333,7 +333,7 @@ $invalid_agents = $stmt3->fetch();
         </div>
         <?php
         if ($valid[0] == 0) {
-          echo '<button class="form-open" id="js-show-popup">無効申請する</button>';
+          echo '<button class="form-open edit_btn" id="js-show-popup">無効申請する</button>';
         }
         ?>
       </main>

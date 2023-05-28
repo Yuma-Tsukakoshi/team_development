@@ -18,7 +18,7 @@ $stmt = $pdo->query($sql);
 $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
+$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND started_at <= CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents1);
 $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents2);
