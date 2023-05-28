@@ -1,3 +1,5 @@
+
+
 .search-head{
     padding-left: 20px;
 }
@@ -9,10 +11,14 @@ img{
     height: 100%;
 }
 
+body{
+    background-color: #f3f3f3;
+    font-family: 'Noto Sans JP', sans-serif;
+}
 /* ここから企業詳細情報 */
 
 section{
-    background-color: aliceblue;
+    background-color: #f3f3f3;
     width: 100%;
     height: 2300px;
 }
@@ -23,15 +29,18 @@ section{
     background-color:white;
     border-radius: 40px;
     box-shadow: 5px 5px rgb(180, 178, 178);
-    position: relative;
-    top: 50px;
-    margin: 0 auto;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .company-logo-container{
     text-align: center;
 }
 .company-logo{
-    /* margin-top: 45%; */
+    display: block;
+    margin-left: 150px;
+    width: 250px;
+    margin-top: 20px;
 }
 
 .grid-cols-2{
@@ -45,29 +54,28 @@ section{
     background-color: white;
     /* position: relative; */
     top: 100px;
-    font-weight: bold;
 }
 
 .company-info-building-img{
     width: 80px;
     height:80px ;
     position: relative;
-    top: ;
     left: 100px;
 }
 
 .company-info-name{
-    font-size: 25px;
+    font-size: 30px;
     letter-spacing: 2px;
     position: relative;
     top:-50px ;
     left:170px;
     font-weight: bold;
+    color: #0071bc;
 }
 
 
 .company-info-company-number{
-    font-size: 30px;
+    font-size: 20px;
     position: relative;
     top: 0px;
     left: 170px;
@@ -77,7 +85,7 @@ section{
 }
 
 .company-info-assignee{
-    font-size: 30px;
+    font-size: 20px;
     position: relative;
     top:10px ;
     left: 170px;
@@ -86,7 +94,7 @@ section{
 }
 
 .company-info-hp{
-    font-size: 30px;
+    font-size: 20px;
     position: relative;
     top: 20px;
     left: 170px;
@@ -96,7 +104,6 @@ section{
 
 .company-info-hp-link{
     font-size: 17px;
-    position: relative;
     left: 0px;
     top: -5px;
     letter-spacing: 1px;
@@ -111,15 +118,13 @@ section{
 
 .label{
     display:flex;
-    flex-wrap: wrap;
     gap: 5px;
-    width: 70%;
 }
+
 .label-content{
     width: auto ;
     border-radius:50px ;
     padding: 10px 15px;
-   
     background-color: rgb(227, 224, 224);
     position: relative;
     top:150px;
@@ -131,6 +136,7 @@ section{
     color: white;
     margin-left: 3px;
     margin-right: 5px;
+    font-size: 5px;
 }
 
 
@@ -142,18 +148,48 @@ section{
     right:-200px ;
 }
 
+
+
+.recommend-wrapper{
+    width:700px ;
+    height:300px ;
+    border-radius: 75px;
+    background-color: #f3f3f3;
+    text-align: center;
+    margin: auto;
+    margin-top: 230px;
+    position: center;
+
+}
+
+.recommend-title{
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    line-height: 2;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 20px;
+    color: #0071bc;
+    text-decoration: underline;
+    text-decoration-color:#e3cf32 ;
+}
+
 .recommend-sec{
     display:flex;
+    text-align: left;
+    padding-left: 70px;
 }
 
 .merit{
     word-wrap: break-word;
-    width:550px ;
     height: 40px;
     padding: 25px;
     padding-left: 0;
     font-size: 20px;
     margin-bottom: 20px;
+    font-weight: normal;
+    color: #0071bc;
 }
 
 .ic-fire{
@@ -169,26 +205,21 @@ ul {
     left: 30px;
 }
 
-.recommend-wrapper{
-    width:600px ;
-    height:260px ;
-    border-radius: 75px;
-    border-width: 10px;
-    border-color: #0071bc;
-    position: relative;
-    top: 160px;
-    left: 200px;
-    margin: 0;
-    margin-top: 35px;
-}
+
 .add-button{
-    /* width:380px ; */
+    margin: 50px 150px;
     width: 70%;
     height: 70px;
-    position: relative;
-    top: 260px;
-    left: 170px;
-    font-size: 25px;
+    justify-content: center;
+}
+
+.orange {
+    --tw-gradient-from: #0071bc;
+    --tw-gradient-to:#0071bc ;
+    color:white;
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-size: 30px;
 }
 
 
@@ -197,45 +228,34 @@ ul {
     width:800px ;
     height:2px ;
     background-color: rgb(179, 174, 174);
-    position: relative;
-    top: 350px;
     margin: 0 auto;
 }
 
 .opinion-title{
     font-weight: bold;
-    position: relative;
-    top: 385px;
-    left: 170px;
-    background: #0071bc;
     border-radius: 30px;
     padding: 12px;
-    color: #fff;
     letter-spacing: 0.3em;
     line-height: 2;
-    width: 130px;
     font-size: 25px;
     text-align: center;
+    color: #0071bc;
+    text-decoration: underline;
+    text-decoration-color:#e3cf32 ;
 }
 
-.opinion-img{
-    width: 260px;
-    height:200px ;
-    position: relative;
-    top: 740px;
-    left: 90px;
-}
 
 .opinion-bubble{
     width: 500px;
-    height:415px ;
+    height:455px ;
     background-color: #0071bc;
     border-radius: 90px;
     position: relative;
-    top:110px ;
+    top:-180px ;
     left:380px;
     font-weight:bold;
     font-size: 19px;
+    text-align: left;
 }
 
 .opinion-bubble-triangle{
@@ -245,50 +265,25 @@ ul {
     border-top: 100px solid  #0071bc;
   /* 配置する */
     position: absolute;
-    top: 1425px;
-    left: 330px;
+    top: 1550px;
+    left: 580px;
     transform: translateX(-75%);
     transform: rotate(63deg);
 }
 
+
+
+.opinion-bubble-text1,.opinion-bubble-text2,.opinion-bubble-text3{
+    color: #fff;
+    word-wrap: break-word;
+    padding: 20px;
+}
+
 .opinion-bubble-text1{
-    color: #fff;
-    word-wrap: break-word;
-    width: 400px;
-    position: relative;
-    top:60px ;
-    left: 50px;
-
+    padding-top: 40px;
 }
 
-.opinion-bubble-text2{
-    color: #fff;
-    word-wrap: break-word;
-    width:400px;
-    margin-top: 50px;
-    position: relative;
-    top: 60px;
-    left: 50px;
 
-}
-
-.opinion-bubble-text3{
-    color: #fff;
-    word-wrap: break-word;
-    width:400px;
-    margin-top: 50px;
-    position: relative;
-    top: 60px;
-    left: 50px;
-}
-.blue{
-    width:220px ;
-    height:80px ;
-    position: relative;
-    top:230px ;
-    left:650px;
-    font-size: 25px;
-}
 
 .transition-link a{
     position: relative;
@@ -309,6 +304,36 @@ ul {
 .transition-link a:hover {
     background: #fff;
     color: #228bc8;
+}
+
+.blue{
+    width:220px ;
+    height:80px ;
+    font-size: 15px;
+}
+
+.opinion-buttons{
+    display: flex; 
+    justify-content: center;
+    gap: 5px;
+}
+
+.opinion-img{
+    width: 220px;
+    height:200px ;
+    position: relative;
+    top: 350px;
+    left: 90px;
+}
+
+
+.opinion-cart-btn{
+    --tw-gradient-from: #0071bc;
+    --tw-gradient-to: #0071bc;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-size: 20px;
 }
 
 @media screen and (max-width: 768px) {

@@ -6,6 +6,7 @@ body {
     width: 100%;
     padding: 0px 0px;
     /* outline: 2px red solid; */
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .header {

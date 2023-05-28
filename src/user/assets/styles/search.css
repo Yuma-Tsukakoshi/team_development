@@ -1,5 +1,6 @@
 body{
     overflow-x: hidden;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .grid-cols-2{
@@ -235,23 +236,32 @@ img{
     margin: 10px auto;
 }
 
+
+
 .labels{
     margin-left: 10px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 2px;
 }
 
 .label-major{
     background-color: rgba(201, 201, 201, 0.6);
     border-radius: 10px;
-    padding:3px;
     text-align: center;
     justify-content: center;
-    flex: 0 0 calc(25% - 20px); /* Assuming you want two labels per row */
+    flex: 0 0 calc(20% - 50px); /* Assuming you want two labels per row */
     box-sizing: border-box;
     white-space: nowrap; /* 文字を折り返さない */
+}
+
+.label-major:before{
+    content: '●';
+    color: white;
+    margin-left: 3px;
+    margin-right: 5px;
+    font-size: 2px;
 }
 
 .agent-list-wrapper{
@@ -270,24 +280,31 @@ img{
     justify-content: flex-end;
     gap: 10px;
     margin-right: 10px;
+    height: 40px;
 }
 
-label{
-    font-size: 20px;
+.btn-big {
+    white-space: nowrap;
 }
-
 
 .detail-wrapper{
     box-sizing: border-box;
     width: 45%;
 }
 
+.red {
+    --tw-gradient-from: #0071bc;
+    --tw-gradient-to:#0071bc ;
+    color:white;
+  }
 
 .blue{
         --tw-gradient-from: white;
         --tw-gradient-to: white ;
         color: black;
 }
+
+
 
 .list-right{
     width: 100%;
@@ -312,7 +329,6 @@ label{
 }
 
 .cart-num{
-    position: ;
     font-size: 30px;
     color: #0071bc;
 }

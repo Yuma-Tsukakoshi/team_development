@@ -39,6 +39,12 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
   <script src="./assets/js/jquery-3.6.1.min.js" defer></script>
   <script src="./assets/js/filter.js" defer></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+
+    <!--Google Fonts読み込み-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+
   <title>エージェント検索一覧</title>
 </head>
 
@@ -188,7 +194,7 @@ $agents = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND exi
                   <?php foreach ($agent_labels as $agent_label) { ?>
                     <?php if ($agent_label["client_id"] == $agent["client_id"]) { ?>
                       <span class="label-major">
-                        <?= $agent_label["label_name"] ?>
+                        <?= $agent_label["label_name"] ?>　
                       </span>
                       &nbsp;
                     <?php } ?>

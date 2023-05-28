@@ -43,17 +43,16 @@ $manager = $stmt3->fetch();
   <link rel="stylesheet" href="./assets/styles/modal.css">
   <link rel="stylesheet" href="./assets/styles/form.css">
   <link rel="stylesheet" href="assets/styles/searchdetail.css">
+
+    <!--Google Fonts読み込み-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+
   <title>エージェント詳細一覧</title>
 </head>
 
 <body>
-  <header>
-    <div class="header_wrapper">
-      <div class="header_upper">
-        <div class="craft_logo">CRAFT</div>
-        <div class="boozer_logo"><img src="../user/assets/img/boozer_logo_white.png" alt="boozer Inc."></div>
-      </div>
-  </header>
   <section class="search">
     <div class="title-wrapper">
       <h1 class="search-title">SEARCH</h1>
@@ -121,7 +120,7 @@ $manager = $stmt3->fetch();
               <!-- <p>キャッチコピー: <span>面接対策しっかりやってます</span></p> -->
               <!-- ここのキャッチコピーとは？？ -->
               <p class="company-info-assignee">担当者: <span><?= $manager["manager"] ?></span></p>
-              <p class="company-info-hp transition-link">ホームぺージ：<a href="<?= $agent["homepage"] ?>" target="_blank" class="company-info-hp-link">リンクはこちらから</a></p>
+              <p class="company-info-hp ">ホームぺージ：<a href="<?= $agent["homepage"] ?>" target="_blank" class="company-info-hp-link">リンクはこちらから</a></p>
             </div>
             <div class="company-logo">
               <img src="<?= $agent["logo_img"] ?>" alt="企業ロゴ">
@@ -136,12 +135,14 @@ $manager = $stmt3->fetch();
               &nbsp;
             <?php } ?>
           </div>
+
           <div class="recommend-wrapper">
+          <div class="recommend-title">会社の特徴</div>
             <div class="recommend-content">
               <ul>
                 <?php for ($i = 1; $i <= 3; $i++) { ?>
                   <div class="recommend-sec">
-                    <img class="ic-fire" src="./assets/img/ic050.png" alt="fire">
+                    <!-- <img class="ic-fire" src="./assets/img/ic050.png" alt="fire"> -->
                     <li class="merit"><?= $agent["recommend_point$i"] ?></li>
                   </div>
                 <?php } ?>
@@ -153,15 +154,19 @@ $manager = $stmt3->fetch();
         </div>
         <div class="inner-bottom-line"></div>
         <div class="inner-bottom">
-          <h2 class="opinion-title">口コミ</h2>
-          <img class="opinion-img" src="./assets/img/278.png" alt="口コミの画像">
+          <h2 class="opinion-title">利用者からのおすすめポイント</h2>
+          <img class="opinion-img" src="./assets/img/625.png" alt="口コミの画像">
           <div class="opinion-bubble">
             <p class="opinion-bubble-text1">手厚いサポートのおかけで内定が決まりました。<br> (2023年春卒 女性)</p>
             <p class="opinion-bubble-text2">目指したい業種があまり明確でない人におすすめのエージェント会社だと思います。<br> (2022年卒男性)</p>
             <p class="opinion-bubble-text3">コロナ禍に対応したサポートにより、例年の就活と大きく変わることなく就活に取り組むことができました。<br> (2023卒男性)</p>
           </div>
           <div class="opinion-bubble-triangle"></div>
+        <div class="opinion-buttons">
+          <input type="hidden" value="<?= $_REQUEST['client_id'] ?> " class="client_id">
+          <button class="btn-big blue opinion-cart-btn" value="<?=$_REQUEST['id']?>">カートに追加する</button>
           <button class="btn-big blue"><a href="http://localhost:8080/user/user_agent_list.php">検索画面に戻る</a></button>
+          </div> 
         </div>
 
       </div>
