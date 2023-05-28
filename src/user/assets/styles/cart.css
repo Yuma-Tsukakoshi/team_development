@@ -121,12 +121,19 @@ body{
 }
 
 .contact-link a{
-  color: white;
-  font-weight: bold;
-  letter-spacing: 4px;
-  font-size: 25px;
-  text-decoration: none;
-  text-align: center;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+  right: 180px;
+	width: 300px;
+	height: 60px;
+	color: #333;
+  background-color: #ffff66;
+	font-size: 20px;
+	font-weight: 800;
+	text-decoration: none;
+	transition: 0.3s;
 }
 
 
@@ -168,8 +175,8 @@ body{
   .phase-image{
     padding: 0 4.5% 0 3%;
   }
-  .contact-link{
-   
+  .contact-link a{
+   right: 80px;
   }
  
   .agent-list{

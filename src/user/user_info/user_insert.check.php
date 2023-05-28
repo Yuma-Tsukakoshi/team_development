@@ -55,10 +55,8 @@
       <div class="mb-4">
         <label class="block text-gray-700 font-bold mb-2" for="email">メールアドレス</label>
         <div class="flex">
-
-          <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="email" id="email" type="text" value="<?= $_POST['email'] ?>" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" disabled>
-          <button class="edit-button" data-value="3">編集</button>
-
+            <input class="appearance-none border rounded py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" name="email" id="email" type="text" value="<?=$_POST['email']?>" pattern="^[a-zA-Z0-9_.+-]+[@][a-zA-Z0-9.-]+$" title="メールアドレスを正しく入力してください" disabled>
+            <button class="edit-button" data-value="3">編集</button>
         </div>
       </div>
       <div class="mb-4">
@@ -188,11 +186,40 @@
       const $company = []
       const inputs = $('input[name="company[]"]').each(function(index, element) {
         $company.push(element.value)
-      })
+        })
+    
+    $("#submit-button").on('click', function(event){
+                //event.preventDefault();
+                console.log($('input[name="division"]:checked').val());
 
-      $("#submit-button").on('click', function(event) {
-        //event.preventDefault();
-        //console.log($('input[name="sex"]:checked').val());
+                $.ajax({
+                    type: "POST",
+                    url: "./user_insert.done.php",
+                    data: {
+                      name:$('#name').val(),
+                      hurigana: $('#hurigana').val(),
+                      email:$('#email').val(),
+                      phone:$('#phone').val(),
+                      sex:$('input[name="sex"]:checked').val(),
+                      birthday:$('#birthday').val(),
+                      college:$('#college').val(),
+                      faculty:$('#faculty').val(),
+                      department:$('#department').val(),
+                      division:$('input[name="division"]:checked').val(),
+                      grad_year:$('#grad_year').val(),
+                      prefecture:$('#prefecture').val(),
+                      company:$company
+                    },
+                    dataType : "json",
+                    scriptCharset: 'utf-8'
+                }).done(function(data){
+                  console.log(data);
+                  window.location.href='./user_thanks.php'
+                  
+                }).fail(function(XMLHttpRequest, textStatus, errorThrown){
+                    console.log(errorThrown);
+                });
+            });
 
         $.ajax({
           type: "POST",

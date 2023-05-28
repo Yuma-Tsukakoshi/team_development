@@ -85,7 +85,7 @@ if(isset($_SESSION['clients'])){
   </main>
   <script>
     $(function(){
-            $('.btn-big').on('click', function(event){
+            $('.delete-btn').on('click', function(event){
               $index=this.value
               //$(this).parent('li').remove()
               var el=$(this);
