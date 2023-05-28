@@ -51,7 +51,7 @@ $invalid_agents = $stmt3->fetch();
         <div class="Form">
           <div class="Form-Item">
             <h2 class="block text-gray-700 font-bold mb-2 Form-Item-Label isMsg" for="reason">申請理由</h2>
-            <div class="">
+            <div class="select-form">
               <label class="radio-input" for="reason1">
                 <input type="radio" name="reason" id="reason1" value="メールアドレスがエラー" class="radio-button" required />メールアドレスがエラー
               </label>
@@ -67,7 +67,7 @@ $invalid_agents = $stmt3->fetch();
               <input type="text" name="reason_text" id="otherInput">
             </div>
           </div>
-          <input type="submit" class="btn-big cyan" value="送信する">
+          <input type="submit" class="btn-big cyan valid_send_btn" value="送信する">
           <!-- Form-Btn -->
           <input type="hidden" name="client_id" value="<?= $_SESSION["id"] ?>">
         </div>
@@ -333,7 +333,7 @@ $invalid_agents = $stmt3->fetch();
         </div>
         <?php
         if ($valid[0] == 0) {
-          echo '<button class="form-open" id="js-show-popup">無効申請する</button>';
+          echo '<button class="form-open edit_btn" id="js-show-popup">無効申請する</button>';
         }
         ?>
       </main>

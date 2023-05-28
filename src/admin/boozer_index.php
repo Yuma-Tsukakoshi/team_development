@@ -18,7 +18,7 @@ $stmt = $pdo->query($sql);
 $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
+$agents1 = $pdo->query("SELECT * FROM clients WHERE ended_at >= CURDATE() AND started_at <= CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents1);
 $agents2 = $pdo->query("SELECT * FROM clients WHERE ended_at < CURDATE() AND is_valid=true AND exist= 1")->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($agents2);
@@ -51,6 +51,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../vendor/tailwind/tailwind.output.css">
+  <link rel="stylesheet" href="./admin.css">
   <link rel="stylesheet" href="../user/assets/styles/badge.css">
   <link rel="stylesheet" href="../user/assets/styles/boozer.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -67,7 +68,7 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
           SideBanner
         </a>
         <ul class="mt-6">
-        <li class="relative px-6 py-3">
+          <li class="relative px-6 py-3">
             <a class="logout inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-blue-500" href="../admin/boozer_auth/boozer_logout.php">
               <span class="ml-4">ログアウト</span>
             </a>
@@ -108,9 +109,11 @@ $agent_count = $pdo->query($sql4)->fetchAll(PDO::FETCH_ASSOC);
           <h2 class="my-6 text-2xl font-semibold text-gray-700 ">企業一覧</h2>
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <h2 class="my-6 text-2xl font-semibold text-gray-700 ">掲載企業一覧</h2>
-            <a href="http://localhost:8080/admin/boozer_index_countstudents.php">
-              人数通知メールを各企業に送る
-            </a>
+            <span class="send_btn">
+              <a href="http://localhost:8080/admin/boozer_index_countstudents.php">
+                人数通知メールを各企業に送る
+              </a>
+            </span>
             <div class="w-full overflow-x-auto">
               <table class="w-full whitespace-no-wrap">
                 <thead>

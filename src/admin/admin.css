@@ -48,6 +48,28 @@ input:focus {
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
+.send_btn{
+  cursor:pointer;
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 128 239 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  font-weight: 700;
+  border-radius: 9999px;
+  padding-top: 0.5rem/* 8px */;
+  padding-bottom: 0.5rem/* 8px */;
+  padding-left: 1rem/* 16px */;
+  padding-right: 1rem/* 16px */;
+  height: 65px;
+  line-height: 45px;
+}
+
+.send_btn:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(6 68 185 / var(--tw-bg-opacity));
+}
+
+
 .btn_wrapper{
   text-align: center;
 }
@@ -71,6 +93,7 @@ input:focus {
 }
 
 .cyan{
+  
   background-image: linear-gradient(to bottom right, #3b82f6, #22d3ee);
 }
 
@@ -87,5 +110,6 @@ input:focus {
   transition-property: all;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
+  float: right;
 }
 

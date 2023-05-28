@@ -25,7 +25,7 @@ section{
 
 .wrapper{
     width: 940px;
-    height: 1900px;
+    height: 1980px;
     background-color:white;
     border-radius: 40px;
     box-shadow: 0px 0px 10px 5px gainsboro; 
@@ -184,6 +184,7 @@ section{
     display:flex;
     text-align: left;
     padding-left: 70px;
+    padding-right: 70px;
 }
 
 .merit{
@@ -271,7 +272,7 @@ ul {
   /* 配置する */
     position: absolute;
     top: 1550px;
-    left: 580px;
+    left: 515px;
     transform: translateX(-75%);
     transform: rotate(63deg);
 }
@@ -315,7 +316,7 @@ ul {
 .blue{
     width:220px ;
     height:80px ;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 .opinion-buttons{
@@ -369,7 +370,7 @@ ul {
     } */
     .wrapper{
         width: 92%;
-        height: 1900px;
+        height: 95%;
         margin: 0 auto;
     }
 
@@ -421,7 +422,7 @@ ul {
     }
 
     .company-logo{
-        margin-top: 60px;
+        margin: 60px auto;
     }
     
     .label-content{
@@ -439,15 +440,20 @@ ul {
         left: 18px;
         top: 45px;
         width: 90%;
-        margin-top: 110px;
+        margin-top: 140px;
     }
     .label{
        margin-left: 5%;
         width: 80%;
+        flex-wrap: wrap;
+        gap: 4px;
     }
     .merit{
         font-size: 18px;
-        width: 65%;
+        width: 100%;
+    }
+    .recommend-sec{
+        padding-left: 0px;
     }
 
 
@@ -455,7 +461,8 @@ ul {
         text-align: center;
         top:50px;
         left: 15%;
-        margin-top: 25px;
+        margin: 25px 50px;
+        font-size: 25px;
     }
     .inner-bottom-line{
         top: 25px;
@@ -463,14 +470,14 @@ ul {
     }
 
     .opinion-title{
-        font-size: 20px;
+        font-size: 18px;
         left: 80px;
         top: 110px;
     }
 
     .opinion-bubble{
         width: 90%;
-        /* height: 100%; */
+        height: 520px;
         top: 0px;
         left: 18px;
     }
@@ -488,15 +495,16 @@ ul {
     .opinion-bubble-text1{
         font-size: 18px;
         width: 80%;
+        margin: 0 auto;
     }
     .opinion-bubble-text2{
         font-size: 16px;
-        margin-top: 30px;
+        margin: 30px auto 0;
         width: 80%;
     }
     .opinion-bubble-text3{
         font-size: 16px;
-        margin-top: 30px;
+        margin: 30px auto 0; 
         width: 80%;
     }
 
@@ -504,5 +512,12 @@ ul {
         font-size: 24px;
         top: 30px;
         left: 25%;
+    }
+    .opinion-buttons{
+        display: block;
+        margin: 55px 70px;
+    }
+    .opinion-cart-btn{
+        font-size: 19px;
     }
 }
