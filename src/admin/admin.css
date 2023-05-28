@@ -18,6 +18,10 @@ input{
   margin-right: 0px;
 }
 
+.invalid-label{
+  margin-left: 150px;
+}
+
 input:focus {
     border: blue 2px solid;
     outline: none;
@@ -101,12 +105,12 @@ input:focus {
 }
 
 .cyan{
-  
-  background-image: linear-gradient(to bottom right, #3b82f6, #22d3ee);
+  background-color:  #0071bc;;
 }
 
 .btn-big{
   border-radius: 9999px;
+  margin: 0 auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   padding-top: 0.5rem;
@@ -118,6 +122,8 @@ input:focus {
   transition-property: all;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
-  float: right;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 

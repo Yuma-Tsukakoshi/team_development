@@ -53,16 +53,16 @@ $invalid_agents = $stmt3->fetch();
             <h2 class="block text-gray-700 font-bold mb-2 Form-Item-Label isMsg" for="reason">申請理由</h2>
             <div class="select-form">
               <label class="radio-input" for="reason1">
-                <input type="radio" name="reason" id="reason1" value="メールアドレスがエラー" class="radio-button" required />メールアドレスがエラー
+                <input type="radio" name="reason" id="reason1" value="メールアドレスがエラー" class="radio-button student-label invalid-label" required />メールアドレスがエラー<br>
               </label>
               <label class="radio-input" for="reason2">
-                <input type="radio" name="reason" id="reason2" value="登録内容に不備あり" class="radio-button" required />登録内容に不備あり
+                <input type="radio" name="reason" id="reason2" value="登録内容に不備あり" class="radio-button student-label invalid-label" required />登録内容に不備あり<br>
               </label>
               <label class="radio-input" for="reason3">
-                <input type="radio" name="reason" id="reason3" value="同じ学生が重複している" class="radio-button" required />同じ学生が重複している
+                <input type="radio" name="reason" id="reason3" value="同じ学生が重複している" class="radio-button student-label invalid-label" required />同じ学生が重複している<br>
               </label>
               <label class="radio-input" for="reason4">
-                <input type="radio" name="reason" id="reason4" value="other" class="radio-button" required />その他
+                <input type="radio" name="reason" id="reason4" value="other" class="radio-button student-label invalid-label" required />その他<br>
               </label>
               <input type="text" name="reason_text" id="otherInput">
             </div>
