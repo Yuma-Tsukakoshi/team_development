@@ -528,6 +528,14 @@ ul {
         margin: 55px 70px;
     }
     .opinion-cart-btn{
-        font-size: 19px;
+        font-size: 25px;
+        margin: 15px 40px;
+        width: 80%;
+    }
+    .search-btn{
+        font-size:16px;
+        width: 45%;
+        margin-top: 70px;
+        margin-left: 50%;
     }
 }
